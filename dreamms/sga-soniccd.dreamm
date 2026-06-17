@@ -1,0 +1,1295 @@
+//
+// Sonic CD
+//
+desc[sga-soniccd]:
+
+name = Sonic CD
+icon = sga-soniccd.png
+machine = pc
+rootpath = C:\Sega\SonicCD
+launch = "$(rootpath)\$(EXENAME).EXE"
+osenv = windows 95
+filter = nonlucas, action, sonic
+winres = 640x480x8
+EXENAME = soniccd
+CDLABEL = SONICPC
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+//
+// video configuration
+//
+config[video]:
+    title = Video Configuration
+    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
+    option[desktop]: name = Full Desktop;      wincrop = false
+end
+
+fragment[common]:
+    file[]: crc = 11703350; size =     72758; name = HOSHINO3.BMP
+    file[]: crc = ee3c235e; size =      8192; name = KEY11A.BIN
+    file[]: crc = 1a0bfd32; size =      8192; name = KEY43C.BIN
+    file[]: crc = 2145e559; size =      7780; name = KEY82A.BIN
+    file[]: crc = ecd10b90; size =     72758; name = LOADING.BMP
+    file[]: crc = 8547c3c3; size =     72758; name = MIYAKE3.BMP
+    file[]: crc = 101593d9; size =     12688; name = MSMIXMGR.DLL
+    file[]: crc = 0fb52f5a; size =     72758; name = NISIMUR3.BMP
+    file[]: crc = a4a8641a; size =   1218907; name = PCM8.CMP
+    file[]: crc = 20692c29; size =     72758; name = SANPEI3.BMP
+    file[]: crc = 1b51e44d; size =      2880; name = SNCTIME.DLL
+    file[]: crc = 99e6881c; size =       766; name = SONIC.ICO
+    file[]: crc = 2f6b88dc; size =     57320; name = SONIC.TTF
+    file[]: crc = 69bc3325; size =     12800; name = SONIC_P5.EXE
+    file[]: crc = 2b82d4d1; size =      2040; name = SPECIAL1.BIN
+    file[]: crc = c86e6127; size =      2696; name = SPECIAL6.BIN
+    file[]: crc = 44ddf006; size =    141036; name = T_BG.BMP
+    file[]: crc = 22097a4e; size =     72758; name = YAMA_L3.BMP
+    file[]: crc = 31ad9a05; size =     72758; name = YAMA_R3.BMP
+    file[]: crc = 9a919973; size =     65536; name = R1\11A\MAP11A.BIN
+    file[]: crc = 51d20d87; size =    113552; name = R1\11A\SCMP11A.CM_
+    file[]: crc = 6b2f8b34; size =      6432; name = R1\11A\T11A.MAP
+    file[]: crc = 06d9ccf0; size =     11074; name = R1\11A\TCMP11A.CM_
+    file[]: crc = 2ff8c736; size =     54272; name = R1\11B\MAP11B.BIN
+    file[]: crc = c32ccd06; size =    112387; name = R1\11B\SCMP11B.CM_
+    file[]: crc = 437f2c68; size =      5280; name = R1\11B\T11B.MAP
+    file[]: crc = 499c5a1e; size =     11055; name = R1\11B\TCMP11B.CM_
+    file[]: crc = 65040e71; size =     55296; name = R1\11C\MAP11C.BIN
+    file[]: crc = 7cfc8b07; size =    108090; name = R1\11C\SCMP11C.CM_
+    file[]: crc = 56830cc9; size =      5792; name = R1\11C\T11C.MAP
+    file[]: crc = b81cf2b6; size =     10786; name = R1\11C\TCMP11C.CM_
+    file[]: crc = 8891d2ad; size =     55296; name = R1\11D\MAP11D.BIN
+    file[]: crc = 7cfc8b07; size =    108090; name = R1\11D\SCMP11D.CM_
+    file[]: crc = d1da1f31; size =      5920; name = R1\11D\T11D.MAP
+    file[]: crc = b4edbb2a; size =     11607; name = R1\11D\TCMP11D.CM_
+    file[]: crc = 6c767c01; size =     54272; name = R1\12A\MAP12A.BIN
+    file[]: crc = cd35de3b; size =    110316; name = R1\12A\SCMP12A.CM_
+    file[]: crc = 32dbbd43; size =      5824; name = R1\12A\T12A.MAP
+    file[]: crc = cd7b6fe6; size =     11265; name = R1\12A\TCMP12A.CM_
+    file[]: crc = d8dd93ee; size =     54272; name = R1\12B\MAP12B.BIN
+    file[]: crc = bfc88e8e; size =    110139; name = R1\12B\SCMP12B.CM_
+    file[]: crc = 51b6bca9; size =      5664; name = R1\12B\T12B.MAP
+    file[]: crc = 494dbeb8; size =     11736; name = R1\12B\TCMP12B.CM_
+    file[]: crc = 1289777a; size =     54272; name = R1\12C\MAP12C.BIN
+    file[]: crc = 1ef74063; size =    108832; name = R1\12C\SCMP12C.CM_
+    file[]: crc = fc71df42; size =      6048; name = R1\12C\T12C.MAP
+    file[]: crc = 7973f779; size =     11364; name = R1\12C\TCMP12C.CM_
+    file[]: crc = 3325db34; size =     54272; name = R1\12D\MAP12D.BIN
+    file[]: crc = 1ef74063; size =    108832; name = R1\12D\SCMP12D.CM_
+    file[]: crc = 2676fc30; size =      6112; name = R1\12D\T12D.MAP
+    file[]: crc = 1e6959ae; size =     12134; name = R1\12D\TCMP12D.CM_
+    file[]: crc = 2b278152; size =     54272; name = R1\13C\MAP13C.BIN
+    file[]: crc = 32276239; size =    110800; name = R1\13C\SCMP13C.CM_
+    file[]: crc = 1b1e2bfa; size =      6080; name = R1\13C\T13C.MAP
+    file[]: crc = 69c8c723; size =     11365; name = R1\13C\TCMP13C.CM_
+    file[]: crc = 14b516f4; size =     54272; name = R1\13D\MAP13D.BIN
+    file[]: crc = 32276239; size =    110800; name = R1\13D\SCMP13D.CM_
+    file[]: crc = 96b56ff9; size =      6048; name = R1\13D\T13D.MAP
+    file[]: crc = 1e6959ae; size =     12134; name = R1\13D\TCMP13D.CM_
+    file[]: crc = e3437778; size =     54784; name = R3\31A\MAP31A.BIN
+    file[]: crc = f7c60d9a; size =    112066; name = R3\31A\SCMP31A.CM_
+    file[]: crc = a5bb6a93; size =      5248; name = R3\31A\T31A.MAP
+    file[]: crc = fd3b3dd6; size =      9921; name = R3\31A\TCMP31A.CM_
+    file[]: crc = 3630a807; size =     54784; name = R3\31B\MAP31B.BIN
+    file[]: crc = ecd5034b; size =    111599; name = R3\31B\SCMP31B.CM_
+    file[]: crc = cedc23d4; size =      5312; name = R3\31B\T31B.MAP
+    file[]: crc = e64ba065; size =     10297; name = R3\31B\TCMP31B.CM_
+    file[]: crc = cf4c8b41; size =     54784; name = R3\31C\MAP31C.BIN
+    file[]: crc = 6d18d863; size =     98786; name = R3\31C\SCMP31C.CM_
+    file[]: crc = 9f3a3c9e; size =      5248; name = R3\31C\T31C.MAP
+    file[]: crc = 285f6863; size =     10147; name = R3\31C\TCMP31C.CM_
+    file[]: crc = 2f62f4c7; size =     54784; name = R3\31D\MAP31D.BIN
+    file[]: crc = 46743d0f; size =    101516; name = R3\31D\SCMP31D.CM_
+    file[]: crc = 7725c610; size =      5248; name = R3\31D\T31D.MAP
+    file[]: crc = 4500f6f0; size =     10210; name = R3\31D\TCMP31D.CM_
+    file[]: crc = 3d2e9598; size =     54784; name = R3\32A\MAP32A.BIN
+    file[]: crc = e6cc5b98; size =    111744; name = R3\32A\SCMP32A.CM_
+    file[]: crc = f0301f60; size =      5248; name = R3\32A\T32A.MAP
+    file[]: crc = 908ecb70; size =       344; name = R3\32A\TCHG32A.CM_
+    file[]: crc = fd3b3dd6; size =      9921; name = R3\32A\TCMP32A.CM_
+    file[]: crc = 0d1ea0b6; size =     54784; name = R3\32B\MAP32B.BIN
+    file[]: crc = a9e0ce49; size =    103201; name = R3\32B\SCMP32B.CM_
+    file[]: crc = 81c2be77; size =      5312; name = R3\32B\T32B.MAP
+    file[]: crc = ef135827; size =     10337; name = R3\32B\TCMP32B.CM_
+    file[]: crc = 3eeee5b5; size =     54784; name = R3\32C\MAP32C.BIN
+    file[]: crc = 0dfdf7e6; size =    101743; name = R3\32C\SCMP32C.CM_
+    file[]: crc = 9f3a3c9e; size =      5248; name = R3\32C\T32C.MAP
+    file[]: crc = 2faa5451; size =       353; name = R3\32C\TCHG32C.CM_
+    file[]: crc = 285f6863; size =     10147; name = R3\32C\TCMP32C.CM_
+    file[]: crc = bd216471; size =     54784; name = R3\32D\MAP32D.BIN
+    file[]: crc = 961f0388; size =    101599; name = R3\32D\SCMP32D.CM_
+    file[]: crc = e31f1372; size =      5248; name = R3\32D\T32D.MAP
+    file[]: crc = 11acecc5; size =       365; name = R3\32D\TCHG32D.CM_
+    file[]: crc = ee465ec9; size =     10210; name = R3\32D\TCMP32D.CM_
+    file[]: crc = a88b63eb; size =     54272; name = R3\33C\MAP33C.BIN
+    file[]: crc = ec84079b; size =    132970; name = R3\33C\SCMP33C.CM_
+    file[]: crc = fbc1b3f4; size =      4544; name = R3\33C\T33C.MAP
+    file[]: crc = cb2282c1; size =     10343; name = R3\33C\TCMP33C.CM_
+    file[]: crc = 4dbc883c; size =     54272; name = R3\33D\MAP33D.BIN
+    file[]: crc = 3c022ec9; size =    132805; name = R3\33D\SCMP33D.CM_
+    file[]: crc = b77e7176; size =      4544; name = R3\33D\T33D.MAP
+    file[]: crc = 02a91081; size =     10444; name = R3\33D\TCMP33D.CM_
+    file[]: crc = fa67b0f9; size =     54272; name = R4\41A\MAP41A.BIN
+    file[]: crc = 11e8f83f; size =    120621; name = R4\41A\SCMP41A.CM_
+    file[]: crc = 51e37bd3; size =      5728; name = R4\41A\T41A.MAP
+    file[]: crc = 6fe9a52e; size =      1590; name = R4\41A\TCHG41A.CM_
+    file[]: crc = 8af7ac8d; size =      9897; name = R4\41A\TCMP41A.CM_
+    file[]: crc = b0f8b291; size =     54272; name = R4\41B\MAP41B.BIN
+    file[]: crc = dde33289; size =    117166; name = R4\41B\SCMP41B.CM_
+    file[]: crc = d6ef7784; size =      4544; name = R4\41B\T41B.MAP
+    file[]: crc = ee32c1b3; size =     10430; name = R4\41B\TCMP41B.CM_
+    file[]: crc = 1f440319; size =     54272; name = R4\41C\MAP41C.BIN
+    file[]: crc = 2b99d1f1; size =    110046; name = R4\41C\SCMP41C.CM_
+    file[]: crc = 81f84a67; size =      7456; name = R4\41C\T41C.MAP
+    file[]: crc = 5a0c865b; size =      9607; name = R4\41C\TCMP41C.CM_
+    file[]: crc = ef254437; size =     54272; name = R4\41D\MAP41D.BIN
+    file[]: crc = 33b52bd8; size =    108394; name = R4\41D\SCMP41D.CM_
+    file[]: crc = f9787ea1; size =      4800; name = R4\41D\T41D.MAP
+    file[]: crc = a596c305; size =     10850; name = R4\41D\TCMP41D.CM_
+    file[]: crc = 37cfa634; size =     54272; name = R4\42A\MAP42A.BIN
+    file[]: crc = f25c2a05; size =    116286; name = R4\42A\SCMP42A.CM_
+    file[]: crc = 472f348e; size =      3616; name = R4\42A\T42A.MAP
+    file[]: crc = 19071b18; size =      9655; name = R4\42A\TCMP42A.CM_
+    file[]: crc = e51d6b72; size =     54272; name = R4\42B\MAP42B.BIN
+    file[]: crc = 950a0e21; size =    118241; name = R4\42B\SCMP42B.CM_
+    file[]: crc = d6ef7784; size =      4544; name = R4\42B\T42B.MAP
+    file[]: crc = ee32c1b3; size =     10430; name = R4\42B\TCMP42B.CM_
+    file[]: crc = 379ca6ed; size =     54272; name = R4\42C\MAP42C.BIN
+    file[]: crc = 8e2b75aa; size =    114368; name = R4\42C\SCMP42C.CM_
+    file[]: crc = 81f84a67; size =      7456; name = R4\42C\T42C.MAP
+    file[]: crc = 5a0c865b; size =      9607; name = R4\42C\TCMP42C.CM_
+    file[]: crc = 3ddd64f4; size =     54272; name = R4\42D\MAP42D.BIN
+    file[]: crc = e9bfca21; size =    114963; name = R4\42D\SCMP42D.CM_
+    file[]: crc = 54f847f1; size =      4576; name = R4\42D\T42D.MAP
+    file[]: crc = 32bcffd9; size =     10761; name = R4\42D\TCMP42D.CM_
+    file[]: crc = b85b9755; size =     54272; name = R4\43C\MAP43C.BIN
+    file[]: crc = c7db83b4; size =    110389; name = R4\43C\SCMP43C.CM_
+    file[]: crc = 81f84a67; size =      7456; name = R4\43C\T43C.MAP
+    file[]: crc = 5a0c865b; size =      9607; name = R4\43C\TCMP43C.CM_
+    file[]: crc = a3d30467; size =     54272; name = R4\43D\MAP43D.BIN
+    file[]: crc = 030a2934; size =    111007; name = R4\43D\SCMP43D.CM_
+    file[]: crc = 8b307129; size =      5632; name = R4\43D\T43D.MAP
+    file[]: crc = a596c305; size =     10850; name = R4\43D\TCMP43D.CM_
+    file[]: crc = a65d7ce0; size =     57856; name = R5\51A\MAP51A.BIN
+    file[]: crc = 0e90beb1; size =    109112; name = R5\51A\SCMP51A.CM_
+    file[]: crc = 6d9ff939; size =      6240; name = R5\51A\T51A.MAP
+    file[]: crc = 079e1d9b; size =      3330; name = R5\51A\TCHG51A.CM_
+    file[]: crc = 6ac9882a; size =     12551; name = R5\51A\TCMP51A.CM_
+    file[]: crc = e0fa2f82; size =     55296; name = R5\51B\MAP51B.BIN
+    file[]: crc = e303a1b1; size =    108730; name = R5\51B\SCMP51B.CM_
+    file[]: crc = 2839efc4; size =      6688; name = R5\51B\T51B.MAP
+    file[]: crc = 07b6be8b; size =      5631; name = R5\51B\TCHG51B.CM_
+    file[]: crc = 220371bf; size =     12831; name = R5\51B\TCMP51B.CM_
+    file[]: crc = 0260d459; size =     55808; name = R5\51C\MAP51C.BIN
+    file[]: crc = a7770a09; size =    109233; name = R5\51C\SCMP51C.CM_
+    file[]: crc = ca810031; size =      6080; name = R5\51C\T51C.MAP
+    file[]: crc = 5a7761ca; size =      3831; name = R5\51C\TCHG51C.CM_
+    file[]: crc = 6aa74534; size =     12457; name = R5\51C\TCMP51C.CM_
+    file[]: crc = c623d548; size =     55808; name = R5\51D\MAP51D.BIN
+    file[]: crc = 78c282bd; size =    108787; name = R5\51D\SCMP51D.CM_
+    file[]: crc = 0c5d6029; size =      6336; name = R5\51D\T51D.MAP
+    file[]: crc = 94bb81d6; size =      3530; name = R5\51D\TCHG51D.CM_
+    file[]: crc = 37a5f93a; size =     12542; name = R5\51D\TCMP51D.CM_
+    file[]: crc = 3c0f950c; size =     57856; name = R5\52A\MAP52A.BIN
+    file[]: crc = 0e90beb1; size =    109112; name = R5\52A\SCMP52A.CM_
+    file[]: crc = 262d8536; size =      6240; name = R5\52A\T52A.MAP
+    file[]: crc = 079e1d9b; size =      3330; name = R5\52A\TCHG52A.CM_
+    file[]: crc = 6ac9882a; size =     12551; name = R5\52A\TCMP52A.CM_
+    file[]: crc = 7d705154; size =     55296; name = R5\52B\MAP52B.BIN
+    file[]: crc = e303a1b1; size =    108730; name = R5\52B\SCMP52B.CM_
+    file[]: crc = 2839efc4; size =      6688; name = R5\52B\T52B.MAP
+    file[]: crc = 07b6be8b; size =      5631; name = R5\52B\TCHG52B.CM_
+    file[]: crc = 220371bf; size =     12831; name = R5\52B\TCMP52B.CM_
+    file[]: crc = db4d9286; size =     55808; name = R5\52C\MAP52C.BIN
+    file[]: crc = a7770a09; size =    109233; name = R5\52C\SCMP52C.CM_
+    file[]: crc = ca810031; size =      6080; name = R5\52C\T52C.MAP
+    file[]: crc = 5a7761ca; size =      3831; name = R5\52C\TCHG52C.CM_
+    file[]: crc = 6aa74534; size =     12457; name = R5\52C\TCMP52C.CM_
+    file[]: crc = c87a863f; size =     55296; name = R5\52D\MAP52D.BIN
+    file[]: crc = 78c282bd; size =    108787; name = R5\52D\SCMP52D.CM_
+    file[]: crc = 0c5d6029; size =      6336; name = R5\52D\T52D.MAP
+    file[]: crc = 94bb81d6; size =      3530; name = R5\52D\TCHG52D.CM_
+    file[]: crc = 37a5f93a; size =     12542; name = R5\52D\TCMP52D.CM_
+    file[]: crc = 7fbcbb7d; size =     55808; name = R5\53C\MAP53C.BIN
+    file[]: crc = 60ed524b; size =    106214; name = R5\53C\SCMP53C.CM_
+    file[]: crc = e2096ca9; size =      6080; name = R5\53C\T53C.MAP
+    file[]: crc = 5a7761ca; size =      3831; name = R5\53C\TCHG53C.CM_
+    file[]: crc = 63ed71d7; size =     12457; name = R5\53C\TCMP53C.CM_
+    file[]: crc = 87a6ad7d; size =     55296; name = R5\53D\MAP53D.BIN
+    file[]: crc = 30f8dbf5; size =    106274; name = R5\53D\SCMP53D.CM_
+    file[]: crc = 0c5d6029; size =      6336; name = R5\53D\T53D.MAP
+    file[]: crc = 94bb81d6; size =      3530; name = R5\53D\TCHG53D.CM_
+    file[]: crc = 37a5f93a; size =     12542; name = R5\53D\TCMP53D.CM_
+    file[]: crc = f69b0041; size =     59904; name = R6\61A\MAP61A.BIN
+    file[]: crc = da6a4ff1; size =    109669; name = R6\61A\SCMP61A.CM_
+    file[]: crc = daf9f79d; size =      5440; name = R6\61A\T61A.MAP
+    file[]: crc = 4c6f64b9; size =       817; name = R6\61A\TCHG61A.CM_
+    file[]: crc = a6d67aa8; size =      8227; name = R6\61A\TCMP61A.CM_
+    file[]: crc = e2954205; size =     58880; name = R6\61B\MAP61B.BIN
+    file[]: crc = 1e7465d8; size =    109039; name = R6\61B\SCMP61B.CM_
+    file[]: crc = 19b816c3; size =      5600; name = R6\61B\T61B.MAP
+    file[]: crc = 4c6f64b9; size =       817; name = R6\61B\TCHG61B.CM_
+    file[]: crc = ec52836d; size =      9513; name = R6\61B\TCMP61B.CM_
+    file[]: crc = 25c69d0e; size =     59392; name = R6\61C\MAP61C.BIN
+    file[]: crc = 16db43c5; size =    109666; name = R6\61C\SCMP61C.CM_
+    file[]: crc = 44ff65cf; size =      5440; name = R6\61C\T61C.MAP
+    file[]: crc = 46485eb2; size =       516; name = R6\61C\TCHG61C.CM_
+    file[]: crc = a53620d3; size =      9191; name = R6\61C\TCMP61C.CM_
+    file[]: crc = 5ee91ec1; size =     59392; name = R6\61D\MAP61D.BIN
+    file[]: crc = 6a1f1d6c; size =    109679; name = R6\61D\SCMP61D.CM_
+    file[]: crc = 1a30ffaf; size =      6656; name = R6\61D\T61D.MAP
+    file[]: crc = 4c6f64b9; size =       817; name = R6\61D\TCHG61D.CM_
+    file[]: crc = 7fe282e4; size =     10326; name = R6\61D\TCMP61D.CM_
+    file[]: crc = f2f52ea0; size =     59904; name = R6\62A\MAP62A.BIN
+    file[]: crc = 67794fad; size =    109876; name = R6\62A\SCMP62A.CM_
+    file[]: crc = c5cd0203; size =      5920; name = R6\62A\T62A.MAP
+    file[]: crc = 4c6f64b9; size =       817; name = R6\62A\TCHG62A.CM_
+    file[]: crc = cb14dd1f; size =      9168; name = R6\62A\TCMP62A.CM_
+    file[]: crc = 4941cc34; size =     58880; name = R6\62B\MAP62B.BIN
+    file[]: crc = 399a07a9; size =    109246; name = R6\62B\SCMP62B.CM_
+    file[]: crc = b0f0f991; size =      6048; name = R6\62B\T62B.MAP
+    file[]: crc = 4c6f64b9; size =       817; name = R6\62B\TCHG62B.CM_
+    file[]: crc = 919a28ae; size =      9118; name = R6\62B\TCMP62B.CM_
+    file[]: crc = d73d6c21; size =     59392; name = R6\62C\MAP62C.BIN
+    file[]: crc = b862cd81; size =    109874; name = R6\62C\SCMP62C.CM_
+    file[]: crc = c1a85034; size =      5920; name = R6\62C\T62C.MAP
+    file[]: crc = 46485eb2; size =       516; name = R6\62C\TCHG62C.CM_
+    file[]: crc = 89799652; size =     10138; name = R6\62C\TCMP62C.CM_
+    file[]: crc = 944d8352; size =     59904; name = R6\62D\MAP62D.BIN
+    file[]: crc = 834ae194; size =    109887; name = R6\62D\SCMP62D.CM_
+    file[]: crc = 344f9604; size =      6688; name = R6\62D\T62D.MAP
+    file[]: crc = 6870196d; size =       819; name = R6\62D\TCHG62D.CM_
+    file[]: crc = 0f5200b1; size =     10553; name = R6\62D\TCMP62D.CM_
+    file[]: crc = e7726022; size =     60416; name = R6\63C\MAP63C.BIN
+    file[]: crc = aa337477; size =    118449; name = R6\63C\SCMP63C.CM_
+    file[]: crc = ebc7809b; size =      5920; name = R6\63C\T63C.MAP
+    file[]: crc = 46485eb2; size =       516; name = R6\63C\TCHG63C.CM_
+    file[]: crc = 8e345571; size =     10255; name = R6\63C\TCMP63C.CM_
+    file[]: crc = 1b7e3bf8; size =     60416; name = R6\63D\MAP63D.BIN
+    file[]: crc = b6b651e5; size =    118469; name = R6\63D\SCMP63D.CM_
+    file[]: crc = 2284cbb2; size =      6528; name = R6\63D\T63D.MAP
+    file[]: crc = 7849373c; size =       826; name = R6\63D\TCHG63D.CM_
+    file[]: crc = e1fa491c; size =     10279; name = R6\63D\TCMP63D.CM_
+    file[]: crc = e7dbc86c; size =     59904; name = R7\71A\MAP71A.BIN
+    file[]: crc = df09dc56; size =    113333; name = R7\71A\SCMP71A.CM_
+    file[]: crc = 6d71f64b; size =      7392; name = R7\71A\T71A.MAP
+    file[]: crc = 8a4e832a; size =     11427; name = R7\71A\TCMP71A.CM_
+    file[]: crc = 6c63ee52; size =     58368; name = R7\71B\MAP71B.BIN
+    file[]: crc = 9b3169d2; size =    113096; name = R7\71B\SCMP71B.CM_
+    file[]: crc = bc51e447; size =      5824; name = R7\71B\T71B.MAP
+    file[]: crc = 07af7a3d; size =     12164; name = R7\71B\TCMP71B.CM_
+    file[]: crc = c61ec462; size =     57856; name = R7\71C\MAP71C.BIN
+    file[]: crc = e89f6abd; size =    113302; name = R7\71C\SCMP71C.CM_
+    file[]: crc = 9ac0bbc7; size =      5440; name = R7\71C\T71C.MAP
+    file[]: crc = 300e0f24; size =     12072; name = R7\71C\TCMP71C.CM_
+    file[]: crc = 3b8baa42; size =     54784; name = R7\71D\MAP71D.BIN
+    file[]: crc = 85342c86; size =    113294; name = R7\71D\SCMP71D.CM_
+    file[]: crc = d0e40e6a; size =      7744; name = R7\71D\T71D.MAP
+    file[]: crc = c7bb7c96; size =     11390; name = R7\71D\TCMP71D.CM_
+    file[]: crc = a74a6594; size =     59904; name = R7\72A\MAP72A.BIN
+    file[]: crc = df09dc56; size =    113333; name = R7\72A\SCMP72A.CM_
+    file[]: crc = c7dd1de8; size =      7392; name = R7\72A\T72A.MAP
+    file[]: crc = 8a4e832a; size =     11427; name = R7\72A\TCMP72A.CM_
+    file[]: crc = c50b8841; size =     57856; name = R7\72B\MAP72B.BIN
+    file[]: crc = 9b3169d2; size =    113096; name = R7\72B\SCMP72B.CM_
+    file[]: crc = 3b4b6d6e; size =      5824; name = R7\72B\T72B.MAP
+    file[]: crc = 07af7a3d; size =     12164; name = R7\72B\TCMP72B.CM_
+    file[]: crc = c4a73622; size =     57856; name = R7\72C\MAP72C.BIN
+    file[]: crc = e89f6abd; size =    113302; name = R7\72C\SCMP72C.CM_
+    file[]: crc = 443f9671; size =      5472; name = R7\72C\T72C.MAP
+    file[]: crc = 300e0f24; size =     12072; name = R7\72C\TCMP72C.CM_
+    file[]: crc = 087b043c; size =     54784; name = R7\72D\MAP72D.BIN
+    file[]: crc = 85342c86; size =    113294; name = R7\72D\SCMP72D.CM_
+    file[]: crc = 6378f639; size =      7744; name = R7\72D\T72D.MAP
+    file[]: crc = 883f2beb; size =     11380; name = R7\72D\TCMP72D.CM_
+    file[]: crc = 9a748a2f; size =     57856; name = R7\73C\MAP73C.BIN
+    file[]: crc = 305e435c; size =    113745; name = R7\73C\SCMP73C.CM_
+    file[]: crc = 6e92d85f; size =      5440; name = R7\73C\T73C.MAP
+    file[]: crc = 300e0f24; size =     12072; name = R7\73C\TCMP73C.CM_
+    file[]: crc = 5f7689af; size =     54784; name = R7\73D\MAP73D.BIN
+    file[]: crc = cad9f800; size =    113803; name = R7\73D\SCMP73D.CM_
+    file[]: crc = cf5173e6; size =      7744; name = R7\73D\T73D.MAP
+    file[]: crc = 883f2beb; size =     11380; name = R7\73D\TCMP73D.CM_
+    file[]: crc = cec580ba; size =     56832; name = R8\81A\MAP81A.BIN
+    file[]: crc = c94f0ce2; size =    128033; name = R8\81A\SCMP81A.CM_
+    file[]: crc = 7d17a6ff; size =      3872; name = R8\81A\T81A.MAP
+    file[]: crc = 6ea0dbd5; size =      2053; name = R8\81A\TCHG81A.CM_
+    file[]: crc = de844c30; size =      9075; name = R8\81A\TCMP81A.CM_
+    file[]: crc = 13d9d583; size =     56832; name = R8\81B\MAP81B.BIN
+    file[]: crc = 72e301db; size =    127839; name = R8\81B\SCMP81B.CM_
+    file[]: crc = db9b0d8b; size =      3840; name = R8\81B\T81B.MAP
+    file[]: crc = 4ed02c1f; size =      8831; name = R8\81B\TCMP81B.CM_
+    file[]: crc = e0add898; size =     56832; name = R8\81C\MAP81C.BIN
+    file[]: crc = 2e29382a; size =    128026; name = R8\81C\SCMP81C.CM_
+    file[]: crc = a08e1957; size =      4128; name = R8\81C\T81C.MAP
+    file[]: crc = d98fffc0; size =       937; name = R8\81C\TCHG81C.CM_
+    file[]: crc = ff80b55a; size =     10184; name = R8\81C\TCMP81C.CM_
+    file[]: crc = 81b965aa; size =     56832; name = R8\81D\MAP81D.BIN
+    file[]: crc = c94f0ce2; size =    128033; name = R8\81D\SCMP81D.CM_
+    file[]: crc = 6a4050e0; size =      3872; name = R8\81D\T81D.MAP
+    file[]: crc = c60c4967; size =      1267; name = R8\81D\TCHG81D.CM_
+    file[]: crc = a144e31c; size =      9814; name = R8\81D\TCMP81D.CM_
+    file[]: crc = c310a9e8; size =     55808; name = R8\82A\MAP82A.BIN
+    file[]: crc = 24bdabc0; size =    108892; name = R8\82A\SCMP82A.CM_
+    file[]: crc = 0b22a4bf; size =      4480; name = R8\82A\T82A.MAP
+    file[]: crc = 7761a484; size =      1473; name = R8\82A\TCHG82A.CM_
+    file[]: crc = 26661142; size =     10096; name = R8\82A\TCMP82A.CM_
+    file[]: crc = 8ad75830; size =     56320; name = R8\82B\MAP82B.BIN
+    file[]: crc = ab80736e; size =    108704; name = R8\82B\SCMP82B.CM_
+    file[]: crc = aff84bad; size =      4256; name = R8\82B\T82B.MAP
+    file[]: crc = 5423ddc0; size =       241; name = R8\82B\TCHG82B.CM_
+    file[]: crc = 4d245fab; size =      9557; name = R8\82B\TCMP82B.CM_
+    file[]: crc = 2181d4ac; size =     55808; name = R8\82C\MAP82C.BIN
+    file[]: crc = 24bdabc0; size =    108892; name = R8\82C\SCMP82C.CM_
+    file[]: crc = f227d5d9; size =      4864; name = R8\82C\T82C.MAP
+    file[]: crc = 24b44d65; size =      1143; name = R8\82C\TCHG82C.CM_
+    file[]: crc = 67c2ace0; size =     10859; name = R8\82C\TCMP82C.CM_
+    file[]: crc = 718c3be1; size =     55808; name = R8\82D\MAP82D.BIN
+    file[]: crc = 24bdabc0; size =    108892; name = R8\82D\SCMP82D.CM_
+    file[]: crc = 0672d3c3; size =      4416; name = R8\82D\T82D.MAP
+    file[]: crc = 7761a484; size =      1473; name = R8\82D\TCHG82D.CM_
+    file[]: crc = 84fccb3f; size =     10523; name = R8\82D\TCMP82D.CM_
+    file[]: crc = 9eb45e5c; size =     56832; name = R8\83C\MAP83C.BIN
+    file[]: crc = 9181d8b9; size =    139004; name = R8\83C\SCMP83C.CM_
+    file[]: crc = 7c4c30fd; size =      3488; name = R8\83C\T83C.MAP
+    file[]: crc = 24b44d65; size =      1143; name = R8\83C\TCHG83C.CM_
+    file[]: crc = b48561ab; size =      9086; name = R8\83C\TCMP83C.CM_
+    file[]: crc = c0c83389; size =     56832; name = R8\83D\MAP83D.BIN
+    file[]: crc = 99485ad1; size =    139011; name = R8\83D\SCMP83D.CM_
+    file[]: crc = 3791e906; size =      3840; name = R8\83D\T83D.MAP
+    file[]: crc = 7761a484; size =      1473; name = R8\83D\TCHG83D.CM_
+    file[]: crc = 4a628ce5; size =      8570; name = R8\83D\TCMP83D.CM_
+    file[]: crc = 50553807; size =     40825; name = SPECIAL\SCMPSPE.CM_
+    file[]: crc = 8a354804; size =      2240; name = SPECIAL\BMP\FIX\CLRBACK.BIN
+    file[]: crc = 9fe2b880; size =      1280; name = SPECIAL\BMP\FIX\EGG.BIN
+    file[]: crc = f9fb3969; size =      1024; name = SPECIAL\BMP\FIX\MPB1_A0.BIN
+    file[]: crc = 7ea28b5c; size =      1024; name = SPECIAL\BMP\FIX\MPB1_A1.BIN
+    file[]: crc = 2eb5d9fc; size =      1024; name = SPECIAL\BMP\FIX\MPB1_B0.BIN
+    file[]: crc = c8842b68; size =      1024; name = SPECIAL\BMP\FIX\MPB1_B1.BIN
+    file[]: crc = 907bd4a4; size =       768; name = SPECIAL\BMP\FIX\MPB1_B2.BIN
+    file[]: crc = 1514e711; size =      1024; name = SPECIAL\BMP\FIX\MPB2_A0.BIN
+    file[]: crc = 798d5762; size =      1024; name = SPECIAL\BMP\FIX\MPB2_A1.BIN
+    file[]: crc = 67c3953e; size =       384; name = SPECIAL\BMP\FIX\MPB2_B00.BIN
+    file[]: crc = 6dc66d5d; size =       192; name = SPECIAL\BMP\FIX\MPB2_B01.BIN
+    file[]: crc = aaf5476c; size =        64; name = SPECIAL\BMP\FIX\MPB2_B02.BIN
+    file[]: crc = 24bda177; size =       256; name = SPECIAL\BMP\FIX\MPB2_B03.BIN
+    file[]: crc = 84af2745; size =       128; name = SPECIAL\BMP\FIX\MPB2_B1.BIN
+    file[]: crc = 84cd4dbb; size =       384; name = SPECIAL\BMP\FIX\MPB2_B20.BIN
+    file[]: crc = 13e299bc; size =       192; name = SPECIAL\BMP\FIX\MPB2_B21.BIN
+    file[]: crc = 5fc2f178; size =        64; name = SPECIAL\BMP\FIX\MPB2_B22.BIN
+    file[]: crc = a8afee23; size =       256; name = SPECIAL\BMP\FIX\MPB2_B23.BIN
+    file[]: crc = 5723224e; size =       768; name = SPECIAL\BMP\FIX\MPB2_B4.BIN
+    file[]: crc = 5fa175f2; size =      1024; name = SPECIAL\BMP\FIX\MPB3_A0.BIN
+    file[]: crc = cfd33ad5; size =      1024; name = SPECIAL\BMP\FIX\MPB3_A1.BIN
+    file[]: crc = 610c340d; size =       704; name = SPECIAL\BMP\FIX\MPB3_B0.BIN
+    file[]: crc = 154b9e40; size =       320; name = SPECIAL\BMP\FIX\MPB3_B1.BIN
+    file[]: crc = 9534830d; size =       704; name = SPECIAL\BMP\FIX\MPB3_B2.BIN
+    file[]: crc = 00dacbe6; size =       320; name = SPECIAL\BMP\FIX\MPB3_B3.BIN
+    file[]: crc = 83b6fbec; size =       896; name = SPECIAL\BMP\FIX\MPB4_A0.BIN
+    file[]: crc = 1108b63b; size =       896; name = SPECIAL\BMP\FIX\MPB4_A1.BIN
+    file[]: crc = 50443fcc; size =      1024; name = SPECIAL\BMP\FIX\MPB4_B0.BIN
+    file[]: crc = af79963d; size =      1024; name = SPECIAL\BMP\FIX\MPB4_B1.BIN
+    file[]: crc = 02f06bd2; size =       768; name = SPECIAL\BMP\FIX\MPB4_B2.BIN
+    file[]: crc = f3fe17fd; size =       768; name = SPECIAL\BMP\FIX\MPB6_B8.BIN
+    file[]: crc = 57213a5c; size =       896; name = SPECIAL\BMP\FIX\MPB6A1L.BIN
+    file[]: crc = 46132bcb; size =       896; name = SPECIAL\BMP\FIX\MPB6A1R.BIN
+    file[]: crc = c51b93aa; size =       128; name = SPECIAL\BMP\FIX\MPB6A2L.BIN
+    file[]: crc = 2b4ebd2a; size =       128; name = SPECIAL\BMP\FIX\MPB6A2R.BIN
+    file[]: crc = fe661330; size =       640; name = SPECIAL\BMP\FIX\MPB6B1L.BIN
+    file[]: crc = 9cb7519b; size =       640; name = SPECIAL\BMP\FIX\MPB6B1R.BIN
+    file[]: crc = 69cdc169; size =       384; name = SPECIAL\BMP\FIX\MPB6B2L.BIN
+    file[]: crc = c8a2b2ca; size =       384; name = SPECIAL\BMP\FIX\MPB6B2R.BIN
+    file[]: crc = 488a50bc; size =       768; name = SPECIAL\BMP\FIX\MPB7_B1.BIN
+    file[]: crc = d0c2a9bf; size =       160; name = SPECIAL\BMP\FIX\PANEL1.BIN
+    file[]: crc = 7c577770; size =       160; name = SPECIAL\BMP\FIX\PANEL2.BIN
+    file[]: crc = fe85bdc7; size =      1280; name = SPECIAL\BMP\FIX\S1A0.BIN
+    file[]: crc = ef54c535; size =       512; name = SPECIAL\BMP\FIX\S1A1.BIN
+    file[]: crc = c6e4ae0e; size =      1024; name = SPECIAL\BMP\FIX\S1B0.BIN
+    file[]: crc = 07bcf61f; size =       768; name = SPECIAL\BMP\FIX\S1B1.BIN
+    file[]: crc = eb63dfc1; size =       512; name = SPECIAL\BMP\FIX\S2A0.BIN
+    file[]: crc = e6ff67f9; size =       960; name = SPECIAL\BMP\FIX\S2A000.BIN
+    file[]: crc = bffbe009; size =      1280; name = SPECIAL\BMP\FIX\S2B0.BIN
+    file[]: crc = c915f9b9; size =       768; name = SPECIAL\BMP\FIX\S2B1.BIN
+    file[]: crc = bb1f0b30; size =       256; name = SPECIAL\BMP\FIX\S3A0.BIN
+    file[]: crc = 1789b099; size =       768; name = SPECIAL\BMP\FIX\S3B0.BIN
+    file[]: crc = 2299b9a5; size =       512; name = SPECIAL\BMP\FIX\S3B1.BIN
+    file[]: crc = 27ab06e8; size =       512; name = SPECIAL\BMP\FIX\S3B2.BIN
+    file[]: crc = a28bb69d; size =       160; name = SPECIAL\BMP\FIX\S3B3.BIN
+    file[]: crc = 6a8f7739; size =      1408; name = SPECIAL\BMP\FIX\S4B0.BIN
+    file[]: crc = b654338d; size =       640; name = SPECIAL\BMP\FIX\S4B1.BIN
+    file[]: crc = c5935cb5; size =      1792; name = SPECIAL\BMP\FIX\S5A0.BIN
+    file[]: crc = 667bbdaa; size =      2048; name = SPECIAL\BMP\FIX\S5B0.BIN
+    file[]: crc = 51d94236; size =       960; name = SPECIAL\BMP\FIX\S5B1.BIN
+    file[]: crc = e9eedcc7; size =       768; name = SPECIAL\BMP\FIX\S6A0.BIN
+    file[]: crc = 0e334228; size =       960; name = SPECIAL\BMP\FIX\S6B0.BIN
+    file[]: crc = fd2c9487; size =      1280; name = SPECIAL\BMP\FIX\S6B1.BIN
+    file[]: crc = 37117e46; size =       960; name = SPECIAL\BMP\FIX\S7_A000.BIN
+    file[]: crc = 26a9cf2b; size =      1792; name = SPECIAL\BMP\FIX\S7A.BIN
+    file[]: crc = 6d3d1c7a; size =       768; name = SPECIAL\BMP\FIX\S7AA.BIN
+    file[]: crc = d7faf796; size =      2048; name = SPECIAL\BMP\FIX\S7B.BIN
+    file[]: crc = 3cb2bdea; size =     14397; name = SPECIAL\BMP\FIX\SCLEAR.CM_
+    file[]: crc = f3cdbfe5; size =       768; name = SPECIAL\BMP\FIX\SP6_000.BIN
+    file[]: crc = ba7753b5; size =       896; name = SPECIAL\BMP\FIX\SP6_A01.BIN
+    file[]: crc = f429f77e; size =       896; name = SPECIAL\BMP\FIX\SP6_A02.BIN
+    file[]: crc = 530dec29; size =      1024; name = SPECIAL\BMP\FIX\SP6_B0.BIN
+    file[]: crc = 69041736; size =      6229; name = SPECIAL\BMP\FIX\TCMPS1.CM_
+    file[]: crc = 81856503; size =      6210; name = SPECIAL\BMP\FIX\TCMPS2.CM_
+    file[]: crc = cdf44d8a; size =      4114; name = SPECIAL\BMP\FIX\TCMPS3.CM_
+    file[]: crc = 1da95ca0; size =      8235; name = SPECIAL\BMP\FIX\TCMPS4.CM_
+    file[]: crc = af37fce7; size =      5591; name = SPECIAL\BMP\FIX\TCMPS5.CM_
+    file[]: crc = d02e49a2; size =      4999; name = SPECIAL\BMP\FIX\TCMPS6.CM_
+    file[]: crc = 554b416f; size =      8556; name = SPECIAL\BMP\FIX\TCMPS7.CM_
+    file[]: crc = 0b8ebb99; size =      3328; name = SPECIAL\BMP\FIX\TCMPS8.CM_
+    file[]: crc = 571b2152; size =     17888; name = SPECIAL\CG\SP1CG32.CM_
+    file[]: crc = 606a3e66; size =     13836; name = SPECIAL\CG\SP2CG32.CM_
+    file[]: crc = c2d8326a; size =     14000; name = SPECIAL\CG\SP3CG32.CM_
+    file[]: crc = c3f22f4f; size =     14122; name = SPECIAL\CG\SP4CG32.CM_
+    file[]: crc = 3f2700fd; size =     15908; name = SPECIAL\CG\SP5CG32.CM_
+    file[]: crc = 93e2337e; size =     13554; name = SPECIAL\CG\SP6CG32.CM_
+    file[]: crc = 95ce0272; size =     17647; name = SPECIAL\CG\SP7CG32.CM_
+    file[]: crc = 571b2152; size =     17888; name = SPECIAL\CG\SP8CG32.CM_
+    file[]: crc = 846c491c; size =     32768; name = SPECIAL\MAP\SP0MAP.MAP
+    file[]: crc = c5dd83a4; size =     32768; name = SPECIAL\MAP\SP1MAP.MAP
+    file[]: crc = 5463e015; size =     32768; name = SPECIAL\MAP\SP2MAP.MAP
+    file[]: crc = 8a95883f; size =     32768; name = SPECIAL\MAP\SP3MAP.MAP
+    file[]: crc = ecf81247; size =     32768; name = SPECIAL\MAP\SP4MAP.MAP
+    file[]: crc = cb44dfaf; size =     32768; name = SPECIAL\MAP\SP5MAP.MAP
+    file[]: crc = 9d950328; size =     32768; name = SPECIAL\MAP\SP6MAP.MAP
+    file[]: crc = 43b37072; size =     32768; name = SPECIAL\MAP\SP7MAP.MAP
+    file[]: crc = a5f48a0c; size =  53352540; name = TITLE\AVI\BADEND1.AVI
+    file[]: crc = 5dd9fd64; size =    760072; name = TITLE\AVI\BADEND2.AVI
+    file[]: crc = 5fcd4b20; size =  53315676; name = TITLE\AVI\GOODEND1.AVI
+    file[]: crc = 7c9fc89a; size =    720584; name = TITLE\AVI\GOODEND2.AVI
+
+    file[]: crc = b6967112; size =   1130372; name = TITLE\AVI\PENCIL.AVI
+    file[]: crc = 07a80d62; size =     16925; name = TITLE\BMP\BESTTIME.CM_
+    file[]: crc = ae3a84f5; size =     35665; name = TITLE\BMP\OPENINGS.CM_
+    file[]: crc = a4222b7a; size =      9343; name = TITLE\BMP\OPENINGT.CM_
+    file[]: crc = ba7aca5e; size =     15318; name = TITLE\BMP\SAVEDATS.CM_
+    file[]: crc = d4a0d5a1; size =        41; name = TITLE\BMP\SAVEDATT.CM_
+    file[]: crc = df30e4cb; size =     63771; name = TITLE\BMP\SCMPTA.CM_
+    file[]: crc = 26c6586d; size =     13397; name = TITLE\BMP\SNDTESTS.CM_
+    file[]: crc = d4a0d5a1; size =        41; name = TITLE\BMP\SNDTESTT.CM_
+    file[]: crc = daa6e2de; size =     12494; name = TITLE\BMP\STAGES.CM_
+    file[]: crc = 3196588f; size =      6630; name = TITLE\BMP\TCMPTA.CM_
+    file[]: crc = e6d567a2; size =     11482; name = TITLE\BMP\VISUALS.CM_
+    file[]: crc = d4a0d5a1; size =        41; name = TITLE\BMP\VISUALT.CM_
+    file[]: crc = 43931901; size =       698; name = TITLE\BMP\BADAVI\MES1.BMP
+    file[]: crc = 0089e7c2; size =      1146; name = TITLE\BMP\GOODAVI\MES1.BMP
+    file[]: crc = 6787c604; size =      2038; name = TITLE\BMP\GOODAVI\MES2.BMP
+    file[]: crc = dfebcf4c; size =     35918; name = TITLE\BMP\OPNAVI\OPWP.BMP
+    file[]: crc = 0ca0e336; size =     35958; name = TITLE\BMP\OPNAVI\PENBG.BMP
+    file[]: crc = 1328b908; size =     11947; name = TITLE\BMP\PLANET\SCMPLP.CM_
+    file[]: crc = 82d91691; size =      1232; name = TITLE\BMP\TA\BG\TIME_BGC.BIN
+    file[]: crc = f003a094; size =      1008; name = TITLE\BMP\TA\BG\TIME_BGL.BIN
+    file[]: crc = c9f0506c; size =      1008; name = TITLE\BMP\TA\BG\TIME_BGR.BIN
+    file[]: crc = dff1aad4; size =      3277; name = TITLE\PLANET\CG\FUNKA.CM_
+    file[]: crc = a5c865f7; size =      3297; name = TITLE\PLANET\CG\FUNKAB.CM_
+    file[]: crc = f617d97e; size =     11535; name = TITLE\PLANET\CG\LP.CM_
+    file[]: crc = ed571314; size =     12955; name = TITLE\PLANET\CG\LPB.CM_
+    file[]: crc = 13279185; size =       987; name = TITLE\PLANET\CG\LPBS.CM_
+    file[]: crc = e2e4e83f; size =     13091; name = TITLE\PLANET\CG\LPG.CM_
+    file[]: crc = 1c0e6ed3; size =     43775; name = TITLE\PLANET\CG\PLANET.CM_
+    file[]: crc = 1328b908; size =     11947; name = TITLE\PLANET\CG\SCMPLP.CM_
+    file[]: crc = 610a1280; size =       112; name = TITLE\PLANET\MAP\LP.MAP
+    file[]: crc = f73fa0bb; size =       112; name = TITLE\PLANET\MAP\LPB.MAP
+    file[]: crc = 2099226f; size =      1792; name = TITLE\PLANET\MAP\LPBS.MAP
+    file[]: crc = 3facc668; size =       112; name = TITLE\PLANET\MAP\LPG.MAP
+    file[]: crc = f5aeb54c; size =     14244; name = TITLE\THANKS\CG\SCMPTH.CM_
+    file[]: crc = a93fc94c; size =      5700; name = TITLE\THANKS\CG\SCR_A.CM_
+    file[]: crc = a63d0219; size =      4096; name = TITLE\THANKS\MAP\VA_MAP.BIN
+    file[]: crc = 4f4ea0ee; size =      4096; name = TITLE\THANKS\MAP\VB_MAP.BIN
+    file[]: crc = 306f3a99; size =      2240; name = WARP\CGWARP.BIN
+    file[]: crc = 9a96b901; size =      2547; name = WARP\SCMPWARP.CM_
+    file[]: crc = 7c22b95c; size =       575; name = WARP\TCMPWARP.CM_
+
+end
+
+fragment[retail-us]:
+	CDLABEL = SONICPC
+    file[]: crc = 0fd34464; size =     41472; name = SONICDLG.DLL
+    file[]: crc = 682c82bc; size =    135680; name = R1\11A\DLL11A.DLL
+	file[]: crc = 04f43131; size =    132608; name = R1\11B\DLL11B.DLL
+    file[]: crc = 9ed28ff6; size =    129536; name = R1\11C\DLL11C.DLL
+    file[]: crc = 24f7a416; size =    129536; name = R1\11D\DLL11D.DLL
+    file[]: crc = 39c98a4a; size =    132608; name = R1\12A\DLL12A.DLL
+    file[]: crc = f8ec92c8; size =    131584; name = R1\12B\DLL12B.DLL
+    file[]: crc = 2c047c1b; size =    129536; name = R1\12C\DLL12C.DLL
+    file[]: crc = 638f7926; size =    129536; name = R1\12D\DLL12D.DLL
+    file[]: crc = 49887553; size =    134656; name = R1\13C\DLL13C.DLL
+    file[]: crc = 10462f62; size =    134656; name = R1\13D\DLL13D.DLL
+    file[]: crc = f353be9d; size =    139776; name = R3\31A\DLL31A.DLL
+    file[]: crc = 33863a3d; size =    133632; name = R3\31B\DLL31B.DLL
+    file[]: crc = d8e173d2; size =    134144; name = R3\31C\DLL31C.DLL
+    file[]: crc = 5b5a071b; size =    133632; name = R3\31D\DLL31D.DLL
+    file[]: crc = 2aa1f676; size =    139264; name = R3\32A\DLL32A.DLL
+    file[]: crc = 3fd2c81d; size =    133632; name = R3\32B\DLL32B.DLL
+    file[]: crc = c325e67c; size =    134656; name = R3\32C\DLL32C.DLL
+    file[]: crc = 14b4efd7; size =    134656; name = R3\32D\DLL32D.DLL
+    file[]: crc = 25522856; size =    138240; name = R3\33C\DLL33C.DLL
+    file[]: crc = 6b094c26; size =    138240; name = R3\33D\DLL33D.DLL
+    file[]: crc = 777527f6; size =    133120; name = R4\41A\DLL41A.DLL
+    file[]: crc = 735ba875; size =    134144; name = R4\41B\DLL41B.DLL
+    file[]: crc = dfccf9b7; size =    131584; name = R4\41C\DLL41C.DLL
+    file[]: crc = 0352c47d; size =    130560; name = R4\41D\DLL41D.DLL
+    file[]: crc = 670a0d7f; size =    134656; name = R4\42A\DLL42A.DLL
+    file[]: crc = 05d69ca0; size =    132096; name = R4\42B\DLL42B.DLL
+    file[]: crc = d14e5f80; size =    137728; name = R4\42C\DLL42C.DLL
+    file[]: crc = fc2ed394; size =    137728; name = R4\42D\DLL42D.DLL
+    file[]: crc = b268353e; size =    121856; name = R4\43C\DLL43C.DLL
+    file[]: crc = 7a5920d2; size =    121344; name = R4\43D\DLL43D.DLL
+    file[]: crc = 8c3ff146; size =    136704; name = R5\51A\DLL51A.DLL
+    file[]: crc = 89788527; size =    134656; name = R5\51B\DLL51B.DLL
+    file[]: crc = 1832ece6; size =    134144; name = R5\51C\DLL51C.DLL
+    file[]: crc = 0a5b3c03; size =    135168; name = R5\51D\DLL51D.DLL
+    file[]: crc = fca3cb4a; size =    136192; name = R5\52A\DLL52A.DLL
+    file[]: crc = e06263a3; size =    134144; name = R5\52B\DLL52B.DLL
+    file[]: crc = aaa0c938; size =    133632; name = R5\52C\DLL52C.DLL
+    file[]: crc = fdc6c975; size =    134656; name = R5\52D\DLL52D.DLL
+    file[]: crc = f5ac4d20; size =    120320; name = R5\53C\DLL53C.DLL
+    file[]: crc = 5b8c282d; size =    121344; name = R5\53D\DLL53D.DLL
+    file[]: crc = 028279e8; size =    137216; name = R6\61A\DLL61A.DLL
+    file[]: crc = 6a0646b6; size =    137728; name = R6\61B\DLL61B.DLL
+    file[]: crc = 7faafca9; size =    137216; name = R6\61C\DLL61C.DLL
+    file[]: crc = 19d0b515; size =    137216; name = R6\61D\DLL61D.DLL
+    file[]: crc = a72c5c69; size =    138240; name = R6\62A\DLL62A.DLL
+    file[]: crc = e1a46e3f; size =    138240; name = R6\62B\DLL62B.DLL
+    file[]: crc = 8fede97e; size =    138240; name = R6\62C\DLL62C.DLL
+    file[]: crc = 918e225c; size =    138240; name = R6\62D\DLL62D.DLL
+    file[]: crc = 95dff434; size =    137216; name = R6\63C\DLL63C.DLL
+    file[]: crc = e5b39cf4; size =    137728; name = R6\63D\DLL63D.DLL
+    file[]: crc = 591e2f5a; size =    132608; name = R7\71A\DLL71A.DLL
+    file[]: crc = e9e7811d; size =    131584; name = R7\71B\DLL71B.DLL
+    file[]: crc = 25948003; size =    132096; name = R7\71C\DLL71C.DLL
+    file[]: crc = 8037391d; size =    134144; name = R7\71D\DLL71D.DLL
+    file[]: crc = 5b87e259; size =    134144; name = R7\72A\DLL72A.DLL
+    file[]: crc = 5dab974b; size =    133120; name = R7\72B\DLL72B.DLL
+    file[]: crc = 232f5816; size =    133120; name = R7\72C\DLL72C.DLL
+    file[]: crc = 75d4e1d8; size =    135680; name = R7\72D\DLL72D.DLL
+    file[]: crc = bedbe57c; size =    129536; name = R7\73C\DLL73C.DLL
+    file[]: crc = 66772139; size =    131072; name = R7\73D\DLL73D.DLL
+    file[]: crc = bdce7b7f; size =    130048; name = R8\81A\DLL81A.DLL
+    file[]: crc = 3d1321be; size =    128512; name = R8\81B\DLL81B.DLL
+    file[]: crc = 8272cc7e; size =    130048; name = R8\81C\DLL81C.DLL
+    file[]: crc = c6d30d4a; size =    131072; name = R8\81D\DLL81D.DLL
+    file[]: crc = 386f4cc8; size =    139264; name = R8\82A\DLL82A.DLL
+    file[]: crc = ecb7283a; size =    137728; name = R8\82B\DLL82B.DLL
+    file[]: crc = edbec997; size =    139264; name = R8\82C\DLL82C.DLL
+    file[]: crc = 26d00f4c; size =    140288; name = R8\82D\DLL82D.DLL
+    file[]: crc = 49a8bcc8; size =    138240; name = R8\83C\DLL83C.DLL
+    file[]: crc = 857e5465; size =    138752; name = R8\83D\DLL83D.DLL
+    file[]: crc = 102b1d57; size =     56832; name = SPECIAL\SPECIAL.DLL
+    file[]: crc = 0abcd88f; size =  19846094; name = TITLE\AVI\OPN.AVI
+    file[]: crc = ae50ba15; size =     20992; name = TITLE\AVIBAD\AVIBAD.DLL
+    file[]: crc = 92d81826; size =     20992; name = TITLE\AVIGOOD\AVIGOOD.DLL
+    file[]: crc = 03a0e8dd; size =     19968; name = TITLE\AVIOPEN\AVIOPEN.DLL
+    file[]: crc = 95418250; size =     19968; name = TITLE\AVIPEN\AVIPEN.DLL
+    file[]: crc = 253cbca2; size =     23552; name = TITLE\BESTTIME\BESTTIME.DLL
+    file[]: crc = 476a5c34; size =      3062; name = TITLE\OPENING\1996SEGA.BMP
+    file[]: crc = 9ac12cb2; size =     29184; name = TITLE\OPENING\OPENING.DLL
+    file[]: crc = f294357e; size =     55296; name = TITLE\PLANET\PLANET.DLL
+    file[]: crc = 922d476e; size =     37888; name = TITLE\SAVEDATA\SAVEDATA.DLL
+    file[]: crc = 9eaa38e1; size =     26112; name = TITLE\SOUNDTST\SOUNDTST.DLL
+    file[]: crc = bea284ae; size =     22016; name = TITLE\STAGETST\STAGETST.DLL
+    file[]: crc = df36e4fd; size =     35840; name = TITLE\TA\TA.DLL
+    file[]: crc = 51f25b96; size =     40448; name = TITLE\THANKS\THANKS.DLL
+    file[]: crc = c755a95b; size =     24576; name = TITLE\VISUALMD\VISUALMD.DLL
+    file[]: crc = c16d6a6c; size =     17920; name = WARP\WARP.DLL
+    file[]: crc = 27e37f56; size =    111616; name = DINO2D.DLL
+    file[]: crc = 81139979; size =     98304; name = DMIX.DLL
+
+end
+
+fragment[retail-jp]:
+    file[]: crc = 0fd34464; size =     41472; name = SONICDLG.DLL
+    file[]: crc = e12c89ed; size =    135680; name = R1\11A\DLL11A.DLL
+    file[]: crc = 89efa86a; size =    132608; name = R1\11B\DLL11B.DLL
+    file[]: crc = 15545430; size =    129536; name = R1\11C\DLL11C.DLL
+    file[]: crc = 9225e66d; size =    129536; name = R1\11D\DLL11D.DLL
+    file[]: crc = e7de5b8b; size =    132608; name = R1\12A\DLL12A.DLL
+    file[]: crc = 078ef0ea; size =    131584; name = R1\12B\DLL12B.DLL
+    file[]: crc = d4d7ba33; size =    129536; name = R1\12C\DLL12C.DLL
+    file[]: crc = 74c0c52a; size =    129536; name = R1\12D\DLL12D.DLL
+    file[]: crc = 8f102247; size =    135168; name = R1\13C\DLL13C.DLL
+    file[]: crc = 89e23a6c; size =    134656; name = R1\13D\DLL13D.DLL
+    file[]: crc = 91f5c323; size =    139776; name = R3\31A\DLL31A.DLL
+    file[]: crc = 8cb085ef; size =    133632; name = R3\31B\DLL31B.DLL
+    file[]: crc = 6b5cb0d9; size =    134144; name = R3\31C\DLL31C.DLL
+    file[]: crc = 67aaacd9; size =    133632; name = R3\31D\DLL31D.DLL
+    file[]: crc = 4120e528; size =    139776; name = R3\32A\DLL32A.DLL
+    file[]: crc = 0bd695bb; size =    133632; name = R3\32B\DLL32B.DLL
+    file[]: crc = 59288565; size =    134656; name = R3\32C\DLL32C.DLL
+    file[]: crc = 8d27d034; size =    134656; name = R3\32D\DLL32D.DLL
+    file[]: crc = 18b55fdf; size =    138752; name = R3\33C\DLL33C.DLL
+    file[]: crc = 18659c85; size =    138240; name = R3\33D\DLL33D.DLL
+    file[]: crc = 854fbd68; size =    133120; name = R4\41A\DLL41A.DLL
+    file[]: crc = c92e669a; size =    134144; name = R4\41B\DLL41B.DLL
+    file[]: crc = e3b92037; size =    131584; name = R4\41C\DLL41C.DLL
+    file[]: crc = e760b5f8; size =    130560; name = R4\41D\DLL41D.DLL
+    file[]: crc = 35b4ab13; size =    134656; name = R4\42A\DLL42A.DLL
+    file[]: crc = 58db5114; size =    132096; name = R4\42B\DLL42B.DLL
+    file[]: crc = 0e586c2a; size =    138240; name = R4\42C\DLL42C.DLL
+    file[]: crc = 5b088ff6; size =    138240; name = R4\42D\DLL42D.DLL
+    file[]: crc = 23f3179b; size =    121856; name = R4\43C\DLL43C.DLL
+    file[]: crc = a49b7d7f; size =    121344; name = R4\43D\DLL43D.DLL
+    file[]: crc = cd901de9; size =    136704; name = R5\51A\DLL51A.DLL
+    file[]: crc = d148208b; size =    135168; name = R5\51B\DLL51B.DLL
+    file[]: crc = 20ccad93; size =    134144; name = R5\51C\DLL51C.DLL
+    file[]: crc = 4dc91e73; size =    135168; name = R5\51D\DLL51D.DLL
+    file[]: crc = fcc89c6f; size =    136192; name = R5\52A\DLL52A.DLL
+    file[]: crc = 047f6a94; size =    134144; name = R5\52B\DLL52B.DLL
+    file[]: crc = 527d5e59; size =    133632; name = R5\52C\DLL52C.DLL
+    file[]: crc = 64b68f29; size =    134656; name = R5\52D\DLL52D.DLL
+    file[]: crc = e6c2f679; size =    120320; name = R5\53C\DLL53C.DLL
+    file[]: crc = b649de26; size =    121344; name = R5\53D\DLL53D.DLL
+    file[]: crc = dce23ddb; size =    137216; name = R6\61A\DLL61A.DLL
+    file[]: crc = a0d01e8f; size =    137728; name = R6\61B\DLL61B.DLL
+    file[]: crc = a9977624; size =    137216; name = R6\61C\DLL61C.DLL
+    file[]: crc = ab5b9c1b; size =    137216; name = R6\61D\DLL61D.DLL
+    file[]: crc = 751701b6; size =    138240; name = R6\62A\DLL62A.DLL
+    file[]: crc = 501905f8; size =    138240; name = R6\62B\DLL62B.DLL
+    file[]: crc = 0530214b; size =    138240; name = R6\62C\DLL62C.DLL
+    file[]: crc = 209c6f5d; size =    138240; name = R6\62D\DLL62D.DLL
+    file[]: crc = 4e590ee9; size =    137216; name = R6\63C\DLL63C.DLL
+    file[]: crc = 3c34a60c; size =    137728; name = R6\63D\DLL63D.DLL
+    file[]: crc = 663e3c0a; size =    132608; name = R7\71A\DLL71A.DLL
+    file[]: crc = b265948b; size =    131584; name = R7\71B\DLL71B.DLL
+    file[]: crc = fc1319b5; size =    132096; name = R7\71C\DLL71C.DLL
+    file[]: crc = 6ebd0d9e; size =    134144; name = R7\71D\DLL71D.DLL
+    file[]: crc = ec3c7696; size =    134144; name = R7\72A\DLL72A.DLL
+    file[]: crc = 1185ba20; size =    133120; name = R7\72B\DLL72B.DLL
+    file[]: crc = ed560032; size =    133120; name = R7\72C\DLL72C.DLL
+    file[]: crc = ea194080; size =    135680; name = R7\72D\DLL72D.DLL
+    file[]: crc = a5c49ac6; size =    129536; name = R7\73C\DLL73C.DLL
+    file[]: crc = 78c03bbf; size =    131072; name = R7\73D\DLL73D.DLL
+    file[]: crc = 7e342703; size =    130560; name = R8\81A\DLL81A.DLL
+    file[]: crc = d154460e; size =    128512; name = R8\81B\DLL81B.DLL
+    file[]: crc = 7652d3da; size =    130048; name = R8\81C\DLL81C.DLL
+    file[]: crc = b380edf6; size =    131072; name = R8\81D\DLL81D.DLL
+    file[]: crc = 16ba8963; size =    139264; name = R8\82A\DLL82A.DLL
+    file[]: crc = 08dee966; size =    137728; name = R8\82B\DLL82B.DLL
+    file[]: crc = 9f647384; size =    139264; name = R8\82C\DLL82C.DLL
+    file[]: crc = 067b112a; size =    140288; name = R8\82D\DLL82D.DLL
+    file[]: crc = 51a8e97f; size =    138240; name = R8\83C\DLL83C.DLL
+    file[]: crc = 27a79974; size =    138752; name = R8\83D\DLL83D.DLL
+    file[]: crc = 102b1d57; size =     56832; name = SPECIAL\SPECIAL.DLL
+    file[]: crc = 0abcd88f; size =  19846094; name = TITLE\AVI\OPN.AVI
+    file[]: crc = ae50ba15; size =     20992; name = TITLE\AVIBAD\AVIBAD.DLL
+    file[]: crc = 92d81826; size =     20992; name = TITLE\AVIGOOD\AVIGOOD.DLL
+    file[]: crc = 03a0e8dd; size =     19968; name = TITLE\AVIOPEN\AVIOPEN.DLL
+    file[]: crc = 95418250; size =     19968; name = TITLE\AVIPEN\AVIPEN.DLL
+    file[]: crc = 253cbca2; size =     23552; name = TITLE\BESTTIME\BESTTIME.DLL
+    file[]: crc = 476a5c34; size =      3062; name = TITLE\OPENING\1996SEGA.BMP
+    file[]: crc = 9ac12cb2; size =     29184; name = TITLE\OPENING\OPENING.DLL
+    file[]: crc = f294357e; size =     55296; name = TITLE\PLANET\PLANET.DLL
+    file[]: crc = 922d476e; size =     37888; name = TITLE\SAVEDATA\SAVEDATA.DLL
+    file[]: crc = 9eaa38e1; size =     26112; name = TITLE\SOUNDTST\SOUNDTST.DLL
+    file[]: crc = bea284ae; size =     22016; name = TITLE\STAGETST\STAGETST.DLL
+    file[]: crc = df36e4fd; size =     35840; name = TITLE\TA\TA.DLL
+    file[]: crc = 51f25b96; size =     40448; name = TITLE\THANKS\THANKS.DLL
+    file[]: crc = c755a95b; size =     24576; name = TITLE\VISUALMD\VISUALMD.DLL
+    file[]: crc = c16d6a6c; size =     17920; name = WARP\WARP.DLL
+	file[]: crc = c59276f8; size =     72758; name = OMAKE\TITLE256.BMP
+    file[]: crc = c54ac618; size =     13366; name = OMAKE\EGG\EGESCAPE.BMP
+    file[]: crc = 21e428db; size =     11062; name = OMAKE\EGG\EGSTAND.BMP
+    file[]: crc = e2809100; size =      7990; name = OMAKE\ENEMY\BATT.BMP
+    file[]: crc = 98d72ae2; size =      4662; name = OMAKE\ENEMY\CHO.BMP
+    file[]: crc = 9c148616; size =      7990; name = OMAKE\ENEMY\HACHI.BMP
+    file[]: crc = 73a84276; size =      7478; name = OMAKE\ENEMY\KAMA.BMP
+    file[]: crc = ad177d75; size =      9718; name = OMAKE\ENEMY\KUMO.BMP
+    file[]: crc = 1c5d7471; size =      1160; name = OMAKE\ICON\SNC_ICO1.BMP
+    file[]: crc = f21b988e; size =      2104; name = OMAKE\ICON\SNC_ICO2.BMP
+    file[]: crc = 0d77c1dc; size =      2104; name = OMAKE\ICON\SNC_ICO3.BMP
+    file[]: crc = 47675e88; size =      2104; name = OMAKE\ICON\SNC_ICO4.BMP
+    file[]: crc = fb27cee1; size =      1160; name = OMAKE\ICON\SNC_ICO5.BMP
+    file[]: crc = 73f42c70; size =      1160; name = OMAKE\ICON\SNC_ICO6.BMP
+    file[]: crc = 1cba70bd; size =      1160; name = OMAKE\ICON\SNC_ICO7.BMP
+    file[]: crc = 5b38a3fb; size =      6198; name = OMAKE\MTL&EMY\EMY1.BMP
+    file[]: crc = 963758fc; size =      5558; name = OMAKE\MTL&EMY\EMY2.BMP
+    file[]: crc = 4783746d; size =      7990; name = OMAKE\MTL&EMY\METAL1.BMP
+    file[]: crc = 95bb02d6; size =      5686; name = OMAKE\MTL&EMY\METAL2.BMP
+    file[]: crc = 5c29a010; size =      8758; name = OMAKE\SONIC\SONICDIE.BMP
+    file[]: crc = 27d77701; size =     17782; name = OMAKE\SONIC\SONICPOS.BMP
+    file[]: crc = 6f4d0a9e; size =     26678; name = OMAKE\SONIC\SONICRUN.BMP
+    file[]: crc = 9975dc88; size =      6710; name = OMAKE\SONIC\SONICSTA.BMP
+    file[]: crc = 27e37f56; size =    111616; name = DINO2D.DLL
+    file[]: crc = 81139979; size =     98304; name = DMIX.DLL
+	
+end
+
+fragment[oem]:
+    file[]: crc = 5540c821; size =   4874592; name = PCM.CMP
+
+    file[]: crc = ab6446e0; size =     95744; name = API.DLL
+    file[]: crc = 6f5c242a; size =      7616; name = DINOWAVE.DLL
+    file[]: crc = 1085eedf; size =     32768; name = SPI.DLL
+    file[]: crc = 5540c821; size =   4874592; name = PCM.CMP
+    file[]:									  name = README.TXT
+    file[]: crc = 52c24540; size =      4324; name = S_SCORE.DAT
+
+    file[]: crc = c346a40d; size =     64192; name = SPECIAL\SPECIAL.DLL
+    file[]: crc = 19ebd7db; size =  18545576; name = TITLE\AVI\OPN.AVI
+
+    file[]: crc = 991a0ba6; size =     12992; name = TITLE\BESTTIME\BESTTIME.DLL
+    file[]: crc = 4324c244; size =     24256; name = TITLE\OPENING\OPENING.DLL
+    file[]: crc = eaa934d0; size =     36096; name = TITLE\PLANET\PLANET.DLL
+    file[]: crc = 2ec06be0; size =     23104; name = TITLE\SAVEDATA\SAVEDATA.DLL
+    file[]: crc = 9f08bd44; size =     15392; name = TITLE\SOUNDTST\SOUNDTST.DLL
+    file[]: crc = e4faf36c; size =     42456; name = TITLE\STAGETST\STAGETST.DLL
+
+    file[]: crc = 247166ce; size =     27488; name = TITLE\THANKS\THANKS.DLL
+    file[]: crc = b5d52404; size =     12928; name = TITLE\VISUALMD\VISUALMD.DLL
+    file[]: crc = e06b0166; size =     36704; name = WARP\WARP.DLL
+	
+end
+
+//
+// SEGA Entertainment US Original Release
+//
+game[pc-cd-en]:
+    name = English Version 1.0
+	imports = common, retail-us
+    anchorfile = soniccd.exe
+	anchordepth = 3
+    file[]:									  name = README.TXT
+    file[]: crc = 3d321718; size =      2061; name = SONIC.CNT
+    file[]: crc = c798a722; size =    624607; name = SONIC.HLP
+    file[]: crc = 4560d4d8; size =    115712; name = SONICCD.EXE	
+	file[]: crc = 5555c1ed; size =        25; name = CD\AUTORUN.INF
+    file[]: name = CD\CDDA.SOU; cdda = 8/113/84/88/103/83/85/118/83/81/106/81/68/95/65/83/118/76/70/88/69/76/83/87/33/33/12/36/36/15/125/127/95/8/91/90/84/89/110/85/75
+
+	CDLABEL = SONICPC
+	
+end
+
+//
+// Expert Software Release
+//
+game[pc-cd-en-expert]:
+    name = Version 1.0 Expert Software
+	imports = common, retail-us, pc-cd-en
+    anchorfile = SonicCD.pdf
+	anchordepth = 2
+
+    file[]: crc = 0714c2c2; size =    562769; name = SonicCD.pdf //Expert US Manual
+    file[]: crc = c4381286; size =    624753; name = SONIC.HLP
+	
+    file[]: crc = 5555c1ed; size =        25; name = CD\AUTORUN.INF
+    file[]: name = CD\CDDA.SOU; cdda = 8/113/84/88/103/83/85/118/83/81/106/80/68/95/65/83/118/76/70/88/69/76/83/87/33/33/13/35/36/15/125/127/95/8/91/90/84/89/110/85/73
+
+	CDLABEL = SONICPC
+	
+end
+
+//
+// SEGA Entertainment Japan Re-release
+//
+game[pc-cd-jp]:
+	name = Japanese Version 1.0
+	imports = common, retail-jp
+	anchorfile = soniccd.exe
+	anchordepth = 3
+	
+    file[]: crc = 72ca8b63; size =    114688; name = SONICCD.EXE
+
+    file[]: crc = c4381286; size =    624753; name = SONIC_E.HLP
+    file[]: crc = 7d12941c; size =    631879; name = SONIC.HLP
+	file[]: crc = 5555c1ed; size =        25; name = CD\AUTORUN.INF
+    file[]: name = CD\CDDA.SOU; cdda = 8/113/84/88/103/83/85/118/83/81/106/81/68/95/65/83/118/76/70/88/69/76/83/87/33/33/12/36/36/15/125/127/95/8/91/90/84/89/110/85/75
+
+	CDLABEL = SONICCD
+	
+end
+
+//
+// English US Pentium Processor Edition V1.0
+//
+game[pc-cd-en-oem-1.00]:
+    name = English Pentium Processor Edition V1.00
+	imports = common, oem
+    anchorfile = DINOWAVE.DLL
+	anchordepth = 1
+    file[]:								      name = README.TXT
+    file[]: crc = 5540c821; size =   4874592; name = PCM.CMP
+    file[]: crc = 52c24540; size =      4324; name = S_SCORE.DAT
+    file[]: crc = 1cb25ac6; size =      2131; name = SONIC.CNT
+    file[]: crc = 7aa35a92; size =    624390; name = SONIC.HLP
+    file[]: crc = 58e9b0c9; size =    104464; name = SONICCD.EXE
+    file[]: crc = b7c83d6a; size =     33040; name = SONICDLG.DLL
+    file[]: crc = 2081cb8f; size =    134112; name = R1\11A\DLL11A.DLL
+    file[]: crc = e4f10af8; size =    130528; name = R1\11B\DLL11B.DLL
+    file[]: crc = bb5cfcf6; size =    128448; name = R1\11C\DLL11C.DLL
+    file[]: crc = 978fb0db; size =    128256; name = R1\11D\DLL11D.DLL
+    file[]: crc = 1afd5302; size =    131584; name = R1\12A\DLL12A.DLL
+    file[]: crc = 5555d9ac; size =    131072; name = R1\12B\DLL12B.DLL
+    file[]: crc = a3f2126b; size =    129312; name = R1\12C\DLL12C.DLL
+    file[]: crc = c521aadd; size =    129088; name = R1\12D\DLL12D.DLL
+    file[]: crc = a4cd62bc; size =    134144; name = R1\13C\DLL13C.DLL
+    file[]: crc = 68a4353d; size =    133984; name = R1\13D\DLL13D.DLL
+    file[]: crc = 44869fb4; size =    137376; name = R3\31A\DLL31A.DLL
+    file[]: crc = d643a14d; size =    132864; name = R3\31B\DLL31B.DLL
+    file[]: crc = 2900bbb4; size =    132928; name = R3\31C\DLL31C.DLL
+    file[]: crc = 3791b66f; size =    132704; name = R3\31D\DLL31D.DLL
+    file[]: crc = 5ddb9d37; size =    137568; name = R3\32A\DLL32A.DLL
+    file[]: crc = e4f4a2f3; size =    131680; name = R3\32B\DLL32B.DLL
+    file[]: crc = 4350676a; size =    132992; name = R3\32C\DLL32C.DLL
+    file[]: crc = df2d6a96; size =    132768; name = R3\32D\DLL32D.DLL
+    file[]: crc = aeddf4fb; size =    136064; name = R3\33C\DLL33C.DLL
+    file[]: crc = 9290b13b; size =    135840; name = R3\33D\DLL33D.DLL
+    file[]: crc = 7212f9bc; size =    131296; name = R4\41A\DLL41A.DLL
+    file[]: crc = 7f061851; size =    133152; name = R4\41B\DLL41B.DLL
+    file[]: crc = 8bfc299a; size =    133632; name = R4\41C\DLL41C.DLL
+    file[]: crc = 4e9054a0; size =    130048; name = R4\41D\DLL41D.DLL
+    file[]: crc = e641f5db; size =    135360; name = R4\42A\DLL42A.DLL
+    file[]: crc = c0c94bc5; size =    134368; name = R4\42B\DLL42B.DLL
+    file[]: crc = 10bd841d; size =    137312; name = R4\42C\DLL42C.DLL
+    file[]: crc = 859517e3; size =    137312; name = R4\42D\DLL42D.DLL
+    file[]: crc = a9948290; size =    124160; name = R4\43C\DLL43C.DLL
+    file[]: crc = e3f69561; size =    124288; name = R4\43D\DLL43D.DLL
+    file[]: crc = 975d095d; size =    136608; name = R5\51A\DLL51A.DLL
+    file[]: crc = 4b8b172a; size =    135168; name = R5\51B\DLL51B.DLL
+    file[]: crc = 8b82f7cc; size =    134432; name = R5\51C\DLL51C.DLL
+    file[]: crc = d5fcf604; size =    135360; name = R5\51D\DLL51D.DLL
+    file[]: crc = 1e7360d6; size =    136000; name = R5\52A\DLL52A.DLL
+    file[]: crc = 0d25788b; size =    134656; name = R5\52B\DLL52B.DLL
+    file[]: crc = a8b7c127; size =    133888; name = R5\52C\DLL52C.DLL
+    file[]: crc = e1c627e1; size =    134848; name = R5\52D\DLL52D.DLL
+    file[]: crc = a0452911; size =    120896; name = R5\53C\DLL53C.DLL
+    file[]: crc = e73dcc48; size =    121792; name = R5\53D\DLL53D.DLL
+    file[]: crc = 452f6a25; size =    136800; name = R6\61A\DLL61A.DLL
+    file[]: crc = 30ae69f2; size =    136928; name = R6\61B\DLL61B.DLL
+    file[]: crc = e80d2943; size =    137376; name = R6\61C\DLL61C.DLL
+    file[]: crc = 5f798610; size =    137504; name = R6\61D\DLL61D.DLL
+    file[]: crc = 96f03688; size =    137088; name = R6\62A\DLL62A.DLL
+    file[]: crc = 9f03e273; size =    137152; name = R6\62B\DLL62B.DLL
+    file[]: crc = d59aca4e; size =    137760; name = R6\62C\DLL62C.DLL
+    file[]: crc = 3e6b56d9; size =    137856; name = R6\62D\DLL62D.DLL
+    file[]: crc = 92a52aaf; size =    138464; name = R6\63C\DLL63C.DLL
+    file[]: crc = 050576dd; size =    138720; name = R6\63D\DLL63D.DLL
+    file[]: crc = 96b4f2be; size =    388716; name = R7\71A\DLL71A.DLL
+    file[]: crc = 013788f6; size =    387048; name = R7\71B\DLL71B.DLL
+    file[]: crc = 44ae6a94; size =    131616; name = R7\71C\DLL71C.DLL
+    file[]: crc = 462999bd; size =    133056; name = R7\71D\DLL71D.DLL
+    file[]: crc = c8892518; size =    133824; name = R7\72A\DLL72A.DLL
+    file[]: crc = c9d37e36; size =    132896; name = R7\72B\DLL72B.DLL
+    file[]: crc = 745abb44; size =    133088; name = R7\72C\DLL72C.DLL
+    file[]: crc = bb4aef03; size =    134528; name = R7\72D\DLL72D.DLL
+    file[]: crc = 97148e57; size =    130624; name = R7\73C\DLL73C.DLL
+    file[]: crc = f7192a00; size =    132128; name = R7\73D\DLL73D.DLL
+    file[]: crc = 22b49ee7; size =    131008; name = R8\81A\DLL81A.DLL
+    file[]: crc = f6e72463; size =    129504; name = R8\81B\DLL81B.DLL
+    file[]: crc = 3967dc1d; size =    131072; name = R8\81C\DLL81C.DLL
+    file[]: crc = 8f1c9d5d; size =    131744; name = R8\81D\DLL81D.DLL
+    file[]: crc = 028a687a; size =    138240; name = R8\82A\DLL82A.DLL
+    file[]: crc = 994241ef; size =    137184; name = R8\82B\DLL82B.DLL
+    file[]: crc = b13f5704; size =    138528; name = R8\82C\DLL82C.DLL
+    file[]: crc = 9ea4d764; size =    139264; name = R8\82D\DLL82D.DLL
+    file[]: crc = b191aacf; size =    140128; name = R8\83C\DLL83C.DLL
+    file[]: crc = d6d33bfb; size =    140224; name = R8\83D\DLL83D.DLL
+    file[]: crc = e3e77d4b; size =      6880; name = TITLE\AVIBAD\AVIBAD.DLL
+    file[]: crc = 8799e539; size =      6880; name = TITLE\AVIGOOD\AVIGOOD.DLL
+    file[]: crc = d8e30b2b; size =      6240; name = TITLE\AVIOPEN\AVIOPEN.DLL
+    file[]: crc = 9b0c519d; size =      6208; name = TITLE\AVIPEN\AVIPEN.DLL
+    file[]: crc = 9cb0ee5e; size =     29184; name = TITLE\TA\TA.DLL	
+    file[]: crc = 723a56fe; size =       259; name = CD\AUTORUN.INF	
+    file[]: name = CD\CDDA.SOU; cdda = 7/112/83/87/102/82/84/117/82/80/105/80/67/94/64/82/117/75/69/87/68/75/82/86/32/32/12/25/25/14/124/126/94/182/90/89/83/88/109/84/75	
+	CDLABEL = SONIC
+	
+end
+
+//
+// English US Pentium Processor Edition V1.01
+//
+game[pc-cd-en-oem-1.01]:
+    name = English Pentium Processor Edition V1.01
+	imports = common, oem
+    anchorfile = SONICCD.EXE
+	anchordepth = 1
+    //file[]:	crc = 0F0C7444; size =      7246; name = README.TXT
+    file[]: crc = 52c24540; size =      4324; name = S_SCORE.DAT
+    file[]: crc = 1cb25ac6; size =      2131; name = SONIC.CNT
+    file[]: crc = 7aa35a92; size =    624390; name = SONIC.HLP
+    file[]: crc = 5123c8a0; size =    104896; name = SONICCD.EXE
+    file[]: crc = 1b2f298f; size =     32752; name = SONICDLG.DLL
+    file[]: crc = 7db538db; size =    134112; name = R1\11A\DLL11A.DLL
+    file[]: crc = 50131476; size =    130528; name = R1\11B\DLL11B.DLL
+    file[]: crc = 86133a73; size =    128448; name = R1\11C\DLL11C.DLL
+    file[]: crc = 8cd2fe84; size =    128256; name = R1\11D\DLL11D.DLL
+    file[]: crc = eb920ddb; size =    131552; name = R1\12A\DLL12A.DLL
+    file[]: crc = 76f3b0d7; size =    131072; name = R1\12B\DLL12B.DLL
+    file[]: crc = 64d1e337; size =    129312; name = R1\12C\DLL12C.DLL
+    file[]: crc = 49883367; size =    129088; name = R1\12D\DLL12D.DLL
+    file[]: crc = cec75d1a; size =    134144; name = R1\13C\DLL13C.DLL
+    file[]: crc = e832f41c; size =    133984; name = R1\13D\DLL13D.DLL
+    file[]: crc = 1883abf5; size =    137376; name = R3\31A\DLL31A.DLL
+    file[]: crc = dc3e262a; size =    132864; name = R3\31B\DLL31B.DLL
+    file[]: crc = 93d8d909; size =    132928; name = R3\31C\DLL31C.DLL
+    file[]: crc = db111c90; size =    132704; name = R3\31D\DLL31D.DLL
+    file[]: crc = 26e305fd; size =    137568; name = R3\32A\DLL32A.DLL
+    file[]: crc = e1ca0975; size =    131680; name = R3\32B\DLL32B.DLL
+    file[]: crc = 29774741; size =    132992; name = R3\32C\DLL32C.DLL
+    file[]: crc = 81379e18; size =    132768; name = R3\32D\DLL32D.DLL
+    file[]: crc = 8472b4e6; size =    136064; name = R3\33C\DLL33C.DLL
+    file[]: crc = ef3ffff5; size =    135840; name = R3\33D\DLL33D.DLL
+    file[]: crc = 36f0ffd4; size =    131296; name = R4\41A\DLL41A.DLL
+    file[]: crc = b1c94435; size =    133152; name = R4\41B\DLL41B.DLL
+    file[]: crc = 2e0a1c7f; size =    133600; name = R4\41C\DLL41C.DLL
+    file[]: crc = 6cb28efa; size =    130016; name = R4\41D\DLL41D.DLL
+    file[]: crc = 75540412; size =    135360; name = R4\42A\DLL42A.DLL
+    file[]: crc = 4f3cb380; size =    134368; name = R4\42B\DLL42B.DLL
+    file[]: crc = e5ce3a5c; size =    137312; name = R4\42C\DLL42C.DLL
+    file[]: crc = d7e03d6e; size =    137312; name = R4\42D\DLL42D.DLL
+    file[]: crc = f7254942; size =    124128; name = R4\43C\DLL43C.DLL
+    file[]: crc = 25a854ea; size =    124288; name = R4\43D\DLL43D.DLL
+    file[]: crc = 8ab63402; size =    136608; name = R5\51A\DLL51A.DLL
+    file[]: crc = 6a8ca9f7; size =    135168; name = R5\51B\DLL51B.DLL
+    file[]: crc = a5b8a8e3; size =    134432; name = R5\51C\DLL51C.DLL
+    file[]: crc = 88d691eb; size =    135360; name = R5\51D\DLL51D.DLL
+    file[]: crc = 44a2a119; size =    136000; name = R5\52A\DLL52A.DLL
+    file[]: crc = d5ea122b; size =    134656; name = R5\52B\DLL52B.DLL
+    file[]: crc = 22473806; size =    133888; name = R5\52C\DLL52C.DLL
+    file[]: crc = 3d1e7fde; size =    134848; name = R5\52D\DLL52D.DLL
+    file[]: crc = 305a2a9a; size =    120896; name = R5\53C\DLL53C.DLL
+    file[]: crc = 5ac42bd6; size =    121792; name = R5\53D\DLL53D.DLL
+    file[]: crc = 82d45a81; size =    136800; name = R6\61A\DLL61A.DLL
+    file[]: crc = 31d9f9bc; size =    136928; name = R6\61B\DLL61B.DLL
+    file[]: crc = a899a893; size =    137376; name = R6\61C\DLL61C.DLL
+    file[]: crc = 10458ae3; size =    137504; name = R6\61D\DLL61D.DLL
+    file[]: crc = 3b92617e; size =    137088; name = R6\62A\DLL62A.DLL
+    file[]: crc = 6957bcc9; size =    137152; name = R6\62B\DLL62B.DLL
+    file[]: crc = c93df2eb; size =    137760; name = R6\62C\DLL62C.DLL
+    file[]: crc = 672ae1f2; size =    137856; name = R6\62D\DLL62D.DLL
+    file[]: crc = b0784ad0; size =    138464; name = R6\63C\DLL63C.DLL
+    file[]: crc = 33323a53; size =    138720; name = R6\63D\DLL63D.DLL
+    file[]: crc = c5a0a3f6; size =    388716; name = R7\71A\DLL71A.DLL
+    file[]: crc = a3957bbd; size =    387048; name = R7\71B\DLL71B.DLL
+    file[]: crc = dbae9256; size =    131616; name = R7\71C\DLL71C.DLL
+    file[]: crc = 6892e1e0; size =    133056; name = R7\71D\DLL71D.DLL
+    file[]: crc = cd7dbf70; size =    133824; name = R7\72A\DLL72A.DLL
+    file[]: crc = 61a15b7c; size =    132896; name = R7\72B\DLL72B.DLL
+    file[]: crc = f4e6c607; size =    133088; name = R7\72C\DLL72C.DLL
+    file[]: crc = e11c7c4a; size =    134528; name = R7\72D\DLL72D.DLL
+    file[]: crc = 014da155; size =    130624; name = R7\73C\DLL73C.DLL
+    file[]: crc = f12f1059; size =    132128; name = R7\73D\DLL73D.DLL
+    file[]: crc = 879cc2fc; size =    131008; name = R8\81A\DLL81A.DLL
+    file[]: crc = 93868343; size =    129504; name = R8\81B\DLL81B.DLL
+    file[]: crc = 0bf72520; size =    131040; name = R8\81C\DLL81C.DLL
+    file[]: crc = 268c4afa; size =    131712; name = R8\81D\DLL81D.DLL
+    file[]: crc = ef10a57b; size =    138240; name = R8\82A\DLL82A.DLL
+    file[]: crc = 6064a172; size =    137184; name = R8\82B\DLL82B.DLL
+    file[]: crc = efc30b96; size =    138528; name = R8\82C\DLL82C.DLL
+    file[]: crc = a5a39b34; size =    139264; name = R8\82D\DLL82D.DLL
+    file[]: crc = 70de0efa; size =    140128; name = R8\83C\DLL83C.DLL
+    file[]: crc = fc2d907a; size =    140224; name = R8\83D\DLL83D.DLL
+    file[]: crc = e6a01807; size =      7200; name = TITLE\AVIBAD\AVIBAD.DLL
+    file[]: crc = 6d536be7; size =      7232; name = TITLE\AVIGOOD\AVIGOOD.DLL
+    file[]: crc = b6cba91f; size =      6560; name = TITLE\AVIOPEN\AVIOPEN.DLL
+    file[]: crc = b45b6582; size =      6496; name = TITLE\AVIPEN\AVIPEN.DLL
+    file[]: crc = ecbd617f; size =     29184; name = TITLE\TA\TA.DLL
+    
+    file[]: crc = 723a56fe; size =       259; name = CD\AUTORUN.INF	
+    file[]: name = CD\CDDA.SOU; cdda = 7/112/83/87/102/82/84/117/82/80/105/80/67/94/64/82/117/75/69/87/68/75/82/86/32/32/12/25/25/14/124/126/94/182/90/89/83/88/109/84/75	
+	CDLABEL = ""
+	
+end
+
+
+fragment[demo]:
+    file[]: crc = ee3c235e; size =      8192; name = KEY11A.BIN
+    file[]: crc = 1a0bfd32; size =      8192; name = KEY43C.BIN
+    file[]: crc = 2145e559; size =      7780; name = KEY82A.BIN
+    file[]: crc = ecd10b90; size =     72758; name = LOADING.BMP
+    file[]:									  name = MESSAGE.TXT
+    file[]: crc = 101593d9; size =     12688; name = MSMIXMGR.DLL
+    file[]: crc = a4a8641a; size =   1218907; name = PCM8.CMP
+    file[]:									  name = README.TXT
+    file[]: crc = 1b51e44d; size =      2880; name = SNCTIME.DLL
+    file[]: crc = 99e6881c; size =       766; name = SONIC.ICO
+    file[]: crc = 2f6b88dc; size =     57320; name = SONIC.TTF
+    file[]: crc = 69bc3325; size =     12800; name = SONIC_P5.EXE
+    file[]: crc = 0fd34464; size =     41472; name = SONICDLG.DLL
+    file[]: crc = 2b82d4d1; size =      2040; name = SPECIAL1.BIN
+    file[]: crc = c86e6127; size =      2696; name = SPECIAL6.BIN
+    file[]: crc = 44ddf006; size =    141036; name = T_BG.BMP
+    file[]: crc = 682c82bc; size =    135680; name = R1\11A\DLL11A.DLL
+    file[]: crc = 9a919973; size =     65536; name = R1\11A\MAP11A.BIN
+    file[]: crc = 51d20d87; size =    113552; name = R1\11A\SCMP11A.CM_
+    file[]: crc = 6b2f8b34; size =      6432; name = R1\11A\T11A.MAP
+    file[]: crc = 06d9ccf0; size =     11074; name = R1\11A\TCMP11A.CM_
+    file[]: crc = 04f43131; size =    132608; name = R1\11B\DLL11B.DLL
+    file[]: crc = 2ff8c736; size =     54272; name = R1\11B\MAP11B.BIN
+    file[]: crc = c32ccd06; size =    112387; name = R1\11B\SCMP11B.CM_
+    file[]: crc = 437f2c68; size =      5280; name = R1\11B\T11B.MAP
+    file[]: crc = 499c5a1e; size =     11055; name = R1\11B\TCMP11B.CM_
+    file[]: crc = 9ed28ff6; size =    129536; name = R1\11C\DLL11C.DLL
+    file[]: crc = 65040e71; size =     55296; name = R1\11C\MAP11C.BIN
+    file[]: crc = 7cfc8b07; size =    108090; name = R1\11C\SCMP11C.CM_
+    file[]: crc = 56830cc9; size =      5792; name = R1\11C\T11C.MAP
+    file[]: crc = b81cf2b6; size =     10786; name = R1\11C\TCMP11C.CM_
+    file[]: crc = 24f7a416; size =    129536; name = R1\11D\DLL11D.DLL
+    file[]: crc = 8891d2ad; size =     55296; name = R1\11D\MAP11D.BIN
+    file[]: crc = 7cfc8b07; size =    108090; name = R1\11D\SCMP11D.CM_
+    file[]: crc = d1da1f31; size =      5920; name = R1\11D\T11D.MAP
+    file[]: crc = b4edbb2a; size =     11607; name = R1\11D\TCMP11D.CM_
+    file[]: crc = 39c98a4a; size =    132608; name = R1\12A\DLL12A.DLL
+    file[]: crc = 6c767c01; size =     54272; name = R1\12A\MAP12A.BIN
+    file[]: crc = cd35de3b; size =    110316; name = R1\12A\SCMP12A.CM_
+    file[]: crc = 32dbbd43; size =      5824; name = R1\12A\T12A.MAP
+    file[]: crc = cd7b6fe6; size =     11265; name = R1\12A\TCMP12A.CM_
+    file[]: crc = f8ec92c8; size =    131584; name = R1\12B\DLL12B.DLL
+    file[]: crc = d8dd93ee; size =     54272; name = R1\12B\MAP12B.BIN
+    file[]: crc = bfc88e8e; size =    110139; name = R1\12B\SCMP12B.CM_
+    file[]: crc = 51b6bca9; size =      5664; name = R1\12B\T12B.MAP
+    file[]: crc = 494dbeb8; size =     11736; name = R1\12B\TCMP12B.CM_
+    file[]: crc = 2c047c1b; size =    129536; name = R1\12C\DLL12C.DLL
+    file[]: crc = 1289777a; size =     54272; name = R1\12C\MAP12C.BIN
+    file[]: crc = 1ef74063; size =    108832; name = R1\12C\SCMP12C.CM_
+    file[]: crc = fc71df42; size =      6048; name = R1\12C\T12C.MAP
+    file[]: crc = 7973f779; size =     11364; name = R1\12C\TCMP12C.CM_
+    file[]: crc = 638f7926; size =    129536; name = R1\12D\DLL12D.DLL
+    file[]: crc = 3325db34; size =     54272; name = R1\12D\MAP12D.BIN
+    file[]: crc = 1ef74063; size =    108832; name = R1\12D\SCMP12D.CM_
+    file[]: crc = 2676fc30; size =      6112; name = R1\12D\T12D.MAP
+    file[]: crc = 1e6959ae; size =     12134; name = R1\12D\TCMP12D.CM_
+    file[]: crc = 49887553; size =    134656; name = R1\13C\DLL13C.DLL
+    file[]: crc = 2b278152; size =     54272; name = R1\13C\MAP13C.BIN
+    file[]: crc = 32276239; size =    110800; name = R1\13C\SCMP13C.CM_
+    file[]: crc = 1b1e2bfa; size =      6080; name = R1\13C\T13C.MAP
+    file[]: crc = 69c8c723; size =     11365; name = R1\13C\TCMP13C.CM_
+    file[]: crc = 10462f62; size =    134656; name = R1\13D\DLL13D.DLL
+    file[]: crc = 14b516f4; size =     54272; name = R1\13D\MAP13D.BIN
+    file[]: crc = 32276239; size =    110800; name = R1\13D\SCMP13D.CM_
+    file[]: crc = 96b56ff9; size =      6048; name = R1\13D\T13D.MAP
+    file[]: crc = 1e6959ae; size =     12134; name = R1\13D\TCMP13D.CM_
+    file[]: crc = b268353e; size =    121856; name = R4\43C\DLL43C.DLL
+    file[]: crc = b85b9755; size =     54272; name = R4\43C\MAP43C.BIN
+    file[]: crc = c7db83b4; size =    110389; name = R4\43C\SCMP43C.CM_
+    file[]: crc = 81f84a67; size =      7456; name = R4\43C\T43C.MAP
+    file[]: crc = 5a0c865b; size =      9607; name = R4\43C\TCMP43C.CM_
+    file[]: crc = 386f4cc8; size =    139264; name = R8\82A\DLL82A.DLL
+    file[]: crc = c310a9e8; size =     55808; name = R8\82A\MAP82A.BIN
+    file[]: crc = 24bdabc0; size =    108892; name = R8\82A\SCMP82A.CM_
+    file[]: crc = 0b22a4bf; size =      4480; name = R8\82A\T82A.MAP
+    file[]: crc = 7761a484; size =      1473; name = R8\82A\TCHG82A.CM_
+    file[]: crc = 26661142; size =     10096; name = R8\82A\TCMP82A.CM_
+    file[]: crc = 50553807; size =     40825; name = SPECIAL\SCMPSPE.CM_
+    file[]: crc = 102b1d57; size =     56832; name = SPECIAL\SPECIAL.DLL
+    file[]: crc = 8a354804; size =      2240; name = SPECIAL\BMP\FIX\CLRBACK.BIN
+    file[]: crc = 9fe2b880; size =      1280; name = SPECIAL\BMP\FIX\EGG.BIN
+    file[]: crc = f9fb3969; size =      1024; name = SPECIAL\BMP\FIX\MPB1_A0.BIN
+    file[]: crc = 7ea28b5c; size =      1024; name = SPECIAL\BMP\FIX\MPB1_A1.BIN
+    file[]: crc = 2eb5d9fc; size =      1024; name = SPECIAL\BMP\FIX\MPB1_B0.BIN
+    file[]: crc = c8842b68; size =      1024; name = SPECIAL\BMP\FIX\MPB1_B1.BIN
+    file[]: crc = 907bd4a4; size =       768; name = SPECIAL\BMP\FIX\MPB1_B2.BIN
+    file[]: crc = 1514e711; size =      1024; name = SPECIAL\BMP\FIX\MPB2_A0.BIN
+    file[]: crc = 798d5762; size =      1024; name = SPECIAL\BMP\FIX\MPB2_A1.BIN
+    file[]: crc = 67c3953e; size =       384; name = SPECIAL\BMP\FIX\MPB2_B00.BIN
+    file[]: crc = 6dc66d5d; size =       192; name = SPECIAL\BMP\FIX\MPB2_B01.BIN
+    file[]: crc = aaf5476c; size =        64; name = SPECIAL\BMP\FIX\MPB2_B02.BIN
+    file[]: crc = 24bda177; size =       256; name = SPECIAL\BMP\FIX\MPB2_B03.BIN
+    file[]: crc = 84af2745; size =       128; name = SPECIAL\BMP\FIX\MPB2_B1.BIN
+    file[]: crc = 84cd4dbb; size =       384; name = SPECIAL\BMP\FIX\MPB2_B20.BIN
+    file[]: crc = 13e299bc; size =       192; name = SPECIAL\BMP\FIX\MPB2_B21.BIN
+    file[]: crc = 5fc2f178; size =        64; name = SPECIAL\BMP\FIX\MPB2_B22.BIN
+    file[]: crc = a8afee23; size =       256; name = SPECIAL\BMP\FIX\MPB2_B23.BIN
+    file[]: crc = 5723224e; size =       768; name = SPECIAL\BMP\FIX\MPB2_B4.BIN
+    file[]: crc = 5fa175f2; size =      1024; name = SPECIAL\BMP\FIX\MPB3_A0.BIN
+    file[]: crc = cfd33ad5; size =      1024; name = SPECIAL\BMP\FIX\MPB3_A1.BIN
+    file[]: crc = 610c340d; size =       704; name = SPECIAL\BMP\FIX\MPB3_B0.BIN
+    file[]: crc = 154b9e40; size =       320; name = SPECIAL\BMP\FIX\MPB3_B1.BIN
+    file[]: crc = 9534830d; size =       704; name = SPECIAL\BMP\FIX\MPB3_B2.BIN
+    file[]: crc = 00dacbe6; size =       320; name = SPECIAL\BMP\FIX\MPB3_B3.BIN
+    file[]: crc = 83b6fbec; size =       896; name = SPECIAL\BMP\FIX\MPB4_A0.BIN
+    file[]: crc = 1108b63b; size =       896; name = SPECIAL\BMP\FIX\MPB4_A1.BIN
+    file[]: crc = 50443fcc; size =      1024; name = SPECIAL\BMP\FIX\MPB4_B0.BIN
+    file[]: crc = af79963d; size =      1024; name = SPECIAL\BMP\FIX\MPB4_B1.BIN
+    file[]: crc = 02f06bd2; size =       768; name = SPECIAL\BMP\FIX\MPB4_B2.BIN
+    file[]: crc = f3fe17fd; size =       768; name = SPECIAL\BMP\FIX\MPB6_B8.BIN
+    file[]: crc = 57213a5c; size =       896; name = SPECIAL\BMP\FIX\MPB6A1L.BIN
+    file[]: crc = 46132bcb; size =       896; name = SPECIAL\BMP\FIX\MPB6A1R.BIN
+    file[]: crc = c51b93aa; size =       128; name = SPECIAL\BMP\FIX\MPB6A2L.BIN
+    file[]: crc = 2b4ebd2a; size =       128; name = SPECIAL\BMP\FIX\MPB6A2R.BIN
+    file[]: crc = fe661330; size =       640; name = SPECIAL\BMP\FIX\MPB6B1L.BIN
+    file[]: crc = 9cb7519b; size =       640; name = SPECIAL\BMP\FIX\MPB6B1R.BIN
+    file[]: crc = 69cdc169; size =       384; name = SPECIAL\BMP\FIX\MPB6B2L.BIN
+    file[]: crc = c8a2b2ca; size =       384; name = SPECIAL\BMP\FIX\MPB6B2R.BIN
+    file[]: crc = 488a50bc; size =       768; name = SPECIAL\BMP\FIX\MPB7_B1.BIN
+    file[]: crc = d0c2a9bf; size =       160; name = SPECIAL\BMP\FIX\PANEL1.BIN
+    file[]: crc = 7c577770; size =       160; name = SPECIAL\BMP\FIX\PANEL2.BIN
+    file[]: crc = fe85bdc7; size =      1280; name = SPECIAL\BMP\FIX\S1A0.BIN
+    file[]: crc = ef54c535; size =       512; name = SPECIAL\BMP\FIX\S1A1.BIN
+    file[]: crc = c6e4ae0e; size =      1024; name = SPECIAL\BMP\FIX\S1B0.BIN
+    file[]: crc = 07bcf61f; size =       768; name = SPECIAL\BMP\FIX\S1B1.BIN
+    file[]: crc = eb63dfc1; size =       512; name = SPECIAL\BMP\FIX\S2A0.BIN
+    file[]: crc = e6ff67f9; size =       960; name = SPECIAL\BMP\FIX\S2A000.BIN
+    file[]: crc = bffbe009; size =      1280; name = SPECIAL\BMP\FIX\S2B0.BIN
+    file[]: crc = c915f9b9; size =       768; name = SPECIAL\BMP\FIX\S2B1.BIN
+    file[]: crc = bb1f0b30; size =       256; name = SPECIAL\BMP\FIX\S3A0.BIN
+    file[]: crc = 1789b099; size =       768; name = SPECIAL\BMP\FIX\S3B0.BIN
+    file[]: crc = 2299b9a5; size =       512; name = SPECIAL\BMP\FIX\S3B1.BIN
+    file[]: crc = 27ab06e8; size =       512; name = SPECIAL\BMP\FIX\S3B2.BIN
+    file[]: crc = a28bb69d; size =       160; name = SPECIAL\BMP\FIX\S3B3.BIN
+    file[]: crc = 6a8f7739; size =      1408; name = SPECIAL\BMP\FIX\S4B0.BIN
+    file[]: crc = b654338d; size =       640; name = SPECIAL\BMP\FIX\S4B1.BIN
+    file[]: crc = c5935cb5; size =      1792; name = SPECIAL\BMP\FIX\S5A0.BIN
+    file[]: crc = 667bbdaa; size =      2048; name = SPECIAL\BMP\FIX\S5B0.BIN
+    file[]: crc = 51d94236; size =       960; name = SPECIAL\BMP\FIX\S5B1.BIN
+    file[]: crc = e9eedcc7; size =       768; name = SPECIAL\BMP\FIX\S6A0.BIN
+    file[]: crc = 0e334228; size =       960; name = SPECIAL\BMP\FIX\S6B0.BIN
+    file[]: crc = fd2c9487; size =      1280; name = SPECIAL\BMP\FIX\S6B1.BIN
+    file[]: crc = 37117e46; size =       960; name = SPECIAL\BMP\FIX\S7_A000.BIN
+    file[]: crc = 26a9cf2b; size =      1792; name = SPECIAL\BMP\FIX\S7A.BIN
+    file[]: crc = 6d3d1c7a; size =       768; name = SPECIAL\BMP\FIX\S7AA.BIN
+    file[]: crc = d7faf796; size =      2048; name = SPECIAL\BMP\FIX\S7B.BIN
+    file[]: crc = 3cb2bdea; size =     14397; name = SPECIAL\BMP\FIX\SCLEAR.CM_
+    file[]: crc = f3cdbfe5; size =       768; name = SPECIAL\BMP\FIX\SP6_000.BIN
+    file[]: crc = ba7753b5; size =       896; name = SPECIAL\BMP\FIX\SP6_A01.BIN
+    file[]: crc = f429f77e; size =       896; name = SPECIAL\BMP\FIX\SP6_A02.BIN
+    file[]: crc = 530dec29; size =      1024; name = SPECIAL\BMP\FIX\SP6_B0.BIN
+    file[]: crc = 69041736; size =      6229; name = SPECIAL\BMP\FIX\TCMPS1.CM_
+    file[]: crc = 81856503; size =      6210; name = SPECIAL\BMP\FIX\TCMPS2.CM_
+    file[]: crc = cdf44d8a; size =      4114; name = SPECIAL\BMP\FIX\TCMPS3.CM_
+    file[]: crc = 1da95ca0; size =      8235; name = SPECIAL\BMP\FIX\TCMPS4.CM_
+    file[]: crc = af37fce7; size =      5591; name = SPECIAL\BMP\FIX\TCMPS5.CM_
+    file[]: crc = d02e49a2; size =      4999; name = SPECIAL\BMP\FIX\TCMPS6.CM_
+    file[]: crc = 554b416f; size =      8556; name = SPECIAL\BMP\FIX\TCMPS7.CM_
+    file[]: crc = 0b8ebb99; size =      3328; name = SPECIAL\BMP\FIX\TCMPS8.CM_
+    file[]: crc = 571b2152; size =     17888; name = SPECIAL\CG\SP1CG32.CM_
+    file[]: crc = 606a3e66; size =     13836; name = SPECIAL\CG\SP2CG32.CM_
+    file[]: crc = c2d8326a; size =     14000; name = SPECIAL\CG\SP3CG32.CM_
+    file[]: crc = c3f22f4f; size =     14122; name = SPECIAL\CG\SP4CG32.CM_
+    file[]: crc = 3f2700fd; size =     15908; name = SPECIAL\CG\SP5CG32.CM_
+    file[]: crc = 93e2337e; size =     13554; name = SPECIAL\CG\SP6CG32.CM_
+    file[]: crc = 95ce0272; size =     17647; name = SPECIAL\CG\SP7CG32.CM_
+    file[]: crc = 571b2152; size =     17888; name = SPECIAL\CG\SP8CG32.CM_
+    file[]: crc = 846c491c; size =     32768; name = SPECIAL\MAP\SP0MAP.MAP
+    file[]: crc = c5dd83a4; size =     32768; name = SPECIAL\MAP\SP1MAP.MAP
+    file[]: crc = 5463e015; size =     32768; name = SPECIAL\MAP\SP2MAP.MAP
+    file[]: crc = 8a95883f; size =     32768; name = SPECIAL\MAP\SP3MAP.MAP
+    file[]: crc = ecf81247; size =     32768; name = SPECIAL\MAP\SP4MAP.MAP
+    file[]: crc = cb44dfaf; size =     32768; name = SPECIAL\MAP\SP5MAP.MAP
+    file[]: crc = 9d950328; size =     32768; name = SPECIAL\MAP\SP6MAP.MAP
+    file[]: crc = 43b37072; size =     32768; name = SPECIAL\MAP\SP7MAP.MAP
+    file[]: crc = ae3a84f5; size =     35665; name = TITLE\BMP\OPENINGS.CM_
+    file[]: crc = a4222b7a; size =      9343; name = TITLE\BMP\OPENINGT.CM_
+    file[]: crc = ba7aca5e; size =     15318; name = TITLE\BMP\SAVEDATS.CM_
+    file[]: crc = d4a0d5a1; size =        41; name = TITLE\BMP\SAVEDATT.CM_
+    file[]: crc = 476a5c34; size =      3062; name = TITLE\OPENING\1996SEGA.BMP
+    file[]: crc = 922d476e; size =     37888; name = TITLE\SAVEDATA\SAVEDATA.DLL
+    file[]: crc = 306f3a99; size =      2240; name = WARP\CGWARP.BIN
+    file[]: crc = 9a96b901; size =      2547; name = WARP\SCMPWARP.CM_
+    file[]: crc = 7c22b95c; size =       575; name = WARP\TCMPWARP.CM_
+    file[]: crc = c16d6a6c; size =     17920; name = WARP\WARP.DLL
+    file[]: crc = 27e37f56; size =    111616; name = DINO2D.DLL
+    file[]: crc = 81139979; size =     98304; name = DMIX.DLL
+end
+
+demo[pc-cd-en-demo-cd]:
+	name = English Demo CD
+	imports = demo
+	anchorfile = sonic_p5.exe
+	anchordepth = 2
+    file[]: crc = f9606671; size =    115200; name = SONICCD.EXE
+    file[]: crc = 3d321718; size =      2061; name = SONIC.CNT
+    file[]: crc = c798a722; size =    624607; name = SONIC.HLP
+    file[]: crc = 330abaf9; size =     29184; name = TITLE\OPENING\OPENING.DLL
+    file[]: crc = 0abcd88f; size =  19846094; name = TITLE\AVI\OPN.AVI
+    file[]: crc = 03a0e8dd; size =     19968; name = TITLE\AVIOPEN\AVIOPEN.DLL
+    file[]: crc = dfebcf4c; size =     35918; name = TITLE\BMP\OPNAVI\OPWP.BMP
+	
+end
+
+demo[pc-cd-fr-demo-cd]:
+	name = French Demo CD
+	imports = demo
+	anchorfile = sonic_p5.exe
+	anchordepth = 2
+    file[]: crc = f9606671; size =    115200; name = SONICCD.EXE
+    file[]: crc = ad307bcb; size =      2099; name = SONIC.CNT
+    file[]: crc = c8043389; size =    628415; name = SONIC.HLP
+    file[]: crc = 330abaf9; size =     29184; name = TITLE\OPENING\OPENING.DLL
+    file[]: crc = 0abcd88f; size =  19846094; name = TITLE\AVI\OPN.AVI
+    file[]: crc = 03a0e8dd; size =     19968; name = TITLE\AVIOPEN\AVIOPEN.DLL
+    file[]: crc = dfebcf4c; size =     35918; name = TITLE\BMP\OPNAVI\OPWP.BMP
+	
+end
+
+demo[pc-cd-ge-demo-cd]:
+	name = German Demo CD
+	imports = demo
+	anchorfile = sonic_p5.exe
+	anchordepth = 2
+    file[]: crc = f9606671; size =    115200; name = SONICCD.EXE
+    file[]: crc = c8912b07; size =      2025; name = SONIC.CNT
+    file[]: crc = 0f2a085e; size =    629106; name = SONIC.HLP
+    file[]: crc = 330abaf9; size =     29184; name = TITLE\OPENING\OPENING.DLL
+    file[]: crc = 0abcd88f; size =  19846094; name = TITLE\AVI\OPN.AVI
+    file[]: crc = 03a0e8dd; size =     19968; name = TITLE\AVIOPEN\AVIOPEN.DLL
+    file[]: crc = dfebcf4c; size =     35918; name = TITLE\BMP\OPNAVI\OPWP.BMP
+	
+end
+
+demo[pc-cd-jp-demo-cd]:
+	name = Japanese Demo CD
+	imports = demo
+	anchorfile = sonic_p5.exe
+	anchordepth = 2
+    file[]: crc = f9606671; size =    115200; name = SONICCD.EXE
+    file[]: crc = 2d1ab93c; size =      1876; name = SONIC.CNT
+    file[]: crc = a40236e9; size =    631838; name = SONIC.HLP
+    file[]: crc = 330abaf9; size =     29184; name = TITLE\OPENING\OPENING.DLL
+    file[]: crc = 0abcd88f; size =  19846094; name = TITLE\AVI\OPN.AVI
+    file[]: crc = 03a0e8dd; size =     19968; name = TITLE\AVIOPEN\AVIOPEN.DLL
+    file[]: crc = dfebcf4c; size =     35918; name = TITLE\BMP\OPNAVI\OPWP.BMP
+	
+end
+
+demo[pc-cd-sp-demo-cd]:
+	name = Spanish Demo CD
+	imports = demo
+	anchorfile = sonic_p5.exe
+	anchordepth = 2
+    file[]: crc = f9606671; size =    115200; name = SONICCD.EXE
+    file[]: crc = f0d79e73; size =      2047; name = SONIC.CNT
+    file[]: crc = 3ca2eaaf; size =    627877; name = SONIC.HLP
+    file[]: crc = 330abaf9; size =     29184; name = TITLE\OPENING\OPENING.DLL
+    file[]: crc = 0abcd88f; size =  19846094; name = TITLE\AVI\OPN.AVI
+    file[]: crc = 03a0e8dd; size =     19968; name = TITLE\AVIOPEN\AVIOPEN.DLL
+    file[]: crc = dfebcf4c; size =     35918; name = TITLE\BMP\OPNAVI\OPWP.BMP
+	
+end
+
+demo[pc-cd-en-demo]:
+	name = English Demo
+	imports = demo
+	anchorfile = SONICCD.EXE
+	anchordepth = 1
+    file[]: crc = 205800c2; size =    115712; name = SONICCD.EXE
+    file[]: crc = 211bcfcc; size =     29184; name = TITLE\OPENING\OPENING.DLL
+	file[]: crc = E858F843; size =       671; name = MESSAGE.TXT
+	file[]: crc = 3D321718; size =      2061; name = SONIC.CNT
+	file[]: crc = C798A722; size =    624607; name = SONIC.HLP
+
+end
+
+demo[pc-cd-jp-demo]:
+	name = Japanese Demo
+	imports = demo
+	anchorfile = SONICCD.EXE
+	anchordepth = 1
+    file[]: crc = 205800c2; size =    115712; name = SONICCD.EXE
+    file[]: crc = 211bcfcc; size =     29184; name = TITLE\OPENING\OPENING.DLL
+	file[]: crc = 348325C7; size =       378; name = MESSAGE.TXT
+	file[]: crc = 2D1AB93C; size =      1876; name = SONIC.CNT
+	file[]: crc = A40236E9; size =    631838; name = SONIC.HLP
+end
+
+end

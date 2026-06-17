@@ -1,0 +1,296 @@
+//
+// Yoot Tower
+//
+desc[sga-yoot]:
+
+name = Yoot Tower
+icon = sga-yoot.png
+machine = pc
+rootpath = C:\Program Files\YootTower\YootTower
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 98
+winres = 640x480x16
+filter = nonlucas
+EXENAME = T2
+CDLABEL = YOOTTOWER
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+//
+//Auto install Script
+//
+script[autoinstaller]:
+	condition = is_installer()
+	code = [[[$(CRLF)
+		if(!prop("noautoinstall"))
+		{
+			input_lockout(true);
+			$(AUTOINSTALL_SCRIPT)
+			input_lockout(false);
+		}
+	]]]
+end
+
+fragment[install-base]:
+	rootpath = D:\Setup
+	launch = D:\Setup\Setup.exe
+
+
+end
+
+game[pc-cd-en]:
+	name = English
+	anchorfile = HE_Art.mov
+	anchordepth = 1
+    file[]: crc = 77987199; size =      2673; name = README.txt
+    file[]: crc = 0e3c7a35; size =    324441; name = Sample Tokyo Map.bld
+    file[]: crc = dc4762af; size =    308278; name = T2.dat
+    file[]: crc = e6ae4d16; size =    766464; name = T2.exe
+    file[]: crc = ba782abe; size =    936448; name = T2DLL.dll
+    file[]: crc = 000a0561; size =    166400; name = T2Icons.dll
+    file[]: crc = 148b38bb; size =    148278; name = t2s.dat
+    file[]: crc = c20a9022; size =   1834336; name = Movie\HE_Art.MOV
+    file[]: crc = 35647d0c; size =   1369142; name = Movie\HE_CarShow.MOV
+    file[]: crc = 2b348528; size =   1840307; name = Movie\HE_Concert.MOV
+    file[]: crc = 06b54e9b; size =   1984111; name = Movie\HE_Fashon.MOV
+    file[]: crc = c10724ec; size =   2580755; name = Movie\HE_Plant.MOV
+    file[]: crc = f23baa03; size =    801642; name = Movie\HE_Tennis.MOV
+    file[]: crc = e97fe1b0; size =   1867775; name = Movie\MV_1stContact.MOV
+    file[]: crc = 8b389889; size =    353459; name = Movie\MV_49h.MOV
+    file[]: crc = d43d865f; size =   1243613; name = Movie\MV_4Eyed.MOV
+    file[]: crc = 45dd25dd; size =   2558482; name = Movie\MV_6Plus1.MOV
+    file[]: crc = ccd8e622; size =   1245311; name = Movie\MV_BodyguardC.MOV
+    file[]: crc = 0a0e267c; size =    547855; name = Movie\MV_Cannon.MOV
+    file[]: crc = 595d1235; size =   1982412; name = Movie\MV_Cellmax.MOV
+    file[]: crc = 6ba1d410; size =    472915; name = Movie\MV_Cheesy.MOV
+    file[]: crc = 17b8e6a8; size =    890203; name = Movie\MV_Cop.MOV
+    file[]: crc = 1aa0c971; size =    649104; name = Movie\MV_Deepb.MOV
+    file[]: crc = 3bf29a23; size =   1699505; name = Movie\MV_Dog.MOV
+    file[]: crc = 2f6becc1; size =   1505069; name = Movie\MV_Drfist.MOV
+    file[]: crc = 19ee1a79; size =    784835; name = Movie\MV_Drfive.MOV
+    file[]: crc = c788664f; size =   1001967; name = Movie\MV_FiredD.MOV
+    file[]: crc = ba44612f; size =   2253981; name = Movie\MV_FlowerB.MOV
+    file[]: crc = 74f93d77; size =    444397; name = Movie\MV_Frank.MOV
+    file[]: crc = d98e5294; size =    636653; name = Movie\MV_Fried.MOV
+    file[]: crc = 811186a3; size =    476817; name = Movie\MV_Hell.MOV
+    file[]: crc = ba4320c2; size =   1441800; name = Movie\MV_KidSalami.MOV
+    file[]: crc = 95cfde78; size =   1178460; name = Movie\MV_Love.MOV
+    file[]: crc = 3acf8c27; size =    596132; name = Movie\MV_Lurker.MOV
+    file[]: crc = 51e2ac25; size =  10307443; name = Movie\MV_MEKASIA.MOV
+    file[]: crc = 6014f275; size =   1400363; name = Movie\MV_Meninshade.MOV
+    file[]: crc = 8a9a07f3; size =    698627; name = Movie\MV_MissionW.MOV
+    file[]: crc = 41d3068f; size =   2130291; name = Movie\MV_Moped.MOV
+    file[]: crc = 1116c9a0; size =   1531735; name = Movie\MV_Overtime.MOV
+    file[]: crc = bbdb4ac0; size =    560499; name = Movie\MV_Peter.MOV
+    file[]: crc = 11f3dfbd; size =   2540501; name = Movie\MV_Samurai.MOV
+    file[]: crc = 927240ad; size =   2026153; name = Movie\MV_ShadowP.MOV
+    file[]: crc = 5674856a; size =   1575515; name = Movie\MV_Shakeit.MOV
+    file[]: crc = fb41c278; size =    706211; name = Movie\MV_Smooth.MOV
+    file[]: crc = 75c9d87c; size =    806428; name = Movie\MV_SpaceP.MOV
+    file[]: crc = fd771b41; size =   4058448; name = Movie\MV_SPE.MOV
+    file[]: crc = 67e39b96; size =    506603; name = Movie\MV_Split.MOV
+    file[]: crc = b7e85498; size =    648496; name = Movie\MV_Surf.MOV
+    file[]: crc = dd5cb330; size =   1332162; name = Movie\MV_TerrorC.MOV
+    file[]: crc = 48dc78d1; size =    557902; name = Movie\MV_Train.MOV
+    file[]: crc = 16061790; size =    460809; name = Movie\MV_Zonmbie.MOV
+    file[]: crc = 5ee38f12; size =      8825; name = Plugins\AirJamaica.t2p
+    file[]: crc = e5778fed; size =    220672; name = Plugins\Aloha.t2p
+    file[]: crc = 33ab1b95; size =    273408; name = Plugins\Apartment.t2p
+    file[]: crc = c734a21e; size =     10819; name = Plugins\Aquazone.t2p
+    file[]: crc = 74f1d6d7; size =   1495040; name = Plugins\Attraction.t2p
+    file[]: crc = 324a33df; size =    259584; name = Plugins\Barber.t2p
+    file[]: crc = 632117da; size =    284160; name = Plugins\BCDMart.t2p
+    file[]: crc = af4f4cf3; size =    258560; name = Plugins\BigElev.t2p
+    file[]: crc = 1d56ef4d; size =    161280; name = Plugins\Billboard.t2p
+    file[]: crc = b9f22c11; size =    236032; name = Plugins\Boatdeck.t2p
+    file[]: crc = dd3126b5; size =    270336; name = Plugins\Bookstore.t2p
+    file[]: crc = bf490752; size =    261120; name = Plugins\Boutique.t2p
+    file[]: crc = d5cc9b16; size =    312832; name = Plugins\Burger.t2p
+    file[]: crc = 0dc703b4; size =    801280; name = Plugins\Cathedral.t2p
+    file[]: crc = 006b3ee8; size =    321024; name = Plugins\Chinese.t2p
+    file[]: crc = ec24bca3; size =    218112; name = Plugins\Cigar.t2p
+    file[]: crc = e6c07612; size =    386560; name = Plugins\ClassicTheater.t2p
+    file[]: crc = 3e5520e4; size =    368128; name = Plugins\Cocktail.t2p
+    file[]: crc = 09801d67; size =    269824; name = Plugins\Coffee.t2p
+    file[]: crc = c5d1d880; size =    208384; name = Plugins\Coin.t2p
+    file[]: crc = 72239d90; size =    415744; name = Plugins\Condo.t2p
+    file[]: crc = 5dada3e2; size =    282624; name = Plugins\Convenience.t2p
+    file[]: crc = e37732d8; size =     14385; name = Plugins\Database
+    file[]: crc = 970eba93; size =    164352; name = Plugins\DefaultToolPalette.t2p
+    file[]: crc = deed237d; size =    252928; name = Plugins\Doctor's.t2p
+    file[]: crc = 2e04ff01; size =    218112; name = Plugins\Drink.t2p
+    file[]: crc = f2c9ed16; size =    361472; name = Plugins\Drug.t2p
+    file[]: crc = 8a52c1a6; size =    392704; name = Plugins\DutyFree.t2p
+    file[]: crc = 7d5c4411; size =    287232; name = Plugins\Electric.t2p
+    file[]: crc = 7ad01e43; size =    215040; name = Plugins\Escalator.t2p
+    file[]: crc = 1a53e433; size =    552448; name = Plugins\EventCenter.t2p
+    file[]: crc = 926fe128; size =    176640; name = Plugins\FireDepartment.t2p
+    file[]: crc = 258e3b44; size =    344576; name = Plugins\Floor.t2p
+    file[]: crc = ae4a3037; size =    247808; name = Plugins\Flower.t2p
+    file[]: crc = 3e2bf67d; size =    525824; name = Plugins\FoodCoat.t2p
+    file[]: crc = 85859b0b; size =    286208; name = Plugins\French.t2p
+    file[]: crc = c99bc493; size =    299520; name = Plugins\Front.t2p
+    file[]: crc = c270f0cd; size =    230912; name = Plugins\Fruits.t2p
+    file[]: crc = 37c9bcf5; size =    653312; name = Plugins\Gameworks.t2p
+    file[]: crc = c5c5869b; size =     10821; name = Plugins\GAMEWORKSAD.t2p
+    file[]: crc = e4412e55; size =    410624; name = Plugins\GatheringArea.t2p
+    file[]: crc = cf825245; size =   4797952; name = Plugins\Hawai.t2p
+    file[]: crc = 4d5fdf6a; size =    368640; name = Plugins\HawaianCondo.t2p
+    file[]: crc = bebc188d; size =    254464; name = Plugins\Icecream.t2p
+    file[]: crc = fd5d11e6; size =    288256; name = Plugins\Indian.t2p
+    file[]: crc = b36bd628; size =    283648; name = Plugins\Itarian.t2p
+    file[]: crc = 85a19804; size =    321536; name = Plugins\J-Pub.t2p
+    file[]: crc = 168335f7; size =    273920; name = Plugins\J-Snack.t2p
+    file[]: crc = 726632e6; size =    395264; name = Plugins\Japanese.t2p
+    file[]: crc = 3df08aaf; size =    337920; name = Plugins\Jenny's.t2p
+    file[]: crc = a1f07ddc; size =    247808; name = Plugins\Juicebar.t2p
+    file[]: crc = 4f3d151c; size =    237568; name = Plugins\kCigar.t2p
+    file[]: crc = e1094a6d; size =    244736; name = Plugins\KDrink.t2p
+    file[]: crc = 64f71402; size =   8989184; name = Plugins\Kegon.t2p
+    file[]: crc = 30f1fef3; size =    215040; name = Plugins\KElev.t2p
+    file[]: crc = b71d2e86; size =    176640; name = Plugins\KFloor.t2p
+    file[]: crc = 4dae4db6; size =    245760; name = Plugins\KIcecream.t2p
+    file[]: crc = 851cc226; size =    248832; name = Plugins\Kids.t2p
+    file[]: crc = fdb9182d; size =    316928; name = Plugins\KoreanBBQ.t2p
+    file[]: crc = 817369ec; size =    163840; name = Plugins\KRestroom.t2p
+    file[]: crc = 65814d00; size =    253952; name = Plugins\KServ.t2p
+    file[]: crc = 3d96903b; size =    216064; name = Plugins\KTrashFacility.t2p
+    file[]: crc = 8c461e93; size =    203776; name = Plugins\Largeroom.t2p
+    file[]: crc = 61bdeaa5; size =    245760; name = Plugins\LocalPickle.t2p
+    file[]: crc = f47534f4; size =    296960; name = Plugins\Maintenance.t2p
+    file[]: crc = 7cac0ed9; size =    260096; name = Plugins\Men'sClothing.t2p
+    file[]: crc = 4f60517e; size =    322048; name = Plugins\Mexcan.t2p
+    file[]: crc = aba30db9; size =     27860; name = Plugins\MV_1stContact.t2p
+    file[]: crc = efec6949; size =     27876; name = Plugins\MV_49h.t2p
+    file[]: crc = 1c647633; size =     27892; name = Plugins\MV_4Eyed.t2p
+    file[]: crc = 07c58550; size =     27854; name = Plugins\MV_6Plus1.t2p
+    file[]: crc = e03438ab; size =     27875; name = Plugins\MV_BodyguardC.t2p
+    file[]: crc = 82183858; size =     27878; name = Plugins\MV_Cannon.t2p
+    file[]: crc = 652c41e6; size =     27854; name = Plugins\MV_Cellmax.t2p
+    file[]: crc = 5b27df3e; size =     27856; name = Plugins\MV_Cheesy.t2p
+    file[]: crc = df305b13; size =     27853; name = Plugins\MV_Cop.t2p
+    file[]: crc = fc4d591a; size =     27858; name = Plugins\MV_Deepb.t2p
+    file[]: crc = 9b35b6fd; size =     27875; name = Plugins\MV_Dog.t2p
+    file[]: crc = b9e553d8; size =     27865; name = Plugins\MV_Drfist.t2p
+    file[]: crc = 24036d70; size =     27867; name = Plugins\MV_Drfive.t2p
+    file[]: crc = 488306e6; size =     27854; name = Plugins\MV_FiredD.t2p
+    file[]: crc = ba2fe704; size =     27864; name = Plugins\MV_FlowerB.t2p
+    file[]: crc = ca0fa2c5; size =     27834; name = Plugins\MV_Frank.t2p
+    file[]: crc = 0c9e27d4; size =     27835; name = Plugins\MV_Fried.t2p
+    file[]: crc = 8cd707dd; size =     27874; name = Plugins\MV_Hell.t2p
+    file[]: crc = 8230197b; size =     27853; name = Plugins\MV_KidSalami.t2p
+    file[]: crc = 04115ad9; size =     27844; name = Plugins\MV_Love.t2p
+    file[]: crc = b70aad66; size =     27846; name = Plugins\MV_Lurker.t2p
+    file[]: crc = cfacadfd; size =     27865; name = Plugins\MV_MEKASIA.t2p
+    file[]: crc = c55611f0; size =     27853; name = Plugins\MV_Meninshade.t2p
+    file[]: crc = 605ab9a3; size =     27849; name = Plugins\MV_MissionW.t2p
+    file[]: crc = e82087e5; size =     27851; name = Plugins\MV_Moped.t2p
+    file[]: crc = 368dc526; size =     27836; name = Plugins\MV_Overtime.t2p
+    file[]: crc = cf499104; size =     27886; name = Plugins\MV_Peter.t2p
+    file[]: crc = 83c091ba; size =     27876; name = Plugins\MV_Samurai.t2p
+    file[]: crc = b451d9a1; size =     27886; name = Plugins\MV_ShadowP.t2p
+    file[]: crc = bbccd107; size =     27845; name = Plugins\MV_Shakeit.t2p
+    file[]: crc = d98a1371; size =     27844; name = Plugins\MV_Smooth.t2p
+    file[]: crc = 9b2c1a43; size =     27860; name = Plugins\MV_SpaceP.t2p
+    file[]: crc = e489ff45; size =     27863; name = Plugins\MV_SPE.t2p
+    file[]: crc = ead69e02; size =     27861; name = Plugins\MV_Split.t2p
+    file[]: crc = 266153bf; size =     27844; name = Plugins\MV_Surf.t2p
+    file[]: crc = 997e91c9; size =     27849; name = Plugins\MV_TerrorC.t2p
+    file[]: crc = 5dd2a8cd; size =     27855; name = Plugins\MV_Train.t2p
+    file[]: crc = 4d7a2bd4; size =     27853; name = Plugins\MV_Zonmbie.t2p
+    file[]: crc = 88e33dd1; size =     47027; name = Plugins\Ob9003.t2p
+    file[]: crc = 6a46534e; size =    199680; name = Plugins\Observatory.t2p
+    file[]: crc = 8df8bde9; size =    271360; name = Plugins\Office.t2p
+    file[]: crc = f6ee8724; size =    271872; name = Plugins\OldTimeCafe.t2p
+    file[]: crc = d79a6462; size =    290304; name = Plugins\OrangeJulius.t2p
+    file[]: crc = a86ca5cb; size =    266752; name = Plugins\Parking.t2p
+    file[]: crc = 7337f5c2; size =    259072; name = Plugins\Petshop.t2p
+    file[]: crc = 05426670; size =    250880; name = Plugins\Photo.t2p
+    file[]: crc = 10af26c4; size =     87131; name = Plugins\PlArt.t2p
+    file[]: crc = 0989c043; size =     87279; name = Plugins\PlCarShow.t2p
+    file[]: crc = b2b5ca32; size =     87057; name = Plugins\PlConcert.t2p
+    file[]: crc = 9245aca2; size =     87055; name = Plugins\PlFashon.t2p
+    file[]: crc = 89622545; size =     87003; name = Plugins\PlPlant.t2p
+    file[]: crc = b493cc1e; size =     87006; name = Plugins\PlTennis.t2p
+    file[]: crc = 640c444f; size =    176640; name = Plugins\PowerRoom.t2p
+    file[]: crc = f995413d; size =    274944; name = Plugins\Ramen.t2p
+    file[]: crc = 408d1d3c; size =    281088; name = Plugins\Record.t2p
+    file[]: crc = cb94dcea; size =    193536; name = Plugins\Restroom.t2p
+    file[]: crc = 0d44aa89; size =    246272; name = Plugins\RFront.t2p
+    file[]: crc = 35dc99c0; size =    177664; name = Plugins\RMaintenance.t2p
+    file[]: crc = 554acd1f; size =      8817; name = Plugins\SandalBeachResort.t2p
+    file[]: crc = c758ecad; size =    444416; name = Plugins\School.t2p
+    file[]: crc = 40637679; size =    392704; name = Plugins\SeaFood.t2p
+    file[]: crc = 7b1c9543; size =    247808; name = Plugins\Securityroom.t2p
+    file[]: crc = 1068b566; size =     10815; name = Plugins\Segapc.t2p
+    file[]: crc = 90c23140; size =    253952; name = Plugins\ServElev.t2p
+    file[]: crc = 881acca7; size =    256512; name = Plugins\Singleroom.t2p
+    file[]: crc = d31e03a0; size =    174080; name = Plugins\SkyBrdge.t2p
+    file[]: crc = 2a58ddf6; size =    180736; name = Plugins\Smallroom.t2p
+    file[]: crc = 45615323; size =    352768; name = Plugins\SobaNoodle.t2p
+    file[]: crc = 1e91a8f5; size =    250368; name = Plugins\Souvenirs.t2p
+    file[]: crc = 1ca2d067; size =    185344; name = Plugins\Spa.t2p
+    file[]: crc = 60eec3ec; size =    273920; name = Plugins\Sportsshop.t2p
+    file[]: crc = c2c936a2; size =   1039360; name = Plugins\Stadium.t2p
+    file[]: crc = d9d84172; size =    219136; name = Plugins\Stair.t2p
+    file[]: crc = 1d84114e; size =    212992; name = Plugins\StdElev.t2p
+    file[]: crc = 1e4e893e; size =    299520; name = Plugins\Steak.t2p
+    file[]: crc = 9b4b9f6f; size =    285696; name = Plugins\Subway.t2p
+    file[]: crc = 6b238070; size =    231424; name = Plugins\Suiteroom.t2p
+    file[]: crc = ed73ac8b; size =    505856; name = Plugins\SuperMarket.t2p
+    file[]: crc = b7fc74b3; size =    224256; name = Plugins\SurfShop.t2p
+    file[]: crc = a71a6408; size =    270336; name = Plugins\Sushibar.t2p
+    file[]: crc = 1549f7e2; size =    507392; name = Plugins\Theater.t2p
+    file[]: crc = 64c39436; size =    173568; name = Plugins\Ticket.t2p
+    file[]: crc = bb47a19c; size =   4740096; name = Plugins\Tokyo.t2p
+    file[]: crc = 8a63d6c6; size =    385536; name = Plugins\Toyworld.t2p
+    file[]: crc = 6fe7607f; size =    282112; name = Plugins\Trad-Japanese.t2p
+    file[]: crc = 7d6faeea; size =    242688; name = Plugins\TrashFacility.t2p
+    file[]: crc = abf9f5ef; size =    210432; name = Plugins\Twinroom.t2p
+    file[]: crc = 2094b3f3; size =    361472; name = Plugins\Video&DVD.t2p
+    file[]: crc = 09d04fe7; size =    311808; name = Plugins\Weinstein'sToffee.t2p
+    file[]: crc = 71231462; size =     10811; name = Plugins\Yoot.t2p
+
+	EXENAME = T2
+	CDLABEL = YOOTTOWER
+
+end
+
+//
+// Installer for Ver. Listed Above
+//
+installer[pc-cd-en-install]:
+	name = English CD Installer
+	imports = install-base
+	installid = pc-cd-en
+	anchorfile = Tokyo.t2p
+	anchordepth = 1
+    file[]: crc = 1dca2d8d; size =    320114; name = _INST32I.EX_
+    file[]: crc = ad876cc7; size =      8192; name = _ISDEL.EXE
+    file[]: crc = 9c05f677; size =     12288; name = _setup.dll
+    file[]: crc = 6198123b; size =    204987; name = _sys1.cab
+    file[]: crc = 7af9a4e5; size =   4976968; name = _user1.cab
+    file[]: crc = 6e9109a6; size =        96; name = DATA.TAG
+    file[]: crc = b7350528; size = 121489129; name = data1.cab
+    file[]: crc = ba7ee667; size =      4557; name = lang.dat
+    file[]: crc = 8aed543b; size =       353; name = layout.bin
+    file[]: crc = f9edc7a9; size =       417; name = os.dat
+    file[]: crc = c012c4cf; size =    105120; name = setup.bmp
+    file[]: crc = 0f46ad23; size =     60416; name = SETUP.EXE
+    file[]: crc = 323c9eaa; size =        68; name = SETUP.INI
+    file[]: crc = 74be7a74; size =     64151; name = setup.ins
+    file[]: crc = d23d646f; size =        49; name = setup.lid
+file[]: crc = bb47a19c; size =   4740096; name = Plugins\Tokyo.t2p
+end
+
+end

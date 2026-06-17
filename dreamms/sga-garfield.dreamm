@@ -1,0 +1,69 @@
+//
+// Garfield Caught in the Act / Garfield in TV Land
+//
+desc[sga-garfield]:
+
+name = Garfield Caught in the Act / Garfield in TV Land
+icon = sga-garfield.png
+machine = pc
+rootpath = C:\Sega\Garfield
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 95
+winres = 640x480x8
+filter = nonlucas
+EXENAME = garfield
+CDLABEL = garfield
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+//
+// video configuration
+//
+config[video]:
+    title = Video Configuration
+    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
+    option[desktop]: name = Full Desktop;      wincrop = false
+end
+
+//
+// dummy game description;
+//
+game[pc-cd-us-english]:
+    name = English CD
+    anchorfile = Garfield.exe
+	anchordepth = 1	
+    file[]: crc = 4783c449; size =   1099502; name = CSB.DIR
+    file[]: crc = 33659987; size =      2023; name = DSB.DIR
+    file[]: crc = 5d79e485; size =    535970; name = GARFIELD.EXE
+    file[]: crc = a48db48a; size =   1405496; name = MSB.DIR
+    file[]: crc = f4ea5f80; size =    563505; name = OSB.DIR
+    file[]: crc = 0ef0b909; size =    158488; name = SSB.DIR
+    file[]: crc = b3fe161b; size =        54; name = WAVEMIX.INI
+    file[]: crc = b04a080a; size =   1195266; name = WSB.DIR
+	file[]: name = CD\CDDA.SOU; cdda = 85/125/72/110/57/113/61/91/27/101/157/113/137/60/88/9/59/56
+	
+	CDLABEL = ""
+end
+
+game[pc-cd-songar-english]:
+    name = English CD Sonic & Garfield Pack
+	imports = pc-cd-us-english
+    anchorfile = GARFIELD.EXE
+    file[]: crc = 846e0681; size =     12105; name = README.TXT
+    file[]: name = CD\CDDA.SOU; cdda = 82/122/69/107/55/110/58/88/24/98/154/110/134/58/85/6/56/56
+	
+	CDLABEL = Sega_3in1
+end
+
+
+end

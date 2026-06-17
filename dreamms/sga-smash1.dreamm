@@ -1,0 +1,150 @@
+//
+// SEGA Smash Pack
+//
+desc[sga-smash1]:
+
+name = SEGA Smash Pack
+icon = sga-smash1.png
+machine = pc
+rootpath = C:\Sega\Smash Pack
+launch = "$(rootpath)\$(EXENAME).EXE"
+osenv = windows 98
+filter = nonlucas, Action
+winres = 640x480x32
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+//
+// registry
+//
+script[registry]: code = winregistry_import_file("C:\\DREAMM.REG")
+
+//
+// dynamic files
+//
+dynamicfile[]:
+    path = C:\DREAMM.REG
+    contents = [[[$(CRLF)
+	REGEDIT4
+
+	[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\App Paths\Smash.exe]
+	@="C:\\Sega\\Smash Pack\\Smash.exe"
+	"Path"="C:\\Sega\\Smash Pack"
+
+	[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\Sega Smash Pack]
+	"DisplayName"="Sega Smash Pack"
+	"UninstallString"="C:\\WINDOWS\\IsUninst.exe -f\"C:\\Sega\\Smash Pack\\Uninst.isu\""
+
+	[HKEY_LOCAL_MACHINE\Software\Sega]
+	[HKEY_LOCAL_MACHINE\Software\Sega\Sega Smash Pack\1.00.000]
+	"FullPath"="C:\\Sega\\Smash Pack"
+	"Installed"=dword:00000001
+	"UninstallPath"="C:\\WINDOWS\\ISUNINST.EXE -f\"C:\\Sega\\Smash Pack\\Uninst.isu\""
+	]]]
+end
+
+dynamicfile[]: path = D:\SMASH_PACK; attributes = 8; contents = $(NULL)
+
+//
+// SEGA Smash Pack English CD US
+//
+game[pc-cd-en]:
+	name = 1.00.000
+	anchorfile = Smash.exe
+	file[]: crc = B45BA575; size =  917504; name = Smash.exe
+	file[]: crc = EDADE930; size =  163763; name = Data\MainBlok.kml
+	file[]: crc = EE6D6D74; size =  137501; name = Data\SoundBlk.kml
+	file[]: crc = 64D662D8; size =  524296; name = MyGames\Altered Beast.kvq
+	file[]: crc = B7CCF7B8; size =  131080; name = MyGames\Columns.kvq
+	file[]: crc = B5785CD1; size =  524296; name = MyGames\Golden Axe.kvq
+	file[]: crc = 050B6B26; size = 1048584; name = MyGames\Outrun.kvq
+	file[]: crc = 44106E56; size = 1048584; name = MyGames\Phantasy Star II.kvq
+	file[]: crc = D454F66F; size = 1048584; name = MyGames\Sonic Spinball.kvq
+	file[]: crc = 57E4E792; size =  524296; name = MyGames\Super Shinobi.kvq
+	file[]: crc = 2478AED1; size = 2097160; name = MyGames\Vectorman.kvq
+	file[]:									name = Altered Beast.txt
+    file[]:									name = Columns.txt	
+    file[]:									name = Golden Axe.txt
+    file[]:									name = Outrun.txt
+    file[]:									name = Phantasy Star II.txt	
+    file[]:									name = Sega Smash Pack.txt
+    file[]:									name = Sonic Spinball.txt
+    file[]:									name = Super Shinobi.txt
+    file[]:									name = Vectorman.txt
+	
+	file[]: crc = d59a3349; size =        43; name = CD\AUTORUN.INF
+	file[]: crc = d889f166; size =        55; name = CD\SETUP\SETUP.INI
+	
+	EXENAME = Smash
+end
+
+game[pc-cd-en-EXPERT]:
+	name = 1.00.000 EXPERT Software
+	anchorfile = Smash.pdf
+	anchordepth = 1
+	file[]: crc = B45BA575; size =  917504; name = Smash.exe
+	file[]: crc = EDADE930; size =  163763; name = Data\MainBlok.kml
+	file[]: crc = EE6D6D74; size =  137501; name = Data\SoundBlk.kml
+	file[]: crc = 64D662D8; size =  524296; name = MyGames\Altered Beast.kvq
+	file[]: crc = B7CCF7B8; size =  131080; name = MyGames\Columns.kvq
+	file[]: crc = B5785CD1; size =  524296; name = MyGames\Golden Axe.kvq
+	file[]: crc = 050B6B26; size = 1048584; name = MyGames\Outrun.kvq
+	file[]: crc = 44106E56; size = 1048584; name = MyGames\Phantasy Star II.kvq
+	file[]: crc = D454F66F; size = 1048584; name = MyGames\Sonic Spinball.kvq
+	file[]: crc = 57E4E792; size =  524296; name = MyGames\Super Shinobi.kvq
+	file[]: crc = 2478AED1; size = 2097160; name = MyGames\Vectorman.kvq
+	file[]:									name = Altered Beast.txt
+    file[]:									name = Columns.txt	
+    file[]:									name = Golden Axe.txt
+    file[]:									name = Outrun.txt
+    file[]:									name = Phantasy Star II.txt	
+    file[]:									name = Sega Smash Pack.txt
+    file[]:									name = Sonic Spinball.txt
+    file[]:									name = Super Shinobi.txt
+    file[]:									name = Vectorman.txt
+    file[]:									name = README.TXT
+    file[]: crc = 5e2d1166; size =  232126; name = Smash.pdf	
+	file[]: crc = 9f470c87; size =     173; name = CD\Autorun.inf
+	file[]: crc = d889f166; size =      55; name = CD\SETUP\SETUP.INI
+	
+	EXENAME = Smash
+end
+
+//
+// Twin Pack SEGA Smash Pack + SEGA Smash Pack 2 No CD
+//
+game[pc-cd-en-Twin-Activision]:
+	name = 1.00.000 Twin Pack Activision
+	anchorfile = Patch.exe
+	anchordepth = 1
+	file[]: crc = dc0051c7; size =    917504; name = PATCH.EXE
+	file[]: crc = edade930; size =    163763; name = Data\MainBlok.kml
+    file[]: crc = ee6d6d74; size =    137501; name = Data\SoundBlk.kml
+    file[]: crc = 64d662d8; size =    524296; name = MyGames\Altered Beast.kvq
+    file[]: crc = b7ccf7b8; size =    131080; name = MyGames\Columns.kvq
+    file[]: crc = b5785cd1; size =    524296; name = MyGames\Golden Axe.kvq
+    file[]: crc = 050b6b26; size =   1048584; name = MyGames\Outrun.kvq
+    file[]: crc = 44106e56; size =   1048584; name = MyGames\Phantasy Star II.kvq
+    file[]: crc = 57e4e792; size =    524296; name = MyGames\Super Shinobi.kvq
+    file[]: crc = d454f66f; size =   1048584; name = MyGames\Sonic Spinball.kvq
+    file[]: crc = 2478aed1; size =   2097160; name = MyGames\Vectorman.kvq
+	file[]:									  name = Altered Beast.txt
+    file[]:					  				  name = Columns.txt	
+    file[]:					  				  name = Golden Axe.txt
+    file[]:									  name = Outrun.txt
+    file[]:									  name = Phantasy Star II.txt	
+    file[]:									  name = Sega Smash Pack.txt
+    file[]:									  name = Sonic Spinball.txt
+    file[]:									  name = Super Shinobi.txt
+    file[]:									  name = Vectorman.txt	
+	
+	file[]: crc = 5f98b1f5; size =        45; name = CD\AUTORUN.INF
+	
+	EXENAME = Patch
+
+end

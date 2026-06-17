@@ -1,0 +1,111 @@
+//
+// SEGA Swirl
+//
+desc[sga-swirl]:
+
+name = SEGA Swirl
+icon = sga-swirl.png
+machine = pc
+rootpath = C:\Sega\Swirl
+launch = "$(rootpath)\swirl.exe"
+osenv = windows 95
+winres = 640x480x16
+filter = nonlucas
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+//
+// video configuration
+//
+config[video]:
+    title = Video Configuration
+    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
+    option[desktop]: name = Full Desktop;      wincrop = false
+end
+
+//
+// Common Files
+//
+fragment[common]:
+    file[]: crc = 8c2932f4; size =    132376; name = BOOS.WAV
+    file[]: crc = fb462adc; size =    146886; name = CHEERS.WAV
+    file[]: crc = c59919b1; size =    176518; name = CHEERS2.WAV
+    file[]: crc = 7c84a03a; size =     39092; name = COMBO1A.WAV
+    file[]: crc = 9648c551; size =     37302; name = COMBO1B.WAV
+    file[]: crc = 879e4eb9; size =     28688; name = COMBO2A.WAV
+    file[]: crc = 11a15baa; size =     26608; name = COMBO2B.WAV
+    file[]: crc = 727d498d; size =     28688; name = COMBO3A.WAV
+    file[]: crc = 02f3099a; size =     28688; name = COMBO3B.WAV
+    file[]: crc = e78205ae; size =    109958; name = COMBO4A.WAV
+    file[]: crc = 56ced11c; size =    113748; name = COMBO4B.WAV
+    file[]: crc = c4444cd6; size =    196478; name = COMBO5A.WAV
+    file[]: crc = e78205ae; size =    109958; name = COMBO5B.WAV
+    file[]: crc = fed8f9ba; size =    203780; name = COMBO6A.WAV
+    file[]: crc = c4444cd6; size =    196478; name = COMBO6B.WAV
+    file[]: crc = cc555c0f; size =    237994; name = COMBO7A.WAV
+    file[]: crc = fed8f9ba; size =    203780; name = COMBO7B.WAV
+    file[]: crc = fe974e71; size =    330954; name = START.WAV
+
+end
+
+//
+// World V1.02
+//
+game[pc-wd-1.02]:
+    name = World V1.02
+	imports = common
+    anchorfile = swirl.exe
+    file[]: crc = e6e34d42; size =   1976320; name = SWIRL.EXE
+    file[]: crc = 4651429d; size =    117214; name = EXIT.WAV
+    file[]: crc = cfe8ccff; size =     26424; name = SWIRL.TTF
+    file[]: crc = aefafbfd; size =    792576; name = MFC30D.DLL
+
+end
+
+//
+// World V1.05
+//
+game[pc-wd-1.05]:
+    name = World V1.05
+	imports = common
+    anchorfile = swirl.exe
+    file[]: crc = ce771aaa; size =   2050560; name = SWIRL.EXE
+    file[]: crc = cdbf8b1c; size =    117214; name = EXIT.WAV
+    file[]: crc = a1ebda3e; size =      7121; name = SW_HELP.TXT
+    file[]: crc = cfe8ccff; size =     26424; name = SWIRL.TTF
+    file[]: crc = aefafbfd; size =    792576; name = MFC30D.DLL
+
+end
+
+//
+// World V1.06
+//
+game[pc-wd-1.06]:
+    name = World V1.06
+	imports = common
+    anchorfile = swirl.exe
+    file[]: crc = 66e34b28; size =   2167296; name = SWIRL.EXE
+    file[]: crc = cdbf8b1c; size =    117214; name = EXIT.WAV
+    file[]: crc = a1ebda3e; size =      7121; name = SW_HELP.TXT
+    file[]: crc = cfe8ccff; size =     26424; name = SWIRL.TTF
+    file[]: crc = aefafbfd; size =    792576; name = MFC30D.DLL
+	
+end
+
+//
+// World V1.07
+//
+game[pc-wd-1.07]:
+    name = World V1.07
+	imports = common
+    anchorfile = swirl.exe
+    file[]: crc = ed32be22; size =   1866752; name = swirl.exe
+    file[]: crc = cdbf8b1c; size =    117214; name = EXIT.WAV
+    file[]: crc = b386b117; size =      7125; name = SW_HELP.TXT
+    file[]: crc = 95a43842; size =    348160; name = MFC30.DLL
+end
+
+end

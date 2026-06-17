@@ -1,0 +1,272 @@
+//
+// Bug Win95
+//
+desc[sga-bug]:
+
+name = Bug!
+icon = sga-bug.png
+machine = pc
+rootpath = C:\Sega\Bug
+launch = "$(rootpath)\bug!.exe"
+osenv = windows 95
+winres = 640x480x8
+filter = nonlucas
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\BUG!; attributes = 8; contents = $(NULL)
+
+//Bug Install Config
+dynamicfile[]:
+    path = C:\Sega\Bug\BUG!.INF
+    contents = [[[$(CRLF)
+		$(rootpath)
+
+    ]]]
+end
+
+//
+// video configuration
+//
+config[video]:
+    title = Video Configuration
+    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
+    option[desktop]: name = Full Desktop;      wincrop = false
+end
+
+
+//
+// dummy game description;
+//
+fragment[common]:
+	file[]: crc = 26ddc105; size =        30; name = CD\AUTORUN.INF
+
+    file[]: crc = e1041026; size =    979267; name = CD\L01.LVL
+    file[]: crc = 2204e485; size =    975388; name = CD\L02.LVL
+    file[]: crc = e4c5ff2f; size =    975213; name = CD\L03.LVL
+    file[]: crc = 69d5d374; size =    700500; name = CD\L04.LVL
+    file[]: crc = 683056fc; size =    513278; name = CD\L05.LVL
+    file[]: crc = e210873b; size =    867072; name = CD\L06.LVL
+    file[]: crc = 513b3182; size =    870635; name = CD\L07.LVL
+    file[]: crc = dc02987b; size =    875062; name = CD\L08.LVL
+    file[]: crc = 0b1d9982; size =    921767; name = CD\L09.LVL
+    file[]: crc = 2ae4ac67; size =    513164; name = CD\L10.LVL
+    file[]: crc = 9d451be5; size =    923489; name = CD\L11.LVL
+    file[]: crc = 39ded4e5; size =    891755; name = CD\L12.LVL
+    file[]: crc = 3b9de0f2; size =    888866; name = CD\L13.LVL
+    file[]: crc = a0eb64a7; size =    768030; name = CD\L14.LVL
+    file[]: crc = 4ef5e42b; size =    513290; name = CD\L15.LVL
+    file[]: crc = 462544da; size =    952551; name = CD\L16.LVL
+    file[]: crc = 3076bc8f; size =    951692; name = CD\L17.LVL
+    file[]: crc = 8ebd7be7; size =    950291; name = CD\L18.LVL
+    file[]: crc = 4e13ef74; size =    586131; name = CD\L19.LVL
+    file[]: crc = b06e2925; size =    513348; name = CD\L20.LVL
+    file[]: crc = 4788389b; size =    924258; name = CD\L21.LVL
+    file[]: crc = 98e317b7; size =    923159; name = CD\L22.LVL
+    file[]: crc = 026d9e8d; size =    915054; name = CD\L23.LVL
+    file[]: crc = d13e5086; size =    688155; name = CD\L24.LVL
+    file[]: crc = b549bf42; size =    513463; name = CD\L25.LVL
+    file[]: crc = 882ab9ae; size =    953679; name = CD\L26.LVL
+    file[]: crc = 1f35a3d7; size =    958485; name = CD\L27.LVL
+    file[]: crc = 52c8ee9a; size =    963569; name = CD\L28.LVL
+    file[]: crc = 07dbc3a6; size =    768930; name = CD\L29.LVL
+    file[]: crc = 88e2ae5e; size =    513451; name = CD\L30.LVL
+    file[]: crc = 22457657; size =    615265; name = CD\L31.LVL
+    file[]: crc = c4eb3a30; size =    642084; name = CD\L32.LVL
+    file[]: crc = e8188474; size =    616202; name = CD\L33.LVL
+    file[]: crc = 88db49e0; size =    617364; name = CD\L34.LVL
+    file[]: crc = 434b1dee; size =    636722; name = CD\L35.LVL
+    file[]: crc = b4d275d1; size =    640359; name = CD\L36.LVL
+    file[]: crc = af2cc674; size =    640098; name = CD\L37.LVL
+    file[]: crc = 0dde88d3; size =    642751; name = CD\L38.LVL
+    file[]: crc = 0a89607e; size =    622013; name = CD\L39.LVL
+    file[]: crc = 45eda0a8; size =    654378; name = CD\L40.LVL
+    file[]: crc = 0683b24b; size =    623954; name = CD\L41.LVL
+    file[]: crc = 4f6a8c66; size =    628236; name = CD\L42.LVL
+    file[]: crc = 1aaed408; size =    625132; name = CD\L43.LVL
+    file[]: crc = 764c615c; size =    676655; name = CD\L44.LVL
+    file[]: crc = 88b2da65; size =    626439; name = CD\L45.LVL
+    file[]: crc = 7b05bad4; size =    630670; name = CD\L46.LVL
+    file[]: crc = 182d1f38; size =    626669; name = CD\L47.LVL
+    file[]: crc = 5642a2f2; size =    647142; name = CD\L48.LVL
+    file[]: crc = ff2325ca; size =    631775; name = CD\L49.LVL
+    file[]: crc = fb9b8cae; size =    626267; name = CD\L50.LVL
+    file[]: crc = 032dffc9; size =    622869; name = CD\L51.LVL
+    file[]: crc = 454c7bae; size =    645512; name = CD\L52.LVL
+    file[]: crc = 17e349f9; size =    627185; name = CD\L53.LVL
+    file[]: crc = a6513871; size =    628947; name = CD\L54.LVL
+    file[]: crc = e82d2be4; size =    260077; name = CD\L96.LVL
+    file[]: crc = 5ea98774; size =    136407; name = CD\L97.LVL
+    file[]: crc = 97fba5a9; size =    123590; name = CD\L98.LVL
+    file[]: crc = faee3ece; size =    475109; name = CD\L99.LVL
+
+    file[]: crc = e5807111; size =   5498274; name = CD\VBFMV\MV0.VB
+    file[]: crc = 8e2546ea; size =   5367969; name = CD\VBFMV\MV1.VB
+    file[]: crc = 9b2f2961; size =   5114743; name = CD\VBFMV\MV2.VB
+    file[]: crc = 21e728d2; size =   5114753; name = CD\VBFMV\MV3.VB
+    file[]: crc = 22eddb7f; size =   5753928; name = CD\VBFMV\MV4.VB
+    file[]: crc = a4a3160a; size =   7071548; name = CD\VBFMV\MV5.VB
+    file[]: crc = 0e8d3958; size =  13622726; name = CD\VBFMV\MV7.VB
+    file[]: crc = 04d806bf; size =  11640603; name = CD\VBFMV\MV8.VB
+    file[]: crc = 48ed32c2; size =   7874502; name = CD\VBFMV\MV9.VB
+    file[]: crc = 3969f03f; size =   2124367; name = CD\VBFMV\MVA.VB
+    file[]: crc = 6da5d6ee; size =   3302482; name = CD\VBFMVLO\MV0.VB
+    file[]: crc = 679d2e43; size =   3302322; name = CD\VBFMVLO\MV1.VB
+    file[]: crc = adffb392; size =   3072089; name = CD\VBFMVLO\MV2.VB
+    file[]: crc = 2cc84390; size =   3072089; name = CD\VBFMVLO\MV3.VB
+    file[]: crc = e8b8043b; size =   4440293; name = CD\VBFMVLO\MV4.VB
+    file[]: crc = 03cd8b12; size =   4365497; name = CD\VBFMVLO\MV5.VB
+    file[]: crc = f1554ff2; size =  12003157; name = CD\VBFMVLO\MV7.VB
+    file[]: crc = 7902fa3b; size =   8267735; name = CD\VBFMVLO\MV8.VB
+    file[]: crc = 1d86a07c; size =   5731974; name = CD\VBFMVLO\MV9.VB
+    file[]: crc = 98413ec4; size =   1282374; name = CD\VBFMVLO\MVA.VB
+
+
+
+end
+
+fragment[bug95common]:
+    file[]: crc = cfe95bbf; size =   1675618; name = W00.SND
+    file[]: crc = 286eed9d; size =    170298; name = W01.SND
+    file[]: crc = 6ad4a2bc; size =    560330; name = W02.SND
+    file[]: crc = c07e7f98; size =    331632; name = W03.SND
+    file[]: crc = 02a9bf98; size =   1406524; name = W04.SND
+    file[]: crc = f00a4526; size =   1039404; name = W05.SND
+    file[]: crc = 114cb6dd; size =   1194762; name = W06.SND
+    file[]: crc = b3c7cb98; size =    204126; name = W07.SND
+    file[]: crc = 366344ea; size =    443408; name = W08.SND
+    file[]: crc = e8564bd9; size =    458932; name = W09.SND
+    file[]: crc = ffb34f09; size =     96170; name = W10.SND
+    file[]: crc = b3360c12; size =    156860; name = W11.SND
+    file[]: crc = c818c535; size =    173846; name = W12.SND
+    file[]: crc = 847e78ef; size =    430089; name = W13.SND
+    file[]: crc = 6d7e5e92; size =    308226; name = W14.SND
+    file[]: crc = 866c9b72; size =   2312070; name = W99.SND
+end
+
+
+game[pc-cd-bug95-en-us]:
+	name = for Windows 95 US English
+	imports = common, bug95common
+	anchorfile = Bug!.exe
+	anchordepth = 1
+    file[]: crc = c6e39ab9; size =    524288; name = BUG!.EXE
+    file[]: crc = 14d6b416; size =      8628; name = BUGHELP.GID
+    file[]: crc = 0ec281eb; size =     20922; name = BUGHELP.HLP
+
+    file[]: name = CD\CDDA.SOU; cdda = 389/393/317/381/346/351/130/395/352/82
+	
+	locale = en_US
+	
+end
+
+game[pc-cd-bug95-en-eu]:
+	name = for Windows 95 EU English
+	imports = common, bug95common
+	anchorfile = Bug!.exe
+	anchordepth = 1
+    file[]: crc = 5ae4aae0; size =    537088; name = BUG!.EXE
+    file[]: crc = f88fbf4b; size =     20978; name = BUGHELP.HLP //English
+	
+    file[]: name = CDDA.SOU; cdda = 453/393/380/381/346/351/130/316/177/246
+
+	locale = en_US
+	
+end
+
+game[pc-cd-bug95-fr-eu]:
+	name = for Windows 95 EU French
+	imports = common, bug95common
+	anchorfile = Bug!.exe
+	anchordepth = 1
+    file[]: crc = 5ae4aae0; size =    537088; name = BUG!.EXE
+    file[]: crc = f1f76043; size =     20973; name = BUGHELP.HLP //French
+
+    file[]: name = CDDA.SOU; cdda = 453/393/380/381/346/351/130/316/177/246
+	
+	locale = fr-FR
+	
+end
+
+game[pc-cd-bug95-ge-eu]:
+	name = for Windows 95 EU German
+	imports = common, bug95common
+	anchorfile = Bug!.exe
+	anchordepth = 1
+    file[]: crc = 5ae4aae0; size =    537088; name = BUG!.EXE
+    file[]: crc = 05acc871; size =     20653; name = BUGHELP.HLP //German
+
+    file[]: name = CDDA.SOU; cdda = 453/393/380/381/346/351/130/316/177/246
+	
+	locale = de-DE
+	
+end
+
+game[pc-cd-bug95-sp-eu]:
+	name = for Windows 95 EU Spanish
+	imports = common, bug95common
+	anchorfile = Bug!.exe
+	anchordepth = 1
+    file[]: crc = 5ae4aae0; size =    537088; name = BUG!.EXE
+    file[]: crc = 012fd3c3; size =     24149; name = BUGHELP.HLP //Spanish
+	
+    file[]: name = CDDA.SOU; cdda = 453/393/380/381/346/351/130/316/177/246
+
+	locale = es-ES_tradnl
+	
+end
+
+game[pc-cd-bug31-en-us]:
+	name = for Windows 3.1 US English
+	imports = common
+	anchorfile = bug!.exe
+	anchordepth = 1
+	file[]: crc = b7405bae; size =    513536; name = BUG!.EXE
+	file[]: crc = 2a31aeb6; size =       377; name = BUG!.CFG
+	file[]: crc = 3647ba2f; size =   1386055; name = W00.SND
+    file[]: crc = 1bd106dc; size =    144713; name = W01.SND
+    file[]: crc = 9e2fb70c; size =    303488; name = W02.SND
+    file[]: crc = 5537699d; size =    222738; name = W03.SND
+    file[]: crc = 7ac77d24; size =    585728; name = W04.SND
+    file[]: crc = 324fb22c; size =    527534; name = W05.SND
+    file[]: crc = 83c0d212; size =    612147; name = W06.SND
+    file[]: crc = d4507e2a; size =    137556; name = W07.SND
+    file[]: crc = 8b9fb4fe; size =    265598; name = W08.SND
+    file[]: crc = 38278b82; size =    253605; name = W09.SND
+    file[]: crc = 55c9b8b3; size =    108595; name = W10.SND
+    file[]: crc = 195ea899; size =     84138; name = W11.SND
+    file[]: crc = 3eaafa99; size =    300630; name = W12.SND
+    file[]: crc = b0442562; size =    278531; name = W13.SND
+    file[]: crc = da10a5dd; size =    304220; name = W14.SND
+    file[]: crc = d9e0ecb4; size =   2320772; name = W99.SND
+    file[]:	crc = 2A31AEB6; size = 		 377; name = CD\WIN95\BUG!.CFG
+	
+	locale = en_US
+	
+end
+
+game[pc-bug95-en-demo]:
+	name = for Windows 95 English Demo
+	anchorfile = bug!.inf
+    file[]: crc = 82c267f1; size =       385; name = BUG!.CFG
+    file[]: crc = 09c6bb81; size =    525312; name = BUG!.EXE
+    file[]: crc = b7bce2a9; size =         2; name = BUG!.INF
+    file[]: crc = ac41ea7a; size =    979265; name = L01.LVL
+    file[]: crc = 08c301b7; size =    622650; name = L43.LVL
+    file[]: crc = 803e0c9a; size =    470713; name = L99.LVL
+    file[]: crc = cfe95bbf; size =   1675618; name = W00.SND
+    file[]: crc = 286eed9d; size =    170298; name = W01.SND
+	
+	locale = en_US
+	
+end
+
+end

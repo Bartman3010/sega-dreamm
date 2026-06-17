@@ -1,0 +1,431 @@
+//
+// The House of the Dead
+//
+desc[sga-thotd]:
+
+name = The House of the Dead
+icon = sga-thotd.png
+machine = pc
+rootpath = C:\Sega\THOTD
+launch = $(rootpath)\$(EXENAME).exe $(CMDLINE_GFX) $(CMDLINE_CD)
+osenv = windows 98
+winres = 640x480x16
+filter = nonlucas
+EXENAME = THOTD
+CDLABEL = Hotd
+REGLANGUAGE = ENGLISH
+REGBLOOD = RED
+ISJAPANESE = 0 //if user installed the japanese cd version of the game
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// show warning about blood on japanese cd version
+//
+warning[blood]:
+condition = $(ISJAPANESE)
+    text = Choosing red blood color in the in-game options menu (If available) will show corrupted textures on characters. You will need to choose the other blood color options for textures to appear normally.
+end
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+
+//
+// Graphics Driver Select
+//
+config[graphics]:
+	title = Graphics Driver
+	option[ddraw]: name = DirectDraw (Software); CMDLINE = -ddraw
+	option[d3d]: name = Direct3D (Hardware); CMDLINE = -d3d
+	option[d3d_setup]: name = Direct3D (Hardware) Setup; CMDLINE = -d3d -d3d_setup
+end
+
+//
+// Registry Language Option
+//
+config[language]:
+	title = Language
+	option[english]:  name = English; REGLANGUAGE = ENGLISH//;	//locale = en_US
+	//option[french]:   name = French; REGLANGUAGE = FRENCH; locale = fr-FR
+	//option[german]:   name = German; REGLANGUAGE = GERMAN; locale = de-DE
+	option[japanese]: name = Japanese; REGLANGUAGE = JAPANESE; locale = ja-JP
+	//option[spanish]:  name = Spanish; REGLANGUAGE = SPANISH; locale = es-ES_tradnl
+	//option[italian]:  name = Italian; REGLANGUAGE = ITALIAN; locale = it-IT
+	
+end
+
+//
+// Minimizes the CD Check, CD must still be in the drive
+//
+config[cd]:
+	title = CD Check
+	option[checkCD]: name = Check for CD; CMDLINE_CD = $(NULL)
+	option[noCD]: name = No Check; CMDLINE_CD = -cd_nocheck; priority = 1
+end
+
+//
+// dummy launcher file to satisfy the upgrader
+//
+//dynamicfile[]: path = $(rootpath)\$(EXENAME).EXE
+
+//
+// autoinstaller script
+//
+script[autoinstaller]:
+    condition = is_upgrader()
+    code = [[[$(CRLF)
+        if (!prop("noautoinstall"))
+        {
+            input_lockout(true);
+            $(AUTOINSTALL_SCRIPT)
+            input_lockout(false);
+        }
+    ]]]
+end
+
+//
+// Registry
+//
+script[registry]: code = winregistry_import_file("C:\\DREAMM.REG")
+dynamicfile[]:
+    path = C:\DREAMM.REG
+    contents = [[[$(CRLF)
+		REGEDIT4
+		[HKEY_LOCAL_MACHINE\SOFTWARE\sega\The House Of The Dead]
+		"bloodcolor"="$$(REGBLOOD)"
+		"file"="$$(rootpath)\\$(EXENAME).exe"
+		"language"="$$(REGLANGUAGE)"
+		"path"="$$(rootpath)"
+		"RunD3D"="$$(rootpath)\\$(EXENAME).exe\\"-d3d"\\$(CMDLINE_CD)"
+		"RunD3DSetup"="$$(rootpath)\\$(EXENAME).exe\\"-d3d -d3d_setup"\\$(CMDLINE_CD)"
+		"RunNative"="$$(rootpath)\\$(EXENAME).exe\\"-ddraw"\\$(CMDLINE_CD)"
+		[HKEY_LOCAL_MACHINE\SOFTWARE\sega\The House Of The Dead\1.0]
+	]]]
+end
+
+//
+// Common Files Between Versions
+//
+fragment[common]:
+    file[]: crc = 7433b578; size =      1024; name = brown.pal
+    file[]: crc = 1e840fe6; size =     65536; name = brown.tbl
+    file[]: crc = e77abef8; size =     46512; name = GAMEBIOS.DLL
+    file[]: crc = da118236; size =      1024; name = GREY.PAL
+    file[]: crc = ff71a86a; size =     65536; name = grey.tbl
+    file[]: crc = 2de0b2a7; size =      1024; name = hotd.pal
+    file[]: crc = 2a131fa9; size =     65536; name = hotd.tbl
+    file[]: crc = e6099a07; size =      1024; name = menu.pal
+    file[]: crc = cf04594e; size =     65536; name = menu.tbl
+    file[]: crc = 0eeb37cc; size =     45056; name = SLATE32.DLL
+    file[]: crc = ea7a9989; size =      1024; name = stage1.pal
+    file[]: crc = e92a3a48; size =     65536; name = stage1.tbl
+    file[]: crc = ef273d89; size =      1024; name = stage2.pal
+    file[]: crc = 80602e08; size =     65536; name = stage2.tbl
+    file[]: crc = 0e6891c0; size =      1024; name = stage3.pal
+    file[]: crc = 09696824; size =     65536; name = stage3.tbl
+    file[]: crc = f9bc23de; size =      1024; name = stage4.pal
+    file[]: crc = fd062f1b; size =     65536; name = stage4.tbl
+    file[]:									  name = THOTD.CFG
+    file[]: crc = 96690e32; size =      1024; name = title.pal
+    file[]: crc = 2f4835e6; size =     65536; name = title.tbl
+    file[]: crc = cd8fac2d; size =     33078; name = wait.bmp
+    file[]: crc = 6206b38f; size =   1144084; name = ART\STAGE1\CREATURE\CREAT1.RBH
+    file[]: crc = 6c372024; size =   2218764; name = ART\STAGE1\CREATURE\CREAT2.rbh
+    file[]: crc = 14a285ac; size =         2; name = ART\STAGE1\CREATURE\TEXTURE.VMC
+    file[]: crc = 1aec3b88; size =    830560; name = ART\STAGE1\WORLD\world1.rbh
+    file[]: crc = ddd55154; size =    670568; name = ART\STAGE2\WORLD\world2.rbh
+    file[]: crc = b544785d; size =    473240; name = ART\STAGE3\WORLD\world3.rbh
+    file[]: crc = 79429c84; size =    224708; name = ART\STAGE4\WORLD\world4.rbh
+    file[]: crc = badf9b60; size =    551964; name = ART\STAGE5\WORLD\WORLD5.RBH
+    file[]: crc = 632d6111; size =   1096252; name = ART\STAGE6\WORLD\world6.rbh
+    file[]: crc = 99cd3fb9; size =    202840; name = CAM\ALLSTAGE\camALL.rbh
+    file[]: crc = 8850a9a2; size =    127536; name = EVT\ALLSTAGE\evtALL.rbh
+    file[]: crc = 3ee15077; size =    644836; name = SOUND\gamesnds.rbh
+    file[]: crc = 8e6eae6a; size =      9408; name = SOUND\O_AAAH.rbh
+    file[]: crc = 995e384b; size =      6784; name = SOUND\O_AOH2.rbh
+    file[]: crc = 9c51c45c; size =     54208; name = SOUND\O_BAKUH2.rbh
+    file[]: crc = a1ac9f3a; size =     10880; name = SOUND\O_BARRI3.rbh
+    file[]: crc = 85d07070; size =     11088; name = SOUND\O_BISHU3.rbh
+    file[]: crc = c51a55a2; size =     13328; name = SOUND\O_BREAK5.rbh
+    file[]: crc = f1e0bd33; size =      8416; name = SOUND\O_BUN.rbh
+    file[]: crc = 2dd9c1c7; size =     14816; name = SOUND\O_CARDOO.rbh
+    file[]: crc = 5156fb5e; size =      2704; name = SOUND\O_CHUI.rbh
+    file[]: crc = e56e8183; size =     82608; name = SOUND\O_ELEV_2.rbh
+    file[]: crc = 46bcc3fd; size =     26896; name = SOUND\O_ELEVA2.rbh
+    file[]: crc = bc2f9cb7; size =     11712; name = SOUND\O_ENE2_2.rbh
+    file[]: crc = 5af0c8fd; size =      7392; name = SOUND\O_ENE7_2.rbh
+    file[]: crc = d8defe7a; size =     33200; name = SOUND\O_ENEB11.rbh
+    file[]: crc = 84959761; size =      8880; name = SOUND\O_ENEMB4.rbh
+    file[]: crc = ca5991d5; size =      9168; name = SOUND\O_ENEMB7.rbh
+    file[]: crc = 0541a074; size =     10608; name = SOUND\O_ENEMB9.rbh
+    file[]: crc = 1716a482; size =     15904; name = SOUND\O_ENEMY1.rbh
+    file[]: crc = 239365e8; size =     28752; name = SOUND\O_ENZI_4.rbh
+    file[]: crc = 99b7c3cc; size =      7712; name = SOUND\O_FROG2.rbh
+    file[]: crc = b19221d7; size =      2064; name = SOUND\O_FURU2.rbh
+    file[]: crc = bdb7e1f5; size =     12528; name = SOUND\O_GLASS2.rbh
+    file[]: crc = e7097216; size =      9728; name = SOUND\O_GLASSW.rbh
+    file[]: crc = 5248067e; size =      6432; name = SOUND\O_GOO1_2.rbh
+    file[]: crc = 2c591fd6; size =      7472; name = SOUND\O_GUCYA3.rbh
+    file[]: crc = 382f75ba; size =      3360; name = SOUND\O_HASI_4.rbh
+    file[]: crc = 95440790; size =      6016; name = SOUND\O_HEL1_2.rbh
+    file[]: crc = 885893c4; size =      4656; name = SOUND\O_HELP.rbh
+    file[]: crc = 67a32055; size =      3936; name = SOUND\O_HELP2.rbh
+    file[]: crc = 3697f008; size =      3456; name = SOUND\O_INU3.rbh
+    file[]: crc = f6972fd3; size =      7920; name = SOUND\O_INU4.rbh
+    file[]: crc = 89df654a; size =     10912; name = SOUND\O_INU5.rbh
+    file[]: crc = 4e37a660; size =     24128; name = SOUND\O_KAEN.rbh
+    file[]: crc = d7900b68; size =     31024; name = SOUND\O_KEMON5.rbh
+    file[]: crc = 271b6fea; size =      3216; name = SOUND\O_KENSA3.rbh
+    file[]: crc = 2c219152; size =      6704; name = SOUND\O_KENSA4.rbh
+    file[]: crc = cb8362d5; size =      9424; name = SOUND\O_KENSAS.rbh
+    file[]: crc = 4bd008da; size =     34528; name = SOUND\O_KIA_1P.rbh
+    file[]: crc = 0048fb2a; size =      8768; name = SOUND\O_KIIKI2.rbh
+    file[]: crc = 4d55e15d; size =     21696; name = SOUND\O_KILLM2.rbh
+    file[]: crc = 879fba63; size =     15088; name = SOUND\O_KYAAA.rbh
+    file[]: crc = 68dc7cb5; size =     14288; name = SOUND\O_LIFEUP.rbh
+    file[]: crc = c7b9236f; size =     14960; name = SOUND\O_MISSAI.rbh
+    file[]: crc = ec76767e; size =      6016; name = SOUND\O_NO_2.rbh
+    file[]: crc = aa74144e; size =      6864; name = SOUND\O_NO_F3.rbh
+    file[]: crc = 33c534d1; size =     24512; name = SOUND\O_NONONO.rbh
+    file[]: crc = 8f8130e2; size =     11504; name = SOUND\O_OHNO.rbh
+    file[]: crc = db038017; size =      9504; name = SOUND\O_OHNO_2.rbh
+    file[]: crc = 5a977b81; size =       656; name = SOUND\O_PI.rbh
+    file[]: crc = e6f70a9f; size =      6128; name = SOUND\O_SAKE18.rbh
+    file[]: crc = d5a57357; size =      7072; name = SOUND\O_SASARU.rbh
+    file[]: crc = e50da329; size =      9680; name = SOUND\O_SHOUT3.rbh
+    file[]: crc = f536200c; size =      2960; name = SOUND\O_SOUTE2.rbh
+    file[]: crc = c879839f; size =     19056; name = SOUND\O_ST4BO1.rbh
+    file[]: crc = 7416fd19; size =     15792; name = SOUND\O_START4.rbh
+    file[]: crc = 4514c7c0; size =     14976; name = SOUND\O_SUICH2.rbh
+    file[]: crc = 2f2540b0; size =     18720; name = SOUND\O_SUIS_2.rbh
+    file[]: crc = a0926ff6; size =      3632; name = SOUND\O_SUITE2.rbh
+    file[]: crc = f3d994cb; size =      1776; name = SOUND\O_SUITE3.rbh
+    file[]: crc = 0488e8b8; size =    100656; name = SOUND\O_TELEPH.rbh
+    file[]: crc = 24838252; size =      6016; name = SOUND\O_THAN_2.rbh
+    file[]: crc = 861792f0; size =     28848; name = SOUND\O_THUND2.rbh
+    file[]: crc = 0344914f; size =     57744; name = SOUND\O_THUNDE.rbh
+    file[]: crc = f570140e; size =     14464; name = SOUND\O_TORA_2.rbh
+    file[]: crc = 3f98c507; size =      7744; name = SOUND\O_UAAH_2.rbh
+    file[]: crc = 4235bd73; size =     75504; name = SOUND\O_voc02.rbh
+    file[]: crc = 7badc886; size =     40752; name = SOUND\O_voc03.rbh
+    file[]: crc = ffd06d15; size =     30160; name = SOUND\O_voc04.rbh
+    file[]: crc = 5312612e; size =     18512; name = SOUND\O_voc06.rbh
+    file[]: crc = a208efd7; size =      4976; name = SOUND\O_voc07.rbh
+    file[]: crc = b300f3c7; size =      5360; name = SOUND\O_voc08.rbh
+    file[]: crc = f4625d9b; size =      9360; name = SOUND\O_voc09.rbh
+    file[]: crc = 520c5b71; size =     29168; name = SOUND\O_voc11.rbh
+    file[]: crc = 0c9345c9; size =     22848; name = SOUND\O_voc12.rbh
+    file[]: crc = df54494d; size =      8240; name = SOUND\O_voc13.rbh
+    file[]: crc = 31e7fb49; size =     11760; name = SOUND\O_voc15.rbh
+    file[]: crc = f12c66cb; size =     15056; name = SOUND\O_voc16.rbh
+    file[]: crc = 73161498; size =     11792; name = SOUND\O_voc17.rbh
+    file[]: crc = 7b45a000; size =     10400; name = SOUND\O_voc19.rbh
+    file[]: crc = 59d3217b; size =      5888; name = SOUND\O_voc20.rbh
+    file[]: crc = c5e84c70; size =     15712; name = SOUND\O_voc21.rbh
+    file[]: crc = f672e109; size =     11920; name = SOUND\O_voc22.rbh
+    file[]: crc = 27262f09; size =     12448; name = SOUND\O_voc23.rbh
+    file[]: crc = 51be13a8; size =      8736; name = SOUND\O_voc26.rbh
+    file[]: crc = dae084b1; size =     13184; name = SOUND\O_voc27.rbh
+    file[]: crc = 80cba536; size =      7856; name = SOUND\O_voc28.rbh
+    file[]: crc = 64c68c07; size =     13952; name = SOUND\O_voc29.rbh
+    file[]: crc = 9e9bece2; size =     19520; name = SOUND\O_voc30.rbh
+    file[]: crc = 1d04a6c9; size =     12640; name = SOUND\O_voc31.rbh
+    file[]: crc = 163e1d11; size =     13264; name = SOUND\O_voc32.rbh
+    file[]: crc = 20467d88; size =     24128; name = SOUND\O_voc34.rbh
+    file[]: crc = e516f5a9; size =      9392; name = SOUND\O_voc35.rbh
+    file[]: crc = 4fbf34a5; size =     10368; name = SOUND\O_voc36.rbh
+    file[]: crc = 610d2480; size =      8912; name = SOUND\O_voc37.rbh
+    file[]: crc = 2a1d0cfc; size =     26192; name = SOUND\O_voc38.rbh
+    file[]: crc = ba7c00d0; size =     26096; name = SOUND\O_voc39.rbh
+    file[]: crc = e6f5bb61; size =      9936; name = SOUND\O_voc40.rbh
+    file[]: crc = 6cf6f310; size =     78336; name = SOUND\O_voc43.rbh
+    file[]: crc = e43b4bc8; size =      9024; name = SOUND\O_voc44.rbh
+    file[]: crc = 262d2f73; size =     31152; name = SOUND\O_voc45.rbh
+    file[]: crc = 41f7a24a; size =     10720; name = SOUND\O_voc46.rbh
+    file[]: crc = 3641c118; size =      9904; name = SOUND\O_voc47.rbh
+    file[]: crc = ec0d209c; size =     12608; name = SOUND\O_voc49.rbh
+    file[]: crc = b0a7708c; size =     34448; name = SOUND\O_voc50.rbh
+    file[]: crc = 0101460f; size =     24064; name = SOUND\O_voc51.rbh
+    file[]: crc = aa36c990; size =     28896; name = SOUND\O_voc52.rbh
+    file[]: crc = 88e8c547; size =     15616; name = SOUND\O_voc53.rbh
+    file[]: crc = c38eebdb; size =     16256; name = SOUND\O_voc54.rbh
+    file[]: crc = a4fcb40a; size =     10896; name = SOUND\O_voc55.rbh
+    file[]: crc = 03a58d95; size =     18400; name = SOUND\O_voc56.rbh
+    file[]: crc = dc472355; size =     19408; name = SOUND\O_voc57.rbh
+    file[]: crc = e113b560; size =      7648; name = SOUND\O_voc58.rbh
+    file[]: crc = 5588332b; size =     12240; name = SOUND\O_voc59.rbh
+    file[]: crc = 3139419e; size =     11584; name = SOUND\O_voc60.rbh
+    file[]: crc = 5020eb9d; size =      8016; name = SOUND\O_voc61.rbh
+    file[]: crc = 11851d30; size =      6352; name = SOUND\O_voc62.rbh
+    file[]: crc = 7c5a1dc6; size =     69472; name = SOUND\O_voc63.rbh
+    file[]: crc = c123c4b5; size =     70112; name = SOUND\O_voc64.rbh
+    file[]: crc = affe9e5c; size =      7760; name = SOUND\O_voc65.rbh
+    file[]: crc = 81e15c3b; size =     20080; name = SOUND\O_voc66.rbh
+    file[]: crc = 01fcd7e8; size =     26176; name = SOUND\O_voc68.rbh
+    file[]: crc = fbedb199; size =     23680; name = SOUND\O_voc69.rbh
+    file[]: crc = d37ffc67; size =     20272; name = SOUND\O_voc70.rbh
+    file[]: crc = 4d6b470b; size =     60432; name = SOUND\O_voc71.rbh
+    file[]: crc = 09559900; size =     94944; name = SOUND\O_voc72.rbh
+    file[]: crc = add408e5; size =     67696; name = SOUND\O_voc73.rbh
+    file[]: crc = 373516cd; size =     15984; name = SOUND\O_voc74.rbh
+    file[]: crc = 2718d818; size =     31792; name = SOUND\O_voc75.rbh
+    file[]: crc = 432d0875; size =     30880; name = SOUND\O_voc76.rbh
+    file[]: crc = d0f11a37; size =     69424; name = SOUND\O_voc77.rbh
+    file[]: crc = 74cc33e8; size =     11600; name = SOUND\O_voc78.rbh
+    file[]: crc = 52107574; size =     19520; name = SOUND\O_voc79.rbh
+    file[]: crc = e56a9f00; size =     22368; name = SOUND\O_voc80.rbh
+    file[]: crc = 335b00c0; size =     12704; name = SOUND\O_voc81.rbh
+    file[]: crc = f7d39735; size =     17328; name = SOUND\O_voc82.rbh
+    file[]: crc = fca92a6e; size =     11232; name = SOUND\O_voc83.rbh
+    file[]: crc = 50f5b943; size =     19872; name = SOUND\O_voc84.rbh
+    file[]: crc = 65c0c815; size =     14592; name = SOUND\O_voc85.rbh
+    file[]: crc = 4b1fd9bf; size =     15728; name = SOUND\O_voc86.rbh
+    file[]: crc = d56b904e; size =     10320; name = SOUND\O_voc87.rbh
+    file[]: crc = 2eaaed73; size =     11568; name = SOUND\O_voc88.rbh
+    file[]: crc = 234f85d3; size =     13440; name = SOUND\O_voc91.rbh
+    file[]: crc = c25e98b7; size =      5584; name = SOUND\O_voc92.rbh
+    file[]: crc = 75857ed1; size =      4368; name = SOUND\O_voc93.rbh
+    file[]: crc = 47a6c5cc; size =     12000; name = SOUND\O_voc94.rbh
+    file[]: crc = 95bce4ef; size =     15328; name = SOUND\O_WATER_.rbh
+    file[]: crc = 2a55be2b; size =     11904; name = SOUND\O_WHITE5.rbh
+    file[]: crc = 23e08af3; size =     13840; name = SOUND\O_WHITEB.rbh
+    file[]: crc = d7f58a00; size =      9392; name = SOUND\O_WOODBR.rbh
+    file[]: crc = d622999d; size =     31424; name = SOUND\O_ZISIN.rbh
+	
+	//CD-ROM
+
+    file[]: crc = 6206b38f; size =   1144084; name = CD\art\stage1\creature\CREAT1.RBH
+    file[]: crc = 6c372024; size =   2218764; name = CD\art\stage1\creature\CREAT2.rbh
+    file[]: crc = 14a285ac; size =         2; name = CD\art\stage1\creature\TEXTURE.VMC
+    file[]: crc = 1aec3b88; size =    830560; name = CD\art\stage1\world\world1.rbh
+    file[]: crc = ddd55154; size =    670568; name = CD\art\stage2\world\world2.rbh
+    file[]: crc = b544785d; size =    473240; name = CD\art\stage3\world\world3.rbh
+    file[]: crc = 79429c84; size =    224708; name = CD\art\stage4\world\world4.rbh
+    file[]: crc = badf9b60; size =    551964; name = CD\art\stage5\world\WORLD5.RBH
+    file[]: crc = 632d6111; size =   1096252; name = CD\art\stage6\world\world6.rbh
+end
+
+
+//
+// The House of the Dead US CD
+//
+game[pc-cd-en]:
+    name = English, Japanese US CD
+	imports =  common
+    anchorfile = THOTD.exe
+	REGBLOOD = RED
+	REGLANGUAGE = ENGLISH
+	EXENAME = thotd
+	CMDLINE_GFX = -ddraw
+	CMDLINE_CD = $(NULL)
+    file[]: crc = b5a9b6c5; size =   8855552; name = THOTD.exe
+    file[]: crc = 06c41bfc; size =     78372; name = SPRITE\spr.rbh
+	
+	//CD-ROM
+    file[]: crc = 16450a7e; size =    107643; name = THOTDRUN.EXE
+    file[]: crc = 6762298a; size =   7509599; name = CD\art\stage1\creature\B_BLUE.VMC
+    file[]: crc = c39207c7; size =   7509852; name = CD\art\stage1\creature\B_GREEN.VMC
+    file[]: crc = fbdc7496; size =   7510462; name = CD\art\stage1\creature\B_PURPL.VMC
+    file[]: crc = 82f91b4e; size =   7508229; name = CD\art\stage1\creature\B_RED.VMC
+    file[]: crc = 4cd83bff; size =   7509160; name = CD\art\stage1\creature\B_YELLO.VMC
+    file[]: crc = 279d3e7e; size =  55211636; name = CD\art\stage1\creature\bigger.vmc
+    file[]: name = CD\CDDA.SOU; cdda = 296/323/293/27/82/25/104/295/294/139/292
+end
+
+//
+// The House of the Dead JP CD
+//
+game[pc-cd-jp]:
+	name = English, Japanese JP CD
+	imports = common
+	anchorfile = THOTD.exe
+	REGBLOOD = GREEN
+	REGLANGUAGE = JAPANESE
+	EXENAME = thotd
+	ISJAPANESE = 1
+	CMDLINE_GFX = -ddraw
+	CMDLINE_CD = $(NULL)
+    file[]: crc = 15ec3ec9; size =   8855552; name = THOTD.exe
+    file[]: crc = f1b46343; size =     71868; name = sprite\spr.rbh
+	
+	//CD-ROM
+	file[]: crc = 15ec3ec9; size =   8855552; name = CD\THOTD.exe
+    file[]: crc = 16aab078; size =    107655; name = THOTDRUN.EXE
+    file[]: crc = 42586718; size =   7319546; name = art\stage1\creature\B_BLUE.VMC
+    file[]: crc = a801a6db; size =   7319799; name = art\stage1\creature\B_GREEN.VMC
+    file[]: crc = 724814ce; size =   7320409; name = art\stage1\creature\B_PURPL.VMC
+    file[]: crc = f28b49a3; size =   7316752; name = art\stage1\creature\B_RED.VMC
+    file[]: crc = d9dbb5cf; size =   7319107; name = art\stage1\creature\B_YELLO.VMC
+    file[]: crc = ce601c79; size =  54293628; name = art\stage1\creature\bigger.vmc
+    file[]: name = CD\CDDA.SOU; cdda = 82/323/293/27/296/25/104/295/294/139/292
+	
+end
+
+//
+// The House of the Dead EU CD-ROM
+//
+game[pc-cd-eu]:
+	name = English, Japanese EU CD
+	imports = common
+	anchorfile = THOTD.exe
+	REGBLOOD = RED
+	REGLANGUAGE = ENGLISH
+	EXENAME = thotd
+	CMDLINE_GFX = -ddraw
+	CMDLINE_CD = $(NULL)
+    file[]: crc = b5a9b6c5; size =   8855552; name = THOTD.exe
+    file[]: crc = 06c41bfc; size =     78372; name = sprite\spr.rbh
+
+	//CD-ROM
+    file[]: crc = 16450a7e; size =    107643; name = CD\THOTDRUN.EXE	
+    file[]: crc = 6762298a; size =   7509599; name = CD\art\stage1\creature\B_BLUE.VMC
+    file[]: crc = c39207c7; size =   7509852; name = CD\art\stage1\creature\B_GREEN.VMC
+    file[]: crc = fbdc7496; size =   7510462; name = CD\art\stage1\creature\B_PURPL.VMC
+    file[]: crc = 82f91b4e; size =   7508229; name = CD\art\stage1\creature\B_RED.VMC
+    file[]: crc = 4cd83bff; size =   7509160; name = CD\art\stage1\creature\B_YELLO.VMC
+    file[]: crc = 29914531; size =  55211636; name = CD\art\stage1\creature\bigger.vmc
+
+    file[]: name = CD\CDDA.SOU; cdda = 84/325/295/29/298/27/106/297/296/141/294
+end
+
+
+//
+// Direct3D EXE Replacement
+//
+addon[d3d]:
+	name = Direct3D Update
+	upgradeids = [[[,
+		pc-cd-en
+	]]]
+	anchorfile = THOTD.EXE
+	file[]: crc = C9A505B8; size = 8855552; name = THOTD.exe
+	
+end
+
+//
+// Direct3D Upgrader
+//
+upgrader[pc-d3d-upgrader]:
+	name = Direct3D Updater
+	upgradeids = [[[,
+		pc-cd-en
+	]]]
+	anchorfile = RP_THOTD.exe
+	EXENAME = RP_THOTD
+	VERSION = 2
+	AUTOINSTALL_SCRIPT = [[[$(CRLF)
+	        wait("wintitle", "Information"); sleep(250); wincontrol_click(1);
+	]]]
+	
+	file[]: crc = BF8B862E; size = 69678; name = RP_THOTD.EXE; exactonly = true
+end
+
+end

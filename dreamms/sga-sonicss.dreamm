@@ -1,0 +1,538 @@
+//
+// Sonic the Hedgehog The Screen Saver
+//
+desc[sga-sonicss]:
+
+name = Sonic the Hedgehog The Screen Saver
+icon = sga-sonicss.png
+machine = pc
+filter = nonlucas, multimedia
+rootpath = C:\Sega\SonicSS
+launch = "$(rootpath)\$(EXENAME).$(CMDEXT)"
+osenv = windows 95
+winres = 640x480x32
+EXENAME = SCRNSVR
+CMDEXT = EXE
+PGRMMODE = SSAVER
+ISDEMO = FALSE
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = C:\Sega\SONICSS\SONICSS
+
+fragment[picture]:
+
+end
+
+fragment[sound]:
+
+end
+
+fragment[icon]:
+
+end
+
+//
+// exe select, command line config
+//
+config[cmdline]:
+	title = Mode Select
+	option[scrnsvr]: name = Run Screen Saver; EXENAME = SONICSS; CMDEXT = SCR; CMDLINE = /s; PGRMMODE = SSAVER; condition = file_exists("$$(rootpath)\\SCRNSVR.EXE")
+	option[editor]: name = Screen Saver Editor; EXENAME = SONICSS; CMDEXT = SCR; CMDLINE = /c; PGRMMODE = GALLERY; winres =  640x480;  WIDTH =  640; HEIGHT = 480; condition = file_exists("$$(rootpath)\\SCRNSVR.EXE")
+	option[bgm]: name = BGM File; EXENAME = SCRNSVR; CMDEXT = EXE; CMDLINE = S; PGRMMODE = GALLERY; winres =  640x480;  WIDTH =  640; HEIGHT = 480; condition = file_exists("$$(rootpath)\\SCRNSVR.EXE"); condition = ("$$(ISDEMO)" == "FALSE")
+	option[icon]: name = Icon Gallery; EXENAME = SCRNSVR; CMDEXT = EXE; CMDLINE = I; PGRMMODE = GALLERY; winres =  640x480;  WIDTH =  640; HEIGHT = 480; condition = file_exists("$$(rootpath)\\SCRNSVR.EXE"); condition = ("$$(ISDEMO)" == "FALSE")
+	option[pict]: name = Picture; EXENAME = SCRNSVR; CMDEXT = EXE; CMDLINE = W; PGRMMODE = GALLERY; winres =  640x480;  WIDTH =  640; HEIGHT = 480; condition = file_exists("$$(rootpath)\\SCRNSVR.EXE"); condition = ("$$(ISDEMO)" == "FALSE")
+end
+
+//
+// video resolution -- for screensaver
+//
+config[vidsize]:
+    title = Video Resolution
+    option[640]:  name =  640×480;  winres =  640x480;  WIDTH =  640; HEIGHT = 480;  priority = 1; condition = ("$$(PGRMMODE)" == "SSAVER") 
+    option[800]:  name =  800×600;  winres =  800x600;  WIDTH =  800; HEIGHT = 600; condition = ("$$(PGRMMODE)" == "SSAVER") 
+    option[1024]: name = 1024×768;  winres = 1024x768;  WIDTH = 1024; HEIGHT = 768; condition = ("$$(PGRMMODE)" == "SSAVER")
+    option[1280]: name = 1280×960;  winres = 1280x960;  WIDTH = 1280; HEIGHT = 960;  condition = ("$$(PGRMMODE)" == "SSAVER") 
+    option[1600]: name = 1600x1200; winres = 1600x1200; WIDTH = 1600; HEIGHT = 1200;  condition = ("$$(PGRMMODE)" == "SSAVER") 
+end
+
+//
+// video crop -- for editor/gallery
+//
+config[video]:
+    title = Video Configuration
+    option[window]:  name = Cropped to Window; wincrop = true; priority = 1; condition = ("$$(PGRMMODE)" == "GALLERY") 
+    option[desktop]: name = Full Desktop;      wincrop = false; condition = ("$$(PGRMMODE)" == "GALLERY") 
+end
+
+//
+// Screen Saver Scraper
+//
+game[pc-en]:
+    name = English
+	imports = icon
+    anchorfile = SCRNSVR.EXE
+	anchordepth = 1
+	
+	file[]: crc = 3431e9c9; size =    787510; name = BMP\1024x768\SONIC01.BMP
+    file[]: crc = 9a61b91d; size =    787510; name = BMP\1024x768\SONIC02.BMP
+    file[]: crc = 7abc5e4f; size =    787510; name = BMP\1024x768\SONIC03.BMP
+    file[]: crc = 6c9da1ac; size =    787510; name = BMP\1024x768\SONIC04.BMP
+    file[]: crc = 743fe5ce; size =    787510; name = BMP\1024x768\SONIC05.BMP
+    file[]: crc = f1ee01d7; size =    787510; name = BMP\1024x768\SONIC06.BMP
+    file[]: crc = 6bc77e50; size =    787510; name = BMP\1024x768\SONIC07.BMP
+    file[]: crc = 9aedb995; size =    787510; name = BMP\1024x768\SONIC08.BMP
+    file[]: crc = 33e1e0c2; size =    787510; name = BMP\1024x768\SONIC09.BMP
+    file[]: crc = 80e549b5; size =    787510; name = BMP\1024x768\SONIC0A.BMP
+    file[]: crc = 0a15c888; size =    787510; name = BMP\1024x768\SONIC0B.BMP
+    file[]: crc = 8f4df3eb; size =    787510; name = BMP\1024x768\SONIC0C.BMP
+    file[]: crc = 5d106269; size =    787510; name = BMP\1024x768\SONIC0D.BMP
+    file[]: crc = 23d4e38d; size =    787510; name = BMP\1024x768\SONIC0E.BMP
+    file[]: crc = b9570fb5; size =    787510; name = BMP\1024x768\SONIC0F.BMP
+    file[]: crc = 1109057a; size =    787510; name = BMP\1024x768\SONIC10.BMP
+    file[]: crc = 8821da62; size =    787510; name = BMP\1024x768\SONIC11.BMP
+    file[]: crc = 22943a21; size =    787510; name = BMP\1024x768\SONIC12.BMP
+    file[]: crc = b5beb310; size =    787510; name = BMP\1024x768\SONIC13.BMP
+    file[]: crc = 54618313; size =    787510; name = BMP\1024x768\SONIC14.BMP
+    file[]: crc = e731b4a8; size =    787510; name = BMP\1024x768\SONIC15.BMP
+    file[]: crc = f0c325ea; size =    787510; name = BMP\1024x768\SONIC16.BMP
+    file[]: crc = fafdd5ba; size =    787510; name = BMP\1024x768\SONIC17.BMP
+    file[]: crc = 2abae927; size =    787510; name = BMP\1024x768\SONIC18.BMP
+    file[]: crc = a5e57a4b; size =    787510; name = BMP\1024x768\SONIC19.BMP
+    file[]: crc = a2c1cdc4; size =    787510; name = BMP\1024x768\SONIC20.BMP
+    file[]: crc = 56f291e6; size =    787510; name = BMP\1024x768\SONIC21.BMP
+    file[]: crc = f801b53a; size =    787510; name = BMP\1024x768\SONIC22.BMP
+    file[]: crc = 5f2624c4; size =    787510; name = BMP\1024x768\SONIC23.BMP
+    file[]: crc = e96fee21; size =    787510; name = BMP\1024x768\SONIC24.BMP
+    file[]: crc = f8f02263; size =    787510; name = BMP\1024x768\SONIC25.BMP
+    file[]: crc = 9da896e5; size =    787510; name = BMP\1024x768\SONIC26.BMP
+    file[]: crc = e8971b33; size =    787510; name = BMP\1024x768\SONIC27.BMP
+    file[]: crc = 8f14f58e; size =    787510; name = BMP\1024x768\SONIC28.BMP
+    file[]: crc = ab9cad8f; size =    787510; name = BMP\1024x768\SONIC29.BMP
+    file[]: crc = 4edadfde; size =    787510; name = BMP\1024x768\SONIC30.BMP
+    file[]: crc = 0ee3a7ad; size =    787510; name = BMP\1024x768\SONIC31.BMP
+    file[]: crc = 9252bb89; size =    787510; name = BMP\1024x768\SONIC32.BMP
+    file[]: crc = 141190ae; size =    787510; name = BMP\1024x768\SONIC33.BMP
+    file[]: crc = 31b96654; size =    787510; name = BMP\1024x768\SONIC34.BMP
+    file[]: crc = 787bec46; size =    787510; name = BMP\1024x768\SONIC35.BMP
+    file[]: crc = f8f52324; size =    787510; name = BMP\1024x768\SONIC36.BMP
+    file[]: crc = 7367f377; size =    787510; name = BMP\1024x768\SONIC37.BMP
+    file[]: crc = 809945a2; size =    787510; name = BMP\1024x768\SONIC38.BMP
+    file[]: crc = 30f07778; size =    787510; name = BMP\1024x768\SONIC39.BMP
+    file[]: crc = e8047a48; size =    787510; name = BMP\1024x768\SONIC40.BMP
+    file[]: crc = fece5a59; size =    787510; name = BMP\1024x768\SONIC42.BMP
+    file[]: crc = bc97bd7c; size =    787510; name = BMP\1024x768\SONIC43.BMP
+    file[]: crc = b4031cd9; size =    787510; name = BMP\1024x768\SONIC44.BMP
+    file[]: crc = 937db2d8; size =    787510; name = BMP\1024x768\SONIC46.BMP
+    file[]: crc = 56e3d204; size =    787510; name = BMP\1024x768\SONIC48.BMP
+    file[]: crc = dddeefe7; size =    787510; name = BMP\1024x768\SONIC4A.BMP
+    file[]: crc = ef4519a7; size =    787510; name = BMP\1024x768\SONIC4B.BMP
+    file[]: crc = 802e5ffa; size =    787510; name = BMP\1024x768\SONIC4C.BMP
+    file[]: crc = b6aa6ad3; size =    787510; name = BMP\1024x768\SONIC4D.BMP
+    file[]: crc = 07ddd1f4; size =    787510; name = BMP\1024x768\SONIC50.BMP
+    file[]: crc = 93f088fa; size =    787510; name = BMP\1024x768\SONIC51.BMP
+    file[]: crc = 7e40c00b; size =    787510; name = BMP\1024x768\SONIC52.BMP
+    file[]: crc = 9a1e15a9; size =    787510; name = BMP\1024x768\SONIC53.BMP
+    file[]: crc = 6478f1ac; size =    787510; name = BMP\1024x768\SONIC54.BMP
+    file[]: crc = dfa26c68; size =    787510; name = BMP\1024x768\SONIC55.BMP
+    file[]: crc = ab9ab824; size =    787510; name = BMP\1024x768\SONIC56.BMP
+    file[]: crc = 34685a38; size =    787510; name = BMP\1024x768\SONIC57.BMP
+    file[]: crc = 8c79dee3; size =    787510; name = BMP\1024x768\SONIC58.BMP
+    file[]: crc = fa1b4f8b; size =    787510; name = BMP\1024x768\SONIC59.BMP
+    file[]: crc = 8336d9ff; size =    787510; name = BMP\1024x768\SONIC60.BMP
+    file[]: crc = c994cfb9; size =    787510; name = BMP\1024x768\SONIC61.BMP
+    file[]: crc = c868e1de; size =    787510; name = BMP\1024x768\SONIC62.BMP
+    file[]: crc = ba4471e6; size =    787510; name = BMP\1024x768\SONIC63.BMP
+    file[]: crc = 0558449c; size =    787510; name = BMP\1024x768\SONIC64.BMP
+    file[]: crc = 2cd63394; size =    787510; name = BMP\1024x768\SONIC65.BMP
+    file[]: crc = 9cf1b8d7; size =    787510; name = BMP\1024x768\SONIC66.BMP
+    file[]: crc = 374f2389; size =    787510; name = BMP\1024x768\SONIC67.BMP
+    file[]: crc = 42871eff; size =    787510; name = BMP\1024x768\SONIC68.BMP
+    file[]: crc = 11fd6bee; size =    787510; name = BMP\1024x768\SONIC69.BMP
+    file[]: crc = 33a636c4; size =    787510; name = BMP\1024x768\SONICA_.BMP
+    file[]: crc = c5e071f5; size =    787510; name = BMP\1024x768\SONICB_.BMP
+    file[]: crc = e12bbdad; size =    787510; name = BMP\1024x768\SONICC_.BMP
+    file[]: crc = edbd06fd; size =    787510; name = BMP\1024x768\SONICD_.BMP
+    file[]: crc = 307c8211; size =    787510; name = BMP\1024x768\SONICE_.BMP
+    file[]: crc = 2c755594; size =    787510; name = BMP\1024x768\SONICF_.BMP
+    file[]: crc = 2ffd5dfd; size =    787510; name = BMP\1024x768\SONICG_.BMP
+    file[]: crc = de15830b; size =    787510; name = BMP\1024x768\SONICH_.BMP
+    file[]: crc = 025dc8c1; size =    787510; name = BMP\1024x768\SONICI_.BMP
+    file[]: crc = fb884018; size =    787510; name = BMP\1024x768\SONICJ_.BMP
+    file[]: crc = 7a1989d2; size =    787510; name = BMP\1024x768\SONICK_.BMP
+    file[]: crc = 0ee1fdc0; size =    787510; name = BMP\1024x768\SONICL_.BMP
+    file[]: crc = 67bc751e; size =    787510; name = BMP\1024x768\SONICM_.BMP
+    file[]: crc = 370eb4d9; size =    787510; name = BMP\1024x768\SONICN_.BMP
+    file[]: crc = b659d950; size =    787510; name = BMP\1024x768\SONICO_.BMP
+    file[]: crc = 4cdb7371; size =    308278; name = BMP\640x480\SONIC01.BMP
+    file[]: crc = 7c440b3c; size =    308278; name = BMP\640x480\SONIC02.BMP
+    file[]: crc = fda8f5d4; size =    308278; name = BMP\640x480\SONIC03.BMP
+    file[]: crc = 562b032f; size =    308278; name = BMP\640x480\SONIC04.BMP
+    file[]: crc = eb87adc8; size =    308278; name = BMP\640x480\SONIC05.BMP
+    file[]: crc = c52a5d10; size =    308278; name = BMP\640x480\SONIC06.BMP
+    file[]: crc = 16a20b90; size =    308278; name = BMP\640x480\SONIC07.BMP
+    file[]: crc = f5184566; size =    308278; name = BMP\640x480\SONIC08.BMP
+    file[]: crc = 01426bd9; size =    308278; name = BMP\640x480\SONIC09.BMP
+    file[]: crc = 87cb91c1; size =    308278; name = BMP\640x480\SONIC0A.BMP
+    file[]: crc = e703943d; size =    308278; name = BMP\640x480\SONIC0B.BMP
+    file[]: crc = decd2fe3; size =    308278; name = BMP\640x480\SONIC0C.BMP
+    file[]: crc = 5cd084d4; size =    308278; name = BMP\640x480\SONIC0D.BMP
+    file[]: crc = 47e3daa3; size =    308278; name = BMP\640x480\SONIC0E.BMP
+    file[]: crc = 610fb25e; size =    308278; name = BMP\640x480\SONIC0F.BMP
+    file[]: crc = c845305c; size =    308278; name = BMP\640x480\SONIC10.BMP
+    file[]: crc = cd6f9659; size =    308278; name = BMP\640x480\SONIC11.BMP
+    file[]: crc = 9e0e8303; size =    308278; name = BMP\640x480\SONIC12.BMP
+    file[]: crc = e9719fbd; size =    308278; name = BMP\640x480\SONIC13.BMP
+    file[]: crc = 46b6511b; size =    308278; name = BMP\640x480\SONIC14.BMP
+    file[]: crc = 0860088c; size =    308278; name = BMP\640x480\SONIC15.BMP
+    file[]: crc = fb664b56; size =    308278; name = BMP\640x480\SONIC16.BMP
+    file[]: crc = 4927db99; size =    308278; name = BMP\640x480\SONIC17.BMP
+    file[]: crc = 5098aee5; size =    308278; name = BMP\640x480\SONIC18.BMP
+    file[]: crc = 98c15831; size =    308278; name = BMP\640x480\SONIC19.BMP
+    file[]: crc = 6f1b32da; size =    308278; name = BMP\640x480\SONIC20.BMP
+    file[]: crc = bab98ff5; size =    308278; name = BMP\640x480\SONIC21.BMP
+    file[]: crc = 1632d50a; size =    308278; name = BMP\640x480\SONIC22.BMP
+    file[]: crc = f8d604a6; size =    308278; name = BMP\640x480\SONIC23.BMP
+    file[]: crc = 615128b4; size =    308278; name = BMP\640x480\SONIC24.BMP
+    file[]: crc = ea1ac671; size =    308278; name = BMP\640x480\SONIC25.BMP
+    file[]: crc = adaabf50; size =    308278; name = BMP\640x480\SONIC26.BMP
+    file[]: crc = d4343d63; size =    308278; name = BMP\640x480\SONIC27.BMP
+    file[]: crc = 28e0384f; size =    308278; name = BMP\640x480\SONIC28.BMP
+    file[]: crc = 99053691; size =    308278; name = BMP\640x480\SONIC29.BMP
+    file[]: crc = ac25e2a9; size =    308278; name = BMP\640x480\SONIC30.BMP
+    file[]: crc = d540eb3a; size =    308278; name = BMP\640x480\SONIC31.BMP
+    file[]: crc = b2face50; size =    308278; name = BMP\640x480\SONIC32.BMP
+    file[]: crc = 13b9f152; size =    308278; name = BMP\640x480\SONIC33.BMP
+    file[]: crc = 074a52a0; size =    308278; name = BMP\640x480\SONIC34.BMP
+    file[]: crc = 145a6f07; size =    308278; name = BMP\640x480\SONIC35.BMP
+    file[]: crc = 26bbd3fd; size =    308278; name = BMP\640x480\SONIC36.BMP
+    file[]: crc = e417139e; size =    308278; name = BMP\640x480\SONIC37.BMP
+    file[]: crc = 103c67e2; size =    308278; name = BMP\640x480\SONIC38.BMP
+    file[]: crc = c261fbe3; size =    308278; name = BMP\640x480\SONIC39.BMP
+    file[]: crc = 7532286a; size =    308278; name = BMP\640x480\SONIC40.BMP
+    file[]: crc = 11b7ef15; size =    308278; name = BMP\640x480\SONIC42.BMP
+    file[]: crc = 6165d0ef; size =    308278; name = BMP\640x480\SONIC43.BMP
+    file[]: crc = 8c8cd2ed; size =    308278; name = BMP\640x480\SONIC44.BMP
+    file[]: crc = 35059640; size =    308278; name = BMP\640x480\SONIC46.BMP
+    file[]: crc = 6be798e1; size =    308278; name = BMP\640x480\SONIC48.BMP
+    file[]: crc = 41d3e169; size =    308278; name = BMP\640x480\SONIC4A.BMP
+    file[]: crc = 73a99336; size =    308278; name = BMP\640x480\SONIC4B.BMP
+    file[]: crc = f12c68a5; size =    308278; name = BMP\640x480\SONIC4C.BMP
+    file[]: crc = ebaa0127; size =    308278; name = BMP\640x480\SONIC4D.BMP
+    file[]: crc = 9a4367d8; size =    308278; name = BMP\640x480\SONIC50.BMP
+    file[]: crc = f9743b1a; size =    308278; name = BMP\640x480\SONIC51.BMP
+    file[]: crc = 72262164; size =    308278; name = BMP\640x480\SONIC52.BMP
+    file[]: crc = f2f228e1; size =    308278; name = BMP\640x480\SONIC53.BMP
+    file[]: crc = 61327635; size =    308278; name = BMP\640x480\SONIC54.BMP
+    file[]: crc = f336a12c; size =    308278; name = BMP\640x480\SONIC55.BMP
+    file[]: crc = 3e523587; size =    308278; name = BMP\640x480\SONIC56.BMP
+    file[]: crc = 6a87dc82; size =    308278; name = BMP\640x480\SONIC57.BMP
+    file[]: crc = be7cfb9d; size =    308278; name = BMP\640x480\SONIC58.BMP
+    file[]: crc = 25a66876; size =    308278; name = BMP\640x480\SONIC59.BMP
+    file[]: crc = 13d19359; size =    308278; name = BMP\640x480\SONIC60.BMP
+    file[]: crc = 158102f8; size =    308278; name = BMP\640x480\SONIC61.BMP
+    file[]: crc = 23c6a815; size =    308278; name = BMP\640x480\SONIC62.BMP
+    file[]: crc = 91108ee1; size =    308278; name = BMP\640x480\SONIC63.BMP
+    file[]: crc = 0c37dd9a; size =    308278; name = BMP\640x480\SONIC64.BMP
+    file[]: crc = 6d233152; size =    308278; name = BMP\640x480\SONIC65.BMP
+    file[]: crc = 2e291a03; size =    308278; name = BMP\640x480\SONIC66.BMP
+    file[]: crc = a6da09f0; size =    308278; name = BMP\640x480\SONIC67.BMP
+    file[]: crc = 8dd8cbdd; size =    308278; name = BMP\640x480\SONIC68.BMP
+    file[]: crc = f887d2d3; size =    308278; name = BMP\640x480\SONIC69.BMP
+    file[]: crc = 2167e237; size =    308278; name = BMP\640x480\SONICA_.BMP
+    file[]: crc = 1ab8b809; size =    308278; name = BMP\640x480\SONICB_.BMP
+    file[]: crc = 23193c8d; size =    308278; name = BMP\640x480\SONICC_.BMP
+    file[]: crc = 79f79f5d; size =    308278; name = BMP\640x480\SONICD_.BMP
+    file[]: crc = 7dd5eade; size =    308278; name = BMP\640x480\SONICE_.BMP
+    file[]: crc = 0cdbb6c0; size =    308278; name = BMP\640x480\SONICF_.BMP
+    file[]: crc = bb92f3bd; size =    308278; name = BMP\640x480\SONICG_.BMP
+    file[]: crc = aad8dfaa; size =    308278; name = BMP\640x480\SONICH_.BMP
+    file[]: crc = 24d92aeb; size =    308278; name = BMP\640x480\SONICI_.BMP
+    file[]: crc = f325fcd5; size =    308278; name = BMP\640x480\SONICJ_.BMP
+    file[]: crc = 43df5877; size =    308278; name = BMP\640x480\SONICK_.BMP
+    file[]: crc = fdb4b2e4; size =    308278; name = BMP\640x480\SONICL_.BMP
+    file[]: crc = 7720ebb5; size =    308278; name = BMP\640x480\SONICM_.BMP
+    file[]: crc = 4bdebbdf; size =    308278; name = BMP\640x480\SONICN_.BMP
+    file[]: crc = e7b79a3f; size =    308278; name = BMP\640x480\SONICO_.BMP
+	
+	file[]: crc = 9d4d30f9; size =   1147784; name = SOUND\BGM\S1_81.WAV
+    file[]: crc = 7c4dc371; size =    868549; name = SOUND\BGM\S1_82.WAV
+    file[]: crc = cb052a26; size =    966061; name = SOUND\BGM\S1_83.WAV
+    file[]: crc = e2514bba; size =   1102158; name = SOUND\BGM\S1_84.WAV
+    file[]: crc = 19c63855; size =    978984; name = SOUND\BGM\S1_85.WAV
+    file[]: crc = c1ef3952; size =   1766033; name = SOUND\BGM\S1_86.WAV
+    file[]: crc = 903bc499; size =    373206; name = SOUND\BGM\S1_87.WAV
+    file[]: crc = e08bf4de; size =     42998; name = SOUND\BGM\S1_88.WAV
+    file[]: crc = e67b4d87; size =    847388; name = SOUND\BGM\S1_89.WAV
+    file[]: crc = 2852b012; size =     96920; name = SOUND\BGM\S1_8A.WAV
+    file[]: crc = fa92f1ea; size =    199003; name = SOUND\BGM\S1_8B.WAV
+    file[]: crc = a903bdbd; size =    588628; name = SOUND\BGM\S1_8C.WAV
+    file[]: crc = cacadee5; size =    613928; name = SOUND\BGM\S1_8D.WAV
+    file[]: crc = 461cb561; size =     66669; name = SOUND\BGM\S1_8E.WAV
+    file[]: crc = a56478e8; size =    130684; name = SOUND\BGM\S1_8F.WAV
+    file[]: crc = 416f4e91; size =    103189; name = SOUND\BGM\S1_90.WAV
+    file[]: crc = 341a617f; size =   1334070; name = SOUND\BGM\S1_91.WAV
+    file[]: crc = d397e92b; size =    127223; name = SOUND\BGM\S1_92.WAV
+    file[]: crc = d17b2681; size =     31120; name = SOUND\BGM\S1_93.WAV
+    file[]: crc = f54701f3; size =    999903; name = SOUND\BGM\S2_01.WAV
+    file[]: crc = 31dd4e57; size =   2021966; name = SOUND\BGM\S2_02.WAV
+    file[]: crc = 92ddd505; size =   1862998; name = SOUND\BGM\S2_03.WAV
+    file[]: crc = a5ef90f4; size =   1980566; name = SOUND\BGM\S2_04.WAV
+    file[]: crc = f7d004b4; size =   1158819; name = SOUND\BGM\S2_05.WAV
+    file[]: crc = d78f00a7; size =   1046882; name = SOUND\BGM\S2_06.WAV
+    file[]: crc = 7bbd5314; size =    968511; name = SOUND\BGM\S2_07.WAV
+    file[]: crc = 4b9a2e5d; size =   1075037; name = SOUND\BGM\S2_08.WAV
+    file[]: crc = 8105b622; size =   1459662; name = SOUND\BGM\S2_09.WAV
+    file[]: crc = fd56951f; size =   1317804; name = SOUND\BGM\S2_0A.WAV
+    file[]: crc = 3f0e100d; size =   1415549; name = SOUND\BGM\S2_0B.WAV
+    file[]: crc = 2f450d07; size =   1018124; name = SOUND\BGM\S2_0C.WAV
+    file[]: crc = 80ef9524; size =   1043133; name = SOUND\BGM\S2_0D.WAV
+    file[]: crc = 657be95d; size =   1367453; name = SOUND\BGM\S2_0E.WAV
+    file[]: crc = 6901afb4; size =   1103754; name = SOUND\BGM\S2_0F.WAV
+    file[]: crc = 2a0c83d6; size =   1220622; name = SOUND\BGM\S2_10.WAV
+    file[]: crc = 5fa8267b; size =    268015; name = SOUND\BGM\S2_11.WAV
+    file[]: crc = 544bb01a; size =   1116869; name = SOUND\BGM\S2_12.WAV
+    file[]: crc = 503125bc; size =    955686; name = SOUND\BGM\S2_13.WAV
+    file[]: crc = f06593c5; size =   1497601; name = SOUND\BGM\S2_14.WAV
+    file[]: crc = 5920f6f2; size =    128166; name = SOUND\BGM\S2_15.WAV
+    file[]: crc = 74d92aec; size =   1751503; name = SOUND\BGM\S2_16.WAV
+    file[]: crc = d71334c7; size =     31238; name = SOUND\BGM\S2_17.WAV
+    file[]: crc = 3da84c0b; size =    130712; name = SOUND\BGM\S2_18.WAV
+    file[]: crc = b7be69b9; size =    103336; name = SOUND\BGM\S2_19.WAV
+    file[]: crc = f9ad3e71; size =     66731; name = SOUND\BGM\S2_1A.WAV
+    file[]: crc = 604a5d18; size =     98522; name = SOUND\BGM\S2_1B.WAV
+    file[]: crc = 25e981a0; size =    359983; name = SOUND\BGM\S2_1C.WAV
+    file[]: crc = 0ce07905; size =     40376; name = SOUND\BGM\S2_1D.WAV
+    file[]: crc = 09d9b1ce; size =    613971; name = SOUND\BGM\S2_1E.WAV
+    file[]: crc = 226bc427; size =    808518; name = SOUND\BGM\S2_1F.WAV
+    file[]: crc = 2e01ec9f; size =   1599110; name = SOUND\BGM\S3&K_01.WAV
+    file[]: crc = c9a8e5a8; size =   1531190; name = SOUND\BGM\S3&K_02.WAV
+    file[]: crc = f0a80a75; size =   1461849; name = SOUND\BGM\S3&K_03.WAV
+    file[]: crc = 3bcb012a; size =   1317482; name = SOUND\BGM\S3&K_04.WAV
+    file[]: crc = e7d9cf79; size =   1505109; name = SOUND\BGM\S3&K_05.WAV
+    file[]: crc = 086ed5c8; size =   1479457; name = SOUND\BGM\S3&K_06.WAV
+    file[]: crc = 83cf47b5; size =   1028201; name = SOUND\BGM\S3&K_07.WAV
+    file[]: crc = 21c85ce3; size =   1041338; name = SOUND\BGM\S3&K_08.WAV
+    file[]: crc = 816ef728; size =   1122902; name = SOUND\BGM\S3&K_09.WAV
+    file[]: crc = 0d16e7d8; size =   1063310; name = SOUND\BGM\S3&K_0A.WAV
+    file[]: crc = 81602c6a; size =   1138618; name = SOUND\BGM\S3&K_0B.WAV
+    file[]: crc = 8bfcece5; size =   1209988; name = SOUND\BGM\S3&K_0C.WAV
+    file[]: crc = 3ec03c10; size =    991964; name = SOUND\BGM\S3&K_0D.WAV
+    file[]: crc = 5c2a3c1c; size =   1123767; name = SOUND\BGM\S3&K_0E.WAV
+    file[]: crc = cf415a52; size =   1505594; name = SOUND\BGM\S3&K_0F.WAV
+    file[]: crc = 99b61842; size =   1020356; name = SOUND\BGM\S3&K_10.WAV
+    file[]: crc = 7c42507c; size =    988042; name = SOUND\BGM\S3&K_11.WAV
+    file[]: crc = d58b8304; size =    716924; name = SOUND\BGM\S3&K_12.WAV
+    file[]: crc = 97d0df4f; size =    723106; name = SOUND\BGM\S3&K_13.WAV
+    file[]: crc = e49e9d2e; size =    847123; name = SOUND\BGM\S3&K_14.WAV
+    file[]: crc = fdadfcf5; size =   1377830; name = SOUND\BGM\S3&K_15.WAV
+    file[]: crc = 7b855ebc; size =   1236195; name = SOUND\BGM\S3&K_16.WAV
+    file[]: crc = e17c8d37; size =   1589490; name = SOUND\BGM\S3&K_17.WAV
+    file[]: crc = b6d1a28d; size =   1694806; name = SOUND\BGM\S3&K_18.WAV
+    file[]: crc = 27607723; size =   1159634; name = SOUND\BGM\S3&K_19.WAV
+    file[]: crc = e7350c39; size =   1350974; name = SOUND\BGM\S3&K_1A.WAV
+    file[]: crc = 97fea0a8; size =   1320983; name = SOUND\BGM\S3&K_1B.WAV
+    file[]: crc = 1d252873; size =   1143907; name = SOUND\BGM\S3&K_1C.WAV
+    file[]: crc = dc49bc8f; size =   1476594; name = SOUND\BGM\S3&K_1D.WAV
+    file[]: crc = 7e60083e; size =   1446146; name = SOUND\BGM\S3&K_1E.WAV
+    file[]: crc = ac40214d; size =    177299; name = SOUND\BGM\S3&K_1F.WAV
+    file[]: crc = 18388178; size =    191045; name = SOUND\BGM\S3&K_20.WAV
+    file[]: crc = e1c31b6f; size =     90281; name = SOUND\BGM\S3&K_21.WAV
+    file[]: crc = 4ec3e303; size =    394324; name = SOUND\BGM\S3&K_22.WAV
+    file[]: crc = 10298528; size =     54692; name = SOUND\BGM\S3&K_23.WAV
+    file[]: crc = 6e65ab24; size =     33656; name = SOUND\BGM\S3&K_24.WAV
+    file[]: crc = 2fabecd3; size =     36532; name = SOUND\BGM\S3&K_25.WAV
+    file[]: crc = 76482f7d; size =     32040; name = SOUND\BGM\S3&K_26.WAV
+    file[]: crc = 8eba43b1; size =    283505; name = SOUND\BGM\S3&K_27.WAV
+    file[]: crc = 73815a0a; size =    384152; name = SOUND\BGM\S3&K_28.WAV
+    file[]: crc = 20f676c3; size =   1506907; name = SOUND\BGM\S3&K_29.WAV
+    file[]: crc = a7f695dd; size =   1320050; name = SOUND\BGM\S3&K_2A.WAV
+    file[]: crc = 3d05c81b; size =    118321; name = SOUND\BGM\S3&K_2B.WAV
+    file[]: crc = 4dfc1472; size =    110481; name = SOUND\BGM\S3&K_2C.WAV
+    file[]: crc = fd302db0; size =    110607; name = SOUND\BGM\S3&K_2D.WAV
+    file[]: crc = d19168b4; size =   1879586; name = SOUND\BGM\S3&K_2E.WAV
+    file[]: crc = ac06b727; size =     45781; name = SOUND\BGM\SCD_C_02.WAV
+    file[]: crc = 6e870aac; size =   1169842; name = SOUND\BGM\SCD_C_03.WAV
+    file[]: crc = da2fbd4b; size =    866682; name = SOUND\BGM\SCD_C_04.WAV
+    file[]: crc = 66bb8887; size =    904411; name = SOUND\BGM\SCD_C_05.WAV
+    file[]: crc = 0d738871; size =   1075356; name = SOUND\BGM\SCD_C_06.WAV
+    file[]: crc = 6be934f8; size =    851237; name = SOUND\BGM\SCD_C_07.WAV
+    file[]: crc = 21649a56; size =    873891; name = SOUND\BGM\SCD_C_08.WAV
+    file[]: crc = aed13b0f; size =   1245170; name = SOUND\BGM\SCD_C_09.WAV
+    file[]: crc = 082087ae; size =    854565; name = SOUND\BGM\SCD_C_10.WAV
+    file[]: crc = 8dcedb58; size =    830981; name = SOUND\BGM\SCD_C_11.WAV
+    file[]: crc = a364eecb; size =   1103668; name = SOUND\BGM\SCD_C_12.WAV
+    file[]: crc = 592be85d; size =    825392; name = SOUND\BGM\SCD_C_13.WAV
+    file[]: crc = 29ed7465; size =    690296; name = SOUND\BGM\SCD_C_14.WAV
+    file[]: crc = e46fdbb3; size =    992055; name = SOUND\BGM\SCD_C_15.WAV
+    file[]: crc = 3244b047; size =    660775; name = SOUND\BGM\SCD_C_16.WAV
+    file[]: crc = 03e1f708; size =    855629; name = SOUND\BGM\SCD_C_17.WAV
+    file[]: crc = 5d34b987; size =   1236111; name = SOUND\BGM\SCD_C_18.WAV
+    file[]: crc = 6b45eed8; size =    782758; name = SOUND\BGM\SCD_C_19.WAV
+    file[]: crc = 53759dc6; size =    714121; name = SOUND\BGM\SCD_C_20.WAV
+    file[]: crc = 1bcad851; size =    911459; name = SOUND\BGM\SCD_C_21.WAV
+    file[]: crc = 86c2eba8; size =    702984; name = SOUND\BGM\SCD_C_22.WAV
+    file[]: crc = dda20048; size =    778541; name = SOUND\BGM\SCD_C_23.WAV
+    file[]: crc = 0349d598; size =    857764; name = SOUND\BGM\SCD_C_24.WAV
+    file[]: crc = df3c74e3; size =    893537; name = SOUND\BGM\SCD_C_25.WAV
+    file[]: crc = f114fd26; size =    306396; name = SOUND\BGM\SCD_C_26.WAV
+    file[]: crc = 4692ee6e; size =    306645; name = SOUND\BGM\SCD_C_27.WAV
+    file[]: crc = 50c01e85; size =     68811; name = SOUND\BGM\SCD_C_28.WAV
+    file[]: crc = bc648906; size =    226647; name = SOUND\BGM\SCD_C_29.WAV
+    file[]: crc = a772be2a; size =    216834; name = SOUND\BGM\SCD_C_30.WAV
+    file[]: crc = c0450192; size =    103056; name = SOUND\BGM\SCD_C_31.WAV
+    file[]: crc = fa53b876; size =   1318378; name = SOUND\BGM\SCD_C_32.WAV
+    file[]: crc = cacfc881; size =   1344906; name = SOUND\BGM\SCD_C_33.WAV
+    file[]: crc = 3170d323; size =    990895; name = SOUND\BGM\SCD_C_34.WAV
+    file[]: crc = f8255f95; size =   1978924; name = SOUND\BGM\SCD_C_35.WAV
+    file[]: crc = 9e068c12; size =   1798310; name = SOUND\BGM\SCD_P_10.WAV
+    file[]: crc = 38d76b24; size =   1732341; name = SOUND\BGM\SCD_P_11.WAV
+    file[]: crc = 773dad9a; size =   1738353; name = SOUND\BGM\SCD_P_12.WAV
+    file[]: crc = 0d729166; size =   1555742; name = SOUND\BGM\SCD_P_13.WAV
+    file[]: crc = 4c1f11ae; size =   2455187; name = SOUND\BGM\SCD_P_14.WAV
+    file[]: crc = 97e43839; size =   2057924; name = SOUND\BGM\SCD_P_15.WAV
+    file[]: crc = 85578b7c; size =   1798986; name = SOUND\BGM\SCD_P_16.WAV
+    file[]: crc = f9f7c033; size =    331339; name = SOUND\SE\1_1_1.WAV
+    file[]: crc = d9cf6f8e; size =    110299; name = SOUND\SE\3_1.WAV
+    file[]: crc = 5fc920fc; size =    330844; name = SOUND\SE\3_1_B.WAV
+    file[]: crc = 05dcb081; size =     19229; name = SOUND\SE\3_5_1.WAV
+    file[]: crc = 1f5448bc; size =     11372; name = SOUND\SE\3_5_2.WAV
+    file[]: crc = 824aef68; size =     22130; name = SOUND\SE\4_3.WAV
+    file[]: crc = 59095712; size =     84318; name = SOUND\SE\5_1.WAV
+    file[]: crc = ae9a4dce; size =      6636; name = SOUND\SE\5_2.WAV
+    file[]: crc = cd378535; size =      4636; name = SOUND\SE\5_4.WAV
+    file[]: crc = b24d0768; size =      6132; name = SOUND\SE\6_12.WAV
+    file[]: crc = a0fe6510; size =     60460; name = SOUND\SE\6_14.WAV
+    file[]: crc = 61984cb3; size =      5000; name = SOUND\SE\6_3.WAV
+    file[]: crc = 19d06937; size =      4652; name = SOUND\SE\6_6_1.WAV
+    file[]: crc = d59606b0; size =    175557; name = SOUND\SE\6_6_2.WAV
+    file[]: crc = e4e3d4b8; size =    332608; name = SOUND\SE\7_1.WAV
+    file[]: crc = 9a817682; size =      8076; name = SOUND\SE\7_5_1.WAV
+    file[]: crc = d87a3813; size =      8695; name = SOUND\SE\7_5_2.WAV
+    file[]: crc = cba33684; size =     23644; name = SOUND\SE\7_5_3.WAV
+    file[]: crc = c91d5f18; size =     13388; name = SOUND\SE\7_5_4.WAV
+    file[]: crc = f2f2e22b; size =      4012; name = SOUND\SE\7_5_5.WAV
+    file[]: crc = 593ea595; size =      6732; name = SOUND\SE\8_1_2.WAV
+    file[]: crc = 515aed91; size =     22028; name = SOUND\SE\8_1_3.WAV
+    file[]: crc = 515aed91; size =     22028; name = SOUND\SE\8_1_4.WAV
+    file[]: crc = 96c59067; size =      9914; name = SOUND\SE\S2_23.WAV
+    file[]: crc = cf093206; size =      2440; name = SOUND\SE\S2_48.WAV
+    file[]: crc = c5bfc18e; size =     25458; name = SOUND\SE\S2_5F.WAV
+    file[]: crc = 926c15dc; size =      9229; name = SOUND\SE\S3_36.WAV
+    file[]: crc = d7e7e7fd; size =     22363; name = SOUND\SE\S3_3C.WAV
+    file[]: crc = fb76123f; size =      6689; name = SOUND\SE\S3_49.WAV
+    file[]: crc = 9e25d752; size =      2022; name = SOUND\SE\S3_55.WAV
+    file[]: crc = 705a5fc0; size =      8653; name = SOUND\SE\S3_62.WAV
+    file[]: crc = b5ae1821; size =      4138; name = SOUND\SE\S3_80.WAV
+    file[]: crc = b0cd081c; size =     13864; name = SOUND\SE\S3_AB.WAV
+    file[]: crc = be716d8a; size =      3419; name = SOUND\SE\S3_BA.WAV
+    file[]: crc = 8f0b3172; size =      3078; name = SOUND\SE\S3_BB.WAV
+	file[]: crc = 06C4450A; size = 26220; name = SONICSS\SONICSS.SCR
+    file[]: crc = 17f5096c; size =      1420; name = S3L.BSS
+    file[]: crc = c43947fd; size =      1420; name = S3S.BSS
+    file[]: crc = 0e9fbf8d; size =      1420; name = S4L.BSS
+    file[]: crc = 84ae9c0a; size =      1420; name = S4S.BSS
+    file[]: crc = 1ce3257e; size =      1428; name = S5L.BSS
+    file[]: crc = 85faf89b; size =      1428; name = S5S.BSS
+    file[]: crc = ead0b314; size =      1432; name = S6L.BSS
+    file[]: crc = 47e80a57; size =      1432; name = S6S.BSS
+    file[]: crc = ea662962; size =     27136; name = SONICSS\BCSTCTL.DLL
+    file[]: crc = e26644f3; size =     27040; name = SONICSS\BGMFILE.EXE
+    file[]: crc = 7d74900e; size =     12260; name = SONICSS\EDITORSB.BMP
+    file[]: crc = 4fee4468; size =      4608; name = SONICSS\EFFECT01.SSL
+    file[]: crc = cdbf002a; size =      4608; name = SONICSS\EFFECT02.SSL
+    file[]: crc = 189559c9; size =      4608; name = SONICSS\EFFECT03.SSL
+    file[]: crc = a5b0f65f; size =      4608; name = SONICSS\EFFECT04.SSL
+    file[]: crc = db03444b; size =      4608; name = SONICSS\EFFECT05.SSL
+    file[]: crc = c992782b; size =      4608; name = SONICSS\EFFECT06.SSL
+    file[]: crc = 56eff6ca; size =      4608; name = SONICSS\EFFECT07.SSL
+    file[]: crc = aac4cca9; size =      4608; name = SONICSS\EFFECT08.SSL
+    file[]: crc = 23708cf5; size =      4608; name = SONICSS\EFFECT09.SSL
+    file[]: crc = 207b565c; size =      4608; name = SONICSS\EFFECT10.SSL
+    file[]: crc = bda001ef; size =      4608; name = SONICSS\EFFECT11.SSL
+    file[]: crc = b2cdf3a7; size =      4608; name = SONICSS\EFFECT12.SSL
+    file[]: crc = fe0afc0f; size =      4608; name = SONICSS\EFFECT13.SSL
+    file[]: crc = ce7329a5; size =      4608; name = SONICSS\EFFECT14.SSL
+    file[]: crc = 6150c259; size =      4608; name = SONICSS\EFFECT15.SSL
+    file[]: crc = 126e9507; size =      4608; name = SONICSS\EFFECT16.SSL
+    file[]: crc = 25485359; size =    329216; name = SONICSS\SCRNSVR.EXE
+//    file[]: crc = 1ae9459a; size =      4286; name = SONICSS\SCRNSVR.ico
+//    file[]: crc = f8914277; size =       125; name = SONICSS\SCRNSVR.INI
+    file[]: crc = 3d5fb541; size =    115200; name = SONICSS\SCRNSVR2.DLL
+    file[]: crc = d2eb4997; size =    103794; name = SONICSS\SCRNSVRC.DLL
+    file[]: crc = e52943eb; size =      6151; name = SONICSS\SONIC.HLP
+    file[]: crc = ae350fa0; size =      4673; name = SONICSS\SONIC2.HLP
+    file[]: crc = 353232d7; size =    311296; name = SONICSS\SS.DLL
+    file[]: crc = 53c50a4c; size =     38912; name = SONICSS\SSC.DLL
+    file[]: crc = 6ea7dcf7; size =    564736; name = SONICSS\SSCATALG.DLL
+    file[]: crc = 80d1fe2d; size =    564736; name = SONICSS\SSCL.DLL
+    file[]: crc = fdf0cf91; size =    126976; name = SONICSS\SSIA0100.DLL
+    file[]: crc = 3c0d36e4; size =    126976; name = SONICSS\SSIA0100.IAL
+    file[]: crc = a3715166; size =    534528; name = SONICSS\SSSS0100.SSL
+    file[]: crc = e759f8e4; size =    528384; name = SONICSS\SSSS0200.SSL
+    file[]: crc = d96a8de2; size =    507904; name = SONICSS\SSSS0300.SSL
+    file[]: crc = 17d03a4e; size =    484864; name = SONICSS\SSSS0400.SSL
+    file[]: crc = dd2f543d; size =    483840; name = SONICSS\SSSS1000.SSL
+    file[]: crc = e87f6e11; size =    351744; name = SONICSS\SSSS2000.SSL
+    file[]: crc = 4f5e8193; size =    571904; name = SONICSS\SSSS3000.SSL
+    file[]: crc = 72cd1c81; size =    429056; name = SONICSS\SSSS4000.SSL
+    file[]: crc = 06cd7c71; size =     77880; name = SONICSS\START-UP.BMP
+	file[]: crc = e53d4b18; size =       766; name = ICON\EDIT.ICO
+    file[]: crc = e8155409; size =       766; name = ICON\I_EGG.ICO
+    file[]: crc = 68b81d44; size =       766; name = ICON\I_EGG2.ICO
+    file[]: crc = 96cad7aa; size =       766; name = ICON\I_KNACK.ICO
+    file[]: crc = 12c41298; size =       766; name = ICON\I_KNACS2.ICO
+    file[]: crc = 45694a74; size =       766; name = ICON\I_MILES.ICO
+    file[]: crc = 0ba98ede; size =       766; name = ICON\I_MILES2.ICO
+    file[]: crc = 2b273daa; size =       766; name = ICON\I_SONIC.ICO
+    file[]: crc = 3e19cad8; size =       766; name = ICON\I_SONIC2.ICO
+    file[]: crc = c354c640; size =       766; name = ICON\ICON.ICO
+    file[]: crc = 120c28a6; size =       766; name = ICON\PAPER.ICO
+    file[]: crc = 992c5146; size =       766; name = ICON\SONICSS.ICO
+    file[]: crc = f60c2529; size =       766; name = ICON\SOUND.ICO
+
+end
+
+game[pc-jp-demo]:
+	name = Japanese Demo
+	anchorfile = SCRNSVR.EXE
+	anchordepth = 1
+    file[]:									  name = READMEE.TXT
+    file[]:									  name = READMEJ.TXT
+	file[]: crc = d9cf6f8e; size =    110299; name = 3_1.WAV
+    file[]: crc = 5fc920fc; size =    330844; name = 3_1_B.WAV
+    file[]: crc = 05dcb081; size =     19229; name = 3_5_1.WAV
+    file[]: crc = 1f5448bc; size =     11372; name = 3_5_2.WAV
+    file[]: crc = 536cacc9; size =     26624; name = BCSTCTL.DLL
+    file[]: crc = 3416f384; size =      4608; name = EFFECT05.SSL
+    file[]: crc = 4a39003d; size =       867; name = README.TXT
+    file[]: crc = 96c59067; size =      9914; name = S2_23.WAV
+    file[]: crc = cf093206; size =      2440; name = S2_48.WAV
+    file[]: crc = d7e7e7fd; size =     22363; name = S3_3C.WAV
+    file[]: crc = 9e25d752; size =      2022; name = S3_55.WAV
+    file[]: crc = b5ae1821; size =      4138; name = S3_80.WAV
+    file[]: crc = b0cd081c; size =     13864; name = S3_AB.WAV
+    file[]: crc = 6e870aac; size =   1169842; name = SCD_C_03.WAV
+    file[]: crc = a73f2db7; size =    282624; name = SCRNSVR.EXE
+    file[]: crc = 39d586b9; size =        60; name = SCRNSVR.INI
+    file[]: crc = c0efcefb; size =     23040; name = SCRNSVRC.DLL
+    file[]: crc = 787bec46; size =    787510; name = SONIC35.BMP
+    file[]: crc = 7a0f1576; size =    393334; name = SONIC35B.BMP
+    file[]: crc = fece5a59; size =    787510; name = SONIC42.BMP
+    file[]: crc = ed9d5a91; size =    393334; name = SONIC42B.BMP
+    file[]: crc = bc97bd7c; size =    787510; name = SONIC43.BMP
+    file[]: crc = db9e1c4a; size =    393334; name = SONIC43B.BMP
+    file[]: crc = 0558449c; size =    787510; name = SONIC64.BMP
+    file[]: crc = 7ef03e91; size =    393334; name = SONIC64B.BMP
+    file[]: crc = 370eb4d9; size =    787510; name = SONICN_.BMP
+    file[]: crc = 0c59110c; size =    393334; name = SONICN_B.BMP
+    file[]: crc = c500ae0b; size =    561152; name = SSCATALG.DLL
+    file[]: crc = 24a9372c; size =    126976; name = SSIA0100.IAL
+    file[]: crc = 545bafa0; size =      1708; name = SSSDEMO.BSS
+    file[]: crc = a7f5967c; size =    528384; name = SSSS0200.SSL
+    file[]: crc = 6422c436; size =    481280; name = SSSS1000.SSL
+	ISDEMO = TRUE
+end
+
+end

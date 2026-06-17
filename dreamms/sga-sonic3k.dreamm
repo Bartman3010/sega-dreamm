@@ -1,0 +1,684 @@
+//
+// Sonic & Knuckles Collection
+//
+desc[sga-sonic3k]:
+
+name = Sonic & Knuckles Collection
+icon = sga-sonic3k.png
+machine = pc
+rootpath = C:\Sega\Sonic3k
+launch = "$(rootpath)\$(EXENAME).EXE"
+osenv = windows 95
+filter = nonlucas, action, sonic, sega
+audiohw = gmidi
+winres = 640x480x16
+EXENAME = RUNSONIC
+
+//INI Settings
+DEBUG = 0
+FRAMEDROP = 1
+MODEX = 1
+SONICGAME = 0
+ISDEMO = 0
+LANGMODE = 0
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+
+
+//
+// show warning for debug mode keys
+//
+warning[s3debug]:
+//condition = $(DEBUG)
+    text = Debug Mode requires numeric keypad keys turned on. Use keypad keys [1], [2] and [3] to replicate the [A], [B] and [C] buttons on a SEGA Mega Drive or SEGA Genesis controller.
+end
+
+//
+// game mode configuration
+//
+config[gamemode]:
+	title = Mode Select
+		option[select]: name = Launcher; EXENAME = RUNSONIC; ISDEMO = 0
+		option[game1]: name = Sonic the Hedgehog 3; EXENAME = SONIC3K; SONICGAME = 2; ISDEMO = 0; condition = is_game()
+		option[game2]: name = Sonic & Knuckles; EXENAME = SONIC3K; SONICGAME = 1; ISDEMO = 0; condition = is_game()
+		option[game3]: name = Sonic 3 & Knuckles; EXENAME = SONIC3K; SONICGAME = 0; ISDEMO = 0; condition = is_game()
+		option[game4]:name = Sonic 3 & Knuckles (Demonstration) ; EXENAME = SONIC3K; SONICGAME = 0; ISDEMO = 1; condition = is_game()
+		option[game5]:name = Sonic 3 & Knuckles (Trial); EXENAME = SONIC3K; SONICGAME = 0; ISDEMO = 2
+		
+
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[mt32]:    name = $(MT32_NAME);    audiohw = mt32
+    option[gmidi]:   name = $(GMIDI_NAME);   audiohw = gmidi; priority = 1
+end
+
+//
+// Debug Mode Configuration
+//
+config[debugmode]:
+	title = Debug Mode
+		option[dboff]: name = Off; DEBUG = 0
+		option[dbon]: name = On; DEBUG = 1
+		
+end
+
+//
+// Framedrop Configuration
+//
+config[framedrop]:
+	title = Frame Drop
+		option[fdoff]: name = Off; FRAMEDROP = 0
+		option[fdon]: name = On; FRAMEDROP = 1; priority = 1
+		
+end
+
+//
+// video configuration
+//
+config[video]:
+    title = Video Configuration
+    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
+    option[desktop]: name = Full Desktop;      wincrop = false
+end
+
+//
+//V1.0 System File
+//
+dynamicfile[]:
+    path = C:\WINDOWS\S3K.INI
+    contents = [[[$(CRLF)
+		[Debug]
+		DebugMode="$$(DEBUG)"
+		EnableFrameDrop="$$(FRAMEDROP)"
+		MukaiDropFrame=0
+		ShowFrameCount=0
+		EnableFrameCapture=0
+		UseModeX=0
+		NoSoundEffect=0
+		CDCheckEnable=0
+		SonicGameMode="$$(SONICGAME)"
+		BGMMode=2
+		GameMode="$$(ISDEMO)"
+		LangMode="$$(LANGMODE)"
+    ]]]
+end
+
+//
+// Fragments of Core Files for Each Release
+//
+fragment[demo]:
+    file[]: crc = efb60a8f; size =    992768; name = MIDIOUT.DLL
+    file[]: crc = af4a9cdd; size =    489984; name = RUNSONIC.EXE
+    file[]: crc = e6f01342; size =   3696512; name = SONIC3K.DS2
+end
+
+fragment[pc-en-common]:
+    file[]: crc = 3693A530; size =  489984; name = RUNSONIC.EXE
+	file[]: crc = EFB60A8F; size =  992768; name = MIDIOUT.DLL
+	file[]: crc = 27857268; size =    1977; name = SONIC.CNT
+	file[]: crc = B97B0755; size = 2574497; name = SONIC.HLP
+	file[]: crc = E6F01342; size = 3696512; name = SONIC3K.DS2
+	file[]: crc = 929B0672; size = 5510144; name = SONIC3K.EXE
+end
+
+fragment[pc-en-EXPERT-common]:
+    file[]: crc = 3693A530; size =  489984; name = RUNSONIC.EXE
+	file[]: crc = EFB60A8F; size =  992768; name = MIDIOUT.DLL
+	file[]: crc = E6F01342; size = 3696512; name = SONIC3K.DS2
+	file[]: crc = 929B0672; size = 5510144; name = SONIC3K.EXE
+    file[]: crc = 62e79a25; size =  462237; name = SonicKnu.pdf
+	
+end
+
+fragment[pc-en-garfield-common]:
+    file[]: crc = 3693a530; size =    489984; name = RUNSONIC.EXE
+	file[]: crc = efb60a8f; size =    992768; name = MIDIOUT.DLL
+	file[]: crc = E6F01342; size =   3696512; name = SONIC3K.DS2
+    file[]: crc = 929b0672; size =   5510144; name = SONIC3K.EXE
+	file[]:									  name = README.TXT
+
+end
+
+fragment[pc-jp-common]:
+	file[]: crc = 5E1019D4; size = 5331;	  name = README_J.TXT
+	file[]: crc = E08160E7; size = 1373;	  name = README_E.TXT
+	file[]: crc = efb60a8f; size =    992768; name = MIDIOUT.DLL
+    file[]: crc = 3693a530; size =    489984; name = RUNSONIC.EXE
+    file[]: crc = e6f01342; size =   3696512; name = SONIC3K.DS2
+    file[]: crc = 929b0672; size =   5510144; name = SONIC3K.EXE
+
+
+end
+
+//
+// Sonic & Knuckles Collection English
+//
+
+game[pc-en]:
+    name = English
+	imports = pc-en-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 0
+    file[]: crc = e08160e7; size =      1373; name = README.TXT
+    file[]: crc = d52fd304; size =      8628; name = SONIC.GID
+    file[]: crc = b97b0755; size =   2574497; name = SONIC.HLP
+	
+	//locale = en_US
+	
+end
+
+//
+// Sonic & Knuckles Collection French
+//
+game[pc-fr]:
+    name = French
+	imports = pc-en-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 1
+    file[]: crc = 34088604; size =      1414; name = README.TXT
+    file[]: crc = 40bb0d5c; size =   2578618; name = SONIC.HLP
+    file[]: crc = d52fd304; size =      8628; name = SONIC.GID
+	
+	locale = fr-FR
+	
+end
+
+//
+// Sonic & Knuckles Collection German
+//
+game[pc-ge]:
+    name = German
+	imports = pc-en-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 2
+    file[]: crc = a4854522; size =      1508; name = README.TXT
+    file[]: crc = 2b252445; size =   2586611; name = SONIC.HLP
+    file[]: crc = d52fd304; size =      8628; name = SONIC.GID
+	
+	locale = de-DE
+	
+end
+
+//
+// Sonic & Knuckles Collection Spanish 
+//
+game[pc-sp]:
+    name = Spanish
+	imports = pc-en-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 3
+    file[]: crc = 574e4549; size =      1536; name = README.TXT
+    file[]: crc = 7d51cb54; size =   2578804; name = SONIC.HLP
+    file[]: crc = d52fd304; size =      8628; name = SONIC.GID
+
+	locale = es-ES_tradnl
+
+end
+
+//
+// Sonic & Knuckles Chinese
+//
+game[pc-ch-chinese]:
+	name = Chinese
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 0
+	file[]: crc = efb60a8f; size =    992768; name = MIDIOUT.DLL
+    file[]: crc = f74ad4fe; size =    489984; name = RUNSONIC.EXE
+    file[]: crc = e6f01342; size =   3696512; name = SONIC3K.DS2
+    file[]: crc = da74a50f; size =   5510144; name = SONIC3K.EXE
+    file[]: crc = 03a5232a; size =      8628; name = Sonic.GID
+    file[]: crc = 5d84e93e; size =   3318242; name = Sonic.hlp
+	
+	locale = zh-CN
+	
+end
+
+//
+// Sonic & Knuckles Collection English EXPERT Software
+//
+game[pc-en-EXPERT]:
+    name = English Expert Software
+	imports = pc-en-EXPERT-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 0
+    file[]: crc = 27857268; size =    1977; name = SONIC.CNT
+    file[]: crc = b97b0755; size = 2574497; name = SONIC.HLP
+	file[]: crc = 15D5B120; size =   11957; name = README.TXT
+	
+	//locale = en_US
+	
+end
+
+//
+// Sonic & Knuckles Collection French US EXPERT Software
+//
+game[pc-fr-EXPERT]:
+    name = French Expert Software
+	imports = pc-en-EXPERT-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 1
+    file[]: crc = 6ca54017; size =    2235; name = SONIC.CNT
+    file[]: crc = 40bb0d5c; size = 2578618; name = SONIC.HLP
+	file[]: crc = ADD5836A; size =    1400; name = README.TXT
+	
+	locale = fr-FR
+	
+end
+
+//
+// Sonic & Knuckles Collection German EXPERT Software
+//
+game[pc-ge-EXPERT]:
+    name = German Expert Software
+	imports = pc-en-EXPERT-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 2
+    file[]: crc = 08ed6611; size =    2092; name = SONIC.CNT
+    file[]: crc = 2b252445; size = 2586611; name = SONIC.HLP
+	file[]: crc = 2F74D56B; size =    1494; name = README.TXT
+	
+	locale = de-DE
+	
+end
+
+//
+// Sonic & Knuckles Collection Spanish EXPERT Software
+//
+game[pc-sp-EXPERT]:
+    name = Spanish Expert Software
+	imports = pc-en-EXPERT-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 3
+    file[]: crc = 97c1628c; size =    2466; name = SONIC.CNT
+    file[]: crc = 7d51cb54; size = 2578804; name = SONIC.HLP
+	file[]: crc = BB88758A; size =    1522; name = README.TXT
+	
+	locale = es-ES_tradnl
+	
+end
+
+//
+// Sonic & Garfield Pack US English
+//
+game[pc-en-garfield]:
+    name = English Sonic & Garfield Pack
+	imports = pc-en-garfield-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 0
+    file[]: crc = 27857268; size =      1977; name = SONIC.CNT
+    file[]: crc = b97b0755; size =   2574497; name = SONIC.HLP
+	file[]: crc = E08160E7; size =      1373; name = README.TXT
+	
+	//locale = en_US
+	
+end
+
+//
+// Sonic & Garfield Pack US French
+//
+game[pc-fr-garfield]:
+    name = French Sonic & Garfield Pack
+	imports = pc-en-garfield-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 1
+    file[]: crc = 6ca54017; size =      2235; name = SONIC.CNT
+    file[]: crc = 40bb0d5c; size =   2578618; name = SONIC.HLP
+	file[]: crc = 34088604; size =      1414; name = README.TXT
+
+	locale = fr-FR
+	
+end
+
+//
+// Sonic & Garfield Pack US German
+//
+game[pc-ge-garfield]:
+    name = German Sonic & Garfield Pack
+	imports = pc-en-garfield-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 2
+    file[]: crc = 08ed6611; size =      2092; name = SONIC.CNT
+    file[]: crc = 2b252445; size =   2586611; name = SONIC.HLP
+	file[]: crc = A4854522; size =      1508; name = README.TXT
+
+	locale = de-DE
+	
+end
+
+//
+// Sonic & Garfield Pack US Spanish
+//
+game[pc-sp-garfield]:
+    name = Spanish Sonic & Garfield Pack
+	imports = pc-en-garfield-common
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 3
+    file[]: crc = 97c1628c; size =      2466; name = SONIC.CNT
+    file[]: crc = 7d51cb54; size =   2578804; name = SONIC.HLP
+	file[]: crc = 574E4549; size =      1536; name = README.TXT
+	
+	locale = es-ES_tradnl
+	
+end
+
+//
+// Sonic & Knuckles Collection Japanese
+//
+game[pc-jp-jp]:
+	name = Japanese
+	imports = pc-jp-common
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 0
+    file[]: crc = 222fbc1f; size =      1954; name = SONIC.CNT
+    file[]: crc = 233d7137; size =   2588038; name = SONIC.HLP
+
+	locale = ja-JP
+	
+end
+
+//
+// Sonic & Knuckles Collection Japanese English
+//
+game[pc-jp-en]:
+	name = English Japanese
+	imports = pc-jp-common
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 0
+    file[]: crc = 0b66e158; size =      1978; name = SONIC.CNT
+    file[]: crc = 6d8efe7b; size =   2574540; name = SONIC.HLP
+
+	//locale = en_US
+	
+end
+
+//
+// Sonic & Knuckles Collection Japanese French
+//
+game[pc-jp-fr]:
+	name = French Japanese
+	imports = pc-jp-common
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 1
+	file[]: crc = 6ca54017; size =      2235; name = SONIC.CNT
+    file[]: crc = cb3e4ab0; size =   2578617; name = SONIC.HLP
+
+	locale = fr-FR
+	
+end
+
+//
+// Sonic & Knuckles Collection Japanese German
+//
+game[pc-jp-ge]:
+	name = German Japanese
+	imports = pc-jp-common
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 2
+    file[]: crc = 08ed6611; size =      2092; name = SONIC.CNT
+    file[]: crc = f4935fe9; size =   2585459; name = SONIC.HLP
+
+	locale = de-DE
+	
+end
+
+//
+// Sonic & Knuckles Collection Japanese Spanish
+//
+game[pc-jp-sp]:
+	name = Spanish Japanese
+	imports = pc-jp-common
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	LANGMODE = 3
+    file[]: crc = 97c1628c; size =      2466; name = SONIC.CNT
+    file[]: crc = 6ae68969; size =   2584768; name = SONIC.HLP
+
+	locale = es-ES_tradnl
+	
+end
+
+
+//
+// Sonic & Knuckles Collection Demo English
+//
+demo[pc-en-demo]:
+	name = English Demo
+	imports = demo
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	ISDEMO = 2
+	LANGMODE = 0
+    file[]: crc = 3f27815a; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = 29aa42c0; size =      1644; name = README.TXT
+    file[]: crc = 870b7762; size =       663; name = THANKS.TXT
+
+	//locale = en_US
+	
+end
+
+//
+// Sonic & Knuckles Collection Demo Japanese
+//
+demo[pc-jp-demo]:
+	name = Japanese Demo
+	imports = demo
+    anchorfile = RUNSONIC.EXE
+	anchordepth = 1
+	ISDEMO = 2
+	LANGMODE = 5
+    file[]: crc = 3f27815a; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = 988453c8; size =      2002; name = README.TXT
+    file[]: crc = a43c3914; size =       651; name = THANKS.TXT
+
+	locale = ja-JP
+	
+end
+
+//
+// Sonic & Knuckles Collection Demo CD English
+//
+demo[pc-cd-en-demo]:
+	name = English CD Demo
+	imports = demo
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 3
+	ISDEMO = 2
+	LANGMODE = 0
+    file[]: crc = f48917a8; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = 0bd8a231; size =      1388; name = README.TXT
+    file[]: crc = 27857268; size =      1977; name = SONIC.CNT
+    file[]: crc = f3d2918b; size =   2574483; name = SONIC.HLP
+    file[]: crc = 11a136cb; size =       665; name = THANKS.TXT
+	
+	//locale = en_US
+	
+end
+
+//
+// Sonic & Knuckles Collection Demo Dancepower CD English
+//
+demo[pc-dancecd-en-demo]:
+	name = English Dancepower CD Demo
+	imports = demo
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 3
+	ISDEMO = 2
+	LANGMODE = 0
+    file[]: crc = f48917a8; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = 0bd8a231; size =      1388; name = README.TXT
+    file[]: crc = 27857268; size =      1977; name = SONIC.CNT
+    file[]: crc = f3d2918b; size =   2574483; name = SONIC.HLP
+    file[]: crc = f6fcd99a; size =       554; name = THANKS.TXT
+	
+	//locale = en_US
+	
+end
+
+//
+// Sonic & Knuckles Collection Demo CD French
+//
+demo[pc-cd-fr-demo]:
+	name = French CD Demo
+	imports = demo
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 3
+	ISDEMO = 2
+	LANGMODE = 1
+    file[]: crc = f48917a8; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = 04be857c; size =      1428; name = README.TXT
+    file[]: crc = 6ca54017; size =      2235; name = SONIC.CNT
+    file[]: crc = 40bb0d5c; size =   2578618; name = SONIC.HLP
+    file[]: crc = 11a136cb; size =       665; name = THANKS.TXT
+	
+	locale = fr-FR
+	
+end
+
+//
+// Sonic & Knuckles Collection Demo Dancepower CD French
+//
+demo[pc-dancecd-fr-demo]:
+	name = French Dancepower CD Demo
+	imports = demo
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 3
+	ISDEMO = 2
+	LANGMODE = 1
+    file[]: crc = f48917a8; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = 04be857c; size =      1428; name = README.TXT
+    file[]: crc = 6ca54017; size =      2235; name = SONIC.CNT
+    file[]: crc = 40bb0d5c; size =   2578618; name = SONIC.HLP
+    file[]: crc = 5d4a06f8; size =       718; name = THANKS.TXT
+	
+	locale = fr-FR
+	
+end
+
+//
+// Sonic & Knuckles Collection Demo CD German
+//
+demo[pc-cd-ge-demo]:
+	name = German CD Demo
+	imports = demo
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 3
+	ISDEMO = 2
+	LANGMODE = 2
+    file[]: crc = f48917a8; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = 9b4070c3; size =      1516; name = README.TXT
+    file[]: crc = 08ed6611; size =      2092; name = SONIC.CNT
+    file[]: crc = 2b252445; size =   2586611; name = SONIC.HLP
+    file[]: crc = 11a136cb; size =       665; name = THANKS.TXT
+	
+	locale = de-DE
+	
+end
+
+//
+// Sonic & Knuckles Collection Demo Dancepower CD German
+//
+demo[pc-dancecd-ge-demo]:
+	name = German Dancepower CD Demo
+	imports = demo
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 3
+	ISDEMO = 2
+	LANGMODE = 2
+    file[]: crc = f48917a8; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = 9b4070c3; size =      1516; name = README.TXT
+    file[]: crc = 08ed6611; size =      2092; name = SONIC.CNT
+    file[]: crc = 2b252445; size =   2586611; name = SONIC.HLP
+    file[]: crc = 0baba2f0; size =       433; name = THANKS.TXT
+	
+	locale = de-DE
+	
+end
+
+//
+// Sonic & Knuckles Collection Demo CD Japanese
+//
+demo[pc-cd-jp-demo]:
+	name = Japanese CD Demo
+	imports = demo
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 3
+	ISDEMO = 2
+	LANGMODE = 5
+    file[]: crc = f48917a8; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = e12c3478; size =      5749; name = README.TXT
+    file[]: crc = 222fbc1f; size =      1954; name = SONIC.CNT
+    file[]: crc = 233d7137; size =   2588038; name = SONIC.HLP
+    file[]: crc = 0adcc95c; size =       655; name = THANKS.TXT
+	
+	locale = ja-JP
+	
+end
+
+//
+// Sonic & Knuckles Collection Demo CD Spanish
+//
+demo[pc-cd-sp-demo]:
+	name = Spanish CD Demo
+	imports = demo
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 3
+	ISDEMO = 2
+	LANGMODE = 3
+    file[]: crc = f48917a8; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = 30632240; size =      1550; name = README.TXT
+    file[]: crc = 97c1628c; size =      2466; name = SONIC.CNT
+    file[]: crc = 90ce4f88; size =   2578804; name = SONIC.HLP
+    file[]: crc = 11a136cb; size =       665; name = THANKS.TXT
+	
+	locale = es-ES_tradnl
+	
+end
+
+//
+// Sonic & Knuckles Collection Demo Dancepower CD Spanish
+//
+demo[pc-dancecd-sp-demo]:
+	name = Spanish Dancepower CD Demo
+	imports = demo
+	anchorfile = RUNSONIC.EXE
+	anchordepth = 3
+	ISDEMO = 2
+	LANGMODE = 3
+    file[]: crc = f48917a8; size =   5376512; name = SONIC3K.EXE
+    file[]: crc = 30632240; size =      1550; name = README.TXT
+    file[]: crc = 97c1628c; size =      2466; name = SONIC.CNT
+    file[]: crc = 7d51cb54; size =   2578804; name = SONIC.HLP
+    file[]: crc = ac69a361; size =       670; name = THANKS.TXT
+	
+	locale = es-ES_tradnl
+	
+end
+
+

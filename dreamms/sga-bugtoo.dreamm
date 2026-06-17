@@ -1,0 +1,147 @@
+//
+// Bug Too! launch template
+//
+desc[sga-bugtoo]:
+
+name = Bug Too!
+icon = sga-bugtoo.png
+machine = pc
+rootpath = C:\Sega\BugToo!
+launch = $(rootpath)\$(EXENAME).EXE
+osenv = windows 95
+filter = nonlucas
+CDLABEL = BUGTOO
+EXENAME = BUGTOO!
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath);   srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+fragment[common]:
+	file[]: crc = C7128B56; size =    143872; name = DUKDLL95.DLL
+	file[]: crc = CE3C3CED; size =    144384; name = MSS32.DLL
+	file[]: crc = 587183B3; size =     77878; name = TITLE.BMP
+	
+	file[]: crc = 1e0774f1; size =   2355304; name = CD\DATA\ANCNTSEL.BFF
+    file[]: crc = b04349d3; size =   2914054; name = CD\DATA\BANDIT1.BFF
+    file[]: crc = e6d16d6b; size =   2390974; name = CD\DATA\BANDIT2.BFF
+    file[]: crc = ce133bc8; size =   2969881; name = CD\DATA\BANDIT3.BFF
+    file[]: crc = 27b6b8e4; size =   2946057; name = CD\DATA\BONUS1.BFF
+    file[]: crc = 9ef022f9; size =   2844169; name = CD\DATA\BONUS2.BFF
+    file[]: crc = 829470d1; size =   2863445; name = CD\DATA\BONUS3.BFF
+    file[]: crc = 8508ce78; size =   2790877; name = CD\DATA\BONUS4.BFF
+    file[]: crc = 2ddef31d; size =   2781025; name = CD\DATA\BONUS5.BFF
+    file[]: crc = d9187201; size =   2781025; name = CD\DATA\BONUS6.BFF
+    file[]: crc = ade07b85; size =   2337529; name = CD\DATA\BUBBLE.BFF
+    file[]: crc = 6051b767; size =   2459218; name = CD\DATA\BUBBLE2.BFF
+    file[]: crc = 6b2dc58d; size =   2521086; name = CD\DATA\CENTIP.BFF
+    file[]: crc = e04618b1; size =   3017549; name = CD\DATA\CENTIP2.BFF
+    file[]: crc = 6e0cfc62; size =   2730220; name = CD\DATA\CENTIP3.BFF
+    file[]: crc = 00b92991; size =    109628; name = CD\DATA\CHEAT.BFF
+    file[]: crc = e67a2fe2; size =   1250534; name = CD\DATA\CONTINUE.BFF
+    file[]: crc = 0809935b; size =   3738840; name = CD\DATA\CREDITS.BFF
+    file[]: crc = da403be1; size =   3608146; name = CD\DATA\DESERT1.BFF
+    file[]: crc = 6db37e55; size =   3688120; name = CD\DATA\DESERT2.BFF
+    file[]: crc = d7383732; size =   3265150; name = CD\DATA\DSUBOSS.BFF
+    file[]: crc = fac7ee3e; size =        16; name = CD\DATA\DUCKPLAY.BFF
+    file[]: crc = 14f6928b; size =   2726118; name = CD\DATA\FALLING.BFF
+    file[]: crc = 25cea7d4; size =   2932495; name = CD\DATA\FALLING2.BFF
+    file[]: crc = d79b4131; size =   3231016; name = CD\DATA\FALLING3.BFF
+    file[]: crc = 714597c4; size =    497163; name = CD\DATA\GAMEOVER.BFF
+    file[]: crc = 0b058af2; size =   3898976; name = CD\DATA\GARDEN1.BFF
+    file[]: crc = d19612ee; size =   3610344; name = CD\DATA\GARDEN2.BFF
+
+    file[]: crc = 816f73e2; size =   2344814; name = CD\DATA\HAUNT.AVI
+    file[]: crc = 2579db8b; size =   3798336; name = CD\DATA\HAUNTBOS.BFF
+    file[]: crc = a9c69947; size =   4205594; name = CD\DATA\HAUNTED1.BFF
+    file[]: crc = 59c8ab51; size =   4057302; name = CD\DATA\HAUNTED2.BFF
+    file[]: crc = c0c3c862; size =   4477986; name = CD\DATA\HAUNTED3.BFF
+    file[]: crc = d425333e; size =   2480848; name = CD\DATA\HAUNTSEL.BFF
+    file[]: crc = f0722b01; size =   8328684; name = CD\DATA\INTRO2.AVI
+    file[]: crc = fd87f168; size =   2910247; name = CD\DATA\KARNBOSS.BFF
+    file[]: crc = d5a9a4df; size =   3939045; name = CD\DATA\KARNIV1.BFF
+    file[]: crc = efd3270c; size =   3893948; name = CD\DATA\KARNIV2.BFF
+    file[]: crc = a52263f0; size =   4041600; name = CD\DATA\KARNIV3.BFF
+    file[]: crc = 031329ff; size =   6594226; name = CD\DATA\KARNIVAL.AVI
+    file[]: crc = e559d015; size =   2579275; name = CD\DATA\KARNSEL.BFF
+    file[]: crc = 7c8a1c35; size =   2812027; name = CD\DATA\KNIBOSS1.BFF
+    file[]: crc = 4beed697; size =   2823399; name = CD\DATA\KNIBOSS2.BFF
+    file[]: crc = 86716bf8; size =   2763955; name = CD\DATA\KNIBOSS3.BFF
+    file[]: crc = 0fa90bf0; size =   1192016; name = CD\DATA\LEGAL.BFF
+    file[]: crc = f0da1bae; size =    995492; name = CD\DATA\LEVSCORE.BFF
+    file[]: crc = a7540099; size =   3224707; name = CD\DATA\PSYCBOSS.BFF
+    file[]: crc = f7cbce3a; size =   2279572; name = CD\DATA\PSYCH.AVI
+    file[]: crc = b08e6bc5; size =   4177679; name = CD\DATA\PSYCH1.BFF
+    file[]: crc = 21238d97; size =   3978166; name = CD\DATA\PSYCH2.BFF
+    file[]: crc = fc1cb999; size =   2569334; name = CD\DATA\PSYCHSEL.BFF
+    file[]: crc = 8e29d4d1; size =   2902869; name = CD\DATA\QBERT.BFF
+    file[]: crc = 861d9599; size =   2971753; name = CD\DATA\QBERT2.BFF
+    file[]: crc = 2e945042; size =   2594097; name = CD\DATA\QBERT3.BFF
+    file[]: crc = 7e628dfc; size =   2036563; name = CD\DATA\RACING.BFF
+    file[]: crc = a20371d4; size =   4207644; name = CD\DATA\RUINS.AVI
+    file[]: crc = 527b0b53; size =   4620840; name = CD\DATA\SHOOT1.BFF
+    file[]: crc = 7a8d0863; size =   6175668; name = CD\DATA\SPA.AVI
+    file[]: crc = 185651b2; size =   4467619; name = CD\DATA\SPACE1.BFF
+    file[]: crc = a193ce80; size =   2100784; name = CD\DATA\SPACE2.AVI
+    file[]: crc = 3cefd1be; size =   3885246; name = CD\DATA\SPACE2.BFF
+    file[]: crc = 15f7408f; size =   5159462; name = CD\DATA\SPACE3.BFF
+    file[]: crc = a0e33a6d; size =   3497097; name = CD\DATA\SPACE4.BFF
+    file[]: crc = c8bb9777; size =   3503762; name = CD\DATA\SPACE5.BFF
+    file[]: crc = 68e04f24; size =   3326803; name = CD\DATA\SPACEBOS.BFF
+    file[]: crc = 1f32e588; size =   3561009; name = CD\DATA\SPACESEL.BFF
+    file[]: crc = 81e574c6; size =   1148510; name = CD\DATA\TITLE.BFF
+    file[]: crc = 2f4538f1; size =   4101206; name = CD\DATA\TROUT.BFF
+    file[]: crc = 5eb54497; size =   2268488; name = CD\DATA\VACUUM.AVI
+    file[]: crc = 4c21a13c; size =   3985541; name = CD\DATA\WATER1.BFF
+    file[]: crc = db7fba18; size =   4194943; name = CD\DATA\WATER2.BFF
+    file[]: crc = f9e0a0db; size =   3060209; name = CD\DATA\WATERBOS.BFF
+    file[]: crc = ffe1b4cd; size =   2286049; name = CD\DATA\WATERSEL.BFF
+
+end
+
+//
+// Bug Too! (Europe)
+//
+game[pc-en-cd-eu]:
+    name = English EU
+	imports = common
+    anchorfile = ANCNTSEL.BFF
+	anchordepth = 1
+    file[]: crc = 2d0056f4; size =    628736; name = BUGTOO!.EXE
+	
+    file[]: crc = 527eb2b1; size =   4123165; name = CD\DATA\GARDEN3.BFF
+    file[]: crc = 109e57d2; size =   8080602; name = CD\DATA\WIN2.AVI
+	
+	file[]: name = CDDA.SOU; cdda = 221/143/262/292/138/269/289/214/154/112/93
+	
+	CDLABEL = DEMO
+	
+end
+
+//
+// Bug Too! (USA)
+//
+game[pc-en-cd-us]:
+    name = English US
+	imports = common
+    anchorfile = ANCNTSEL.BFF
+	anchordepth = 1
+    file[]: crc = EEC5A580; size =    629760; name = BUGTOO!.EXE
+
+    file[]: crc = 15ec9733; size =   4123165; name = CD\DATA\GARDEN3.BFF
+    file[]: crc = 109e57d2; size =   8080602; name = CD\DATA\WIN2.AVI
+	
+	file[]: name = CDDA.SOU; cdda = 221/143/262/292/138/269/289/214/154/112/93
+	
+	CDLABEL = BUGTOO
+	
+end
+
+end

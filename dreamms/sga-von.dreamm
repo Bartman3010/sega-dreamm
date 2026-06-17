@@ -1,0 +1,181 @@
+//
+// Cyber Troopers - Virtual On
+//
+desc[sga-von]:
+
+name = Cyber Troopers - Virtual On
+icon = sga-von.png
+machine = pc
+rootpath = C:\Sega\VON
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 98
+filter = nonlucas, netplay
+winres = 640x480x16
+EXENAME = V_ON
+NETWORKMODE = 0
+CDLABEL = VON
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+fragment[common]:
+    file[]: crc = d151169b; size =    758200; name = BSEL_APH.BIN
+    file[]: crc = 6fc03563; size =    745960; name = BSEL_BAS.BIN
+    file[]: crc = d9be2355; size =     81116; name = BSEL_BBB.BIN
+    file[]: crc = 46d5e16c; size =    728536; name = BSEL_BEL.BIN
+    file[]: crc = 4f046cdb; size =    741996; name = BSEL_FEI.BIN
+    file[]: crc = 941dcfa6; size =     86076; name = BSEL_KAS.BIN
+    file[]: crc = 920b7706; size =    726144; name = BSEL_RAI.BIN
+    file[]: crc = 12c0ed39; size =    709212; name = BSEL_TEM.BIN
+    file[]: crc = e93fe393; size =     37376; name = DPCTRL.DLL
+    file[]: crc = ddb2d777; size =   4194304; name = ESCRADV.BIN
+    file[]: crc = e52dbb59; size =   4194304; name = ESCRGAME.BIN
+    file[]: crc = 78685a5c; size =    623320; name = FBOSS.BIN
+    file[]: crc = b7ab589e; size =     79900; name = FBOSS_N.BIN
+    file[]: crc = 48fde388; size =    543420; name = FBOSS_W.BIN
+    file[]: crc = a92178d4; size =    262616; name = FC_AIR.BIN
+    file[]: crc = cdea6801; size =    262392; name = FC_BILL.BIN
+    file[]: crc = 85215837; size =    262144; name = FC_CORE.BIN
+    file[]: crc = b1b5437f; size =    262500; name = FC_DOCK.BIN
+    file[]: crc = 0c9eb9c7; size =    262280; name = FC_FACT.BIN
+    file[]: crc = 3483b3e0; size =    262220; name = FC_FLD.BIN
+    file[]: crc = 2907ac0c; size =    263652; name = FC_FORE.BIN
+    file[]: crc = 6f99c8fd; size =    263676; name = FC_INKA.BIN
+    file[]: crc = cbd2d006; size =    262144; name = FC_MOON.BIN
+    file[]: crc = 4abbb9cf; size =    262144; name = FC_TRO.BIN
+    file[]: crc = f765ab23; size =    262144; name = FC_WATER.BIN
+    file[]: crc = a626e9df; size =     76948; name = FLD_AIR.BIN
+    file[]: crc = 59c53337; size =    549952; name = FLD_BOSN.BIN
+    file[]: crc = 6646dcdb; size =     73368; name = FLD_BOSW.BIN
+    file[]: crc = 696295c5; size =     88600; name = FLD_DOCK.BIN
+    file[]: crc = 92db3ec6; size =     35684; name = FLD_FACT.BIN
+    file[]: crc = 4a8866e3; size =     62792; name = FLD_FORE.BIN
+    file[]: crc = 16e1e6d5; size =     43888; name = FLD_INKA.BIN
+    file[]: crc = cd65734e; size =    119408; name = FLD_MOON.BIN
+    file[]: crc = 3ce72abf; size =     75236; name = FLD_TRO.BIN
+    file[]: crc = 2bfc0e12; size =     55776; name = FLD_WATR.BIN
+    file[]: crc = 31b8a110; size =      3480; name = MAP_APH.BIN
+    file[]: crc = c6a2c937; size =      3480; name = MAP_BBB.BIN
+    file[]: crc = 27712075; size =      3480; name = MAP_BEL.BIN
+    file[]: crc = 8aad4331; size =      3480; name = MAP_ELSE.BIN
+    file[]: crc = dc625c7e; size =      3480; name = MAP_FEI.BIN
+    file[]: crc = e550f4c7; size =      3480; name = MAP_JAG.BIN
+    file[]: crc = 03bca6bf; size =      3480; name = MAP_KAS.BIN
+    file[]: crc = 01d7de22; size =      3480; name = MAP_RAI.BIN
+    file[]: crc = 80b1b5e1; size =      3480; name = MAP_TEM.BIN
+    file[]: crc = f2154bec; size =      3480; name = MAP_VIP.BIN
+    file[]: crc = df34ee78; size =      3480; name = MAP_ZIG.BIN
+    file[]: crc = f71bd19a; size =   2750648; name = MT_APH.BIN
+    file[]: crc = ea4053ce; size =   2985648; name = MT_BAS.BIN
+    file[]: crc = 8f7586ee; size =   2314192; name = MT_BBB.BIN
+    file[]: crc = 4a242704; size =   3249072; name = MT_DOM.BIN
+    file[]: crc = a8afe3c8; size =   2951488; name = MT_FEI.BIN
+    file[]: crc = 49a60dda; size =   2967844; name = MT_GUF.BIN
+    file[]: crc = 4e814f48; size =   1952872; name = MT_JAG.BIN
+    file[]: crc = 6c61b0ad; size =   2814732; name = MT_KAS.BIN
+    file[]: crc = 0a0eecea; size =    468208; name = MT_SCENE.BIN
+    file[]: crc = 79f048c2; size =    183748; name = MT_SEL.BIN
+    file[]: crc = 4e8a2d03; size =   3082504; name = MT_VAL.BIN
+    file[]: crc = 9ce9b408; size =   1875560; name = MT_ZIG.BIN
+    file[]: crc = 10038453; size =    377692; name = RB_APH.BIN
+    file[]: crc = 762b2726; size =   1141496; name = RB_BAS.BIN
+    file[]: crc = 8a401f6a; size =    570812; name = RB_BBB.BIN
+    file[]: crc = f704b621; size =    688632; name = RB_BEL.BIN
+    file[]: crc = 60247c97; size =   1951356; name = RB_FEI.BIN
+    file[]: crc = 604b99c7; size =   1650508; name = RB_GLOB.BIN
+    file[]: crc = 0e235800; size =     55352; name = RB_JAG.BIN
+    file[]: crc = 07416c90; size =    684248; name = RB_KAS.BIN
+    file[]: crc = 3378067e; size =    865068; name = RB_RAI.BIN
+    file[]: crc = a9411daa; size =    638740; name = RB_SEL.BIN
+    file[]: crc = 4115f568; size =    267124; name = RB_TEM.BIN
+    file[]: crc = cef0b387; size =    413768; name = RB_ZIG.BIN
+    file[]: crc = ec9a38f3; size =     16384; name = SCRADD0.BIN
+    file[]: crc = c7aee70f; size =     16384; name = SCRADD1.BIN
+    file[]: crc = fb408a52; size =    144512; name = SCRSTFCG.BIN
+    file[]: crc = a4581e88; size =      9288; name = SCRSTFMP.BIN
+    file[]: crc = 6c8c914f; size =     60296; name = SND_APH.BIN
+    file[]: crc = 193d2cb7; size =     86979; name = SND_BBB.BIN
+    file[]: crc = ad2012bc; size =     46074; name = SND_BEL.BIN
+    file[]: crc = cdc74951; size =   1245413; name = SND_ELSE.BIN
+    file[]: crc = fe92ab14; size =    128598; name = SND_FEI.BIN
+    file[]: crc = 3e8dfa93; size =     62055; name = SND_JAG.BIN
+    file[]: crc = ea254c44; size =     84752; name = SND_KAS.BIN
+    file[]: crc = 44e4a70b; size =     39568; name = SND_RAI.BIN
+    file[]: crc = 6d9ffbda; size =     76817; name = SND_TEM.BIN
+    file[]: crc = cf881606; size =     52066; name = SND_VIP.BIN
+    file[]: crc = 7829ea4d; size =     64901; name = SND_ZIG.BIN
+    file[]: crc = fea2d956; size =   1048576; name = TEXB0.IMG
+    file[]: crc = 8bbe9d01; size =   1048576; name = TEXB1.IMG
+    file[]: crc = 33411ac7; size =   1048576; name = TEXB2.IMG
+    file[]: crc = 7cda91cf; size =   1048576; name = TEXB3.IMG
+    file[]: crc = 5a700615; size =   1048576; name = TEXB4.IMG
+    file[]: crc = 378f3d38; size =   1048576; name = TEXB5.IMG
+    file[]: crc = 634822ef; size =   6650880; name = V_ON.EXE
+    file[]: crc = 53fa5bf8; size =  16488200; name = VON.AVI
+
+	//CD-ROM
+	file[]: crc = 634822ef; size =   6650880; name = CD\V_ON\V_ON.EXE
+    file[]: name = CD\CDDA.SOU; cdda = 10/108/51/9/117/114/116/116/116/118/116/117/116/118/9/9/9/27/33/36/40/28/91/98/97/10
+
+end
+
+game[pc-cd-en]:
+	name = English CD
+	imports = common
+	anchorfile = V_ON.EXE
+	anchordepth = 1
+    file[]: crc = 1f75c031; size =      1182; name = VON.CNT
+    file[]: crc = 2a2ef96c; size =   1008820; name = VON.HLP
+    file[]: crc = d292113e; size =      3987; name = README.TXT
+	
+	//locale = en_US
+	
+end
+
+game[pc-cd-fr]:
+	name = French CD
+	imports = common
+	anchorfile = V_ON.EXE
+	anchordepth = 1
+    file[]: crc = b956a656; size =      4807; name = README.TXT
+    file[]: crc = 5def7c31; size =      1337; name = VON.CNT
+    file[]: crc = 60d82eb1; size =   1019941; name = VON.HLP
+	
+	locale = fr-FR
+	
+end
+
+game[pc-cd-ge]:
+	name = German CD
+	imports = common
+	anchorfile = V_ON.EXE
+	anchordepth = 1
+    file[]: crc = 4bf0ac94; size =      5104; name = README.TXT
+    file[]: crc = 7af5d9c3; size =      1336; name = VON.CNT
+    file[]: crc = 9767c4c4; size =   1023937; name = VON.HLP
+	
+	locale = de-DE
+	
+end
+
+game[pc-cd-sp]:
+	name = Spanish CD
+	imports = common
+	anchorfile = V_ON.EXE
+	anchordepth = 1
+    file[]: crc = df3c67aa; size =      4580; name = README.TXT
+    file[]: crc = cafe4004; size =      1226; name = VON.CNT
+    file[]: crc = 71a5c2fe; size =   1024665; name = VON.HLP
+	
+	locale = es-ES_tradnl
+	
+end

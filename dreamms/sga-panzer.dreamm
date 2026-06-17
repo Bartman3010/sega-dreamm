@@ -1,0 +1,301 @@
+//
+// Panzer Dragoon
+//
+desc[sga-panzer]:
+
+name = Panzer Dragoon
+icon = sga-panzer.png
+machine = pc
+rootpath = C:\Program Files\DREAMM\Panzer Dragoon
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 98
+winres = 640x480x8
+filter = nonlucas
+EXENAME = PANZERDG
+CDLABEL = PDEU1121
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+fragment[common]:
+    file[]: crc = 76aa0dad; size =     76202; name = ASCII.CGX
+    file[]: crc = d17dc275; size =     45170; name = ASCII.CGY
+    file[]: crc = 1abb47ab; size =     76235; name = ASCII.CGZ
+    file[]: crc = 2f15270b; size =     26976; name = CONGRA.CGZ
+    file[]: crc = 69037d43; size =     89272; name = DEMO1.CGX
+    file[]: crc = 9ede36e0; size =     65965; name = DEMO1.CGY
+    file[]: crc = 1c3c781b; size =     89220; name = DEMO1.CGZ
+    file[]: crc = 9404e345; size =    235940; name = DEMO5.CGX
+    file[]: crc = f2c1a714; size =    168652; name = DEMO5.CGY
+    file[]: crc = afda0a48; size =    235679; name = DEMO5.CGZ
+    file[]: crc = 46b1f87a; size =     66379; name = DEMO8.CGX
+    file[]: crc = f6508d85; size =     47534; name = DEMO8.CGY
+    file[]: crc = b32228ab; size =     66444; name = DEMO8.CGZ
+    file[]: crc = 801acd5a; size =      8766; name = DEMO_1.PTA
+    file[]: crc = 2882564f; size =      4918; name = DEMO_1.PTB
+    file[]: crc = 092ed4dc; size =      8969; name = DEMO_5.PTA
+    file[]: crc = 2882564f; size =      4918; name = DEMO_5.PTB
+    file[]: crc = 78375ab4; size =      8887; name = DEMO_8.PTA
+    file[]: crc = 2882564f; size =      4918; name = DEMO_8.PTB
+    file[]: crc = 592812e0; size =    267776; name = DLL_EPP.DLL
+    file[]: crc = d247dc84; size =  13199320; name = ENDING.AVI
+    file[]: crc = 86ec2350; size =      8635; name = ENDING.PTA
+    file[]: crc = 6a0c0116; size =      4822; name = ENDING.PTB
+    file[]: crc = 13912f2b; size =  83591868; name = EXOPEN.AVI
+    file[]: crc = 9f1585e4; size =     36255; name = GR2_D1.BGX
+    file[]: crc = e48667fb; size =     23991; name = GR2_D1.BGY
+    file[]: crc = 18be4ef4; size =     36029; name = GR2_D1.BGZ
+    file[]: crc = d5526f34; size =     23586; name = GR2_D5.BGX
+    file[]: crc = 93cd7c8f; size =     13690; name = GR2_D5.BGY
+    file[]: crc = 9eabccf9; size =     23566; name = GR2_D5.BGZ
+    file[]: crc = d5526f34; size =     23586; name = GR2_D8.BGX
+    file[]: crc = fa8c3927; size =     11836; name = GR2_D8.BGY
+    file[]: crc = 9eabccf9; size =     23566; name = GR2_D8.BGZ
+    file[]: crc = 1f8853a5; size =     23699; name = GR2_R0.BGX
+    file[]: crc = 0600a905; size =     13970; name = GR2_R0.BGY
+    file[]: crc = 713d0a21; size =     23692; name = GR2_R0.BGZ
+    file[]: crc = f05ec26a; size =     30266; name = GR2_R1.BGX
+    file[]: crc = 8a7e94f4; size =     19279; name = GR2_R1.BGY
+    file[]: crc = 4d56de4c; size =     30249; name = GR2_R1.BGZ
+    file[]: crc = 78a4ff64; size =     27073; name = GR2_R2.BGX
+    file[]: crc = ca11e782; size =     15826; name = GR2_R2.BGY
+    file[]: crc = f873c5b1; size =     27058; name = GR2_R2.BGZ
+    file[]: crc = 5c20b624; size =     33770; name = GR2_R3.BGX
+    file[]: crc = d809c7ce; size =     18548; name = GR2_R3.BGY
+    file[]: crc = 85bab347; size =     33730; name = GR2_R3.BGZ
+    file[]: crc = 7e9dae58; size =     82404; name = GR2_R4.BGX
+    file[]: crc = f18d1fc1; size =     46489; name = GR2_R4.BGY
+    file[]: crc = d4f79b2a; size =     83528; name = GR2_R4.BGZ
+    file[]: crc = 7e9dae58; size =     82404; name = GR2_R5.BGX
+    file[]: crc = b242fc1c; size =     48813; name = GR2_R5.BGY
+    file[]: crc = d4f79b2a; size =     83528; name = GR2_R5.BGZ
+    file[]: crc = a54e71cd; size =     39890; name = GR2_R6.BGX
+    file[]: crc = 80795315; size =     21243; name = GR2_R6.BGY
+    file[]: crc = e0e19b01; size =     39890; name = GR2_R6.BGZ
+    file[]: crc = d5526f34; size =     23586; name = GR2_R7.BGX
+    file[]: crc = a3f59f2f; size =     13915; name = GR2_R7.BGY
+    file[]: crc = 9eabccf9; size =     23566; name = GR2_R7.BGZ
+    file[]: crc = 12f5f7dc; size =     70431; name = GR2_TI.BGX
+    file[]: crc = 0f9f3f41; size =     48453; name = GR2_TI.BGY
+    file[]: crc = 24249b9e; size =     70224; name = GR2_TI.BGZ
+    file[]: crc = 9f1585e4; size =     36255; name = GRN_D1.BGX
+    file[]: crc = d6a8f438; size =     23991; name = GRN_D1.BGY
+    file[]: crc = 18be4ef4; size =     36029; name = GRN_D1.BGZ
+    file[]: crc = d5526f34; size =     23586; name = GRN_D5.BGX
+    file[]: crc = 93cd7c8f; size =     13690; name = GRN_D5.BGY
+    file[]: crc = 9eabccf9; size =     23566; name = GRN_D5.BGZ
+    file[]: crc = d5526f34; size =     23586; name = GRN_D8.BGX
+    file[]: crc = fa8c3927; size =     11836; name = GRN_D8.BGY
+    file[]: crc = 9eabccf9; size =     23566; name = GRN_D8.BGZ
+    file[]: crc = 1f8853a5; size =     23699; name = GRN_R0.BGX
+    file[]: crc = 0600a905; size =     13970; name = GRN_R0.BGY
+    file[]: crc = 713d0a21; size =     23692; name = GRN_R0.BGZ
+    file[]: crc = c2273d7a; size =     30266; name = GRN_R1.BGX
+    file[]: crc = 5952a17e; size =     21518; name = GRN_R1.BGY
+    file[]: crc = 484b44cf; size =     30249; name = GRN_R1.BGZ
+    file[]: crc = dac04c55; size =     27089; name = GRN_R2.BGX
+    file[]: crc = b61d42a9; size =     15736; name = GRN_R2.BGY
+    file[]: crc = 3780a75b; size =     27051; name = GRN_R2.BGZ
+    file[]: crc = 5c20b624; size =     33770; name = GRN_R3.BGX
+    file[]: crc = d809c7ce; size =     18548; name = GRN_R3.BGY
+    file[]: crc = 85bab347; size =     33730; name = GRN_R3.BGZ
+    file[]: crc = 7e9dae58; size =     82404; name = GRN_R4.BGX
+    file[]: crc = 37258c6e; size =     46489; name = GRN_R4.BGY
+    file[]: crc = d4f79b2a; size =     83528; name = GRN_R4.BGZ
+    file[]: crc = 7e9dae58; size =     82404; name = GRN_R5.BGX
+    file[]: crc = b242fc1c; size =     48813; name = GRN_R5.BGY
+    file[]: crc = d4f79b2a; size =     83528; name = GRN_R5.BGZ
+    file[]: crc = a54e71cd; size =     39890; name = GRN_R6.BGX
+    file[]: crc = c589a095; size =     21243; name = GRN_R6.BGY
+    file[]: crc = e0e19b01; size =     39890; name = GRN_R6.BGZ
+    file[]: crc = d5526f34; size =     23586; name = GRN_R7.BGX
+    file[]: crc = a3f59f2f; size =     13915; name = GRN_R7.BGY
+    file[]: crc = 9eabccf9; size =     23566; name = GRN_R7.BGZ
+    file[]: crc = 12f5f7dc; size =     70431; name = GRN_TI.BGX
+    file[]: crc = 0f9f3f41; size =     48453; name = GRN_TI.BGY
+    file[]: crc = 24249b9e; size =     70224; name = GRN_TI.BGZ
+    file[]: crc = 77367771; size =     20992; name = PANZ_AVI.DLL
+    file[]: crc = 7442cf09; size =    939520; name = PANZ_DM1.DLL
+    file[]: crc = aa3a392c; size =    976384; name = PANZ_DM5.DLL
+    file[]: crc = 9b888220; size =    589824; name = PANZ_DM8.DLL
+    file[]: crc = a81d3cab; size =    728576; name = PANZ_LG.DLL
+    file[]: crc = 9f776cd7; size =     12800; name = PANZ_MIX.DLL
+    file[]: crc = 49bf8c3f; size =    601088; name = PANZ_R0.DLL
+    file[]: crc = 6924a40b; size =   1677824; name = PANZ_R1.DLL
+    file[]: crc = 0f12336c; size =   1075712; name = PANZ_R2.DLL
+    file[]: crc = edd8ae22; size =    979968; name = PANZ_R3.DLL
+    file[]: crc = 8888113d; size =   1105408; name = PANZ_R4.DLL
+    file[]: crc = 2a29c077; size =    867328; name = PANZ_R5.DLL
+    file[]: crc = 0b80a745; size =    931840; name = PANZ_R6.DLL
+    file[]: crc = d677f48f; size =    823296; name = PANZ_R7.DLL
+    file[]: crc = 6612cb49; size =    613376; name = PANZ_STF.DLL
+    file[]: crc = 3b59a83f; size =    593408; name = PANZ_TIT.DLL
+    file[]: crc = 78bf101e; size =    209408; name = PANZERDG.EXE
+    file[]: crc = 8f21d872; size =      8470; name = PANZPAL.DAT
+    file[]: crc = ddedc839; size =    247056; name = PC_STF.CGZ
+    file[]: crc = a01f0bfd; size =     22400; name = PDD_R1.CGZ
+    file[]: crc = ee14cc06; size =     22400; name = PDD_R2.CGZ
+    file[]: crc = c32461f3; size =     22400; name = PDD_R5.CGZ
+    file[]: crc = e7433275; size =     69390; name = PDTL.BMZ
+    file[]: crc = 4d11cd90; size =    192057; name = ROUND0.CGX
+    file[]: crc = b059b253; size =    136825; name = ROUND0.CGY
+    file[]: crc = 6a7b9708; size =    192091; name = ROUND0.CGZ
+    file[]: crc = a091146d; size =      9243; name = ROUND0.PTA
+    file[]: crc = 2882564f; size =      4918; name = ROUND0.PTB
+    file[]: crc = 9b768e7c; size =    753785; name = ROUND1.CGX
+    file[]: crc = 9cee28a8; size =    475601; name = ROUND1.CGY
+    file[]: crc = 9871aeb6; size =    752607; name = ROUND1.CGZ
+    file[]: crc = 0beec135; size =      9276; name = ROUND1.PTA
+    file[]: crc = 2882564f; size =      4918; name = ROUND1.PTB
+    file[]: crc = 9a8390c2; size =    328994; name = ROUND10.CGX
+    file[]: crc = 59c3e18e; size =    206580; name = ROUND10.CGY
+    file[]: crc = ec05fa05; size =    328531; name = ROUND10.CGZ
+    file[]: crc = 2974ab44; size =    423778; name = ROUND2.CGX
+    file[]: crc = 23f4b99a; size =    278863; name = ROUND2.CGY
+    file[]: crc = 4e32b30f; size =    422434; name = ROUND2.CGZ
+    file[]: crc = 2ae99c5b; size =      9354; name = ROUND2.PTA
+    file[]: crc = 2882564f; size =      4918; name = ROUND2.PTB
+    file[]: crc = 4c09b83d; size =    417439; name = ROUND3.CGX
+    file[]: crc = bc2fb776; size =    279491; name = ROUND3.CGY
+    file[]: crc = 9f2c9048; size =    416958; name = ROUND3.CGZ
+    file[]: crc = 28d830e7; size =      9003; name = ROUND3.PTA
+    file[]: crc = 2882564f; size =      4918; name = ROUND3.PTB
+    file[]: crc = a22c056b; size =    418739; name = ROUND4.CGX
+    file[]: crc = ca9d550f; size =    277911; name = ROUND4.CGY
+    file[]: crc = 8c42f87b; size =    418006; name = ROUND4.CGZ
+    file[]: crc = 1c5a7b72; size =      9111; name = ROUND4.PTA
+    file[]: crc = 2882564f; size =      4918; name = ROUND4.PTB
+    file[]: crc = 3acfeba6; size =    447706; name = ROUND5.CGX
+    file[]: crc = 18a0cda1; size =    318989; name = ROUND5.CGY
+    file[]: crc = baa05ccd; size =    447915; name = ROUND5.CGZ
+    file[]: crc = 74eeca6d; size =      9040; name = ROUND5.PTA
+    file[]: crc = 2882564f; size =      4918; name = ROUND5.PTB
+    file[]: crc = bb89d179; size =      9547; name = ROUND6.PTA
+    file[]: crc = 2882564f; size =      4918; name = ROUND6.PTB
+    file[]: crc = 9b36d187; size =      9433; name = ROUND7.PTA
+    file[]: crc = 2882564f; size =      4918; name = ROUND7.PTB
+    file[]: crc = cb77c7e4; size =    330849; name = ROUND8.CGX
+    file[]: crc = 4d9e0320; size =    229097; name = ROUND8.CGY
+    file[]: crc = be1dd61e; size =    330403; name = ROUND8.CGZ
+    file[]: crc = d1face13; size =      8625; name = SGLOGO.PTA
+    file[]: crc = 2882564f; size =      4918; name = SGLOGO.PTB
+    file[]: crc = 26d1af9a; size =       313; name = SKY_D1.BGX
+    file[]: crc = 9cbf4c7d; size =       161; name = SKY_D1.BGY
+    file[]: crc = 74e43c13; size =       313; name = SKY_D1.BGZ
+    file[]: crc = 9db9adcb; size =     33816; name = SKY_D5.BGX
+    file[]: crc = e40964df; size =     21000; name = SKY_D5.BGY
+    file[]: crc = a026efc6; size =     33649; name = SKY_D5.BGZ
+    file[]: crc = 9db9adcb; size =     33816; name = SKY_D8.BGX
+    file[]: crc = 0906f8d3; size =     21737; name = SKY_D8.BGY
+    file[]: crc = a026efc6; size =     33649; name = SKY_D8.BGZ
+    file[]: crc = 1d0c485d; size =     38408; name = SKY_R0.BGX
+    file[]: crc = 7b11111b; size =     21849; name = SKY_R0.BGY
+    file[]: crc = ac11c321; size =     38220; name = SKY_R0.BGZ
+    file[]: crc = c89bb874; size =     36791; name = SKY_R1.BGX
+    file[]: crc = 10f7e1d7; size =     19606; name = SKY_R1.BGY
+    file[]: crc = 2cd4661d; size =     36618; name = SKY_R1.BGZ
+    file[]: crc = 1f7ab134; size =     31736; name = SKY_R2.BGX
+    file[]: crc = 6535ca38; size =     16997; name = SKY_R2.BGY
+    file[]: crc = 7e7a2045; size =     31567; name = SKY_R2.BGZ
+    file[]: crc = 64d321f7; size =     24727; name = SKY_R3.BGX
+    file[]: crc = 9491d543; size =     12265; name = SKY_R3.BGY
+    file[]: crc = 8683ca85; size =     24661; name = SKY_R3.BGZ
+    file[]: crc = b7ea66dc; size =     30269; name = SKY_R4.BGX
+    file[]: crc = d9c79afb; size =     15223; name = SKY_R4.BGY
+    file[]: crc = ae1d7e7d; size =     30151; name = SKY_R4.BGZ
+    file[]: crc = b7ea66dc; size =     30269; name = SKY_R5.BGX
+    file[]: crc = 18e3e930; size =     13924; name = SKY_R5.BGY
+    file[]: crc = ae1d7e7d; size =     30151; name = SKY_R5.BGZ
+    file[]: crc = a37e28a4; size =     40825; name = SKY_R6.BGX
+    file[]: crc = 1e483fe7; size =     21905; name = SKY_R6.BGY
+    file[]: crc = 3806093b; size =     40688; name = SKY_R6.BGZ
+    file[]: crc = 9db9adcb; size =     33816; name = SKY_R7.BGX
+    file[]: crc = 58563d02; size =     17802; name = SKY_R7.BGY
+    file[]: crc = a026efc6; size =     33649; name = SKY_R7.BGZ
+    file[]: crc = faa4a406; size =     18683; name = SKY_TI.BGX
+    file[]: crc = 58904922; size =     10463; name = SKY_TI.BGY
+    file[]: crc = 4b9836f7; size =     18605; name = SKY_TI.BGZ
+    file[]: crc = 29ea13b4; size =  24473598; name = SP_END.AVI
+    file[]: crc = db9096d9; size =    489657; name = TITLE.CGX
+    file[]: crc = d5ac0e99; size =    400024; name = TITLE.CGY
+    file[]: crc = f332fd6b; size =    489320; name = TITLE.CGZ
+    file[]: crc = 844b3d9e; size =      8360; name = TITLE.PTA
+    file[]: crc = 2882564f; size =      4918; name = TITLE.PTB
+    file[]: crc = 8d162527; size =    231650; name = WAVE_00.CMP
+    file[]: crc = 2b4ebc58; size =    483630; name = WAVE_D1.CMP
+    file[]: crc = f01707ea; size =    980160; name = WAVE_D5.CMP
+    file[]: crc = 11b1fe4b; size =   1135234; name = WAVE_D6.CMP
+    file[]: crc = b0714d2a; size =    815382; name = WAVE_R1.CMP
+    file[]: crc = f4ae2b1d; size =   1493616; name = WAVE_R2.CMP
+    file[]: crc = b59432f7; size =    843186; name = WAVE_R3.CMP
+    file[]: crc = 872558d4; size =   1361106; name = WAVE_R4.CMP
+    file[]: crc = 28c1e692; size =   1556720; name = WAVE_R5.CMP
+    file[]: crc = b85f3dbe; size =    641044; name = WAVE_R6.CMP
+    file[]: crc = 6f752a5c; size =   1265716; name = WAVE_R7.CMP
+	
+	//CD-ROM
+    file[]: crc = 78bf101e; size =    209408; name = CD\GAME\PANZERDG.EXE
+    file[]: name = CD\CDDA.SOU; cdda = 195/209/77/246/102/237/211/79/216/67/232/33/188/173/19
+end
+
+//
+// English CD
+//
+game[pc-cd-en]:
+    name = English CD
+	imports = common
+    anchorfile = PANZERDG.exe
+	anchordepth = 1
+    file[]: crc = 8597969c; size =       547; name = PANZ.CNT
+    file[]: crc = 348ee67a; size =   1041310; name = PANZ.HLP
+    file[]: crc = 6f2d7268; size =      1404; name = README.TXT
+	
+end
+
+game[pc-cd-fr]:
+    name = French CD
+	imports = common
+    anchorfile = PANZERDG.exe
+	anchordepth = 1
+    file[]: crc = 8d5a8bb8; size =       634; name = PANZ.CNT
+    file[]: crc = ffeac9c6; size =   1044370; name = PANZ.HLP
+    file[]: crc = 6f2d7268; size =      1404; name = README.TXT
+
+	locale = fr-FR
+	
+end
+
+game[pc-cd-ge]:
+    name = German CD
+	imports = common
+    anchorfile = PANZERDG.exe
+	anchordepth = 1	
+    file[]: crc = 15cdac03; size =       582; name = PANZ.CNT
+    file[]: crc = 783bdb4e; size =   1044238; name = PANZ.HLP
+    file[]: crc = 6f2d7268; size =      1404; name = README.TXT
+
+	locale = de-DE
+
+end
+
+game[pc-cd-sp]:
+    name = Spanish CD
+	imports = common
+    anchorfile = PANZERDG.exe
+	anchordepth = 1
+    file[]: crc = c4369176; size =       616; name = PANZ.CNT
+    file[]: crc = 85035c81; size =   1043998; name = PANZ.HLP
+	file[]: crc = 6f2d7268; size =      1404; name = README.TXT
+	
+	locale = es-ES_tradnl
+	
+end

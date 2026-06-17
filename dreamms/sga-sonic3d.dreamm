@@ -1,0 +1,982 @@
+//
+// Sonic 3D Blast/Flickies' Island
+//
+desc[sga-sonic3d]:
+
+name = Sonic 3D Blast/Flickies' Island
+icon = sga-sonic3d.png
+machine = pc
+rootpath = C:\Sega\Sonic3d
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 95
+filter = nonlucas, action, sonic
+winres = 640x480x16
+EXENAME = pcsonic
+SMOOTH = 1
+BLAST = 0
+FLICKIES = 0
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\""; attributes = 8; contents = $(NULL)
+
+//
+// Motion Smoothing (60fps) Toggle for Sonic 3D Blast (US)
+//
+script[patch]:
+condition = $(SMOOTH) && is_game() && $(BLAST)
+    code = [[[$(CRLF)
+        wait("progload", "pcsonic.exe");
+        ptr = cpu_findmem(winmodule_base("pcsonic"), winmodule_size("pcsonic"), 0x89,0x15,0x6c,0x59,0xa0,0x00);
+        if (ptr)
+            cpu_writemem(ptr, blob_create(0x90,0x90,0x90,0x90,0x90,0x90));
+    ]]]
+end
+
+//
+// warning to access game settings
+//
+warning[settings]:
+condition = is_game()
+    text = To access framerate settings, start or continue your save game. Then during gameplay hold [M] and press the [Esc.] key. However this will cause color palette issues until the next fade transition effect.
+	
+end
+
+warning[smoothing]:
+condition = is_game()
+    text = Motion smoothing can cause a small amount of flashing artifacts during gameplay in the Spring Stadium Zone.
+end
+
+//
+// Motion Smoothing Toggle (US)
+//
+config[motion]:
+	title = Motion Smoothing
+	condition = is_game() && $(BLAST)
+		option[moton]: name = On; SMOOTH = 1; priority = 1
+		option[motoff]: name = Off; SMOOTH = 0
+		
+end
+
+//
+// Registry for Sonic 3D
+//
+script[registry]: code = winregistry_import_file("C:\\DREAMM.REG")
+dynamicfile[]:
+   path = C:\DREAMM.REG
+   contents = [[[$(CRLF)
+      REGEDIT4
+      [HKEY_LOCAL_MACHINE\Software\SEGA\Sonic 3D]
+      "CdPath"="D:\\"
+   ]]]
+end
+
+fragment[common-us]:
+    file[]: crc = 8ac08e6d; size =    825344; name = CD\PCSONIC.EXE
+
+	
+end
+
+fragment[common-eu]:
+    file[]: crc = 9f38bcce; size =    825344; name = CD\PCSONIC.EXE
+	
+end
+
+fragment[common-ch]:
+    file[]: crc = 436608e8; size =    825344; name = CD\PCSONIC.EXE
+	
+end
+
+fragment[common]:
+    file[]: crc = 6614a1ac; size =         4; name = CD\PCSONIC\BONUS0\AN_PREFS
+    file[]: crc = 04534a3e; size =    144184; name = CD\PCSONIC\BONUS0\BACK0.LBM
+    file[]: crc = c504e9a8; size =     37672; name = CD\PCSONIC\BONUS0\BONUSTX0.BK
+    file[]: crc = d235e643; size =     41990; name = CD\PCSONIC\BONUS0\BONUSTX0.PCX
+    file[]: crc = 147234b5; size =     31268; name = CD\PCSONIC\BONUS0\BONUSTX1.PCX
+    file[]: crc = c1c34d64; size =     41789; name = CD\PCSONIC\BONUS0\BONUSTX2.PCX
+    file[]: crc = d8093ea6; size =     38207; name = CD\PCSONIC\BONUS0\BONUSTX3.PCX
+    file[]: crc = 0530a25c; size =     16500; name = CD\PCSONIC\BONUS0\BONUSTX4.PCX
+    file[]: crc = b0a734b2; size =     16703; name = CD\PCSONIC\BONUS0\BONUSTX5.PCX
+    file[]: crc = f791dbd4; size =     23968; name = CD\PCSONIC\BONUS0\BONUSTX6.PCX
+    file[]: crc = fc2d5e06; size =     20223; name = CD\PCSONIC\BONUS0\BONUSTX7.PCX
+    file[]: crc = 65a7e092; size =     11794; name = CD\PCSONIC\BONUS0\BONUSTX8.PCX
+    file[]: crc = 2ac1c6bd; size =     11773; name = CD\PCSONIC\BONUS0\BONUSTX9.PCX
+    file[]: crc = c43afe09; size =     12990; name = CD\PCSONIC\BONUS0\BONUSTXA.PCX
+    file[]: crc = 538351e3; size =     11047; name = CD\PCSONIC\BONUS0\BONUSTXB.PCX
+    file[]: crc = b4cf5e72; size =     14315; name = CD\PCSONIC\BONUS0\BONUSTXC.PCX
+    file[]: crc = 7510d3a7; size =     14496; name = CD\PCSONIC\BONUS0\BONUSTXD.PCX
+    file[]: crc = 2b5de51f; size =     14517; name = CD\PCSONIC\BONUS0\BONUSTXE.PCX
+    file[]: crc = 350c310d; size =     14562; name = CD\PCSONIC\BONUS0\BONUSTXF.PCX
+    file[]: crc = d159ba67; size =     14585; name = CD\PCSONIC\BONUS0\BONUSTXG.PCX
+    file[]: crc = 3897cf8b; size =     14624; name = CD\PCSONIC\BONUS0\BONUSTXH.PCX
+    file[]: crc = b0ae6f68; size =     14696; name = CD\PCSONIC\BONUS0\BONUSTXI.PCX
+    file[]: crc = 5a309b0f; size =     14743; name = CD\PCSONIC\BONUS0\BONUSTXJ.PCX
+    file[]: crc = 70f47c84; size =      7535; name = CD\PCSONIC\BONUS0\BONUSTXK.PCX
+    file[]: crc = 4a4a24d7; size =       768; name = CD\PCSONIC\BONUS0\COLOUR.ACT
+    file[]: crc = e64ac0a5; size =     65536; name = CD\PCSONIC\BONUS0\LIGHT.TBL
+    file[]: crc = 78fadf07; size =       768; name = CD\PCSONIC\BONUS0\PALETTE.ACT
+    file[]: crc = c466fe8f; size =      8192; name = CD\PCSONIC\BONUS0\RANDOM.BIN
+    file[]: crc = d06197a0; size =      6516; name = CD\PCSONIC\BONUS0\SCORE.PCX
+    file[]: crc = 492ef77a; size =     53248; name = CD\PCSONIC\BONUS0\TUNNEL.BIN
+    file[]: crc = 2eec785a; size =     32768; name = CD\PCSONIC\BONUS0\TUNNEL.SPR
+    file[]: crc = 660c9579; size =    144184; name = CD\PCSONIC\BONUS1\BACK1.LBM
+    file[]: crc = 846e41f9; size =     55459; name = CD\PCSONIC\BONUS1\BONUSTX0.PCX
+    file[]: crc = 18ca94f4; size =     45793; name = CD\PCSONIC\BONUS1\BONUSTX1.PCX
+    file[]: crc = ea2388a7; size =     41657; name = CD\PCSONIC\BONUS1\BONUSTX2.PCX
+    file[]: crc = 70e3f511; size =     38009; name = CD\PCSONIC\BONUS1\BONUSTX3.PCX
+    file[]: crc = 28a9bcb0; size =     17963; name = CD\PCSONIC\BONUS1\BONUSTX4.PCX
+    file[]: crc = 07ba6c14; size =     16703; name = CD\PCSONIC\BONUS1\BONUSTX5.PCX
+    file[]: crc = 5d50f6d6; size =     23028; name = CD\PCSONIC\BONUS1\BONUSTX6.PCX
+    file[]: crc = 61d10936; size =     20223; name = CD\PCSONIC\BONUS1\BONUSTX7.PCX
+    file[]: crc = 46dd2e11; size =     11794; name = CD\PCSONIC\BONUS1\BONUSTX8.PCX
+    file[]: crc = 2ac1c6bd; size =     11773; name = CD\PCSONIC\BONUS1\BONUSTX9.PCX
+    file[]: crc = c43afe09; size =     12990; name = CD\PCSONIC\BONUS1\BONUSTXA.PCX
+    file[]: crc = 538351e3; size =     11047; name = CD\PCSONIC\BONUS1\BONUSTXB.PCX
+    file[]: crc = 18911b50; size =     14315; name = CD\PCSONIC\BONUS1\BONUSTXC.PCX
+    file[]: crc = 9c3be9d8; size =     14496; name = CD\PCSONIC\BONUS1\BONUSTXD.PCX
+    file[]: crc = df7a90e0; size =     14517; name = CD\PCSONIC\BONUS1\BONUSTXE.PCX
+    file[]: crc = 47fdcc1b; size =     14562; name = CD\PCSONIC\BONUS1\BONUSTXF.PCX
+    file[]: crc = eb486c57; size =     14585; name = CD\PCSONIC\BONUS1\BONUSTXG.PCX
+    file[]: crc = cff87788; size =     14624; name = CD\PCSONIC\BONUS1\BONUSTXH.PCX
+    file[]: crc = 41c5d4f1; size =     14696; name = CD\PCSONIC\BONUS1\BONUSTXI.PCX
+    file[]: crc = 9fcda66b; size =     14743; name = CD\PCSONIC\BONUS1\BONUSTXJ.PCX
+    file[]: crc = 77079c76; size =      7535; name = CD\PCSONIC\BONUS1\BONUSTXK.PCX
+    file[]: crc = 7c476944; size =     65536; name = CD\PCSONIC\BONUS1\LIGHT.TBL
+    file[]: crc = c466fe8f; size =      8192; name = CD\PCSONIC\BONUS1\RANDOM.BIN
+    file[]: crc = d06197a0; size =      6516; name = CD\PCSONIC\BONUS1\SCORE.PCX
+    file[]: crc = f617f92b; size =     49101; name = CD\PCSONIC\BONUS1\SKY1.PCX
+    file[]: crc = 80acf1cf; size =     53248; name = CD\PCSONIC\BONUS1\TUNNEL.BIN
+    file[]: crc = 1689511c; size =     32768; name = CD\PCSONIC\BONUS1\TUNNEL.SPR
+    file[]: crc = 3dd171a3; size =    144184; name = CD\PCSONIC\BONUS2\BACK2.LBM
+    file[]: crc = c504e9a8; size =     37672; name = CD\PCSONIC\BONUS2\BONUSTX0.BK
+    file[]: crc = 78a4a429; size =     39303; name = CD\PCSONIC\BONUS2\BONUSTX0.PCX
+    file[]: crc = 51fe87b9; size =     40935; name = CD\PCSONIC\BONUS2\BONUSTX1.PCX
+    file[]: crc = 7af2d7bc; size =     35715; name = CD\PCSONIC\BONUS2\BONUSTX2.PCX
+    file[]: crc = 70e3f511; size =     38009; name = CD\PCSONIC\BONUS2\BONUSTX3.PCX
+    file[]: crc = 0e083740; size =     17963; name = CD\PCSONIC\BONUS2\BONUSTX4.PCX
+    file[]: crc = 07ba6c14; size =     16703; name = CD\PCSONIC\BONUS2\BONUSTX5.PCX
+    file[]: crc = 5d50f6d6; size =     23028; name = CD\PCSONIC\BONUS2\BONUSTX6.PCX
+    file[]: crc = 61d10936; size =     20223; name = CD\PCSONIC\BONUS2\BONUSTX7.PCX
+    file[]: crc = 427b51d9; size =     11794; name = CD\PCSONIC\BONUS2\BONUSTX8.PCX
+    file[]: crc = 2ac1c6bd; size =     11773; name = CD\PCSONIC\BONUS2\BONUSTX9.PCX
+    file[]: crc = c43afe09; size =     12990; name = CD\PCSONIC\BONUS2\BONUSTXA.PCX
+    file[]: crc = 538351e3; size =     11047; name = CD\PCSONIC\BONUS2\BONUSTXB.PCX
+    file[]: crc = 18911b50; size =     14315; name = CD\PCSONIC\BONUS2\BONUSTXC.PCX
+    file[]: crc = 9c3be9d8; size =     14496; name = CD\PCSONIC\BONUS2\BONUSTXD.PCX
+    file[]: crc = df7a90e0; size =     14517; name = CD\PCSONIC\BONUS2\BONUSTXE.PCX
+    file[]: crc = 47fdcc1b; size =     14562; name = CD\PCSONIC\BONUS2\BONUSTXF.PCX
+    file[]: crc = eb486c57; size =     14585; name = CD\PCSONIC\BONUS2\BONUSTXG.PCX
+    file[]: crc = cff87788; size =     14624; name = CD\PCSONIC\BONUS2\BONUSTXH.PCX
+    file[]: crc = 41c5d4f1; size =     14696; name = CD\PCSONIC\BONUS2\BONUSTXI.PCX
+    file[]: crc = 9fcda66b; size =     14743; name = CD\PCSONIC\BONUS2\BONUSTXJ.PCX
+    file[]: crc = 77079c76; size =      7535; name = CD\PCSONIC\BONUS2\BONUSTXK.PCX
+    file[]: crc = 4837abe3; size =     65536; name = CD\PCSONIC\BONUS2\LIGHT.TBL
+    file[]: crc = c466fe8f; size =      8192; name = CD\PCSONIC\BONUS2\RANDOM.BIN
+    file[]: crc = d06197a0; size =      6516; name = CD\PCSONIC\BONUS2\SCORE.PCX
+    file[]: crc = 33a2fd8d; size =     53248; name = CD\PCSONIC\BONUS2\TUNNEL.BIN
+    file[]: crc = c9ab9e3a; size =     32768; name = CD\PCSONIC\BONUS2\TUNNEL.SPR
+    file[]: crc = d276913c; size =    144184; name = CD\PCSONIC\BONUS3\BACK3.LBM
+    file[]: crc = c504e9a8; size =     37672; name = CD\PCSONIC\BONUS3\BONUSTX0.BK
+    file[]: crc = d11df986; size =     39709; name = CD\PCSONIC\BONUS3\BONUSTX0.PCX
+    file[]: crc = dc85838f; size =     41693; name = CD\PCSONIC\BONUS3\BONUSTX1.PCX
+    file[]: crc = c9553558; size =     35367; name = CD\PCSONIC\BONUS3\BONUSTX2.PCX
+    file[]: crc = 70e3f511; size =     38009; name = CD\PCSONIC\BONUS3\BONUSTX3.PCX
+    file[]: crc = 0e083740; size =     17963; name = CD\PCSONIC\BONUS3\BONUSTX4.PCX
+    file[]: crc = 07ba6c14; size =     16703; name = CD\PCSONIC\BONUS3\BONUSTX5.PCX
+    file[]: crc = 4d14ae50; size =     24439; name = CD\PCSONIC\BONUS3\BONUSTX6.PCX
+    file[]: crc = 61d10936; size =     20223; name = CD\PCSONIC\BONUS3\BONUSTX7.PCX
+    file[]: crc = 8c81c355; size =     11794; name = CD\PCSONIC\BONUS3\BONUSTX8.PCX
+    file[]: crc = 2ac1c6bd; size =     11773; name = CD\PCSONIC\BONUS3\BONUSTX9.PCX
+    file[]: crc = c43afe09; size =     12990; name = CD\PCSONIC\BONUS3\BONUSTXA.PCX
+    file[]: crc = 538351e3; size =     11047; name = CD\PCSONIC\BONUS3\BONUSTXB.PCX
+    file[]: crc = 18911b50; size =     14315; name = CD\PCSONIC\BONUS3\BONUSTXC.PCX
+    file[]: crc = 9c3be9d8; size =     14496; name = CD\PCSONIC\BONUS3\BONUSTXD.PCX
+    file[]: crc = df7a90e0; size =     14517; name = CD\PCSONIC\BONUS3\BONUSTXE.PCX
+    file[]: crc = 47fdcc1b; size =     14562; name = CD\PCSONIC\BONUS3\BONUSTXF.PCX
+    file[]: crc = eb486c57; size =     14585; name = CD\PCSONIC\BONUS3\BONUSTXG.PCX
+    file[]: crc = cff87788; size =     14624; name = CD\PCSONIC\BONUS3\BONUSTXH.PCX
+    file[]: crc = 41c5d4f1; size =     14696; name = CD\PCSONIC\BONUS3\BONUSTXI.PCX
+    file[]: crc = 9fcda66b; size =     14743; name = CD\PCSONIC\BONUS3\BONUSTXJ.PCX
+    file[]: crc = 77079c76; size =      7535; name = CD\PCSONIC\BONUS3\BONUSTXK.PCX
+    file[]: crc = 8247678d; size =     65536; name = CD\PCSONIC\BONUS3\LIGHT.TBL
+    file[]: crc = c466fe8f; size =      8192; name = CD\PCSONIC\BONUS3\RANDOM.BIN
+    file[]: crc = d06197a0; size =      6516; name = CD\PCSONIC\BONUS3\SCORE.PCX
+    file[]: crc = 6e640d89; size =     53248; name = CD\PCSONIC\BONUS3\TUNNEL.BIN
+    file[]: crc = fd73c894; size =     32768; name = CD\PCSONIC\BONUS3\TUNNEL.SPR
+    file[]: crc = 8b53452d; size =    144184; name = CD\PCSONIC\BONUS4\BACK4.LBM
+    file[]: crc = c504e9a8; size =     37672; name = CD\PCSONIC\BONUS4\BONUSTX0.BK
+    file[]: crc = f8288b01; size =     38609; name = CD\PCSONIC\BONUS4\BONUSTX0.PCX
+    file[]: crc = 10156504; size =     39722; name = CD\PCSONIC\BONUS4\BONUSTX1.PCX
+    file[]: crc = c9553558; size =     35367; name = CD\PCSONIC\BONUS4\BONUSTX2.PCX
+    file[]: crc = 70e3f511; size =     38009; name = CD\PCSONIC\BONUS4\BONUSTX3.PCX
+    file[]: crc = 0e083740; size =     17963; name = CD\PCSONIC\BONUS4\BONUSTX4.PCX
+    file[]: crc = 07ba6c14; size =     16703; name = CD\PCSONIC\BONUS4\BONUSTX5.PCX
+    file[]: crc = 07f776bb; size =     24435; name = CD\PCSONIC\BONUS4\BONUSTX6.PCX
+    file[]: crc = 61d10936; size =     20223; name = CD\PCSONIC\BONUS4\BONUSTX7.PCX
+    file[]: crc = 7bb5c226; size =     11794; name = CD\PCSONIC\BONUS4\BONUSTX8.PCX
+    file[]: crc = 2ac1c6bd; size =     11773; name = CD\PCSONIC\BONUS4\BONUSTX9.PCX
+    file[]: crc = c43afe09; size =     12990; name = CD\PCSONIC\BONUS4\BONUSTXA.PCX
+    file[]: crc = 538351e3; size =     11047; name = CD\PCSONIC\BONUS4\BONUSTXB.PCX
+    file[]: crc = 18911b50; size =     14315; name = CD\PCSONIC\BONUS4\BONUSTXC.PCX
+    file[]: crc = 9c3be9d8; size =     14496; name = CD\PCSONIC\BONUS4\BONUSTXD.PCX
+    file[]: crc = df7a90e0; size =     14517; name = CD\PCSONIC\BONUS4\BONUSTXE.PCX
+    file[]: crc = 47fdcc1b; size =     14562; name = CD\PCSONIC\BONUS4\BONUSTXF.PCX
+    file[]: crc = eb486c57; size =     14585; name = CD\PCSONIC\BONUS4\BONUSTXG.PCX
+    file[]: crc = cff87788; size =     14624; name = CD\PCSONIC\BONUS4\BONUSTXH.PCX
+    file[]: crc = 41c5d4f1; size =     14696; name = CD\PCSONIC\BONUS4\BONUSTXI.PCX
+    file[]: crc = 9fcda66b; size =     14743; name = CD\PCSONIC\BONUS4\BONUSTXJ.PCX
+    file[]: crc = 77079c76; size =      7535; name = CD\PCSONIC\BONUS4\BONUSTXK.PCX
+    file[]: crc = 4a4a24d7; size =       768; name = CD\PCSONIC\BONUS4\COLOUR.ACT
+    file[]: crc = 32e690ed; size =     65536; name = CD\PCSONIC\BONUS4\LIGHT.TBL
+    file[]: crc = 78fadf07; size =       768; name = CD\PCSONIC\BONUS4\PALETTE.ACT
+    file[]: crc = c466fe8f; size =      8192; name = CD\PCSONIC\BONUS4\RANDOM.BIN
+    file[]: crc = d06197a0; size =      6516; name = CD\PCSONIC\BONUS4\SCORE.PCX
+    file[]: crc = d0fde1b6; size =     53248; name = CD\PCSONIC\BONUS4\TUNNEL.BIN
+    file[]: crc = cb867ffe; size =     32768; name = CD\PCSONIC\BONUS4\TUNNEL.SPR
+    file[]: crc = 2bfce270; size =    144184; name = CD\PCSONIC\BONUS5\BACK5.LBM
+    file[]: crc = c504e9a8; size =     37672; name = CD\PCSONIC\BONUS5\BONUSTX0.BK
+    file[]: crc = 3b66bc47; size =     47778; name = CD\PCSONIC\BONUS5\BONUSTX0.PCX
+    file[]: crc = 09b0ae23; size =     48008; name = CD\PCSONIC\BONUS5\BONUSTX1.PCX
+    file[]: crc = c9553558; size =     35367; name = CD\PCSONIC\BONUS5\BONUSTX2.PCX
+    file[]: crc = 70e3f511; size =     38009; name = CD\PCSONIC\BONUS5\BONUSTX3.PCX
+    file[]: crc = 0e083740; size =     17963; name = CD\PCSONIC\BONUS5\BONUSTX4.PCX
+    file[]: crc = 07ba6c14; size =     16703; name = CD\PCSONIC\BONUS5\BONUSTX5.PCX
+    file[]: crc = d43aa242; size =     23590; name = CD\PCSONIC\BONUS5\BONUSTX6.PCX
+    file[]: crc = 61d10936; size =     20223; name = CD\PCSONIC\BONUS5\BONUSTX7.PCX
+    file[]: crc = 7bb5c226; size =     11794; name = CD\PCSONIC\BONUS5\BONUSTX8.PCX
+    file[]: crc = 2ac1c6bd; size =     11773; name = CD\PCSONIC\BONUS5\BONUSTX9.PCX
+    file[]: crc = c43afe09; size =     12990; name = CD\PCSONIC\BONUS5\BONUSTXA.PCX
+    file[]: crc = 538351e3; size =     11047; name = CD\PCSONIC\BONUS5\BONUSTXB.PCX
+    file[]: crc = 18911b50; size =     14315; name = CD\PCSONIC\BONUS5\BONUSTXC.PCX
+    file[]: crc = 9c3be9d8; size =     14496; name = CD\PCSONIC\BONUS5\BONUSTXD.PCX
+    file[]: crc = df7a90e0; size =     14517; name = CD\PCSONIC\BONUS5\BONUSTXE.PCX
+    file[]: crc = 47fdcc1b; size =     14562; name = CD\PCSONIC\BONUS5\BONUSTXF.PCX
+    file[]: crc = eb486c57; size =     14585; name = CD\PCSONIC\BONUS5\BONUSTXG.PCX
+    file[]: crc = cff87788; size =     14624; name = CD\PCSONIC\BONUS5\BONUSTXH.PCX
+    file[]: crc = 41c5d4f1; size =     14696; name = CD\PCSONIC\BONUS5\BONUSTXI.PCX
+    file[]: crc = 9fcda66b; size =     14743; name = CD\PCSONIC\BONUS5\BONUSTXJ.PCX
+    file[]: crc = 77079c76; size =      7535; name = CD\PCSONIC\BONUS5\BONUSTXK.PCX
+    file[]: crc = 1987a388; size =     65536; name = CD\PCSONIC\BONUS5\LIGHT.TBL
+    file[]: crc = c466fe8f; size =      8192; name = CD\PCSONIC\BONUS5\RANDOM.BIN
+    file[]: crc = d06197a0; size =      6516; name = CD\PCSONIC\BONUS5\SCORE.PCX
+    file[]: crc = e0ed4969; size =     53248; name = CD\PCSONIC\BONUS5\TUNNEL.BIN
+    file[]: crc = 2f37bad6; size =     32768; name = CD\PCSONIC\BONUS5\TUNNEL.SPR
+    file[]: crc = 40c14d64; size =    144184; name = CD\PCSONIC\BONUS6\BACK6.LBM
+    file[]: crc = c504e9a8; size =     37672; name = CD\PCSONIC\BONUS6\BONUSTX0.BK
+    file[]: crc = 23d510c8; size =     33272; name = CD\PCSONIC\BONUS6\BONUSTX0.PCX
+    file[]: crc = 7224ff8c; size =     34606; name = CD\PCSONIC\BONUS6\BONUSTX1.PCX
+    file[]: crc = c0aab258; size =     36985; name = CD\PCSONIC\BONUS6\BONUSTX2.PCX
+    file[]: crc = 70e3f511; size =     38009; name = CD\PCSONIC\BONUS6\BONUSTX3.PCX
+    file[]: crc = 0e083740; size =     17963; name = CD\PCSONIC\BONUS6\BONUSTX4.PCX
+    file[]: crc = 07ba6c14; size =     16703; name = CD\PCSONIC\BONUS6\BONUSTX5.PCX
+    file[]: crc = 6abede10; size =     24435; name = CD\PCSONIC\BONUS6\BONUSTX6.PCX
+    file[]: crc = 61d10936; size =     20223; name = CD\PCSONIC\BONUS6\BONUSTX7.PCX
+    file[]: crc = 7bb5c226; size =     11794; name = CD\PCSONIC\BONUS6\BONUSTX8.PCX
+    file[]: crc = 2ac1c6bd; size =     11773; name = CD\PCSONIC\BONUS6\BONUSTX9.PCX
+    file[]: crc = c43afe09; size =     12990; name = CD\PCSONIC\BONUS6\BONUSTXA.PCX
+    file[]: crc = 538351e3; size =     11047; name = CD\PCSONIC\BONUS6\BONUSTXB.PCX
+    file[]: crc = 18911b50; size =     14315; name = CD\PCSONIC\BONUS6\BONUSTXC.PCX
+    file[]: crc = 9c3be9d8; size =     14496; name = CD\PCSONIC\BONUS6\BONUSTXD.PCX
+    file[]: crc = df7a90e0; size =     14517; name = CD\PCSONIC\BONUS6\BONUSTXE.PCX
+    file[]: crc = 47fdcc1b; size =     14562; name = CD\PCSONIC\BONUS6\BONUSTXF.PCX
+    file[]: crc = eb486c57; size =     14585; name = CD\PCSONIC\BONUS6\BONUSTXG.PCX
+    file[]: crc = cff87788; size =     14624; name = CD\PCSONIC\BONUS6\BONUSTXH.PCX
+    file[]: crc = 41c5d4f1; size =     14696; name = CD\PCSONIC\BONUS6\BONUSTXI.PCX
+    file[]: crc = 9fcda66b; size =     14743; name = CD\PCSONIC\BONUS6\BONUSTXJ.PCX
+    file[]: crc = 77079c76; size =      7535; name = CD\PCSONIC\BONUS6\BONUSTXK.PCX
+    file[]: crc = e5f74f56; size =     65536; name = CD\PCSONIC\BONUS6\LIGHT.TBL
+    file[]: crc = c466fe8f; size =      8192; name = CD\PCSONIC\BONUS6\RANDOM.BIN
+    file[]: crc = d06197a0; size =      6516; name = CD\PCSONIC\BONUS6\SCORE.PCX
+    file[]: crc = 33bb8f58; size =     53248; name = CD\PCSONIC\BONUS6\TUNNEL.BIN
+    file[]: crc = fe217988; size =     32768; name = CD\PCSONIC\BONUS6\TUNNEL.SPR
+    file[]: crc = 90b94f68; size =        19; name = CD\PCSONIC\CDDATA\ABS.TXT
+    file[]: crc = 5cc1e7ee; size =        26; name = CD\PCSONIC\CDDATA\BIB.TXT
+    file[]: crc = 2a476af3; size =        40; name = CD\PCSONIC\CDDATA\CPY.TXT
+    file[]: crc = 3fff6e6d; size =   7685344; name = CD\PCSONIC\CDDATA\SO3DEDA.AVI
+    file[]: crc = cad21dc0; size =   5035764; name = CD\PCSONIC\CDDATA\SO3DEDB.AVI
+    file[]: crc = e0b607c3; size =   9042856; name = CD\PCSONIC\CDDATA\SO3DOP.AVI
+    file[]: crc = 40fd6977; size =    407420; name = CD\PCSONIC\CDDATA\DATA\DATA2.BIN
+    file[]: crc = 38867075; size =     32254; name = CD\PCSONIC\CDDATA\DATA\DATAFILE.BIN
+    file[]: crc = c8ff262d; size =     32254; name = CD\PCSONIC\CDDATA\DATA\DATAFILE.PC
+    file[]: crc = 6cabb291; size =      1858; name = CD\PCSONIC\CDDATA\DATA\DEMO.BIN
+    file[]: crc = 29b4ef25; size =      6144; name = CD\PCSONIC\CDDATA\DATA\PALETTE.BIN
+    file[]: crc = fff3de39; size =       332; name = CD\PCSONIC\CDDATA\DATA\PATH1.BIN
+    file[]: crc = 36b2ad66; size =       456; name = CD\PCSONIC\CDDATA\DATA\PATH2.BIN
+    file[]: crc = 45dc8f49; size =       542; name = CD\PCSONIC\CDDATA\DATA\PATH3.BIN
+    file[]: crc = 2581f98e; size =       406; name = CD\PCSONIC\CDDATA\DATA\PATH4.BIN
+    file[]: crc = dc1acfc1; size =       122; name = CD\PCSONIC\CDDATA\DATA\PATH5.BIN
+    file[]: crc = 4fc15a05; size =     16384; name = CD\PCSONIC\CDDATA\DATA\RANDOM.BIN
+    file[]: crc = 9dbec817; size =      2676; name = CD\PCSONIC\CDDATA\DATA\VRAM.BIN
+    file[]: crc = 50373261; size =      2676; name = CD\PCSONIC\CDDATA\DATA\VRAM.PC
+    file[]: crc = 69775449; size =      7424; name = CD\PCSONIC\CDDATA\FONTS\FONT16X8.BIN
+    file[]: crc = d3b3558b; size =     88512; name = CD\PCSONIC\CDDATA\FONTS\SCORE1.BIN
+    file[]: crc = 82de036a; size =     88512; name = CD\PCSONIC\CDDATA\FONTS\SCORE2.BIN
+    file[]: crc = 3932c097; size =    145856; name = CD\PCSONIC\CDDATA\FONTS\SCORE3.BIN
+    file[]: crc = 2d7f8288; size =    145856; name = CD\PCSONIC\CDDATA\FONTS\SCORE4.BIN
+    file[]: crc = 7740e9d6; size =    145856; name = CD\PCSONIC\CDDATA\FONTS\SCORE5.BIN
+    file[]: crc = dbdb4f43; size =     88512; name = CD\PCSONIC\CDDATA\FONTS\SCORE6.BIN
+    file[]: crc = dc3a5caa; size =     88512; name = CD\PCSONIC\CDDATA\FONTS\SCORE7.BIN
+    file[]: crc = e9190b05; size =    145856; name = CD\PCSONIC\CDDATA\FONTS\SCORE8.BIN
+    file[]: crc = 5b778736; size =     88512; name = CD\PCSONIC\CDDATA\FONTS\SCORE9.BIN
+    file[]: crc = 9cc341a5; size =     88512; name = CD\PCSONIC\CDDATA\FONTS\SCOREA.BIN
+    file[]: crc = a2adefeb; size =     88512; name = CD\PCSONIC\CDDATA\FONTS\SCOREB.BIN
+    file[]: crc = 14a66adf; size =    486820; name = CD\PCSONIC\CDDATA\LEV1\GFX1A.BIN
+    file[]: crc = b1c5d2c0; size =    486820; name = CD\PCSONIC\CDDATA\LEV1\GFX1A.PC
+    file[]: crc = cc446878; size =    497764; name = CD\PCSONIC\CDDATA\LEV1\GFX1B.BIN
+    file[]: crc = eb34ce1f; size =    497764; name = CD\PCSONIC\CDDATA\LEV1\GFX1B.PC
+    file[]: crc = 12d609e8; size =    273344; name = CD\PCSONIC\CDDATA\LEV1\GFX1C.BIN
+    file[]: crc = bce94d67; size =    273344; name = CD\PCSONIC\CDDATA\LEV1\GFX1C.PC
+    file[]: crc = 66fc74da; size =    430744; name = CD\PCSONIC\CDDATA\LEV1\MAP1A.BIN
+    file[]: crc = 66fc74da; size =    430744; name = CD\PCSONIC\CDDATA\LEV1\MAP1A.PC
+    file[]: crc = 668f8405; size =    462706; name = CD\PCSONIC\CDDATA\LEV1\MAP1B.BIN
+    file[]: crc = 668f8405; size =    462706; name = CD\PCSONIC\CDDATA\LEV1\MAP1B.PC
+    file[]: crc = 04d51df0; size =    223196; name = CD\PCSONIC\CDDATA\LEV1\MAP1C.BIN
+    file[]: crc = 04d51df0; size =    223196; name = CD\PCSONIC\CDDATA\LEV1\MAP1C.PC
+    file[]: crc = 98b551b9; size =    270950; name = CD\PCSONIC\CDDATA\LEV1\OVL1A.BIN
+    file[]: crc = 46a7ea1b; size =    283700; name = CD\PCSONIC\CDDATA\LEV1\OVL1B.BIN
+    file[]: crc = c8f12a9b; size =    261020; name = CD\PCSONIC\CDDATA\LEV1\OVL1C.BIN
+    file[]: crc = 78e46e53; size =      8192; name = CD\PCSONIC\CDDATA\LEV2\CHR2A.BIN
+    file[]: crc = 78e46e53; size =      8192; name = CD\PCSONIC\CDDATA\LEV2\CHR2B.BIN
+    file[]: crc = 78e46e53; size =      8192; name = CD\PCSONIC\CDDATA\LEV2\CHR2C.BIN
+    file[]: crc = 392e2dff; size =    438570; name = CD\PCSONIC\CDDATA\LEV2\GFX2A.BIN
+    file[]: crc = 9a733685; size =    438570; name = CD\PCSONIC\CDDATA\LEV2\GFX2A.PC
+    file[]: crc = 83598733; size =    444586; name = CD\PCSONIC\CDDATA\LEV2\GFX2B.BIN
+    file[]: crc = d55d3ab5; size =    444586; name = CD\PCSONIC\CDDATA\LEV2\GFX2B.PC
+    file[]: crc = 906b032e; size =    305934; name = CD\PCSONIC\CDDATA\LEV2\GFX2C.BIN
+    file[]: crc = f51df4ce; size =    305934; name = CD\PCSONIC\CDDATA\LEV2\GFX2C.PC
+    file[]: crc = 44fd52a0; size =    361052; name = CD\PCSONIC\CDDATA\LEV2\MAP2A.BIN
+    file[]: crc = fb5b18f8; size =    361052; name = CD\PCSONIC\CDDATA\LEV2\MAP2A.PC
+    file[]: crc = 739c2dcc; size =    366090; name = CD\PCSONIC\CDDATA\LEV2\MAP2B.BIN
+    file[]: crc = cc3a6794; size =    366090; name = CD\PCSONIC\CDDATA\LEV2\MAP2B.PC
+    file[]: crc = a60bac26; size =    177684; name = CD\PCSONIC\CDDATA\LEV2\MAP2C.BIN
+    file[]: crc = 3d0aa6ee; size =    177684; name = CD\PCSONIC\CDDATA\LEV2\MAP2C.PC
+    file[]: crc = d71fd97a; size =    142760; name = CD\PCSONIC\CDDATA\LEV2\OVL2A.BIN
+    file[]: crc = d2c0d099; size =    142700; name = CD\PCSONIC\CDDATA\LEV2\OVL2B.BIN
+    file[]: crc = e7c4d8bb; size =    135860; name = CD\PCSONIC\CDDATA\LEV2\OVL2C.BIN
+    file[]: crc = 7a3e7d2c; size =     73728; name = CD\PCSONIC\CDDATA\LEV2\SCR2.BIN
+    file[]: crc = 7a3e7d2c; size =     73728; name = CD\PCSONIC\CDDATA\LEV2\SCR2A.BIN
+    file[]: crc = 7a3e7d2c; size =     73728; name = CD\PCSONIC\CDDATA\LEV2\SCR2B.BIN
+    file[]: crc = 391fee52; size =      6144; name = CD\PCSONIC\CDDATA\LEV3\CHR3A.BIN
+    file[]: crc = 391fee52; size =      6144; name = CD\PCSONIC\CDDATA\LEV3\CHR3B.BIN
+    file[]: crc = 391fee52; size =      6144; name = CD\PCSONIC\CDDATA\LEV3\CHR3C.BIN
+    file[]: crc = 40c56554; size =    489440; name = CD\PCSONIC\CDDATA\LEV3\GFX3A.BIN
+    file[]: crc = eb6c58b1; size =    489440; name = CD\PCSONIC\CDDATA\LEV3\GFX3A.PC
+    file[]: crc = c8bef8fc; size =    484480; name = CD\PCSONIC\CDDATA\LEV3\GFX3B.BIN
+    file[]: crc = 3aaf73f4; size =    484480; name = CD\PCSONIC\CDDATA\LEV3\GFX3B.PC
+    file[]: crc = 24fa23fa; size =    239362; name = CD\PCSONIC\CDDATA\LEV3\GFX3C.BIN
+    file[]: crc = 97bce148; size =    239362; name = CD\PCSONIC\CDDATA\LEV3\GFX3C.PC
+    file[]: crc = 7bef62b2; size =    385584; name = CD\PCSONIC\CDDATA\LEV3\MAP3A.BIN
+    file[]: crc = 7bef62b2; size =    385584; name = CD\PCSONIC\CDDATA\LEV3\MAP3A.PC
+    file[]: crc = c72d06ac; size =    346864; name = CD\PCSONIC\CDDATA\LEV3\MAP3B.BIN
+    file[]: crc = c72d06ac; size =    346864; name = CD\PCSONIC\CDDATA\LEV3\MAP3B.PC
+    file[]: crc = 1adeaf2d; size =    204412; name = CD\PCSONIC\CDDATA\LEV3\MAP3C.BIN
+    file[]: crc = 1adeaf2d; size =    204412; name = CD\PCSONIC\CDDATA\LEV3\MAP3C.PC
+    file[]: crc = 586edb97; size =    265616; name = CD\PCSONIC\CDDATA\LEV3\OVL3A.BIN
+    file[]: crc = 8c024360; size =    263246; name = CD\PCSONIC\CDDATA\LEV3\OVL3B.BIN
+    file[]: crc = 327f31a6; size =    260336; name = CD\PCSONIC\CDDATA\LEV3\OVL3C.BIN
+    file[]: crc = fbaf7631; size =     30720; name = CD\PCSONIC\CDDATA\LEV4\CHR4A.BIN
+    file[]: crc = fbaf7631; size =     30720; name = CD\PCSONIC\CDDATA\LEV4\CHR4B.BIN
+    file[]: crc = fbaf7631; size =     30720; name = CD\PCSONIC\CDDATA\LEV4\CHR4C.BIN
+    file[]: crc = eceac015; size =    455960; name = CD\PCSONIC\CDDATA\LEV4\GFX4A.BIN
+    file[]: crc = f9611cce; size =    455960; name = CD\PCSONIC\CDDATA\LEV4\GFX4A.PC
+    file[]: crc = a9c89ef0; size =    434840; name = CD\PCSONIC\CDDATA\LEV4\GFX4B.BIN
+    file[]: crc = 4e04d662; size =    434840; name = CD\PCSONIC\CDDATA\LEV4\GFX4B.PC
+    file[]: crc = e01059de; size =    249808; name = CD\PCSONIC\CDDATA\LEV4\GFX4C.BIN
+    file[]: crc = 46e622b0; size =    249808; name = CD\PCSONIC\CDDATA\LEV4\GFX4C.PC
+    file[]: crc = 40c2b565; size =    409236; name = CD\PCSONIC\CDDATA\LEV4\MAP4A.BIN
+    file[]: crc = 40c2b565; size =    409236; name = CD\PCSONIC\CDDATA\LEV4\MAP4A.PC
+    file[]: crc = 7d543031; size =    347636; name = CD\PCSONIC\CDDATA\LEV4\MAP4B.BIN
+    file[]: crc = 7d543031; size =    347636; name = CD\PCSONIC\CDDATA\LEV4\MAP4B.PC
+    file[]: crc = 4bfec557; size =    190430; name = CD\PCSONIC\CDDATA\LEV4\MAP4C.BIN
+    file[]: crc = 4bfec557; size =    190430; name = CD\PCSONIC\CDDATA\LEV4\MAP4C.PC
+    file[]: crc = 2ea0cc64; size =    240592; name = CD\PCSONIC\CDDATA\LEV4\OVL4A.BIN
+    file[]: crc = 4f1c06c6; size =    239722; name = CD\PCSONIC\CDDATA\LEV4\OVL4B.BIN
+    file[]: crc = da1cb05b; size =    235222; name = CD\PCSONIC\CDDATA\LEV4\OVL4C.BIN
+    file[]: crc = 0d169cba; size =     73664; name = CD\PCSONIC\CDDATA\LEV4\SCR4.BIN
+    file[]: crc = de8a388a; size =     30720; name = CD\PCSONIC\CDDATA\LEV5\CHR5A.BIN
+    file[]: crc = 009ebc35; size =     12288; name = CD\PCSONIC\CDDATA\LEV5\CHR5B.BIN
+    file[]: crc = f045e45a; size =    483298; name = CD\PCSONIC\CDDATA\LEV5\GFX5A.BIN
+    file[]: crc = e02523f4; size =    483298; name = CD\PCSONIC\CDDATA\LEV5\GFX5A.PC
+    file[]: crc = 6be1e132; size =    478082; name = CD\PCSONIC\CDDATA\LEV5\GFX5B.BIN
+    file[]: crc = a85f55d9; size =    478082; name = CD\PCSONIC\CDDATA\LEV5\GFX5B.PC
+    file[]: crc = 3aa682dc; size =    259534; name = CD\PCSONIC\CDDATA\LEV5\GFX5C.BIN
+    file[]: crc = 61cef5d6; size =    259534; name = CD\PCSONIC\CDDATA\LEV5\GFX5C.PC
+    file[]: crc = ff4b8d1b; size =    367634; name = CD\PCSONIC\CDDATA\LEV5\MAP5A.BIN
+    file[]: crc = ff4b8d1b; size =    367634; name = CD\PCSONIC\CDDATA\LEV5\MAP5A.PC
+    file[]: crc = 5aa7276b; size =    297574; name = CD\PCSONIC\CDDATA\LEV5\MAP5B.BIN
+    file[]: crc = 5aa7276b; size =    297574; name = CD\PCSONIC\CDDATA\LEV5\MAP5B.PC
+    file[]: crc = ab32dfe5; size =    165780; name = CD\PCSONIC\CDDATA\LEV5\MAP5C.BIN
+    file[]: crc = ab32dfe5; size =    165780; name = CD\PCSONIC\CDDATA\LEV5\MAP5C.PC
+    file[]: crc = 6c41d885; size =     54428; name = CD\PCSONIC\CDDATA\LEV5\OVL5A.BIN
+    file[]: crc = 8e809ee7; size =     49630; name = CD\PCSONIC\CDDATA\LEV5\OVL5B.BIN
+    file[]: crc = 91331323; size =     42520; name = CD\PCSONIC\CDDATA\LEV5\OVL5C.BIN
+    file[]: crc = 6ef5091d; size =     73664; name = CD\PCSONIC\CDDATA\LEV5\SCR5.BIN
+    file[]: crc = b2c633bd; size =      4288; name = CD\PCSONIC\CDDATA\LEV5\SNOW.BIN
+    file[]: crc = 87b397fd; size =      8192; name = CD\PCSONIC\CDDATA\LEV6\CHR6A.BIN
+    file[]: crc = 87b397fd; size =      8192; name = CD\PCSONIC\CDDATA\LEV6\CHR6B.BIN
+    file[]: crc = 1f2d7789; size =      1024; name = CD\PCSONIC\CDDATA\LEV6\CHR6CA.BIN
+    file[]: crc = ee87ff86; size =    488606; name = CD\PCSONIC\CDDATA\LEV6\GFX6A.BIN
+    file[]: crc = 94872c30; size =    488606; name = CD\PCSONIC\CDDATA\LEV6\GFX6A.PC
+    file[]: crc = 83af850a; size =    490590; name = CD\PCSONIC\CDDATA\LEV6\GFX6B.BIN
+    file[]: crc = 9e953a02; size =    490590; name = CD\PCSONIC\CDDATA\LEV6\GFX6B.PC
+    file[]: crc = 08cdbe6c; size =    233524; name = CD\PCSONIC\CDDATA\LEV6\GFX6C.BIN
+    file[]: crc = 15b6dc91; size =    233524; name = CD\PCSONIC\CDDATA\LEV6\GFX6C.PC
+    file[]: crc = 61a9aa81; size =    421562; name = CD\PCSONIC\CDDATA\LEV6\MAP6A.BIN
+    file[]: crc = 61a9aa81; size =    421562; name = CD\PCSONIC\CDDATA\LEV6\MAP6A.PC
+    file[]: crc = 2171d501; size =    404262; name = CD\PCSONIC\CDDATA\LEV6\MAP6B.BIN
+    file[]: crc = 2171d501; size =    404262; name = CD\PCSONIC\CDDATA\LEV6\MAP6B.PC
+    file[]: crc = 8239e21d; size =    198868; name = CD\PCSONIC\CDDATA\LEV6\MAP6C.BIN
+    file[]: crc = 8239e21d; size =    198868; name = CD\PCSONIC\CDDATA\LEV6\MAP6C.PC
+    file[]: crc = 4271b39a; size =    255732; name = CD\PCSONIC\CDDATA\LEV6\OVL6A.BIN
+    file[]: crc = 2ad7eda5; size =    256992; name = CD\PCSONIC\CDDATA\LEV6\OVL6B.BIN
+    file[]: crc = f5a19018; size =    252252; name = CD\PCSONIC\CDDATA\LEV6\OVL6C.BIN
+    file[]: crc = 918e1852; size =     71296; name = CD\PCSONIC\CDDATA\LEV6\SCR6.BIN
+    file[]: crc = ac3643b7; size =      8192; name = CD\PCSONIC\CDDATA\LEV7\CHR7A.BIN
+    file[]: crc = c993e8b2; size =      1024; name = CD\PCSONIC\CDDATA\LEV7\CHR7AA.BIN
+    file[]: crc = c993e8b2; size =      1024; name = CD\PCSONIC\CDDATA\LEV7\CHR7BA.BIN
+    file[]: crc = 28f65ebd; size =    406342; name = CD\PCSONIC\CDDATA\LEV7\GFX7A.BIN
+    file[]: crc = 07f6bdc2; size =    406342; name = CD\PCSONIC\CDDATA\LEV7\GFX7A.PC
+    file[]: crc = 1f6013ac; size =    425600; name = CD\PCSONIC\CDDATA\LEV7\GFX7B.BIN
+    file[]: crc = 4293f05d; size =    425600; name = CD\PCSONIC\CDDATA\LEV7\GFX7B.PC
+    file[]: crc = 6c047d98; size =    270776; name = CD\PCSONIC\CDDATA\LEV7\GFX7C.BIN
+    file[]: crc = 41a3ab13; size =    270776; name = CD\PCSONIC\CDDATA\LEV7\GFX7C.PC
+    file[]: crc = 805a7691; size =    303740; name = CD\PCSONIC\CDDATA\LEV7\MAP7A.BIN
+    file[]: crc = 805a7691; size =    303740; name = CD\PCSONIC\CDDATA\LEV7\MAP7A.PC
+    file[]: crc = c16be1d3; size =    368452; name = CD\PCSONIC\CDDATA\LEV7\MAP7B.BIN
+    file[]: crc = c16be1d3; size =    368452; name = CD\PCSONIC\CDDATA\LEV7\MAP7B.PC
+    file[]: crc = 4eb2b417; size =    163768; name = CD\PCSONIC\CDDATA\LEV7\MAP7C.BIN
+    file[]: crc = 4eb2b417; size =    163768; name = CD\PCSONIC\CDDATA\LEV7\MAP7C.PC
+    file[]: crc = b633a867; size =    280014; name = CD\PCSONIC\CDDATA\LEV7\OVL7A.BIN
+    file[]: crc = 980dad09; size =    280164; name = CD\PCSONIC\CDDATA\LEV7\OVL7B.BIN
+    file[]: crc = ddcc3d4b; size =    276894; name = CD\PCSONIC\CDDATA\LEV7\OVL7C.BIN
+    file[]: crc = 24bf2ec3; size =    369558; name = CD\PCSONIC\CDDATA\LEV8\GFX8A.BIN
+    file[]: crc = 265c8f4f; size =    369558; name = CD\PCSONIC\CDDATA\LEV8\GFX8A.PC
+    file[]: crc = 73a554b7; size =    151040; name = CD\PCSONIC\CDDATA\LEV8\MAP8A.BIN
+    file[]: crc = 73a554b7; size =    151040; name = CD\PCSONIC\CDDATA\LEV8\MAP8A.PC
+    file[]: crc = 5501f455; size =    230332; name = CD\PCSONIC\CDDATA\LEV8\OVL8A.BIN
+    file[]: crc = 9fa72fac; size =     42688; name = CD\PCSONIC\CDDATA\LEV8\SCR8.BIN
+    file[]: crc = 18f10a0f; size =     65536; name = CD\PCSONIC\CDDATA\LEV8\UNDERLAY.BIN
+    file[]: crc = 2f68454e; size =      8832; name = CD\PCSONIC\CDDATA\OVLSPRS\BRDGESPR.BIN
+    file[]: crc = 8bdcc6a0; size =      4096; name = CD\PCSONIC\CDDATA\OVLSPRS\BRIDGE.BIN
+    file[]: crc = 8f5b9eac; size =      4736; name = CD\PCSONIC\CDDATA\OVLSPRS\FIRST.BIN
+    file[]: crc = 555f8f9c; size =      4288; name = CD\PCSONIC\CDDATA\OVLSPRS\RAIN.BIN
+    file[]: crc = b2c633bd; size =      4288; name = CD\PCSONIC\CDDATA\OVLSPRS\SNOW.BIN
+    file[]: crc = 8d319f4f; size =      8192; name = CD\PCSONIC\CDDATA\OVLSPRS\WATER.BIN
+    file[]: crc = 23cb0b65; size =     15360; name = CD\PCSONIC\CDDATA\OVLSPRS\WATRBLOK.BIN
+    file[]: crc = 67837853; size =     36864; name = CD\PCSONIC\CDDATA\PANEL\BOXDATA.BIN
+    file[]: crc = 438b326f; size =    112500; name = CD\PCSONIC\CDDATA\PANEL\CREDIT.BIN
+    file[]: crc = e6f4aca4; size =     11264; name = CD\PCSONIC\CDDATA\PANEL\DD.BIN
+    file[]: crc = 85238e53; size =     11264; name = CD\PCSONIC\CDDATA\PANEL\FF.BIN
+    file[]: crc = 572fb944; size =     11264; name = CD\PCSONIC\CDDATA\PANEL\GG.BIN
+    file[]: crc = dee95071; size =     11264; name = CD\PCSONIC\CDDATA\PANEL\GRGR.BIN
+    file[]: crc = aaea5666; size =     48954; name = CD\PCSONIC\CDDATA\PANEL\HELP.BIN
+    file[]: crc = 6fa037d6; size =     71680; name = CD\PCSONIC\CDDATA\PANEL\LEVEL1A.RAW
+    file[]: crc = 4ccde883; size =     71680; name = CD\PCSONIC\CDDATA\PANEL\LEVEL1B.RAW
+    file[]: crc = 52196a0b; size =      6144; name = CD\PCSONIC\CDDATA\PANEL\PALETTE.BIN
+    file[]: crc = 00a9f9d0; size =     79360; name = CD\PCSONIC\CDDATA\PANEL\PANELBOX.BIN
+    file[]: crc = aca787df; size =     11264; name = CD\PCSONIC\CDDATA\PANEL\PP.BIN
+    file[]: crc = 0f21b558; size =     11264; name = CD\PCSONIC\CDDATA\PANEL\RR.BIN
+    file[]: crc = 5c05b82d; size =     22400; name = CD\PCSONIC\CDDATA\PANEL\SCROLL.BIN
+    file[]: crc = fcf4a8c6; size =     11264; name = CD\PCSONIC\CDDATA\PANEL\SS.BIN
+    file[]: crc = f0e3cb99; size =     47360; name = CD\PCSONIC\CDDATA\PANEL\START.BIN
+    file[]: crc = b2dc2b30; size =    209414; name = CD\PCSONIC\CDDATA\PANEL\TOTAL.BIN
+    file[]: crc = 3d61dc9a; size =    121510; name = CD\PCSONIC\CDDATA\PANEL\TOTAL1.BIN
+    file[]: crc = 8046f824; size =    125850; name = CD\PCSONIC\CDDATA\PANEL\TOTAL2.BIN
+    file[]: crc = d0c40611; size =    189482; name = CD\PCSONIC\CDDATA\PANEL\TOTAL3.BIN
+    file[]: crc = 115d9752; size =    117774; name = CD\PCSONIC\CDDATA\PANEL\TOTAL4.BIN
+    file[]: crc = 0e8196fe; size =     11264; name = CD\PCSONIC\CDDATA\PANEL\VV.BIN
+    file[]: crc = 2968950d; size =     46712; name = CD\PCSONIC\CDDATA\PICT_256\3DBLAST.PIC
+    file[]: crc = 412b6462; size =     62363; name = CD\PCSONIC\CDDATA\PICT_256\CONTINUE.PIC
+    file[]: crc = 72f2d1d1; size =     13166; name = CD\PCSONIC\CDDATA\PICT_256\CREDSON.PIC
+    file[]: crc = e6f0ecc8; size =     66471; name = CD\PCSONIC\CDDATA\PICT_256\FINALPIC.PIC
+    file[]: crc = 6d923fd3; size =     50396; name = CD\PCSONIC\CDDATA\PICT_256\FLICKIES.PIC
+    file[]: crc = 4125735b; size =     61402; name = CD\PCSONIC\CDDATA\PICT_256\GAMEOVER.PIC
+    file[]: crc = 18121bf0; size =     68849; name = CD\PCSONIC\CDDATA\PICT_256\ISLAND1.PIC
+    file[]: crc = 7a77c622; size =     69065; name = CD\PCSONIC\CDDATA\PICT_256\ISLAND2.PIC
+    file[]: crc = cdfb3e9c; size =     69111; name = CD\PCSONIC\CDDATA\PICT_256\ISLAND3.PIC
+    file[]: crc = e8b0907a; size =     69458; name = CD\PCSONIC\CDDATA\PICT_256\ISLAND4.PIC
+    file[]: crc = 24635d61; size =     69496; name = CD\PCSONIC\CDDATA\PICT_256\ISLAND5.PIC
+    file[]: crc = 44dfde60; size =     69212; name = CD\PCSONIC\CDDATA\PICT_256\ISLAND6.PIC
+    file[]: crc = 0a35b3db; size =     69202; name = CD\PCSONIC\CDDATA\PICT_256\ISLAND7.PIC
+    file[]: crc = 7c14f8bb; size =     68575; name = CD\PCSONIC\CDDATA\PICT_256\ISLE1.PIC
+    file[]: crc = c5ef21ee; size =     63118; name = CD\PCSONIC\CDDATA\PICT_256\LOADING.PIC
+    file[]: crc = b72b49a4; size =     71185; name = CD\PCSONIC\CDDATA\PICT_256\OPTIONS.PIC
+    file[]: crc = 0e37ab71; size =      6107; name = CD\PCSONIC\CDDATA\PICT_256\SEGALOGO.PIC
+    file[]: crc = d81caf12; size =     16897; name = CD\PCSONIC\CDDATA\PICT_256\SONKNUCK.PIC
+    file[]: crc = c2e77bfb; size =     16620; name = CD\PCSONIC\CDDATA\PICT_256\SONTAILS.PIC
+    file[]: crc = 4b3ee3cb; size =     17766; name = CD\PCSONIC\CDDATA\PICT_256\TALLYBAK.PIC
+    file[]: crc = 0225ccff; size =     62925; name = CD\PCSONIC\CDDATA\PICT_256\THEEND.PIC
+    file[]: crc = 645e399e; size =     15433; name = CD\PCSONIC\CDDATA\PICT_256\TRUEMOT.PIC
+    file[]: crc = d46f1a75; size =     62974; name = CD\PCSONIC\CDDATA\PICT_256\TRYAGAIN.PIC
+    file[]: crc = b88b9358; size =     22170; name = CD\PCSONIC\CDDATA\PICT_256\TTLOGO.PIC
+    file[]: crc = db09b597; size =       330; name = CD\PCSONIC\CDDATA\SNDCORE\LEV1.MAP
+    file[]: crc = 705a3ed8; size =       330; name = CD\PCSONIC\CDDATA\SNDCORE\LEV2.MAP
+    file[]: crc = 81894922; size =       330; name = CD\PCSONIC\CDDATA\SNDCORE\LEV3.MAP
+    file[]: crc = 2bb84fa6; size =       330; name = CD\PCSONIC\CDDATA\SNDCORE\LEV4.MAP
+    file[]: crc = 533cc044; size =       330; name = CD\PCSONIC\CDDATA\SNDCORE\LEV5.MAP
+    file[]: crc = 96764763; size =       330; name = CD\PCSONIC\CDDATA\SNDCORE\LEV6.MAP
+    file[]: crc = db5a6a53; size =       330; name = CD\PCSONIC\CDDATA\SNDCORE\LEV7.MAP
+    file[]: crc = b71bc20b; size =       330; name = CD\PCSONIC\CDDATA\SNDCORE\LEV8.MAP
+    file[]: crc = 480de631; size =      9394; name = CD\PCSONIC\CDDATA\SOUND\BONUS\0.WAV
+    file[]: crc = 8afedb76; size =     32933; name = CD\PCSONIC\CDDATA\SOUND\BONUS\1.WAV
+    file[]: crc = 9f9ff271; size =     13976; name = CD\PCSONIC\CDDATA\SOUND\BONUS\10.WAV
+    file[]: crc = b6830c9f; size =    115180; name = CD\PCSONIC\CDDATA\SOUND\BONUS\11.WAV
+    file[]: crc = 79b788dc; size =     61228; name = CD\PCSONIC\CDDATA\SOUND\BONUS\12.WAV
+    file[]: crc = ece69d85; size =      6508; name = CD\PCSONIC\CDDATA\SOUND\BONUS\13.WAV
+    file[]: crc = a426f4be; size =     16320; name = CD\PCSONIC\CDDATA\SOUND\BONUS\14.WAV
+    file[]: crc = a2f8cd4c; size =     40876; name = CD\PCSONIC\CDDATA\SOUND\BONUS\15.WAV
+    file[]: crc = 9e453b68; size =     28048; name = CD\PCSONIC\CDDATA\SOUND\BONUS\2.WAV
+    file[]: crc = 5778aa09; size =      7695; name = CD\PCSONIC\CDDATA\SOUND\BONUS\3.WAV
+    file[]: crc = 6b3b9624; size =     18495; name = CD\PCSONIC\CDDATA\SOUND\BONUS\4.WAV
+    file[]: crc = f286b109; size =     15772; name = CD\PCSONIC\CDDATA\SOUND\BONUS\5.WAV
+    file[]: crc = f88bde2d; size =      8762; name = CD\PCSONIC\CDDATA\SOUND\BONUS\6.WAV
+    file[]: crc = 228071a7; size =     10424; name = CD\PCSONIC\CDDATA\SOUND\BONUS\7.WAV
+    file[]: crc = 851823a0; size =      7062; name = CD\PCSONIC\CDDATA\SOUND\BONUS\8.WAV
+    file[]: crc = 799136cd; size =     38187; name = CD\PCSONIC\CDDATA\SOUND\BONUS\9.WAV
+    file[]: crc = 227f069c; size =     28056; name = CD\PCSONIC\CDDATA\SOUND\BOSS\0.WAV
+    file[]: crc = 6100ac55; size =      9950; name = CD\PCSONIC\CDDATA\SOUND\BOSS\1.WAV
+    file[]: crc = 2462beab; size =      5085; name = CD\PCSONIC\CDDATA\SOUND\BOSS\10.WAV
+    file[]: crc = 8c29ed06; size =      8486; name = CD\PCSONIC\CDDATA\SOUND\BOSS\11.WAV
+    file[]: crc = 1569a439; size =     14807; name = CD\PCSONIC\CDDATA\SOUND\BOSS\12.WAV
+    file[]: crc = 7b29095d; size =      9402; name = CD\PCSONIC\CDDATA\SOUND\BOSS\13.WAV
+    file[]: crc = f383ea70; size =      7235; name = CD\PCSONIC\CDDATA\SOUND\BOSS\14.WAV
+    file[]: crc = 7dc05c9a; size =     53172; name = CD\PCSONIC\CDDATA\SOUND\BOSS\15.WAV
+    file[]: crc = 2a3cd362; size =      3249; name = CD\PCSONIC\CDDATA\SOUND\BOSS\16.WAV
+    file[]: crc = 153aaf28; size =      7145; name = CD\PCSONIC\CDDATA\SOUND\BOSS\17.WAV
+    file[]: crc = 6f30b73b; size =     15461; name = CD\PCSONIC\CDDATA\SOUND\BOSS\18.WAV
+    file[]: crc = 111795cf; size =      4718; name = CD\PCSONIC\CDDATA\SOUND\BOSS\19.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = CD\PCSONIC\CDDATA\SOUND\BOSS\2.WAV
+    file[]: crc = 7d3a195b; size =      7162; name = CD\PCSONIC\CDDATA\SOUND\BOSS\20.WAV
+    file[]: crc = 8fb02200; size =     18503; name = CD\PCSONIC\CDDATA\SOUND\BOSS\21.WAV
+    file[]: crc = 972159c4; size =      8770; name = CD\PCSONIC\CDDATA\SOUND\BOSS\22.WAV
+    file[]: crc = b85fe47e; size =      2619; name = CD\PCSONIC\CDDATA\SOUND\BOSS\23.WAV
+    file[]: crc = 88934972; size =      9990; name = CD\PCSONIC\CDDATA\SOUND\BOSS\24.WAV
+    file[]: crc = 6eb5641a; size =     17694; name = CD\PCSONIC\CDDATA\SOUND\BOSS\25.WAV
+    file[]: crc = e7938c8e; size =      4852; name = CD\PCSONIC\CDDATA\SOUND\BOSS\26.WAV
+    file[]: crc = d3f7a6e8; size =      5204; name = CD\PCSONIC\CDDATA\SOUND\BOSS\27.WAV
+    file[]: crc = 349f8dd9; size =     15342; name = CD\PCSONIC\CDDATA\SOUND\BOSS\28.WAV
+    file[]: crc = 444ebe7b; size =      2334; name = CD\PCSONIC\CDDATA\SOUND\BOSS\29.WAV
+    file[]: crc = 12d8f16e; size =      3631; name = CD\PCSONIC\CDDATA\SOUND\BOSS\3.WAV
+    file[]: crc = 417d3bf0; size =      2275; name = CD\PCSONIC\CDDATA\SOUND\BOSS\30.WAV
+    file[]: crc = c94a1c24; size =      3772; name = CD\PCSONIC\CDDATA\SOUND\BOSS\31.WAV
+    file[]: crc = 4f7f4ae9; size =     15207; name = CD\PCSONIC\CDDATA\SOUND\BOSS\32.WAV
+    file[]: crc = 5a875620; size =     63668; name = CD\PCSONIC\CDDATA\SOUND\BOSS\33.WAV
+    file[]: crc = fd7b7190; size =     11737; name = CD\PCSONIC\CDDATA\SOUND\BOSS\34.WAV
+    file[]: crc = 9dc2344b; size =     13858; name = CD\PCSONIC\CDDATA\SOUND\BOSS\35.WAV
+    file[]: crc = 8e23ca86; size =      9049; name = CD\PCSONIC\CDDATA\SOUND\BOSS\4.WAV
+    file[]: crc = fe1ed5fc; size =      5548; name = CD\PCSONIC\CDDATA\SOUND\BOSS\5.WAV
+    file[]: crc = c2a34b07; size =     32941; name = CD\PCSONIC\CDDATA\SOUND\BOSS\6.WAV
+    file[]: crc = 506c1445; size =      5075; name = CD\PCSONIC\CDDATA\SOUND\BOSS\7.WAV
+    file[]: crc = 160250c7; size =      5307; name = CD\PCSONIC\CDDATA\SOUND\BOSS\8.WAV
+    file[]: crc = 9f63d530; size =     98668; name = CD\PCSONIC\CDDATA\SOUND\BOSS\9.WAV
+    file[]: crc = 227f069c; size =     28056; name = CD\PCSONIC\CDDATA\SOUND\CORE\0.WAV
+    file[]: crc = 4f7f4ae9; size =     15207; name = CD\PCSONIC\CDDATA\SOUND\CORE\1.WAV
+    file[]: crc = fd7b7190; size =     11737; name = CD\PCSONIC\CDDATA\SOUND\CORE\10.WAV
+    file[]: crc = 9dc2344b; size =     13858; name = CD\PCSONIC\CDDATA\SOUND\CORE\11.WAV
+    file[]: crc = 9b96cfb9; size =     44916; name = CD\PCSONIC\CDDATA\SOUND\CORE\12.WAV
+    file[]: crc = 7b29095d; size =      9402; name = CD\PCSONIC\CDDATA\SOUND\CORE\13.WAV
+    file[]: crc = 05484b55; size =     10126; name = CD\PCSONIC\CDDATA\SOUND\CORE\14.WAV
+    file[]: crc = fd7b7190; size =     11737; name = CD\PCSONIC\CDDATA\SOUND\CORE\15.WAV
+    file[]: crc = fd7b7190; size =     11737; name = CD\PCSONIC\CDDATA\SOUND\CORE\16.WAV
+    file[]: crc = 89b195ed; size =      8552; name = CD\PCSONIC\CDDATA\SOUND\CORE\17.WAV
+    file[]: crc = 8cf12c28; size =     12626; name = CD\PCSONIC\CDDATA\SOUND\CORE\18.WAV
+    file[]: crc = 33298456; size =      5919; name = CD\PCSONIC\CDDATA\SOUND\CORE\19.WAV
+    file[]: crc = 506c1445; size =      5075; name = CD\PCSONIC\CDDATA\SOUND\CORE\2.WAV
+    file[]: crc = 7d3a195b; size =      7162; name = CD\PCSONIC\CDDATA\SOUND\CORE\20.WAV
+    file[]: crc = 8fb02200; size =     18503; name = CD\PCSONIC\CDDATA\SOUND\CORE\21.WAV
+    file[]: crc = 266e7841; size =     13984; name = CD\PCSONIC\CDDATA\SOUND\CORE\22.WAV
+    file[]: crc = 3b9478a9; size =     16328; name = CD\PCSONIC\CDDATA\SOUND\CORE\23.WAV
+    file[]: crc = 948bd2cf; size =     10370; name = CD\PCSONIC\CDDATA\SOUND\CORE\24.WAV
+    file[]: crc = 6100ac55; size =      9950; name = CD\PCSONIC\CDDATA\SOUND\CORE\25.WAV
+    file[]: crc = c2a34b07; size =     32941; name = CD\PCSONIC\CDDATA\SOUND\CORE\26.WAV
+    file[]: crc = 12d8f16e; size =      3631; name = CD\PCSONIC\CDDATA\SOUND\CORE\3.WAV
+    file[]: crc = 972159c4; size =      8770; name = CD\PCSONIC\CDDATA\SOUND\CORE\4.WAV
+    file[]: crc = b1614c48; size =     62132; name = CD\PCSONIC\CDDATA\SOUND\CORE\5.WAV
+    file[]: crc = 0af98661; size =    106156; name = CD\PCSONIC\CDDATA\SOUND\CORE\6.WAV
+    file[]: crc = 9dc2344b; size =     13858; name = CD\PCSONIC\CDDATA\SOUND\CORE\7.WAV
+    file[]: crc = 890b7eaa; size =     21839; name = CD\PCSONIC\CDDATA\SOUND\CORE\8.WAV
+    file[]: crc = 9f63d530; size =     98668; name = CD\PCSONIC\CDDATA\SOUND\CORE\9.WAV
+    file[]: crc = f5f84cfd; size =      6260; name = CD\PCSONIC\CDDATA\SOUND\LEV1\0.WAV
+    file[]: crc = 385aba3d; size =      7359; name = CD\PCSONIC\CDDATA\SOUND\LEV1\1.WAV
+    file[]: crc = 6100ac55; size =      9950; name = CD\PCSONIC\CDDATA\SOUND\LEV1\2.WAV
+    file[]: crc = 29b93c82; size =      8709; name = CD\PCSONIC\CDDATA\SOUND\LEV1\3.WAV
+    file[]: crc = 6100ac55; size =      9950; name = CD\PCSONIC\CDDATA\SOUND\LEV1\4.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = CD\PCSONIC\CDDATA\SOUND\LEV1\5.WAV
+    file[]: crc = 160250c7; size =      5307; name = CD\PCSONIC\CDDATA\SOUND\LEV1\6.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = CD\PCSONIC\CDDATA\SOUND\LEV1\7.WAV
+    file[]: crc = 7b9be2c1; size =      1096; name = CD\PCSONIC\CDDATA\SOUND\LEV1\8.WAV
+    file[]: crc = 25b98679; size =      6095; name = CD\PCSONIC\CDDATA\SOUND\LEV1\9.WAV
+    file[]: crc = 28e3ba71; size =      9748; name = CD\PCSONIC\CDDATA\SOUND\LEV1\W.WAV
+    file[]: crc = 111795cf; size =      4718; name = CD\PCSONIC\CDDATA\SOUND\LEV2\0.WAV
+    file[]: crc = 1569a439; size =     14807; name = CD\PCSONIC\CDDATA\SOUND\LEV2\1.WAV
+    file[]: crc = 6bf56ff6; size =      6610; name = CD\PCSONIC\CDDATA\SOUND\LEV2\2.WAV
+    file[]: crc = 74d3cde3; size =      1508; name = CD\PCSONIC\CDDATA\SOUND\LEV2\3.WAV
+    file[]: crc = 74d3cde3; size =      1508; name = CD\PCSONIC\CDDATA\SOUND\LEV2\4.WAV
+    file[]: crc = ecfc6a08; size =      4392; name = CD\PCSONIC\CDDATA\SOUND\LEV2\5.WAV
+    file[]: crc = b1176139; size =      2592; name = CD\PCSONIC\CDDATA\SOUND\LEV2\6.WAV
+    file[]: crc = 6100ac55; size =      9950; name = CD\PCSONIC\CDDATA\SOUND\LEV2\7.WAV
+    file[]: crc = f4f8e9de; size =      9451; name = CD\PCSONIC\CDDATA\SOUND\LEV2\RAIN.WAV
+    file[]: crc = 111795cf; size =      4718; name = CD\PCSONIC\CDDATA\SOUND\LEV3\0.WAV
+    file[]: crc = 972159c4; size =      8770; name = CD\PCSONIC\CDDATA\SOUND\LEV3\1.WAV
+    file[]: crc = 29b93c82; size =      8709; name = CD\PCSONIC\CDDATA\SOUND\LEV3\2.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = CD\PCSONIC\CDDATA\SOUND\LEV3\3.WAV
+    file[]: crc = 2a3cd362; size =      3249; name = CD\PCSONIC\CDDATA\SOUND\LEV3\4.WAV
+    file[]: crc = efd4117d; size =      4246; name = CD\PCSONIC\CDDATA\SOUND\LEV3\5.WAV
+    file[]: crc = 6bf56ff6; size =      6610; name = CD\PCSONIC\CDDATA\SOUND\LEV3\6.WAV
+    file[]: crc = 2a3cd362; size =      3249; name = CD\PCSONIC\CDDATA\SOUND\LEV3\7.WAV
+    file[]: crc = 0078bc09; size =      2475; name = CD\PCSONIC\CDDATA\SOUND\LEV3\8.WAV
+    file[]: crc = 349f8dd9; size =     15342; name = CD\PCSONIC\CDDATA\SOUND\LEV4\0.WAV
+    file[]: crc = e8a2d0cc; size =      5160; name = CD\PCSONIC\CDDATA\SOUND\LEV4\1.WAV
+    file[]: crc = 2368d1ee; size =       795; name = CD\PCSONIC\CDDATA\SOUND\LEV4\10.WAV
+    file[]: crc = 89b195ed; size =      8552; name = CD\PCSONIC\CDDATA\SOUND\LEV4\11.WAV
+    file[]: crc = f5f84cfd; size =      6260; name = CD\PCSONIC\CDDATA\SOUND\LEV4\12.WAV
+    file[]: crc = 160250c7; size =      5307; name = CD\PCSONIC\CDDATA\SOUND\LEV4\2.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = CD\PCSONIC\CDDATA\SOUND\LEV4\3.WAV
+    file[]: crc = 111795cf; size =      4718; name = CD\PCSONIC\CDDATA\SOUND\LEV4\4.WAV
+    file[]: crc = 6100ac55; size =      9950; name = CD\PCSONIC\CDDATA\SOUND\LEV4\5.WAV
+    file[]: crc = 6100ac55; size =      9950; name = CD\PCSONIC\CDDATA\SOUND\LEV4\6.WAV
+    file[]: crc = 972159c4; size =      8770; name = CD\PCSONIC\CDDATA\SOUND\LEV4\7.WAV
+    file[]: crc = 417d3bf0; size =      2275; name = CD\PCSONIC\CDDATA\SOUND\LEV4\8.WAV
+    file[]: crc = 444ebe7b; size =      2334; name = CD\PCSONIC\CDDATA\SOUND\LEV4\9.WAV
+    file[]: crc = 6100ac55; size =      9950; name = CD\PCSONIC\CDDATA\SOUND\LEV5\0.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = CD\PCSONIC\CDDATA\SOUND\LEV5\1.WAV
+    file[]: crc = be65618e; size =     19415; name = CD\PCSONIC\CDDATA\SOUND\LEV5\2.WAV
+    file[]: crc = 89b195ed; size =      8552; name = CD\PCSONIC\CDDATA\SOUND\LEV5\3.WAV
+    file[]: crc = fd7b7190; size =     11737; name = CD\PCSONIC\CDDATA\SOUND\LEV5\4.WAV
+    file[]: crc = 8e14bdc0; size =      2270; name = CD\PCSONIC\CDDATA\SOUND\LEV5\5.WAV
+    file[]: crc = 0e721faa; size =      3820; name = CD\PCSONIC\CDDATA\SOUND\LEV5\6.WAV
+    file[]: crc = 3bba2ed3; size =     14800; name = CD\PCSONIC\CDDATA\SOUND\LEV5\TREEFIRE.WAV
+    file[]: crc = 160250c7; size =      5307; name = CD\PCSONIC\CDDATA\SOUND\LEV6\0.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = CD\PCSONIC\CDDATA\SOUND\LEV6\1.WAV
+    file[]: crc = f44431bc; size =      4652; name = CD\PCSONIC\CDDATA\SOUND\LEV6\10.WAV
+    file[]: crc = 19548931; size =      4780; name = CD\PCSONIC\CDDATA\SOUND\LEV6\2.WAV
+    file[]: crc = 6100ac55; size =      9950; name = CD\PCSONIC\CDDATA\SOUND\LEV6\3.WAV
+    file[]: crc = ea6126e9; size =      9772; name = CD\PCSONIC\CDDATA\SOUND\LEV6\4.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = CD\PCSONIC\CDDATA\SOUND\LEV6\5.WAV
+    file[]: crc = 55dcfeba; size =      5574; name = CD\PCSONIC\CDDATA\SOUND\LEV6\6.WAV
+    file[]: crc = 6bf56ff6; size =      6610; name = CD\PCSONIC\CDDATA\SOUND\LEV6\7.WAV
+    file[]: crc = 082c9342; size =      2501; name = CD\PCSONIC\CDDATA\SOUND\LEV6\8.WAV
+    file[]: crc = b7a243da; size =     57580; name = CD\PCSONIC\CDDATA\SOUND\LEV6\9.WAV
+    file[]: crc = 6eb0880f; size =      4153; name = CD\PCSONIC\CDDATA\SOUND\LEV6\GAS.WAV
+    file[]: crc = 28e3ba71; size =      9748; name = CD\PCSONIC\CDDATA\SOUND\LEV6\WATER.WAV
+    file[]: crc = 160250c7; size =      5307; name = CD\PCSONIC\CDDATA\SOUND\LEV7\0.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = CD\PCSONIC\CDDATA\SOUND\LEV7\1.WAV
+    file[]: crc = 19548931; size =      4780; name = CD\PCSONIC\CDDATA\SOUND\LEV7\2.WAV
+    file[]: crc = 6100ac55; size =      9950; name = CD\PCSONIC\CDDATA\SOUND\LEV7\3.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = CD\PCSONIC\CDDATA\SOUND\LEV7\4.WAV
+    file[]: crc = 61fc180e; size =      5582; name = CD\PCSONIC\CDDATA\SOUND\LEV7\5.WAV
+    file[]: crc = e31110e8; size =      3244; name = CD\PCSONIC\CDDATA\SOUND\LEV7\6.WAV
+    file[]: crc = 082c9342; size =      2501; name = CD\PCSONIC\CDDATA\SOUND\LEV7\7.WAV
+    file[]: crc = 5de5b278; size =      5014; name = CD\PCSONIC\CDDATA\SOUND\LEV7\8.WAV
+    file[]: crc = b7a243da; size =     57580; name = CD\PCSONIC\CDDATA\SOUND\LEV7\9.WAV
+    file[]: crc = 3b9393ce; size =      2586; name = CD\PCSONIC\CDDATA\SOUND\LEV7\COG.WAV
+    file[]: crc = 6e2f2dae; size =      5640; name = CD\PCSONIC\CDDATA\SOUND\LEV7\MACHINE.WAV
+    file[]: crc = 8514f760; size =      2902; name = CD\PCSONIC\LEVPALS\PAL1A.PCX
+    file[]: crc = 4cd0d362; size =      2905; name = CD\PCSONIC\LEVPALS\PAL1B.PCX
+    file[]: crc = 0eefc5ee; size =      2788; name = CD\PCSONIC\LEVPALS\PAL1C.PCX
+    file[]: crc = 9854c713; size =      2710; name = CD\PCSONIC\LEVPALS\PAL2A.PCX
+    file[]: crc = 8f823448; size =      2716; name = CD\PCSONIC\LEVPALS\PAL2B.PCX
+    file[]: crc = b9d448fc; size =      2692; name = CD\PCSONIC\LEVPALS\PAL2C.PCX
+    file[]: crc = 7de504c2; size =      2856; name = CD\PCSONIC\LEVPALS\PAL3A.PCX
+    file[]: crc = f1c7c5ef; size =      2856; name = CD\PCSONIC\LEVPALS\PAL3B.PCX
+    file[]: crc = 818847a1; size =      2823; name = CD\PCSONIC\LEVPALS\PAL3C.PCX
+    file[]: crc = f130efd6; size =      2644; name = CD\PCSONIC\LEVPALS\PAL4A.PCX
+    file[]: crc = f59004c1; size =      2664; name = CD\PCSONIC\LEVPALS\PAL4B.PCX
+    file[]: crc = c133881e; size =      2615; name = CD\PCSONIC\LEVPALS\PAL4C.PCX
+    file[]: crc = ee686da0; size =      2690; name = CD\PCSONIC\LEVPALS\PAL5A.PCX
+    file[]: crc = 7b97495c; size =      2703; name = CD\PCSONIC\LEVPALS\PAL5B.PCX
+    file[]: crc = d11322df; size =      2669; name = CD\PCSONIC\LEVPALS\PAL5C.PCX
+    file[]: crc = 7989f48e; size =      2879; name = CD\PCSONIC\LEVPALS\PAL6A.PCX
+    file[]: crc = 36892a20; size =      2878; name = CD\PCSONIC\LEVPALS\PAL6B.PCX
+    file[]: crc = 7ab31703; size =      2383; name = CD\PCSONIC\LEVPALS\PAL6C.PCX
+    file[]: crc = dda56911; size =      2827; name = CD\PCSONIC\LEVPALS\PAL7A.PCX
+    file[]: crc = dda56911; size =      2827; name = CD\PCSONIC\LEVPALS\PAL7B.PCX
+    file[]: crc = 351f3826; size =      2818; name = CD\PCSONIC\LEVPALS\PAL7C.PCX
+    file[]: crc = 98a9fdce; size =      2654; name = CD\PCSONIC\LEVPALS\PAL8A.PCX
+    file[]: crc = 84b091f7; size =      5962; name = CD\PCSONIC\SYSTEM\CHARSET.PCX
+    file[]: crc = cc670ae5; size =    156358; name = CD\PCSONIC\SYSTEM\NEW.LBM
+    file[]: crc = 369807fc; size =      7789; name = CD\PCSONIC\SYSTEM\POINTERS.PCX
+    file[]: crc = 63ec8fcc; size =      8259; name = CD\PCSONIC\SYSTEM\TEXT.PCX
+	
+end
+
+//
+// Sonic 3D Blast US English CD
+//
+game[pc-cd-en]:
+    name = English CD US
+	imports = common, common-us
+    anchorfile = pcsonic.exe
+	file[]: crc = 8ac08e6d; size =    825344; name = pcsonic.exe
+    file[]: crc = 1583b7dc; size =   4034279; name = sonic_e.hlp
+
+	file[]: name = CD\CDDA.SOU; cdda = 56/12/151/192/200/207/191/167/212/154/192/174/188/176/169/174/170/150/173/29/28/9/21/181
+	
+	BLAST = 1
+	//locale = en_US
+	
+end
+
+//
+// Sonic 3D Blast US French CD
+//
+game[pc-cd-fr]:
+    name = French CD US
+	imports = common, common-us
+    anchorfile = pcsonic.exe
+	file[]: crc = 8ac08e6d; size =    825344; name = pcsonic.exe
+    file[]: crc = 93bad2ba; size =   3989182; name = SONIC_F.HLP //French
+
+    file[]: name = CD\CDDA.SOU; cdda = 56/12/151/192/200/207/191/167/212/154/192/174/188/176/169/174/170/150/173/29/28/9/21/181
+
+	BLAST = 1
+	locale = fr-FR
+
+end
+
+//
+// Sonic 3D Blast US German CD
+//
+game[pc-cd-ge]:
+    name = German CD US
+	imports = common, common-us
+    anchorfile = pcsonic.exe
+	file[]: crc = 8ac08e6d; size =    825344; name = pcsonic.exe
+    file[]: crc = 58eb5aa3; size =   3989626; name = SONIC_G.HLP //German
+
+    file[]: name = CD\CDDA.SOU; cdda = 56/12/151/192/200/207/191/167/212/154/192/174/188/176/169/174/170/150/173/29/28/9/21/181
+	
+	BLAST = 1
+	locale = de-DE
+	
+end
+
+//
+// Sonic 3D Blast US Spanish CD
+//
+game[pc-cd-sp]:
+    name = Spanish CD US
+	imports = common, common-us
+    anchorfile = pcsonic.exe
+	file[]: crc = 8ac08e6d; size =    825344; name = pcsonic.exe
+    file[]: crc = 652536b0; size =   3443339; name = SONIC_S.HLP //Spanish
+
+    file[]: name = CD\CDDA.SOU; cdda = 56/12/151/192/200/207/191/167/212/154/192/174/188/176/169/174/170/150/173/29/28/9/21/181
+
+	BLAST = 1
+	locale = es-ES_tradnl
+	
+end
+
+//
+// Sonic 3D Flicky's Island EU English CD
+//
+game[pc-cd-en-eu]:
+    name = English CD EU
+	imports = common, common-eu
+    anchorfile = pcsonic.exe
+    file[]: crc = 9f38bcce; size =    825344; name = PCSONIC.EXE
+    file[]: crc = b1ed4409; size =   3987305; name = SONIC_E.HLP
+
+    file[]: name = CD\CDDA.SOU; cdda = 57/13/153/193/201/208/192/169/214/156/193/176/190/178/171/176/171/151/174/30/29/10/22/181
+	
+	FLICKIES = 1
+	//locale = en_US
+	
+end
+
+//
+// Sonic 3D Flicky's Island EU French CD
+//
+game[pc-cd-fr-eu]:
+    name = French CD EU
+	imports = common, common-eu
+    anchorfile = pcsonic.exe
+    file[]: crc = 9f38bcce; size =    825344; name = PCSONIC.EXE
+    file[]: crc = 93bad2ba; size =   3989182; name = SONIC_F.HLP //French
+
+    file[]: name = CD\CDDA.SOU; cdda = 57/13/153/193/201/208/192/169/214/156/193/176/190/178/171/176/171/151/174/30/29/10/22/181
+
+	FLICKIES = 1
+	locale = fr-FR
+
+end
+
+//
+// Sonic 3D Flicky's Island EU German CD
+//
+game[pc-cd-ge-eu]:
+    name = German CD EU
+	imports = common, common-eu
+    anchorfile = pcsonic.exe
+    file[]: crc = 9f38bcce; size =    825344; name = PCSONIC.EXE
+    file[]: crc = 58eb5aa3; size =   3989626; name = SONIC_G.HLP //German
+
+    file[]: name = CD\CDDA.SOU; cdda = 57/13/153/193/201/208/192/169/214/156/193/176/190/178/171/176/171/151/174/30/29/10/22/181
+	
+	FLICKIES = 1
+	locale = de-DE
+	
+end
+
+//
+// Sonic 3D Flicky's Island EU Spanish CD
+//
+game[pc-cd-sp-eu]:
+    name = Spanish CD EU
+	imports = common, common-eu
+    anchorfile = pcsonic.exe
+    file[]: crc = 9f38bcce; size =    825344; name = PCSONIC.EXE
+    file[]: crc = 652536b0; size =   3443339; name = SONIC_S.HLP //Spanish
+
+    file[]: name = CD\CDDA.SOU; cdda = 57/13/153/193/201/208/192/169/214/156/193/176/190/178/171/176/171/151/174/30/29/10/22/181
+
+	FLICKIES = 1
+	locale = es-ES_tradnl
+	
+end
+
+//
+// Sonic 3D Flicky's Island CH Chinese CD
+//
+game[pc-cd-ch-ch]:
+    name = Chinese CD CH
+	imports = common, common-ch
+    anchorfile = pcsonic.exe
+    file[]: crc = 436608e8; size =    825344; name = PCSONIC.EXE
+    file[]: crc = a0a559e0; size =   3814642; name = SONIC_E.HLP //Chinese?
+
+    file[]: name = CD\CDDA.SOU; cdda = 55/11/153/191/199/206/191/167/212/154/191/174/187/176/169/174/169/153/172/28/27/12/24/181
+	FLICKIES = 1
+	locale = zh-CN
+	
+end
+
+demo[pc-demo]:
+	name = Demo US
+	anchorfile = pcsonic.exe
+	ISDEMO = 1
+    file[]: crc = dc3bfb7f; size =    823296; name = PCSONIC.EXE
+    file[]: crc = 04534a3e; size =    144184; name = PCSONIC\BONUS0\BACK0.LBM
+    file[]: crc = d235e643; size =     41990; name = PCSONIC\BONUS0\BONUSTX0.PCX
+    file[]: crc = 147234b5; size =     31268; name = PCSONIC\BONUS0\BONUSTX1.PCX
+    file[]: crc = c1c34d64; size =     41789; name = PCSONIC\BONUS0\BONUSTX2.PCX
+    file[]: crc = d8093ea6; size =     38207; name = PCSONIC\BONUS0\BONUSTX3.PCX
+    file[]: crc = 0530a25c; size =     16500; name = PCSONIC\BONUS0\BONUSTX4.PCX
+    file[]: crc = b0a734b2; size =     16703; name = PCSONIC\BONUS0\BONUSTX5.PCX
+    file[]: crc = f791dbd4; size =     23968; name = PCSONIC\BONUS0\BONUSTX6.PCX
+    file[]: crc = fc2d5e06; size =     20223; name = PCSONIC\BONUS0\BONUSTX7.PCX
+    file[]: crc = 65a7e092; size =     11794; name = PCSONIC\BONUS0\BONUSTX8.PCX
+    file[]: crc = 2ac1c6bd; size =     11773; name = PCSONIC\BONUS0\BONUSTX9.PCX
+    file[]: crc = c43afe09; size =     12990; name = PCSONIC\BONUS0\BONUSTXA.PCX
+    file[]: crc = 538351e3; size =     11047; name = PCSONIC\BONUS0\BONUSTXB.PCX
+    file[]: crc = b4cf5e72; size =     14315; name = PCSONIC\BONUS0\BONUSTXC.PCX
+    file[]: crc = 7510d3a7; size =     14496; name = PCSONIC\BONUS0\BONUSTXD.PCX
+    file[]: crc = 2b5de51f; size =     14517; name = PCSONIC\BONUS0\BONUSTXE.PCX
+    file[]: crc = 350c310d; size =     14562; name = PCSONIC\BONUS0\BONUSTXF.PCX
+    file[]: crc = d159ba67; size =     14585; name = PCSONIC\BONUS0\BONUSTXG.PCX
+    file[]: crc = 3897cf8b; size =     14624; name = PCSONIC\BONUS0\BONUSTXH.PCX
+    file[]: crc = b0ae6f68; size =     14696; name = PCSONIC\BONUS0\BONUSTXI.PCX
+    file[]: crc = 5a309b0f; size =     14743; name = PCSONIC\BONUS0\BONUSTXJ.PCX
+    file[]: crc = 70f47c84; size =      7535; name = PCSONIC\BONUS0\BONUSTXK.PCX
+    file[]: crc = e64ac0a5; size =     65536; name = PCSONIC\BONUS0\LIGHT.TBL
+    file[]: crc = c466fe8f; size =      8192; name = PCSONIC\BONUS0\RANDOM.BIN
+    file[]: crc = d06197a0; size =      6516; name = PCSONIC\BONUS0\SCORE.PCX
+    file[]: crc = 492ef77a; size =     53248; name = PCSONIC\BONUS0\TUNNEL.BIN
+    file[]: crc = 2eec785a; size =     32768; name = PCSONIC\BONUS0\TUNNEL.SPR
+    file[]: crc = 90b94f68; size =        19; name = PCSONIC\CDDATA\ABS.TXT
+    file[]: crc = 40fd6977; size =    407420; name = PCSONIC\CDDATA\DATA\DATA2.BIN
+    file[]: crc = 38867075; size =     32254; name = PCSONIC\CDDATA\DATA\DATAFILE.BIN
+    file[]: crc = c8ff262d; size =     32254; name = PCSONIC\CDDATA\DATA\DATAFILE.PC
+    file[]: crc = 6cabb291; size =      1858; name = PCSONIC\CDDATA\DATA\DEMO.BIN
+    file[]: crc = 29b4ef25; size =      6144; name = PCSONIC\CDDATA\DATA\PALETTE.BIN
+    file[]: crc = 4fc15a05; size =     16384; name = PCSONIC\CDDATA\DATA\RANDOM.BIN
+    file[]: crc = 9dbec817; size =      2676; name = PCSONIC\CDDATA\DATA\VRAM.BIN
+    file[]: crc = 50373261; size =      2676; name = PCSONIC\CDDATA\DATA\VRAM.PC
+    file[]: crc = 69775449; size =      7424; name = PCSONIC\CDDATA\FONTS\FONT16X8.BIN
+    file[]: crc = d3b3558b; size =     88512; name = PCSONIC\CDDATA\FONTS\SCORE1.BIN
+    file[]: crc = 3932c097; size =    145856; name = PCSONIC\CDDATA\FONTS\SCORE3.BIN
+    file[]: crc = 7740e9d6; size =    145856; name = PCSONIC\CDDATA\FONTS\score5.bin
+    file[]: crc = e9190b05; size =    145856; name = PCSONIC\CDDATA\FONTS\score8.bin
+    file[]: crc = 14a66adf; size =    486820; name = PCSONIC\CDDATA\LEV1\GFX1A.BIN
+    file[]: crc = b1c5d2c0; size =    486820; name = PCSONIC\CDDATA\LEV1\GFX1A.PC
+    file[]: crc = 66fc74da; size =    430744; name = PCSONIC\CDDATA\LEV1\MAP1A.BIN
+    file[]: crc = 66fc74da; size =    430744; name = PCSONIC\CDDATA\LEV1\MAP1A.PC
+    file[]: crc = 98b551b9; size =    270950; name = PCSONIC\CDDATA\LEV1\OVL1A.BIN
+    file[]: crc = 2f68454e; size =      8832; name = PCSONIC\CDDATA\OVLSPRS\BRDGESPR.BIN
+    file[]: crc = 8d319f4f; size =      8192; name = PCSONIC\CDDATA\OVLSPRS\WATER.BIN
+    file[]: crc = 23cb0b65; size =     15360; name = PCSONIC\CDDATA\OVLSPRS\WATRBLOK.BIN
+    file[]: crc = dee95071; size =     11264; name = PCSONIC\CDDATA\PANEL\GRGR.BIN
+    file[]: crc = 2968950d; size =     46712; name = PCSONIC\CDDATA\PICT_256\3DBLAST.PIC
+    file[]: crc = 6d923fd3; size =     50396; name = PCSONIC\CDDATA\PICT_256\FLICKIES.PIC
+    file[]: crc = 18121bf0; size =     68849; name = PCSONIC\CDDATA\PICT_256\ISLAND1.PIC
+    file[]: crc = c5ef21ee; size =     63118; name = PCSONIC\CDDATA\PICT_256\LOADING.PIC
+    file[]: crc = 0e37ab71; size =      6107; name = PCSONIC\CDDATA\PICT_256\SEGALOGO.PIC
+    file[]: crc = b88b9358; size =     22170; name = PCSONIC\CDDATA\PICT_256\TTLOGO.PIC
+    file[]: crc = db09b597; size =       330; name = PCSONIC\CDDATA\SNDCORE\LEV1.MAP
+    file[]: crc = 480de631; size =      9394; name = PCSONIC\CDDATA\SOUND\BONUS\0.WAV
+    file[]: crc = 8afedb76; size =     32933; name = PCSONIC\CDDATA\SOUND\BONUS\1.WAV
+    file[]: crc = 9f9ff271; size =     13976; name = PCSONIC\CDDATA\SOUND\BONUS\10.WAV
+    file[]: crc = b6830c9f; size =    115180; name = PCSONIC\CDDATA\SOUND\BONUS\11.WAV
+    file[]: crc = 79b788dc; size =     61228; name = PCSONIC\CDDATA\SOUND\BONUS\12.WAV
+    file[]: crc = ece69d85; size =      6508; name = PCSONIC\CDDATA\SOUND\BONUS\13.WAV
+    file[]: crc = a426f4be; size =     16320; name = PCSONIC\CDDATA\SOUND\BONUS\14.WAV
+    file[]: crc = a2f8cd4c; size =     40876; name = PCSONIC\CDDATA\SOUND\BONUS\15.WAV
+    file[]: crc = 9e453b68; size =     28048; name = PCSONIC\CDDATA\SOUND\BONUS\2.WAV
+    file[]: crc = 5778aa09; size =      7695; name = PCSONIC\CDDATA\SOUND\BONUS\3.WAV
+    file[]: crc = 6b3b9624; size =     18495; name = PCSONIC\CDDATA\SOUND\BONUS\4.WAV
+    file[]: crc = f286b109; size =     15772; name = PCSONIC\CDDATA\SOUND\BONUS\5.WAV
+    file[]: crc = f88bde2d; size =      8762; name = PCSONIC\CDDATA\SOUND\BONUS\6.WAV
+    file[]: crc = 228071a7; size =     10424; name = PCSONIC\CDDATA\SOUND\BONUS\7.WAV
+    file[]: crc = 851823a0; size =      7062; name = PCSONIC\CDDATA\SOUND\BONUS\8.WAV
+    file[]: crc = 799136cd; size =     38187; name = PCSONIC\CDDATA\SOUND\BONUS\9.WAV
+    file[]: crc = 227f069c; size =     28056; name = PCSONIC\CDDATA\SOUND\CORE\0.WAV
+    file[]: crc = 4f7f4ae9; size =     15207; name = PCSONIC\CDDATA\SOUND\CORE\1.WAV
+    file[]: crc = fd7b7190; size =     11737; name = PCSONIC\CDDATA\SOUND\CORE\10.WAV
+    file[]: crc = 9dc2344b; size =     13858; name = PCSONIC\CDDATA\SOUND\CORE\11.WAV
+    file[]: crc = 9b96cfb9; size =     44916; name = PCSONIC\CDDATA\SOUND\CORE\12.WAV
+    file[]: crc = 7b29095d; size =      9402; name = PCSONIC\CDDATA\SOUND\CORE\13.WAV
+    file[]: crc = 05484b55; size =     10126; name = PCSONIC\CDDATA\SOUND\CORE\14.WAV
+    file[]: crc = fd7b7190; size =     11737; name = PCSONIC\CDDATA\SOUND\CORE\15.WAV
+    file[]: crc = fd7b7190; size =     11737; name = PCSONIC\CDDATA\SOUND\CORE\16.WAV
+    file[]: crc = 89b195ed; size =      8552; name = PCSONIC\CDDATA\SOUND\CORE\17.WAV
+    file[]: crc = 8cf12c28; size =     12626; name = PCSONIC\CDDATA\SOUND\CORE\18.WAV
+    file[]: crc = 33298456; size =      5919; name = PCSONIC\CDDATA\SOUND\CORE\19.WAV
+    file[]: crc = 506c1445; size =      5075; name = PCSONIC\CDDATA\SOUND\CORE\2.WAV
+    file[]: crc = 7d3a195b; size =      7162; name = PCSONIC\CDDATA\SOUND\CORE\20.WAV
+    file[]: crc = 8fb02200; size =     18503; name = PCSONIC\CDDATA\SOUND\CORE\21.WAV
+    file[]: crc = 266e7841; size =     13984; name = PCSONIC\CDDATA\SOUND\CORE\22.WAV
+    file[]: crc = 3b9478a9; size =     16328; name = PCSONIC\CDDATA\SOUND\CORE\23.WAV
+    file[]: crc = 948bd2cf; size =     10370; name = PCSONIC\CDDATA\SOUND\CORE\24.WAV
+    file[]: crc = 6100ac55; size =      9950; name = PCSONIC\CDDATA\SOUND\CORE\25.WAV
+    file[]: crc = c2a34b07; size =     32941; name = PCSONIC\CDDATA\SOUND\CORE\26.WAV
+    file[]: crc = 12d8f16e; size =      3631; name = PCSONIC\CDDATA\SOUND\CORE\3.WAV
+    file[]: crc = 972159c4; size =      8770; name = PCSONIC\CDDATA\SOUND\CORE\4.WAV
+    file[]: crc = b1614c48; size =     62132; name = PCSONIC\CDDATA\SOUND\CORE\5.WAV
+    file[]: crc = 0af98661; size =    106156; name = PCSONIC\CDDATA\SOUND\CORE\6.WAV
+    file[]: crc = 9dc2344b; size =     13858; name = PCSONIC\CDDATA\SOUND\CORE\7.WAV
+    file[]: crc = 890b7eaa; size =     21839; name = PCSONIC\CDDATA\SOUND\CORE\8.WAV
+    file[]: crc = 9f63d530; size =     98668; name = PCSONIC\CDDATA\SOUND\CORE\9.WAV
+    file[]: crc = f5f84cfd; size =      6260; name = PCSONIC\CDDATA\SOUND\LEV1\0.WAV
+    file[]: crc = 385aba3d; size =      7359; name = PCSONIC\CDDATA\SOUND\LEV1\1.WAV
+    file[]: crc = 6100ac55; size =      9950; name = PCSONIC\CDDATA\SOUND\LEV1\2.WAV
+    file[]: crc = 29b93c82; size =      8709; name = PCSONIC\CDDATA\SOUND\LEV1\3.WAV
+    file[]: crc = 6100ac55; size =      9950; name = PCSONIC\CDDATA\SOUND\LEV1\4.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = PCSONIC\CDDATA\SOUND\LEV1\5.WAV
+    file[]: crc = 160250c7; size =      5307; name = PCSONIC\CDDATA\SOUND\LEV1\6.WAV
+    file[]: crc = 55cdeba0; size =      2764; name = PCSONIC\CDDATA\SOUND\LEV1\7.WAV
+    file[]: crc = 7b9be2c1; size =      1096; name = PCSONIC\CDDATA\SOUND\LEV1\8.WAV
+    file[]: crc = 25b98679; size =      6095; name = PCSONIC\CDDATA\SOUND\LEV1\9.WAV
+    file[]: crc = 28e3ba71; size =      9748; name = PCSONIC\CDDATA\SOUND\LEV1\W.WAV
+    file[]: crc = 8514f760; size =      2902; name = PCSONIC\LEVPALS\PAL1A.PCX
+
+end
+

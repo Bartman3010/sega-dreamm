@@ -1,0 +1,494 @@
+//
+// Manx TT Superbike
+//
+desc[sga-manxtt]:
+
+name = Manx TT Superbike
+icon = sga-manxx.png
+machine = pc
+rootpath = C:\Sega\ManxTT
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 98
+winres = 640x480x8
+filter = nonlucas, arcade, netplay
+EXENAME = manxtt
+CDLABEL = MANX TT
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+dynamicfile[]:
+    path = C:\DREAMM.REG
+    contents = [[[$(CRLF)
+	REGEDIT4
+	[HKEY_LOCAL_MACHINE\SOFTWARE\sega\ManxTT\1.0]
+	"(Default)"=""
+	"file"="$$(rootpath)\\manxtt.exe"
+	registry[]: key = language; value = dword:00000000
+	"path"="$$(rootpath)"
+	"Run3Dfx"="$$(rootpath)\\glManxTT.exe"
+	"RunNative"="$$(rootpath)\\ManxTT.exe"
+	]]]
+end
+
+//
+// Render
+//
+config[render]:
+	title = Rendering
+	option[ddraw]: name = DirectDraw; EXENAME = MANXTT; priority = 1
+	option[3dfx]: name = 3Dfx; EXENAME = GLMANXTT
+		
+end
+
+//
+// COmmon US Disc Contents
+//
+fragment[common]:
+    file[]: crc = b3a24253; size =    582572; name = GAMESNDS.RBH
+    file[]: crc = 00000000; size =         0; name = GHOST1.DAT
+    file[]: crc = 00000000; size =         0; name = GHOST2.DAT
+    file[]: crc = 00000000; size =         0; name = GHOST3.DAT
+    file[]: crc = 00000000; size =         0; name = GHOST4.DAT
+    file[]: crc = 1b98d839; size =    556032; name = GLMANXTT.EXE
+    file[]: crc = 00000000; size =         0; name = GLTRNMOV.TBL
+    file[]: crc = e57e4125; size =    588800; name = MANXTT.EXE
+    file[]: crc = 74db16a2; size =    375988; name = MENUSNDS.RBH
+    file[]: crc = a221948a; size =      6999; name = OPTIONS.DAT
+    file[]: crc = 00000000; size =         0; name = TRANMOVI.TBL
+    file[]: crc = 2599c05c; size =    651352; name = DATA\DBIKES.VMC
+    file[]: crc = 9686425c; size =    131096; name = DATA\DRIDERS.VMC
+    file[]: crc = 1fedd3d2; size =      5160; name = DATA\FONT1.RBH
+    file[]: crc = ffbad5a9; size =    131096; name = DATA\FONT1.VMC
+    file[]: crc = eb37f226; size =      1024; name = DATA\LAXEY.PAL
+    file[]: crc = 43f4e949; size =   1632400; name = DATA\LAXEY.RBH
+    file[]: crc = 415728c5; size =   1049654; name = DATA\LAXEY.SKY
+    file[]: crc = f202a43b; size =    786536; name = DATA\LAXEY.VMC
+    file[]: crc = 40fed59f; size =      1024; name = DATA\LAXEYRM.PAL
+    file[]: crc = 8b7e069b; size =   1641544; name = DATA\LAXEYRM.RBH
+    file[]: crc = b4ea99ae; size =   1049654; name = DATA\LAXEYRM.SKY
+    file[]: crc = 80a5e08e; size =    774248; name = DATA\LAXEYRM.VMC
+    file[]: crc = 97aac593; size =    655448; name = DATA\OBJECTS.VMC
+    file[]: crc = a465c806; size =      8516; name = DATA\PANEL.RBH
+    file[]: crc = a93ceb49; size =    262184; name = DATA\PANEL.VMC
+    file[]: crc = 31a52270; size =      1024; name = DATA\STRUCT.PAL
+    file[]: crc = 3e97a2c3; size =    192924; name = DATA\STRUCT.RBH
+    file[]: crc = 8e5ff5ad; size =      1024; name = DATA\STRUCT1.PAL
+    file[]: crc = 966467ce; size =      1024; name = DATA\TT.PAL
+    file[]: crc = 4956885c; size =   1652352; name = DATA\TT.RBH
+    file[]: crc = 778e1bb3; size =   1049654; name = DATA\TT.SKY
+    file[]: crc = e952d8e7; size =    917624; name = DATA\TT.VMC
+    file[]: crc = a8666ed7; size =      1024; name = DATA\TTRM.PAL
+    file[]: crc = c5a546fe; size =   1648244; name = DATA\TTRM.RBH
+    file[]: crc = 1f5661dc; size =   1049654; name = DATA\TTRM.SKY
+    file[]: crc = 5e15c1ee; size =    917624; name = DATA\TTRM.VMC
+    file[]: crc = 8281e740; size =  10030716; name = MOVIES\HONDA.PMM
+    file[]: crc = c3ac2dc6; size =  19673417; name = MOVIES\INBIKE.PMM
+    file[]: crc = 3beba097; size =  10049868; name = MOVIES\SUZUKI.PMM
+    file[]: crc = 71e977d7; size =      1024; name = PICS\ISLE.PAL
+    file[]: crc = ec0cf1f3; size =       208; name = PICS\ISLE.RBH
+    file[]: crc = 7c4879ab; size =    327728; name = PICS\ISLE.VMC
+    file[]: crc = b6fe045b; size =      1024; name = PICS\LAXEY.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\LAXEY.RBH
+    file[]: crc = c95bdf62; size =    327728; name = PICS\LAXEY.VMC
+    file[]: crc = 80586326; size =      1024; name = PICS\LAXEY_R1.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\LAXEY_R1.RBH
+    file[]: crc = 325728b8; size =    327728; name = PICS\LAXEY_R1.VMC
+    file[]: crc = 77ff22df; size =      1024; name = PICS\LAXEY_R3.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\LAXEY_R3.RBH
+    file[]: crc = 0b5b7b91; size =    327728; name = PICS\LAXEY_R3.VMC
+    file[]: crc = 88de415d; size =      1024; name = PICS\LAXEY_RM.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\LAXEY_RM.RBH
+    file[]: crc = 6091aa0f; size =    327728; name = PICS\LAXEY_RM.VMC
+    file[]: crc = a7474596; size =      1024; name = PICS\SEGALOGO.PAL
+    file[]: crc = fa3bdc37; size =       208; name = PICS\SEGALOGO.RBH
+    file[]: crc = fdc6edf9; size =    327728; name = PICS\SEGALOGO.VMC
+    file[]: crc = a7474596; size =      1024; name = PICS\TITLE.PAL
+    file[]: crc = 8bfc335e; size =       360; name = PICS\TITLE.RBH
+    file[]: crc = 86b280aa; size =    393272; name = PICS\TITLE.VMC
+    file[]: crc = b2a260a9; size =      1024; name = PICS\TT.PAL
+    file[]: crc = 93f88bae; size =       176; name = PICS\TT.RBH
+    file[]: crc = 072aed23; size =    327728; name = PICS\TT.VMC
+    file[]: crc = 37a90d29; size =      1024; name = PICS\TT_R2.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\TT_R2.RBH
+    file[]: crc = 026e8ef4; size =    327728; name = PICS\TT_R2.VMC
+    file[]: crc = b6b08d9c; size =      1024; name = PICS\TT_R4.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\TT_R4.RBH
+    file[]: crc = 9522d85d; size =    327728; name = PICS\TT_R4.VMC
+    file[]: crc = 5304957f; size =      1024; name = PICS\TT_RM.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\TT_RM.RBH
+    file[]: crc = 975f9ab3; size =    327728; name = PICS\TT_RM.VMC
+    file[]: crc = 94544a76; size =      1024; name = PICS\WIN1.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\WIN1.RBH
+    file[]: crc = 1ca49830; size =    327728; name = PICS\WIN1.VMC
+    file[]: crc = 87a6a626; size =      1024; name = PICS\WIN2.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\WIN2.RBH
+    file[]: crc = 26284e95; size =    327728; name = PICS\WIN2.VMC
+    file[]: crc = 4d2765ef; size =      1024; name = PICS\WIN3.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\WIN3.RBH
+    file[]: crc = 2de207b9; size =    327728; name = PICS\WIN3.VMC
+    file[]: crc = f810e46e; size =      1024; name = PICS\WIN4.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\WIN4.RBH
+    file[]: crc = 89f63475; size =    327728; name = PICS\WIN4.VMC
+    file[]: crc = b68a57bb; size =      1024; name = PICS\WIN5.PAL
+    file[]: crc = 81101e87; size =       208; name = PICS\WIN5.RBH
+    file[]: crc = 40a36fd7; size =    327728; name = PICS\WIN5.VMC
+	
+	//CD-ROM
+    file[]: crc = e57e4125; size =    588800; name = CD\MANXTT.EXE
+    file[]: crc = 1b98d839; size =    556032; name = CD\GLMANXTT.EXE
+    file[]: name = CD\CDDA.SOU; cdda = 39/35/10/367/372/369/369/365/103/96/42/35/63/80/42/54/8
+	
+end
+
+//
+// English CD US
+//
+game[pc-cd-en]:
+    name = English CD
+	imports = common
+    anchorfile = manxtt.exe
+    file[]: crc = b096b329; size =    150120; name = ENGLISH\_SETUP.LIB
+    file[]: crc = 445d5021; size =       353; name = ENGLISH\MANXTT.CNT
+    file[]: crc = 00000000; size =         0; name = ENGLISH\MANXTT.GID
+    file[]: crc = 67eef659; size =     83628; name = ENGLISH\MANXTT.HLP
+    file[]: crc = 9814a6ec; size =      1800; name = ENGLISH\MENU1.RBH
+    file[]: crc = de83abb4; size =    524360; name = ENGLISH\MENU1.VMC
+    file[]: crc = eb29a01e; size =      3652; name = ENGLISH\MENU2.RBH
+    file[]: crc = 4eae22c7; size =    262184; name = ENGLISH\MENU2.VMC
+    file[]: crc = 372f0c4e; size =      2368; name = ENGLISH\MENU4.RBH
+    file[]: crc = 620c821c; size =    655448; name = ENGLISH\MENU4.VMC
+    file[]: crc = 3856c264; size =      1096; name = ENGLISH\MENU7.RBH
+    file[]: crc = 8a8dc032; size =    524360; name = ENGLISH\MENU7.VMC
+    file[]: crc = 9a58c6f1; size =      2000; name = ENGLISH\MENU8.RBH
+    file[]: crc = 97ea6d75; size =    524360; name = ENGLISH\MENU8.VMC
+    file[]: crc = 19277e7d; size =       800; name = ENGLISH\MENU9.RBH
+    file[]: crc = 244f7d27; size =    393272; name = ENGLISH\MENU9.VMC
+    file[]: crc = 2faae85a; size =      4160; name = ENGLISH\MENUA.RBH
+    file[]: crc = 21d144c5; size =    524360; name = ENGLISH\MENUA.VMC
+    file[]: crc = afbb0388; size =      2172; name = ENGLISH\MENUB.RBH
+    file[]: crc = 0b546f66; size =    524360; name = ENGLISH\MENUB.VMC
+    file[]: crc = bc009a7c; size =      1264; name = ENGLISH\MENUC.RBH
+    file[]: crc = 1d272d50; size =    524360; name = ENGLISH\MENUC.VMC
+    file[]: crc = 30154c66; size =      3704; name = ENGLISH\MENUD.RBH
+    file[]: crc = dc542be0; size =    655448; name = ENGLISH\MENUD.VMC
+    file[]: crc = bfbf774b; size =      1128; name = ENGLISH\MENUE.RBH
+    file[]: crc = 734fc83b; size =    393272; name = ENGLISH\MENUE.VMC
+    file[]: crc = 305260a5; size =       908; name = ENGLISH\MENUF.RBH
+    file[]: crc = 020174f4; size =    393272; name = ENGLISH\MENUF.VMC
+    file[]: crc = dd3fcd9e; size =       652; name = ENGLISH\MENUG.RBH
+    file[]: crc = 7a2b69cf; size =    524360; name = ENGLISH\MENUG.VMC
+    file[]: crc = a2e7405c; size =       748; name = ENGLISH\MENUH.RBH
+    file[]: crc = 741ba88f; size =    393272; name = ENGLISH\MENUH.VMC
+    file[]: crc = 44f25f40; size =     10616; name = ENGLISH\MENUI.RBH
+    file[]: crc = 059f4cce; size =   1310888; name = ENGLISH\MENUI.VMC
+    file[]: crc = f8e94ed4; size =       748; name = ENGLISH\MENUJ.RBH
+    file[]: crc = 40806d51; size =    393272; name = ENGLISH\MENUJ.VMC
+    file[]: crc = a93f68b9; size =       400; name = ENGLISH\MENUK.RBH
+    file[]: crc = c64a7768; size =    393272; name = ENGLISH\MENUK.VMC
+    file[]: crc = d363af28; size =       832; name = ENGLISH\MENUL.RBH
+    file[]: crc = c016e926; size =    393272; name = ENGLISH\MENUL.VMC
+    file[]: crc = 8df840eb; size =      4824; name = ENGLISH\PANEL2.RBH
+    file[]: crc = 8bdc5758; size =    131096; name = ENGLISH\PANEL2.VMC
+    file[]: crc = 699a510c; size =      5040; name = ENGLISH\README.TXT
+    file[]: crc = 1d17629b; size =     64988; name = ENGLISH\SETUP.INS
+
+	//locale = en-US
+end
+
+//
+// French CD US
+//
+game[pc-cd-fr]:
+    name = French CD
+	imports = common
+    anchorfile = manxtt.exe
+    file[]: crc = bf0dd86c; size =    152171; name = FRENCH\_SETUP.LIB
+    file[]: crc = 3de7fc9d; size =       348; name = FRENCH\MANXTT.CNT
+    file[]: crc = 00000000; size =         0; name = FRENCH\MANXTT.GID
+    file[]: crc = a89eb76b; size =     86324; name = FRENCH\MANXTT.HLP
+    file[]: crc = 9814a6ec; size =      1800; name = FRENCH\MENU1.RBH
+    file[]: crc = c131b5c8; size =    524360; name = FRENCH\MENU1.VMC
+    file[]: crc = eb29a01e; size =      3652; name = FRENCH\MENU2.RBH
+    file[]: crc = 4eae22c7; size =    262184; name = FRENCH\MENU2.VMC
+    file[]: crc = 372f0c4e; size =      2368; name = FRENCH\MENU4.RBH
+    file[]: crc = f7c70288; size =    655448; name = FRENCH\MENU4.VMC
+    file[]: crc = 3856c264; size =      1096; name = FRENCH\MENU7.RBH
+    file[]: crc = 9786f10a; size =    524360; name = FRENCH\MENU7.VMC
+    file[]: crc = 9a58c6f1; size =      2000; name = FRENCH\MENU8.RBH
+    file[]: crc = 93de199a; size =    524360; name = FRENCH\MENU8.VMC
+    file[]: crc = 19277e7d; size =       800; name = FRENCH\MENU9.RBH
+    file[]: crc = 4b1abe3a; size =    393272; name = FRENCH\MENU9.VMC
+    file[]: crc = ad773377; size =      4160; name = FRENCH\MENUA.RBH
+    file[]: crc = e084968c; size =    655448; name = FRENCH\MENUA.VMC
+    file[]: crc = afbb0388; size =      2172; name = FRENCH\MENUB.RBH
+    file[]: crc = b829d888; size =    524360; name = FRENCH\MENUB.VMC
+    file[]: crc = bc009a7c; size =      1264; name = FRENCH\MENUC.RBH
+    file[]: crc = 3b6ac2df; size =    524360; name = FRENCH\MENUC.VMC
+    file[]: crc = 30154c66; size =      3704; name = FRENCH\MENUD.RBH
+    file[]: crc = 5899bd4f; size =    655448; name = FRENCH\MENUD.VMC
+    file[]: crc = bfbf774b; size =      1128; name = FRENCH\MENUE.RBH
+    file[]: crc = 0fd55951; size =    393272; name = FRENCH\MENUE.VMC
+    file[]: crc = 305260a5; size =       908; name = FRENCH\MENUF.RBH
+    file[]: crc = 6f47c547; size =    393272; name = FRENCH\MENUF.VMC
+    file[]: crc = dd3fcd9e; size =       652; name = FRENCH\MENUG.RBH
+    file[]: crc = 98984075; size =    524360; name = FRENCH\MENUG.VMC
+    file[]: crc = a2e7405c; size =       748; name = FRENCH\MENUH.RBH
+    file[]: crc = b7aa9380; size =    393272; name = FRENCH\MENUH.VMC
+    file[]: crc = ff45363a; size =     10840; name = FRENCH\MENUI.RBH
+    file[]: crc = 79b5de7b; size =   1310888; name = FRENCH\MENUI.VMC
+    file[]: crc = f8e94ed4; size =       748; name = FRENCH\MENUJ.RBH
+    file[]: crc = fcc3dd4b; size =    393272; name = FRENCH\MENUJ.VMC
+    file[]: crc = a93f68b9; size =       400; name = FRENCH\MENUK.RBH
+    file[]: crc = 99b0a527; size =    393272; name = FRENCH\MENUK.VMC
+    file[]: crc = d363af28; size =       832; name = FRENCH\MENUL.RBH
+    file[]: crc = 12731209; size =    393272; name = FRENCH\MENUL.VMC
+    file[]: crc = 2557b7d7; size =      2488; name = FRENCH\PANEL2.RBH
+    file[]: crc = e61871fa; size =    131096; name = FRENCH\PANEL2.VMC
+    file[]: crc = 7135de5c; size =      5552; name = FRENCH\README.TXT
+    file[]: crc = 25f2da6a; size =     64988; name = FRENCH\SETUP.INS
+	
+	locale = fr-FR
+	
+end
+
+//
+// German CD US
+//
+game[pc-cd-ge]:
+    name = German CD
+	imports = common
+    anchorfile = manxtt.exe
+    file[]: crc = 8147e809; size =    152397; name = GERMAN\_SETUP.LIB
+    file[]: crc = 9f5cd2f1; size =       373; name = GERMAN\MANXTT.CNT
+    file[]: crc = 00000000; size =         0; name = GERMAN\MANXTT.GID
+    file[]: crc = 92a707a7; size =     88744; name = GERMAN\MANXTT.HLP
+    file[]: crc = 9814a6ec; size =      1800; name = GERMAN\MENU1.RBH
+    file[]: crc = 1545d38c; size =    524360; name = GERMAN\MENU1.VMC
+    file[]: crc = eb29a01e; size =      3652; name = GERMAN\MENU2.RBH
+    file[]: crc = 4eae22c7; size =    262184; name = GERMAN\MENU2.VMC
+    file[]: crc = 372f0c4e; size =      2368; name = GERMAN\MENU4.RBH
+    file[]: crc = 620c821c; size =    655448; name = GERMAN\MENU4.VMC
+    file[]: crc = 3856c264; size =      1096; name = GERMAN\MENU7.RBH
+    file[]: crc = ac156cb0; size =    524360; name = GERMAN\MENU7.VMC
+    file[]: crc = b1c4830d; size =      2000; name = GERMAN\MENU8.RBH
+    file[]: crc = fd04c13c; size =    524360; name = GERMAN\MENU8.VMC
+    file[]: crc = 19277e7d; size =       800; name = GERMAN\MENU9.RBH
+    file[]: crc = 82c03475; size =    393272; name = GERMAN\MENU9.VMC
+    file[]: crc = fa6d419e; size =      4160; name = GERMAN\MENUA.RBH
+    file[]: crc = 71df2eef; size =    655448; name = GERMAN\MENUA.VMC
+    file[]: crc = afbb0388; size =      2172; name = GERMAN\MENUB.RBH
+    file[]: crc = 6df451ad; size =    524360; name = GERMAN\MENUB.VMC
+    file[]: crc = bc009a7c; size =      1264; name = GERMAN\MENUC.RBH
+    file[]: crc = 0f7c085b; size =    524360; name = GERMAN\MENUC.VMC
+    file[]: crc = 30154c66; size =      3704; name = GERMAN\MENUD.RBH
+    file[]: crc = 7467e6a9; size =    655448; name = GERMAN\MENUD.VMC
+    file[]: crc = 2f421d26; size =      1128; name = GERMAN\MENUE.RBH
+    file[]: crc = fe8370ab; size =    393272; name = GERMAN\MENUE.VMC
+    file[]: crc = 305260a5; size =       908; name = GERMAN\MENUF.RBH
+    file[]: crc = aae8b196; size =    393272; name = GERMAN\MENUF.VMC
+    file[]: crc = dd3fcd9e; size =       652; name = GERMAN\MENUG.RBH
+    file[]: crc = 158fb043; size =    524360; name = GERMAN\MENUG.VMC
+    file[]: crc = a2e7405c; size =       748; name = GERMAN\MENUH.RBH
+    file[]: crc = 7a1b6a3a; size =    393272; name = GERMAN\MENUH.VMC
+    file[]: crc = ff45363a; size =     10840; name = GERMAN\MENUI.RBH
+    file[]: crc = b47bdd5c; size =   1310888; name = GERMAN\MENUI.VMC
+    file[]: crc = f8e94ed4; size =       748; name = GERMAN\MENUJ.RBH
+    file[]: crc = f40f614a; size =    393272; name = GERMAN\MENUJ.VMC
+    file[]: crc = a93f68b9; size =       400; name = GERMAN\MENUK.RBH
+    file[]: crc = c78e421c; size =    393272; name = GERMAN\MENUK.VMC
+    file[]: crc = d363af28; size =       832; name = GERMAN\MENUL.RBH
+    file[]: crc = 2c45ddb9; size =    393272; name = GERMAN\MENUL.VMC
+    file[]: crc = 074f3247; size =      2696; name = GERMAN\PANEL2.RBH
+    file[]: crc = 9ba700e4; size =    131096; name = GERMAN\PANEL2.VMC
+    file[]: crc = 7ab958af; size =      6163; name = GERMAN\README.TXT
+    file[]: crc = 67e8a047; size =     64988; name = GERMAN\SETUP.INS
+	
+	locale = de-DE
+	
+end
+
+//
+// Italian CD US
+//
+game[pc-cd-it]:
+    name = Italian CD
+	imports = common
+    anchorfile = manxtt.exe
+    file[]: crc = b21878c3; size =    151556; name = ITALIAN\_SETUP.LIB
+    file[]: crc = 3e58e3f9; size =       363; name = ITALIAN\MANXTT.CNT
+    file[]: crc = 00000000; size =         0; name = ITALIAN\MANXTT.GID
+    file[]: crc = 0298e027; size =     85925; name = ITALIAN\MANXTT.HLP
+    file[]: crc = 9814a6ec; size =      1800; name = ITALIAN\MENU1.RBH
+    file[]: crc = ee22f9ac; size =    524360; name = ITALIAN\MENU1.VMC
+    file[]: crc = eb29a01e; size =      3652; name = ITALIAN\MENU2.RBH
+    file[]: crc = 4eae22c7; size =    262184; name = ITALIAN\MENU2.VMC
+    file[]: crc = 372f0c4e; size =      2368; name = ITALIAN\MENU4.RBH
+    file[]: crc = 620c821c; size =    655448; name = ITALIAN\MENU4.VMC
+    file[]: crc = 3856c264; size =      1096; name = ITALIAN\MENU7.RBH
+    file[]: crc = 396a9fa3; size =    524360; name = ITALIAN\MENU7.VMC
+    file[]: crc = 9a58c6f1; size =      2000; name = ITALIAN\MENU8.RBH
+    file[]: crc = fad8ae76; size =    524360; name = ITALIAN\MENU8.VMC
+    file[]: crc = 19277e7d; size =       800; name = ITALIAN\MENU9.RBH
+    file[]: crc = 5702b463; size =    393272; name = ITALIAN\MENU9.VMC
+    file[]: crc = 79be8261; size =      4160; name = ITALIAN\MENUA.RBH
+    file[]: crc = c60cd881; size =    524360; name = ITALIAN\MENUA.VMC
+    file[]: crc = afbb0388; size =      2172; name = ITALIAN\MENUB.RBH
+    file[]: crc = de20d68b; size =    524360; name = ITALIAN\MENUB.VMC
+    file[]: crc = bc009a7c; size =      1264; name = ITALIAN\MENUC.RBH
+    file[]: crc = ef7d9cf0; size =    524360; name = ITALIAN\MENUC.VMC
+    file[]: crc = 30154c66; size =      3704; name = ITALIAN\MENUD.RBH
+    file[]: crc = 2c2a89fb; size =    655448; name = ITALIAN\MENUD.VMC
+    file[]: crc = 2f421d26; size =      1128; name = ITALIAN\MENUE.RBH
+    file[]: crc = 94459f71; size =    393272; name = ITALIAN\MENUE.VMC
+    file[]: crc = 305260a5; size =       908; name = ITALIAN\MENUF.RBH
+    file[]: crc = 3fa70e64; size =    393272; name = ITALIAN\MENUF.VMC
+    file[]: crc = dd3fcd9e; size =       652; name = ITALIAN\MENUG.RBH
+    file[]: crc = 06d2d2f8; size =    524360; name = ITALIAN\MENUG.VMC
+    file[]: crc = a2e7405c; size =       748; name = ITALIAN\MENUH.RBH
+    file[]: crc = e0dbb193; size =    393272; name = ITALIAN\MENUH.VMC
+    file[]: crc = ff45363a; size =     10840; name = ITALIAN\MENUI.RBH
+    file[]: crc = 8eaa42b7; size =   1310888; name = ITALIAN\MENUI.VMC
+    file[]: crc = f8e94ed4; size =       748; name = ITALIAN\MENUJ.RBH
+    file[]: crc = ceb4dc6f; size =    393272; name = ITALIAN\MENUJ.VMC
+    file[]: crc = a93f68b9; size =       400; name = ITALIAN\MENUK.RBH
+    file[]: crc = c78e421c; size =    393272; name = ITALIAN\MENUK.VMC
+    file[]: crc = d363af28; size =       832; name = ITALIAN\MENUL.RBH
+    file[]: crc = c2a525a4; size =    393272; name = ITALIAN\MENUL.VMC
+    file[]: crc = 050c6913; size =      1752; name = ITALIAN\PANEL2.RBH
+    file[]: crc = 95fbc6a1; size =    131096; name = ITALIAN\PANEL2.VMC
+    file[]: crc = 97e482f7; size =      5817; name = ITALIAN\README.TXT
+    file[]: crc = 0f348537; size =     64988; name = ITALIAN\SETUP.INS
+	
+	locale = it-IT
+	
+end
+
+//
+// Spanish CD US
+//
+game[pc-cd-sp]:
+    name = Spanish CD
+	imports = common
+    anchorfile = manxtt.exe
+    file[]: crc = 89e6851d; size =    152131; name = SPANISH\_SETUP.LIB
+    file[]: crc = 5105bc63; size =       359; name = SPANISH\MANXTT.CNT
+    file[]: crc = 00000000; size =         0; name = SPANISH\MANXTT.GID
+    file[]: crc = 13ae8fec; size =     84984; name = SPANISH\MANXTT.HLP
+    file[]: crc = 9814a6ec; size =      1800; name = SPANISH\MENU1.RBH
+    file[]: crc = 883c7f82; size =    524360; name = SPANISH\MENU1.VMC
+    file[]: crc = eb29a01e; size =      3652; name = SPANISH\MENU2.RBH
+    file[]: crc = 4eae22c7; size =    262184; name = SPANISH\MENU2.VMC
+    file[]: crc = 372f0c4e; size =      2368; name = SPANISH\MENU4.RBH
+    file[]: crc = 5bd7a3eb; size =    655448; name = SPANISH\MENU4.VMC
+    file[]: crc = 3856c264; size =      1096; name = SPANISH\MENU7.RBH
+    file[]: crc = b1e45d49; size =    524360; name = SPANISH\MENU7.VMC
+    file[]: crc = 9a58c6f1; size =      2000; name = SPANISH\MENU8.RBH
+    file[]: crc = 83f9f897; size =    524360; name = SPANISH\MENU8.VMC
+    file[]: crc = 19277e7d; size =       800; name = SPANISH\MENU9.RBH
+    file[]: crc = 0d3ea5ca; size =    393272; name = SPANISH\MENU9.VMC
+    file[]: crc = 7822509a; size =      4160; name = SPANISH\MENUA.RBH
+    file[]: crc = b569068b; size =    524360; name = SPANISH\MENUA.VMC
+    file[]: crc = afbb0388; size =      2172; name = SPANISH\MENUB.RBH
+    file[]: crc = 8277c250; size =    524360; name = SPANISH\MENUB.VMC
+    file[]: crc = bc009a7c; size =      1264; name = SPANISH\MENUC.RBH
+    file[]: crc = b776ba5f; size =    524360; name = SPANISH\MENUC.VMC
+    file[]: crc = 30154c66; size =      3704; name = SPANISH\MENUD.RBH
+    file[]: crc = 0e5a6b79; size =    655448; name = SPANISH\MENUD.VMC
+    file[]: crc = 2f421d26; size =      1128; name = SPANISH\MENUE.RBH
+    file[]: crc = e0abe6f5; size =    393272; name = SPANISH\MENUE.VMC
+    file[]: crc = 305260a5; size =       908; name = SPANISH\MENUF.RBH
+    file[]: crc = e8e20fb3; size =    393272; name = SPANISH\MENUF.VMC
+    file[]: crc = dd3fcd9e; size =       652; name = SPANISH\MENUG.RBH
+    file[]: crc = 947c2041; size =    524360; name = SPANISH\MENUG.VMC
+    file[]: crc = a2e7405c; size =       748; name = SPANISH\MENUH.RBH
+    file[]: crc = c5d3de2d; size =    393272; name = SPANISH\MENUH.VMC
+    file[]: crc = ff45363a; size =     10840; name = SPANISH\MENUI.RBH
+    file[]: crc = 0510be32; size =   1310888; name = SPANISH\MENUI.VMC
+    file[]: crc = f8e94ed4; size =       748; name = SPANISH\MENUJ.RBH
+    file[]: crc = 694639ee; size =    393272; name = SPANISH\MENUJ.VMC
+    file[]: crc = a93f68b9; size =       400; name = SPANISH\MENUK.RBH
+    file[]: crc = 1110d007; size =    393272; name = SPANISH\MENUK.VMC
+    file[]: crc = d363af28; size =       832; name = SPANISH\MENUL.RBH
+    file[]: crc = 32db7055; size =    393272; name = SPANISH\MENUL.VMC
+    file[]: crc = d4802fff; size =      2184; name = SPANISH\PANEL2.RBH
+    file[]: crc = 59dc21fa; size =    131096; name = SPANISH\PANEL2.VMC
+    file[]: crc = 29618d38; size =      5418; name = SPANISH\README.TXT
+    file[]: crc = 390485fa; size =     64988; name = SPANISH\SETUP.INS
+	
+	locale = es-ES_tradnl
+	
+end
+
+//
+// Japanese CD US
+//
+game[pc-cd-jp]:
+    name = Japanese CD
+	imports = common
+    anchorfile = manxtt.exe
+    file[]: crc = b096b329; size =    150120; name = ENGLISH\_SETUP.LIB
+    file[]: crc = 445d5021; size =       353; name = ENGLISH\MANXTT.CNT
+    file[]: crc = 00000000; size =         0; name = ENGLISH\MANXTT.GID
+    file[]: crc = 67eef659; size =     83628; name = ENGLISH\MANXTT.HLP
+    file[]: crc = 9814a6ec; size =      1800; name = ENGLISH\MENU1.RBH
+    file[]: crc = de83abb4; size =    524360; name = ENGLISH\MENU1.VMC
+    file[]: crc = eb29a01e; size =      3652; name = ENGLISH\MENU2.RBH
+    file[]: crc = 4eae22c7; size =    262184; name = ENGLISH\MENU2.VMC
+    file[]: crc = 372f0c4e; size =      2368; name = ENGLISH\MENU4.RBH
+    file[]: crc = 620c821c; size =    655448; name = ENGLISH\MENU4.VMC
+    file[]: crc = 3856c264; size =      1096; name = ENGLISH\MENU7.RBH
+    file[]: crc = 8a8dc032; size =    524360; name = ENGLISH\MENU7.VMC
+    file[]: crc = 9a58c6f1; size =      2000; name = ENGLISH\MENU8.RBH
+    file[]: crc = 97ea6d75; size =    524360; name = ENGLISH\MENU8.VMC
+    file[]: crc = 19277e7d; size =       800; name = ENGLISH\MENU9.RBH
+    file[]: crc = 244f7d27; size =    393272; name = ENGLISH\MENU9.VMC
+    file[]: crc = 2faae85a; size =      4160; name = ENGLISH\MENUA.RBH
+    file[]: crc = 21d144c5; size =    524360; name = ENGLISH\MENUA.VMC
+    file[]: crc = afbb0388; size =      2172; name = ENGLISH\MENUB.RBH
+    file[]: crc = 0b546f66; size =    524360; name = ENGLISH\MENUB.VMC
+    file[]: crc = bc009a7c; size =      1264; name = ENGLISH\MENUC.RBH
+    file[]: crc = 1d272d50; size =    524360; name = ENGLISH\MENUC.VMC
+    file[]: crc = 30154c66; size =      3704; name = ENGLISH\MENUD.RBH
+    file[]: crc = dc542be0; size =    655448; name = ENGLISH\MENUD.VMC
+    file[]: crc = bfbf774b; size =      1128; name = ENGLISH\MENUE.RBH
+    file[]: crc = 734fc83b; size =    393272; name = ENGLISH\MENUE.VMC
+    file[]: crc = 305260a5; size =       908; name = ENGLISH\MENUF.RBH
+    file[]: crc = 020174f4; size =    393272; name = ENGLISH\MENUF.VMC
+    file[]: crc = dd3fcd9e; size =       652; name = ENGLISH\MENUG.RBH
+    file[]: crc = 7a2b69cf; size =    524360; name = ENGLISH\MENUG.VMC
+    file[]: crc = a2e7405c; size =       748; name = ENGLISH\MENUH.RBH
+    file[]: crc = 741ba88f; size =    393272; name = ENGLISH\MENUH.VMC
+    file[]: crc = 44f25f40; size =     10616; name = ENGLISH\MENUI.RBH
+    file[]: crc = 059f4cce; size =   1310888; name = ENGLISH\MENUI.VMC
+    file[]: crc = f8e94ed4; size =       748; name = ENGLISH\MENUJ.RBH
+    file[]: crc = 40806d51; size =    393272; name = ENGLISH\MENUJ.VMC
+    file[]: crc = a93f68b9; size =       400; name = ENGLISH\MENUK.RBH
+    file[]: crc = c64a7768; size =    393272; name = ENGLISH\MENUK.VMC
+    file[]: crc = d363af28; size =       832; name = ENGLISH\MENUL.RBH
+    file[]: crc = c016e926; size =    393272; name = ENGLISH\MENUL.VMC
+    file[]: crc = 8df840eb; size =      4824; name = ENGLISH\PANEL2.RBH
+    file[]: crc = 8bdc5758; size =    131096; name = ENGLISH\PANEL2.VMC
+    file[]: crc = 699a510c; size =      5040; name = ENGLISH\README.TXT
+    file[]: crc = 1d17629b; size =     64988; name = ENGLISH\SETUP.INS
+    file[]: crc = eb3e3b7b; size =    149517; name = JAPANESE\_SETUP.LIB
+    file[]: crc = db75d374; size =       312; name = JAPANESE\MANXTT.CNT
+    file[]: crc = 00000000; size =         0; name = JAPANESE\MANXTT.GID
+    file[]: crc = b21ac590; size =    150650; name = JAPANESE\MANXTT.HLP
+    file[]: crc = cf8a820d; size =      4340; name = JAPANESE\README.TXT
+    file[]: crc = 4d2eff1a; size =     64988; name = JAPANESE\SETUP.INS
+	
+	locale = ja-JP
+	
+end
+
+end

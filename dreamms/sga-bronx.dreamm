@@ -1,0 +1,672 @@
+//
+// Last Bronx
+//
+desc[sga-bronx]:
+
+name = Last Bronx
+icon = sga-bronx.png
+machine = pc
+rootpath = C:\Sega\Last_Bronx
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 98
+winres = 640x480x16
+filter = nonlucas, netplay
+EXENAME = LB
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+mount[]: vpath = D:\GAME; srcpath = $(ifsinstallpath)
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\LB; attributes = 8; contents = $(NULL)
+
+fragment[exe-us]:
+    file[]: crc = e71c2cc7; size =  18253824; name = LB.EXE
+    file[]: crc = e50e0a0a; size =   1048576; name = BACK1.IMG
+    file[]: crc = a7ba0f37; size =   1048576; name = BACK2.IMG	
+    file[]: crc = 55ec1c03; size =    349524; name = MAN3.IMG
+	
+	//CD-ROM
+	file[]: name = CD\CDDA.SOU; cdda = 8/188/186/186/185/188/102/188/51/74/187/186/186/187/11/9
+end
+
+fragment[exe-eu]:
+    file[]: crc = dd644716; size =  18255360; name = LB.EXE
+    file[]: crc = 75b4f924; size =   1048576; name = BACK1.IMG
+    file[]: crc = f5b6d2df; size =   1048576; name = BACK2.IMG	
+    file[]: crc = 6b904481; size =    349524; name = MAN3.IMG
+	
+	//CD-ROM
+    file[]: name = CD\CDDA.SOU; cdda = 10/190/188/188/187/190/104/190/53/76/189/188/188/189/13/9
+end
+
+
+fragment[common]:
+    file[]: crc = 4ea65746; size =   1048576; name = BACK0.IMG
+    file[]: crc = 4fb19f7b; size =    349524; name = COMMON.IMG
+    file[]: crc = c7e44a6f; size =    349524; name = MAN0.IMG
+    file[]: crc = d22d4b5f; size =    349524; name = MAN1.IMG
+    file[]: crc = ad4ff3e5; size =    349524; name = MAN2.IMG
+    file[]: crc = e58c4f01; size =    349524; name = MAN4.IMG
+    file[]: crc = b9ce3c0a; size =    349524; name = MAN5.IMG
+    file[]: crc = d2095dff; size =    349524; name = MAN6.IMG
+    file[]: crc = aa1814b8; size =    349524; name = MAN7.IMG
+    file[]: crc = 78111372; size =    349524; name = MAN8.IMG
+    file[]: crc = e1614277; size =   5604976; name = MOVIE\JOE.AVI
+    file[]: crc = 67265e3a; size =   6355008; name = MOVIE\KUROSAWA.AVI
+    file[]: crc = f1b691de; size =   7686992; name = MOVIE\LISA.AVI
+    file[]: crc = c8fc877a; size =   5637760; name = MOVIE\NAGI.AVI
+    file[]: crc = 3ca37c74; size =  36805216; name = MOVIE\OPENING.AVI
+    file[]: crc = fb80fc4b; size =   4008608; name = MOVIE\REDEYE.AVI
+    file[]: crc = 3950e012; size =   6141872; name = MOVIE\TOMMY.AVI
+    file[]: crc = b2f13752; size =   3772944; name = MOVIE\YOKO.AVI
+    file[]: crc = d60e93f5; size =   8195216; name = MOVIE\YUSAKU.AVI
+    file[]: crc = 91e92833; size =   4707408; name = MOVIE\ZAIMOKU.AVI
+    file[]: crc = 20d0cb3f; size =     35833; name = SCROLL\SCR16_1.BIN
+    file[]: crc = 2e440f33; size =    289785; name = SCROLL\SCR16_10.BIN
+    file[]: crc = c6a6f78f; size =     81024; name = SCROLL\SCR16_11.BIN
+    file[]: crc = ab45703d; size =   1011429; name = SCROLL\SCR16_12.BIN
+    file[]: crc = aa8f4939; size =    800043; name = SCROLL\SCR16_13.BIN
+    file[]: crc = a3d3dd1d; size =    688019; name = SCROLL\SCR16_14.BIN
+    file[]: crc = 813ba363; size =    573027; name = SCROLL\SCR16_15.BIN
+    file[]: crc = b120cb46; size =    445247; name = SCROLL\SCR16_16.BIN
+    file[]: crc = 067f7957; size =    333807; name = SCROLL\SCR16_17.BIN
+    file[]: crc = 2e6b2da7; size =    225148; name = SCROLL\SCR16_18.BIN
+    file[]: crc = c29f8683; size =    116802; name = SCROLL\SCR16_19.BIN
+    file[]: crc = 0ec77134; size =    487562; name = SCROLL\SCR16_2.BIN
+    file[]: crc = ee6e7d0b; size =    904528; name = SCROLL\SCR16_20.BIN
+    file[]: crc = 4a098333; size =      6762; name = SCROLL\SCR16_21.BIN
+    file[]: crc = 4a098333; size =      6762; name = SCROLL\SCR16_22.BIN
+    file[]: crc = d31ba9cd; size =    208321; name = SCROLL\SCR16_3.BIN
+    file[]: crc = 972c79e4; size =    142602; name = SCROLL\SCR16_4.BIN
+    file[]: crc = 052e3120; size =    369512; name = SCROLL\SCR16_5.BIN
+    file[]: crc = 8bc46c75; size =    191215; name = SCROLL\SCR16_6.BIN
+    file[]: crc = 8560cc2b; size =    421720; name = SCROLL\SCR16_7.BIN
+    file[]: crc = 0a871810; size =     48406; name = SCROLL\SCR16_8.BIN
+    file[]: crc = 64466cb5; size =    299281; name = SCROLL\SCR16_9.BIN
+    file[]: crc = 2020f007; size =     17478; name = SCROLL\SCR8_1.BIN
+    file[]: crc = e0ccfa70; size =    131867; name = SCROLL\SCR8_10.BIN
+    file[]: crc = 1de95f98; size =     36210; name = SCROLL\SCR8_11.BIN
+    file[]: crc = 8682c442; size =      7979; name = SCROLL\SCR8_12.BIN
+    file[]: crc = 3626b983; size =    163348; name = SCROLL\SCR8_2.BIN
+    file[]: crc = dacc1cc5; size =    258518; name = SCROLL\SCR8_5.BIN
+    file[]: crc = 152d8d93; size =     24553; name = SCROLL\SCR8_8.BIN
+    file[]: crc = ea8b1137; size =    742525; name = SCROLL\SKY16_0.BIN
+    file[]: crc = d77b0750; size =    649964; name = SCROLL\SKY16_1.BIN
+    file[]: crc = ea74c756; size =    909510; name = SCROLL\SKY16_10.BIN
+    file[]: crc = 12a823f3; size =   1097191; name = SCROLL\SKY16_12.BIN
+    file[]: crc = 2d70e529; size =    569473; name = SCROLL\SKY16_13.BIN
+    file[]: crc = a9caae6a; size =    883121; name = SCROLL\SKY16_14.BIN
+    file[]: crc = aea78a32; size =    980937; name = SCROLL\SKY16_15.BIN
+    file[]: crc = f766a2ef; size =    737294; name = SCROLL\SKY16_16.BIN
+    file[]: crc = dfc161fb; size =    727649; name = SCROLL\SKY16_17.BIN
+    file[]: crc = 4fc8ae25; size =    948861; name = SCROLL\SKY16_2.BIN
+    file[]: crc = 108707dc; size =    828649; name = SCROLL\SKY16_4.BIN
+    file[]: crc = 44ce1eb0; size =    807597; name = SCROLL\SKY16_5.BIN
+    file[]: crc = 1fba2003; size =    592520; name = SCROLL\SKY16_6.BIN
+    file[]: crc = bc03b86b; size =    448324; name = SCROLL\SKY16_7.BIN
+    file[]: crc = d41075e3; size =    334218; name = SCROLL\SKY16S0.BIN
+    file[]: crc = f44f891b; size =    306431; name = SCROLL\SKY16S1.BIN
+    file[]: crc = 5046a552; size =    335147; name = SCROLL\SKY16S10.BIN
+    file[]: crc = 0096440d; size =    394042; name = SCROLL\SKY16S12.BIN
+    file[]: crc = e1eb966d; size =    293998; name = SCROLL\SKY16S13.BIN
+    file[]: crc = 3a228ee8; size =    336953; name = SCROLL\SKY16S14.BIN
+    file[]: crc = 67949bbb; size =    358178; name = SCROLL\SKY16S15.BIN
+    file[]: crc = 558b4d13; size =    309968; name = SCROLL\SKY16S16.BIN
+    file[]: crc = 76dff37f; size =    327623; name = SCROLL\SKY16S17.BIN
+    file[]: crc = fc3904f5; size =    379731; name = SCROLL\SKY16S2.BIN
+    file[]: crc = fd2f2187; size =    361945; name = SCROLL\SKY16S4.BIN
+    file[]: crc = ab82c5dd; size =    353926; name = SCROLL\SKY16S5.BIN
+    file[]: crc = c5772a39; size =    300616; name = SCROLL\SKY16S6.BIN
+    file[]: crc = 157d8a47; size =    255927; name = SCROLL\SKY16S7.BIN
+    file[]: crc = 61fd6e5f; size =    379481; name = SCROLL\SKY8_10.BIN
+    file[]: crc = e60877ee; size =    316885; name = SCROLL\SKY8_11.BIN
+    file[]: crc = aa3aba3f; size =    343077; name = SCROLL\SKY8_12.BIN
+    file[]: crc = 5ac4f23d; size =    370295; name = SCROLL\SKY8_13.BIN
+    file[]: crc = 324f5d0a; size =    285076; name = SCROLL\SKY8_14.BIN
+    file[]: crc = d4c11f87; size =    430203; name = SCROLL\SKY8_15.BIN
+    file[]: crc = cbde9999; size =    337515; name = SCROLL\SKY8_16.BIN
+    file[]: crc = b0c98365; size =    384659; name = SCROLL\SKY8_17.BIN
+    file[]: crc = d9593823; size =    385812; name = SCROLL\SKY8_18.BIN
+    file[]: crc = bf9ccd1b; size =    167871; name = SCROLL\SKY8S10.BIN
+    file[]: crc = 4965acdb; size =    165828; name = SCROLL\SKY8S11.BIN
+    file[]: crc = 2aba1c8a; size =    178369; name = SCROLL\SKY8S12.BIN
+    file[]: crc = f5ed0c72; size =    190244; name = SCROLL\SKY8S13.BIN
+    file[]: crc = a8b566b4; size =    156834; name = SCROLL\SKY8S14.BIN
+    file[]: crc = 7b28316d; size =    169006; name = SCROLL\SKY8S15.BIN
+    file[]: crc = 3e3a6dae; size =    160595; name = SCROLL\SKY8S16.BIN
+    file[]: crc = e6a7db7e; size =    177519; name = SCROLL\SKY8S17.BIN
+    file[]: crc = d492eff6; size =    178374; name = SCROLL\SKY8S18.BIN
+    file[]: crc = 2493ba48; size =      9619; name = STTEX\CMN_08.BIN
+    file[]: crc = 718a9b52; size =     18402; name = STTEX\CMN_16.BIN
+    file[]: crc = 9d73ee14; size =     75025; name = STTEX\JOE_1_08.BIN
+    file[]: crc = 648e2348; size =    108523; name = STTEX\JOE_1_16.BIN
+    file[]: crc = 72936c46; size =     81189; name = STTEX\JOE_2_08.BIN
+    file[]: crc = 9113183e; size =    108549; name = STTEX\JOE_2_16.BIN
+    file[]: crc = d3eae641; size =     55972; name = STTEX\JOE_G_08.BIN
+    file[]: crc = 402d9f35; size =     95975; name = STTEX\JOE_G_16.BIN
+    file[]: crc = ffbdd9a5; size =     66682; name = STTEX\KURO1_08.BIN
+    file[]: crc = 2b5e6788; size =     98659; name = STTEX\KURO1_16.BIN
+    file[]: crc = 69af6265; size =     66589; name = STTEX\KURO2_08.BIN
+    file[]: crc = f3d711b0; size =     99525; name = STTEX\KURO2_16.BIN
+    file[]: crc = 3ae91e5f; size =     52989; name = STTEX\KUROG_08.BIN
+    file[]: crc = dc554185; size =     91655; name = STTEX\KUROG_16.BIN
+    file[]: crc = 548098b9; size =     67010; name = STTEX\LISA1_08.BIN
+    file[]: crc = 19c5194d; size =    106807; name = STTEX\LISA1_16.BIN
+    file[]: crc = b09d8f89; size =     61941; name = STTEX\LISA2_08.BIN
+    file[]: crc = 18af7ea2; size =     99761; name = STTEX\LISA2_16.BIN
+    file[]: crc = 7100b938; size =     54813; name = STTEX\LISAG_08.BIN
+    file[]: crc = ee871507; size =     93514; name = STTEX\LISAG_16.BIN
+    file[]: crc = 14bdc686; size =     73742; name = STTEX\NAGI1_08.BIN
+    file[]: crc = 90414240; size =    113420; name = STTEX\NAGI1_16.BIN
+    file[]: crc = 57d590af; size =     75844; name = STTEX\NAGI2_08.BIN
+    file[]: crc = 62d4e6a1; size =    113299; name = STTEX\NAGI2_16.BIN
+    file[]: crc = 5b2500f0; size =     55639; name = STTEX\NAGIG_08.BIN
+    file[]: crc = 2e1d45b0; size =     95991; name = STTEX\NAGIG_16.BIN
+    file[]: crc = 8792d1b8; size =     70233; name = STTEX\REDE1_08.BIN
+    file[]: crc = 4540dec3; size =    107069; name = STTEX\REDE1_16.BIN
+    file[]: crc = 0c5cc018; size =     68395; name = STTEX\REDE2_08.BIN
+    file[]: crc = 19ccf332; size =    107273; name = STTEX\REDE2_16.BIN
+    file[]: crc = ecf4461d; size =     57920; name = STTEX\REDEG_08.BIN
+    file[]: crc = 0e573bed; size =     96741; name = STTEX\REDEG_16.BIN
+    file[]: crc = 3dccd5a3; size =     73024; name = STTEX\TOMY1_08.BIN
+    file[]: crc = 63d765f6; size =    114346; name = STTEX\TOMY1_16.BIN
+    file[]: crc = 0e095bd1; size =     73508; name = STTEX\TOMY2_08.BIN
+    file[]: crc = 19722294; size =    114061; name = STTEX\TOMY2_16.BIN
+    file[]: crc = f4942776; size =     56962; name = STTEX\TOMYG_08.BIN
+    file[]: crc = c992b340; size =     95278; name = STTEX\TOMYG_16.BIN
+    file[]: crc = 15564a75; size =     68113; name = STTEX\YOKO1_08.BIN
+    file[]: crc = 1a4263a2; size =    113235; name = STTEX\YOKO1_16.BIN
+    file[]: crc = b839a71d; size =     70096; name = STTEX\YOKO2_08.BIN
+    file[]: crc = 249b1842; size =    113237; name = STTEX\YOKO2_16.BIN
+    file[]: crc = 457b5fd2; size =     64184; name = STTEX\YOKOG_08.BIN
+    file[]: crc = 5930a862; size =    102727; name = STTEX\YOKOG_16.BIN
+    file[]: crc = 76e3b74f; size =     75885; name = STTEX\YUSA1_08.BIN
+    file[]: crc = a8912b32; size =    119962; name = STTEX\YUSA1_16.BIN
+    file[]: crc = 00954857; size =     75460; name = STTEX\YUSA2_08.BIN
+    file[]: crc = 44a897c5; size =    119690; name = STTEX\YUSA2_16.BIN
+    file[]: crc = 1f4d7abe; size =     58004; name = STTEX\YUSAG_08.BIN
+    file[]: crc = e8226db4; size =     95696; name = STTEX\YUSAG_16.BIN
+    file[]: crc = 01f84a71; size =     68177; name = STTEX\ZAIM1_08.BIN
+    file[]: crc = 01c0244a; size =    106810; name = STTEX\ZAIM1_16.BIN
+    file[]: crc = 317aac48; size =     67483; name = STTEX\ZAIM2_08.BIN
+    file[]: crc = eef761a5; size =    105836; name = STTEX\ZAIM2_16.BIN
+    file[]: crc = f01ff7df; size =     58075; name = STTEX\ZAIMG_08.BIN
+    file[]: crc = 7d9f5a5e; size =     97722; name = STTEX\ZAIMG_16.BIN
+    file[]: crc = f388238f; size =     34088; name = WAVE\10RS.WAV
+    file[]: crc = a9bbf22f; size =     35575; name = WAVE\15RS.WAV
+    file[]: crc = 315c434c; size =     31796; name = WAVE\CAN.WAV
+    file[]: crc = 3737e4f8; size =     16449; name = WAVE\COIN.WAV
+    file[]: crc = 9ed99acd; size =     16684; name = WAVE\CREDIT.WAV
+    file[]: crc = abf24f6c; size =     12745; name = WAVE\CROW.WAV
+    file[]: crc = 7c36eaa2; size =      8394; name = WAVE\CURMOVE.WAV
+    file[]: crc = 0b631c31; size =     11922; name = WAVE\DATTACK.WAV
+    file[]: crc = fc243264; size =     28797; name = WAVE\DECIDE.WAV
+    file[]: crc = 3b4f962b; size =     17214; name = WAVE\DOWN.WAV
+    file[]: crc = da7910ed; size =     21153; name = WAVE\FENCE1.WAV
+    file[]: crc = 3f07f009; size =     16038; name = WAVE\FENCE2.WAV
+    file[]: crc = ed89ec97; size =     12216; name = WAVE\FIGHT.WAV
+    file[]: crc = f572d5e4; size =     11745; name = WAVE\FUMIKOMI.WAV
+    file[]: crc = 3437fe50; size =     26959; name = WAVE\G131.WAV
+    file[]: crc = 7a5b1745; size =     37013; name = WAVE\G151.WAV
+    file[]: crc = bb54e74f; size =     34170; name = WAVE\G171.WAV
+    file[]: crc = bfb6b4ab; size =     50028; name = WAVE\G231.WAV
+    file[]: crc = c08132da; size =     31480; name = WAVE\G363.WAV
+    file[]: crc = f459310e; size =     23925; name = WAVE\G471.WAV
+    file[]: crc = 2e9b708b; size =     15099; name = WAVE\G511.WAV
+    file[]: crc = 5c0e61c1; size =     16784; name = WAVE\G541.WAV
+    file[]: crc = 64a9af38; size =     13098; name = WAVE\G581.WAV
+    file[]: crc = 99a38b5b; size =     25029; name = WAVE\G5C1.WAV
+    file[]: crc = 1105e975; size =     19944; name = WAVE\G5K1.WAV
+    file[]: crc = 50a09eda; size =     19992; name = WAVE\G651.WAV
+    file[]: crc = ff83dd27; size =     24460; name = WAVE\G661.WAV
+    file[]: crc = 7220c64c; size =     29582; name = WAVE\G691.WAV
+    file[]: crc = f97ad8dc; size =     29908; name = WAVE\G6C1.WAV
+    file[]: crc = 15081083; size =     23770; name = WAVE\G6D1.WAV
+    file[]: crc = f5336b84; size =     13098; name = WAVE\GIMPACT.WAV
+    file[]: crc = 42a84f84; size =      8335; name = WAVE\GIMPACT2.WAV
+    file[]: crc = 9b2c3b22; size =     11451; name = WAVE\GUARD.WAV
+    file[]: crc = 767100ae; size =     29956; name = WAVE\H121.WAV
+    file[]: crc = cc1224f5; size =     50441; name = WAVE\H171.WAV
+    file[]: crc = f07d4b27; size =     20937; name = WAVE\H181.WAV
+    file[]: crc = 8276ed14; size =     67985; name = WAVE\H2671.WAV
+    file[]: crc = e027c5c9; size =     17901; name = WAVE\H361.WAV
+    file[]: crc = 32a2f523; size =     20602; name = WAVE\H3F1.WAV
+    file[]: crc = 5a3b4832; size =     24296; name = WAVE\H481.WAV
+    file[]: crc = fe8eba7c; size =     30581; name = WAVE\H4B1.WAV
+    file[]: crc = 6b5efcc5; size =      4828; name = WAVE\H511.WAV
+    file[]: crc = 9fa35e78; size =      7627; name = WAVE\H551.WAV
+    file[]: crc = cd3b5f3e; size =      8363; name = WAVE\H581.WAV
+    file[]: crc = c36af152; size =     16397; name = WAVE\H5C2.WAV
+    file[]: crc = b6939e09; size =      7733; name = WAVE\H5E1.WAV
+    file[]: crc = 6b39d409; size =     11324; name = WAVE\H5H1.WAV
+    file[]: crc = 75a55ff6; size =     25515; name = WAVE\H651.WAV
+    file[]: crc = a2946087; size =     25361; name = WAVE\H6A1.WAV
+    file[]: crc = 288872a6; size =     59318; name = WAVE\HA111.WAV
+    file[]: crc = 1dc209d6; size =     68865; name = WAVE\HA131.WAV
+    file[]: crc = 73cea2a5; size =     65651; name = WAVE\HA141.WAV
+    file[]: crc = 0c70497c; size =    100636; name = WAVE\HA181.WAV
+    file[]: crc = fe812812; size =     74175; name = WAVE\HA231.WAV
+    file[]: crc = 38bbec9c; size =    148815; name = WAVE\HA311.WAV
+    file[]: crc = e82b86a4; size =     97585; name = WAVE\HA321.WAV
+    file[]: crc = 1f558c5d; size =     19053; name = WAVE\HA461.WAV
+    file[]: crc = fba8cec6; size =     27471; name = WAVE\HA4F1.WAV
+    file[]: crc = d0583326; size =     18262; name = WAVE\HA4H2.WAV
+    file[]: crc = 8c7165a1; size =     34570; name = WAVE\HA541.WAV
+    file[]: crc = a4dabd98; size =     10790; name = WAVE\HA671.WAV
+    file[]: crc = f41a206c; size =     10272; name = WAVE\HA6C1.WAV
+    file[]: crc = 7fca5f0e; size =     20383; name = WAVE\HA6J1.WAV
+    file[]: crc = 8646ffa5; size =     11087; name = WAVE\HA6M1.WAV
+    file[]: crc = 6d604bf7; size =      8069; name = WAVE\HA6O3.WAV
+    file[]: crc = 5ed302ca; size =     18956; name = WAVE\HA731.WAV
+    file[]: crc = ca96a896; size =     23448; name = WAVE\HA741.WAV
+    file[]: crc = 09a1f4d9; size =     12274; name = WAVE\HAMHIT.WAV
+    file[]: crc = bcc4e9f8; size =     15802; name = WAVE\HAMHITL.WAV
+    file[]: crc = 92086a6f; size =     14274; name = WAVE\HITL.WAV
+    file[]: crc = edecfd42; size =      7159; name = WAVE\HITM.WAV
+    file[]: crc = 8ed5c1a1; size =      8570; name = WAVE\HITS.WAV
+    file[]: crc = 0c83e466; size =     10340; name = WAVE\I125.WAV
+    file[]: crc = 77f69ab3; size =     50891; name = WAVE\I132.WAV
+    file[]: crc = fe2cb086; size =      3026; name = WAVE\I151.WAV
+    file[]: crc = 985442ce; size =     43294; name = WAVE\I222.WAV
+    file[]: crc = 83d91eb2; size =     16597; name = WAVE\I311.WAV
+    file[]: crc = eb3369bf; size =     14156; name = WAVE\I341.WAV
+    file[]: crc = 93d9038e; size =     24990; name = WAVE\I351.WAV
+    file[]: crc = 33bbe03b; size =     28611; name = WAVE\I442.WAV
+    file[]: crc = 718a4a08; size =     23718; name = WAVE\I4C2.WAV
+    file[]: crc = 25bc79e0; size =      4496; name = WAVE\I512.WAV
+    file[]: crc = 049b3f6a; size =      9255; name = WAVE\I572.WAV
+    file[]: crc = c23c5d84; size =     10228; name = WAVE\I5G1.WAV
+    file[]: crc = 9debc44c; size =      5735; name = WAVE\I5N1.WAV
+    file[]: crc = d7f07efc; size =     18031; name = WAVE\I651.WAV
+    file[]: crc = 04206caa; size =     21224; name = WAVE\I6C2.WAV
+    file[]: crc = a191ae72; size =     37642; name = WAVE\J_01.WAV
+    file[]: crc = 550d3977; size =     60386; name = WAVE\J_02.WAV
+    file[]: crc = 537ec7dd; size =     28442; name = WAVE\J_03.WAV
+    file[]: crc = 447ffcf0; size =     73238; name = WAVE\J_04.WAV
+    file[]: crc = 3f2d32f6; size =     38130; name = WAVE\J_05.WAV
+    file[]: crc = c73da9a1; size =    108326; name = WAVE\K_01.WAV
+    file[]: crc = 84730f21; size =    177608; name = WAVE\K_02.WAV
+    file[]: crc = e6e8af44; size =     24492; name = WAVE\K_03.WAV
+    file[]: crc = 64b07d50; size =     97768; name = WAVE\K_04.WAV
+    file[]: crc = 3462aa70; size =      4983; name = WAVE\KARA1.WAV
+    file[]: crc = 4823687f; size =      6218; name = WAVE\KARA2.WAV
+    file[]: crc = 7c3c19c7; size =      7394; name = WAVE\KARAHAM.WAV
+    file[]: crc = 988e0b10; size =     16214; name = WAVE\KR3BK.WAV
+    file[]: crc = 6291f91c; size =     16155; name = WAVE\KR4BK.WAV
+    file[]: crc = 6f9d59ff; size =     16038; name = WAVE\KR5BK.WAV
+    file[]: crc = c9949867; size =      7864; name = WAVE\LAND.WAV
+    file[]: crc = 2470149a; size =     22623; name = WAVE\LSTBRNX.WAV
+    file[]: crc = 8ea90b37; size =      6336; name = WAVE\METERCNT.WAV
+    file[]: crc = 15ca9da6; size =     48852; name = WAVE\N_123.WAV
+    file[]: crc = 7cefdf7e; size =     54018; name = WAVE\N_124.WAV
+    file[]: crc = c6f14118; size =     16920; name = WAVE\NAGE.WAV
+    file[]: crc = f388238f; size =     34088; name = WAVE\O10RS.WAV
+    file[]: crc = 93bfa9b7; size =     34088; name = WAVE\O111.WAV
+    file[]: crc = 7a38edbe; size =     19960; name = WAVE\O141.WAV
+    file[]: crc = a9bbf22f; size =     35575; name = WAVE\O15RS.WAV
+    file[]: crc = ca9d5f8d; size =     35575; name = WAVE\O172.WAV
+    file[]: crc = f74b0ff2; size =     99760; name = WAVE\O18A1.WAV
+    file[]: crc = 23eb7150; size =      7963; name = WAVE\O281.WAV
+    file[]: crc = 0bda4001; size =     10585; name = WAVE\O291.WAV
+    file[]: crc = e09f1be3; size =     12284; name = WAVE\O2D1.WAV
+    file[]: crc = 5ad9e86b; size =      9657; name = WAVE\O2E1.WAV
+    file[]: crc = 94f1719b; size =     10002; name = WAVE\O2J1.WAV
+    file[]: crc = f24673cd; size =      4492; name = WAVE\O2L1.WAV
+    file[]: crc = 7e49d364; size =     16018; name = WAVE\O341.WAV
+    file[]: crc = dcaf6391; size =     18106; name = WAVE\O531.WAV
+    file[]: crc = 1e377809; size =     18970; name = WAVE\O552.WAV
+    file[]: crc = 180dd99d; size =     22024; name = WAVE\O561.WAV
+    file[]: crc = c7ea7fa2; size =    214017; name = WAVE\PLANELND.WAV
+    file[]: crc = cdf630e0; size =    358430; name = WAVE\PLANEON.WAV
+    file[]: crc = e4c94239; size =     24678; name = WAVE\R_01.WAV
+    file[]: crc = 67537519; size =     71566; name = WAVE\R_02.WAV
+    file[]: crc = c85e605f; size =     73018; name = WAVE\R_03.WAV
+    file[]: crc = c9c56951; size =    237816; name = WAVE\RAINON1.WAV
+    file[]: crc = 34806254; size =     25857; name = WAVE\ROUND1.WAV
+    file[]: crc = 603f2b06; size =     26504; name = WAVE\ROUND2.WAV
+    file[]: crc = fcb69988; size =     24387; name = WAVE\ROUND3.WAV
+    file[]: crc = f1b0d52d; size =     27445; name = WAVE\ROUND4.WAV
+    file[]: crc = 93e3f083; size =     25446; name = WAVE\ROUND5.WAV
+    file[]: crc = 84e92da2; size =     23329; name = WAVE\ROUND6.WAV
+    file[]: crc = 3509e6b1; size =     24916; name = WAVE\ROUND7.WAV
+    file[]: crc = 483554c6; size =     26328; name = WAVE\ROUND8.WAV
+    file[]: crc = 1331f49d; size =     28327; name = WAVE\ROUND9.WAV
+    file[]: crc = d9e6c7ee; size =      7806; name = WAVE\RUNSTOP.WAV
+    file[]: crc = b5ff6f39; size =     57724; name = WAVE\S182.WAV
+    file[]: crc = ca9ab03a; size =     46308; name = WAVE\S193.WAV
+    file[]: crc = 937aa693; size =     65448; name = WAVE\S1B1.WAV
+    file[]: crc = c1e1de5d; size =     43562; name = WAVE\S221.WAV
+    file[]: crc = 8a0d630a; size =     12469; name = WAVE\S321.WAV
+    file[]: crc = fdd6a632; size =     14324; name = WAVE\S372.WAV
+    file[]: crc = 6d5e0775; size =     13712; name = WAVE\S382.WAV
+    file[]: crc = e22866cd; size =     25167; name = WAVE\S451.WAV
+    file[]: crc = d2edbaad; size =      6918; name = WAVE\S511.WAV
+    file[]: crc = d97d2fb3; size =      4471; name = WAVE\S514.WAV
+    file[]: crc = 495b98dc; size =     17653; name = WAVE\S581.WAV
+    file[]: crc = 05110261; size =     12389; name = WAVE\S5H1.WAV
+    file[]: crc = 4f37b1a5; size =     13533; name = WAVE\S5J2.WAV
+    file[]: crc = e4b6ba25; size =     18551; name = WAVE\S691.WAV
+    file[]: crc = 33c9201a; size =      9276; name = WAVE\SHOULDER.WAV
+    file[]: crc = 43520771; size =     14391; name = WAVE\SLIDING.WAV
+    file[]: crc = 79ead699; size =    121584; name = WAVE\SUBWAY.WAV
+    file[]: crc = 55a25edc; size =     26626; name = WAVE\T142.WAV
+    file[]: crc = 520d9d99; size =     43727; name = WAVE\T172.WAV
+    file[]: crc = 40ce150e; size =     19565; name = WAVE\T1C2.WAV
+    file[]: crc = 3224880e; size =     35296; name = WAVE\T231.WAV
+    file[]: crc = 3e6b068a; size =     91106; name = WAVE\T241.WAV
+    file[]: crc = 84001582; size =     12932; name = WAVE\T3A2.WAV
+    file[]: crc = 9e5525ae; size =     24414; name = WAVE\T4A1.WAV
+    file[]: crc = fbaf66ee; size =     25136; name = WAVE\T4H1.WAV
+    file[]: crc = 00a03414; size =      5388; name = WAVE\T6F5.WAV
+    file[]: crc = 845fadb0; size =     10849; name = WAVE\T6O1.WAV
+    file[]: crc = dd6a6289; size =     11094; name = WAVE\T6O2.WAV
+    file[]: crc = 5a88cb3a; size =      9309; name = WAVE\T6Q1.WAV
+    file[]: crc = dec8c173; size =     13262; name = WAVE\T752.WAV
+    file[]: crc = 9f7eeb2e; size =     14922; name = WAVE\T761.WAV
+    file[]: crc = 7a9dd89a; size =     14682; name = WAVE\T7D1.WAV
+    file[]: crc = 03f18f19; size =     23404; name = WAVE\T_01.WAV
+    file[]: crc = 362e9b40; size =     31432; name = WAVE\T_02.WAV
+    file[]: crc = fbaf836b; size =     36644; name = WAVE\T_03.WAV
+    file[]: crc = d7049525; size =     40348; name = WAVE\T_04.WAV
+    file[]: crc = 49201171; size =     24328; name = WAVE\TOKYOBG.WAV
+    file[]: crc = f861d6cf; size =     36474; name = WAVE\U_05.WAV
+    file[]: crc = 91bb52bf; size =     32624; name = WAVE\U_06.WAV
+    file[]: crc = 0a3df0c7; size =     53426; name = WAVE\U_07.WAV
+    file[]: crc = 2f8a40af; size =     19766; name = WAVE\U_08.WAV
+    file[]: crc = 2e66c7b0; size =     18724; name = WAVE\W111.WAV
+    file[]: crc = 9078590b; size =     11485; name = WAVE\W1443.WAV
+    file[]: crc = fcb1e68c; size =      7058; name = WAVE\W151.WAV
+    file[]: crc = 9acc9b57; size =     24838; name = WAVE\W172.WAV
+    file[]: crc = e0a35559; size =     30892; name = WAVE\W182.WAV
+    file[]: crc = 14d512cb; size =     21388; name = WAVE\W183.WAV
+    file[]: crc = 0b2f436c; size =     21156; name = WAVE\W1F2.WAV
+    file[]: crc = 5066ef90; size =     50723; name = WAVE\W231.WAV
+    file[]: crc = 20002fc0; size =     37502; name = WAVE\W281.WAV
+    file[]: crc = 86ca9073; size =     41748; name = WAVE\W291.WAV
+    file[]: crc = 45485bdd; size =     27046; name = WAVE\W331.WAV
+    file[]: crc = e69ff077; size =      6866; name = WAVE\W411.WAV
+    file[]: crc = 132bb689; size =     11674; name = WAVE\W4C1.WAV
+    file[]: crc = 451ea248; size =     16089; name = WAVE\W562.WAV
+    file[]: crc = f41db93e; size =     19388; name = WAVE\W821.WAV
+    file[]: crc = 3d1ec19c; size =     26969; name = WAVE\Y111.WAV
+    file[]: crc = bec3489b; size =     39186; name = WAVE\Y131.WAV
+    file[]: crc = 1ce65609; size =     34778; name = WAVE\Y181.WAV
+    file[]: crc = 3528746c; size =     33857; name = WAVE\Y191.WAV
+    file[]: crc = 442fa58c; size =     69639; name = WAVE\Y271.WAV
+    file[]: crc = 98fcc1e9; size =     16378; name = WAVE\Y351.WAV
+    file[]: crc = 68a115dd; size =     17145; name = WAVE\Y391.WAV
+    file[]: crc = b2984d13; size =     20062; name = WAVE\Y441.WAV
+    file[]: crc = 98a26f83; size =     30409; name = WAVE\Y4K1.WAV
+    file[]: crc = e65cdb35; size =      4642; name = WAVE\Y511.WAV
+    file[]: crc = 79216d0e; size =     10593; name = WAVE\Y551.WAV
+    file[]: crc = dc206e88; size =      8797; name = WAVE\Y5D2.WAV
+    file[]: crc = b38e04d7; size =      4018; name = WAVE\Y5F3.WAV
+    file[]: crc = 786e7042; size =     10977; name = WAVE\Y5H1.WAV
+    file[]: crc = e1e3a3db; size =      7853; name = WAVE\Y5I3.WAV
+    file[]: crc = a6ffcf56; size =     10913; name = WAVE\Y5J2.WAV
+    file[]: crc = cb2803d1; size =     13902; name = WAVE\Y621.WAV
+    file[]: crc = 50cdec42; size =     77492; name = WAVE\Y_001.WAV
+    file[]: crc = 919f8552; size =     77826; name = WAVE\Y_002.WAV
+    file[]: crc = 027d4f2b; size =    135398; name = WAVE\Y_003.WAV
+    file[]: crc = 1d8878a5; size =     38504; name = WAVE\Z_001.WAV
+    file[]: crc = 8e3246af; size =    102384; name = WAVE\Z_002.WAV
+    file[]: crc = 501c3589; size =    234706; name = WAVE\Z_02.WAV
+	
+end
+
+//
+//Last Bronx English CD US
+//
+game[pc-cd-en-us]:
+    name = English US CD V1.0.0.0
+	imports = common, exe-us
+    anchorfile = LB.exe
+	anchordepth = 1
+
+	//English
+    file[]: crc = e8568e6c; size =       664; name = LB.CNT
+    file[]: crc = 992ac3da; size =   1914936; name = LB.HLP	
+
+	//locale = en_US
+	
+end
+
+//
+//Last Bronx French CD US
+//
+game[pc-cd-fr-us]:
+    name = French US CD V1.0.0.0
+	imports = common, exe-us
+    anchorfile = LB.exe
+	anchordepth = 1
+
+	//French
+    file[]: crc = 118e8226; size =       672; name = LB.CNT
+    file[]: crc = fc27f9ab; size =   1917949; name = LB.HLP
+
+	locale = fr-FR
+	
+end
+
+//
+//Last Bronx German CD US
+//
+game[pc-cd-ge-us]:
+    name = German US CD V1.0.0.0
+	imports = common, exe-us
+    anchorfile = LB.exe
+	anchordepth = 1
+
+	//German
+    file[]: crc = 83bbff30; size =       614; name = LB.CNT
+    file[]: crc = bb70d4f2; size =   1912858; name = LB.HLP
+
+	locale = de-DE
+	
+end
+
+//
+// Last Bronx Spanish CD US
+//
+//Last Bronx CD US Spanish
+game[pc-cd-sp-us]:
+    name = Spanish US CD V1.0.0.0
+	imports = common, exe-us
+    anchorfile = LB.exe
+	anchordepth = 1
+
+	//Spanish
+    file[]: crc = 1fb45d85; size =       618; name = LB.CNT
+    file[]: crc = 397be9db; size =   1914667; name = LB.HLP
+
+	locale = es-ES_tradnl
+	
+end
+
+//
+// Last Bronx English CD EU
+//
+game[pc-cd-en-eu]:
+    name = English EU CD V1.0.0.0
+	imports = common, exe-eu
+    anchorfile = LB.exe
+	anchordepth = 1
+	
+    file[]: crc = e8568e6c; size =       664; name = LB.CNT
+    file[]: crc = 992ac3da; size =   1914936; name = LB.HLP	
+	
+	//locale = en_US
+
+end
+	
+//
+// Last Bronx French CD EU
+//
+game[pc-cd-fr-eu]:
+    name = French EU CD V1.0.0.0
+	imports = common, exe-eu
+    anchorfile = LB.exe
+	anchordepth = 1
+	
+	//French
+    file[]: crc = 118e8226; size =       672; name = LB.CNT
+    file[]: crc = fc27f9ab; size =   1917949; name = LB.HLP
+
+	locale = fr-FR
+	
+end
+
+//
+// Last Bronx German CD EU
+//
+game[pc-cd-ge-eu]:
+    name = German EU CD V1.0.0.0
+	imports = common, exe-eu
+    anchorfile = LB.exe
+	anchordepth = 1
+	
+	//German
+    file[]: crc = 83bbff30; size =       614; name = LB.CNT
+    file[]: crc = bb70d4f2; size =   1912858; name = LB.HLP
+
+	locale = de-DE
+	
+end
+
+//
+// Last Bronx Spanish CD EU
+//
+game[pc-cd-sp-eu]:
+    name = Spanish EU CD V1.0.0.0
+	imports = common, exe-eu
+    anchorfile = LB.exe
+	anchordepth = 1
+	
+	//German
+    file[]: crc = 1fb45d85; size =       618; name = CD\GAME\DOC\HELP_SP\LB.CNT
+    file[]: crc = 397be9db; size =   1914667; name = CD\GAME\DOC\HELP_SP\LB.HLP
+	
+	locale = es-ES_tradnl
+	
+end
+
+//
+// English Demo
+//
+demo[pc-en-demo]:
+	name = English Demo
+	anchorfile = lbdemo.exe
+    file[]: crc = 4ea65746; size =   1048576; name = BACK0.IMG
+    file[]: crc = 4fb19f7b; size =    349524; name = COMMON.IMG
+    file[]: crc = 34c123c2; size =  11073536; name = LBDEMO.EXE
+    file[]: crc = e58c4f01; size =    349524; name = MAN4.IMG
+    file[]: crc = d2095dff; size =    349524; name = MAN6.IMG
+    file[]: crc = 2d138dc2; size =       638; name = LB.CNT
+    file[]: crc = a9ca63c0; size =   1908864; name = LB.HLP
+    file[]: crc = 49ddcc40; size =       641; name = MESSAGE.TXT
+    file[]: crc = 86cd69ac; size =     28561; name = SCROLL\SCR16_1.BIN
+    file[]: crc = f8f7883e; size =    171383; name = SCROLL\SCR16_10.BIN
+    file[]: crc = 3783d144; size =     47064; name = SCROLL\SCR16_11.BIN
+    file[]: crc = 910e3e51; size =    465433; name = SCROLL\SCR16_2.BIN
+    file[]: crc = 13266bea; size =    207157; name = SCROLL\SCR16_3.BIN
+    file[]: crc = ea4e2e6a; size =    191276; name = SCROLL\SCR16_6.BIN
+    file[]: crc = 31d537f8; size =    436237; name = SCROLL\SCR16_7.BIN
+    file[]: crc = 64466cb5; size =    299281; name = SCROLL\SCR16_9.BIN
+    file[]: crc = 2020f007; size =     17478; name = SCROLL\SCR8_1.BIN
+    file[]: crc = e0ccfa70; size =    131867; name = SCROLL\SCR8_10.BIN
+    file[]: crc = 1de95f98; size =     36210; name = SCROLL\SCR8_11.BIN
+    file[]: crc = ce20478f; size =     90240; name = SCROLL\SCR8_2.BIN
+    file[]: crc = 12a823f3; size =   1097191; name = SCROLL\SKY16_12.BIN
+    file[]: crc = 4fc8ae25; size =    948861; name = SCROLL\SKY16_2.BIN
+    file[]: crc = 7bb08962; size =    373901; name = SCROLL\SKY16S12.BIN
+    file[]: crc = aff77b6b; size =    372735; name = SCROLL\SKY16S2.BIN
+    file[]: crc = aa3aba3f; size =    343077; name = SCROLL\SKY8_12.BIN
+    file[]: crc = 2aba1c8a; size =    178369; name = SCROLL\SKY8S12.BIN
+    file[]: crc = 2493ba48; size =      9619; name = STTEX\CMN_08.BIN
+    file[]: crc = 718a9b52; size =     18402; name = STTEX\CMN_16.BIN
+    file[]: crc = 548098b9; size =     67010; name = STTEX\LISA1_08.BIN
+    file[]: crc = 19c5194d; size =    106807; name = STTEX\LISA1_16.BIN
+    file[]: crc = b09d8f89; size =     61941; name = STTEX\LISA2_08.BIN
+    file[]: crc = 18af7ea2; size =     99761; name = STTEX\LISA2_16.BIN
+    file[]: crc = 76e3b74f; size =     75885; name = STTEX\YUSA1_08.BIN
+    file[]: crc = a8912b32; size =    119962; name = STTEX\YUSA1_16.BIN
+    file[]: crc = 00954857; size =     75460; name = STTEX\YUSA2_08.BIN
+    file[]: crc = 44a897c5; size =    119690; name = STTEX\YUSA2_16.BIN
+    file[]: crc = 7c36eaa2; size =      8394; name = WAVE\CURMOVE.WAV
+    file[]: crc = 0b631c31; size =     11922; name = WAVE\DATTACK.WAV
+    file[]: crc = fc243264; size =     28797; name = WAVE\DECIDE.WAV
+    file[]: crc = 3b4f962b; size =     17214; name = WAVE\DOWN.WAV
+    file[]: crc = da7910ed; size =     21153; name = WAVE\FENCE1.WAV
+    file[]: crc = 3f07f009; size =     16038; name = WAVE\FENCE2.WAV
+    file[]: crc = ed89ec97; size =     12216; name = WAVE\FIGHT.WAV
+    file[]: crc = f572d5e4; size =     11745; name = WAVE\FUMIKOMI.WAV
+    file[]: crc = f5336b84; size =     13098; name = WAVE\GIMPACT.WAV
+    file[]: crc = 42a84f84; size =      8335; name = WAVE\GIMPACT2.WAV
+    file[]: crc = 9b2c3b22; size =     11451; name = WAVE\GUARD.WAV
+    file[]: crc = 92086a6f; size =     14274; name = WAVE\HITL.WAV
+    file[]: crc = edecfd42; size =      7159; name = WAVE\HITM.WAV
+    file[]: crc = 8ed5c1a1; size =      8570; name = WAVE\HITS.WAV
+    file[]: crc = 3462aa70; size =      4983; name = WAVE\KARA1.WAV
+    file[]: crc = 4823687f; size =      6218; name = WAVE\KARA2.WAV
+    file[]: crc = 988e0b10; size =     16214; name = WAVE\KR3BK.WAV
+    file[]: crc = 6291f91c; size =     16155; name = WAVE\KR4BK.WAV
+    file[]: crc = 6f9d59ff; size =     16038; name = WAVE\KR5BK.WAV
+    file[]: crc = c9949867; size =      7864; name = WAVE\LAND.WAV
+    file[]: crc = 2470149a; size =     22623; name = WAVE\LSTBRNX.WAV
+    file[]: crc = c6f14118; size =     16920; name = WAVE\NAGE.WAV
+    file[]: crc = 34806254; size =     25857; name = WAVE\ROUND1.WAV
+    file[]: crc = 603f2b06; size =     26504; name = WAVE\ROUND2.WAV
+    file[]: crc = fcb69988; size =     24387; name = WAVE\ROUND3.WAV
+    file[]: crc = f1b0d52d; size =     27445; name = WAVE\ROUND4.WAV
+    file[]: crc = 93e3f083; size =     25446; name = WAVE\ROUND5.WAV
+    file[]: crc = 84e92da2; size =     23329; name = WAVE\ROUND6.WAV
+    file[]: crc = 3509e6b1; size =     24916; name = WAVE\ROUND7.WAV
+    file[]: crc = 483554c6; size =     26328; name = WAVE\ROUND8.WAV
+    file[]: crc = 1331f49d; size =     28327; name = WAVE\ROUND9.WAV
+    file[]: crc = d9e6c7ee; size =      7806; name = WAVE\RUNSTOP.WAV
+    file[]: crc = 33c9201a; size =      9276; name = WAVE\SHOULDER.WAV
+    file[]: crc = 43520771; size =     14391; name = WAVE\SLIDING.WAV
+    file[]: crc = 55a25edc; size =     26626; name = WAVE\T142.WAV
+    file[]: crc = 520d9d99; size =     43727; name = WAVE\T172.WAV
+    file[]: crc = 40ce150e; size =     19565; name = WAVE\T1C2.WAV
+    file[]: crc = 3224880e; size =     35296; name = WAVE\T231.WAV
+    file[]: crc = 3e6b068a; size =     91106; name = WAVE\T241.WAV
+    file[]: crc = 84001582; size =     12932; name = WAVE\T3A2.WAV
+    file[]: crc = 9e5525ae; size =     24414; name = WAVE\T4A1.WAV
+    file[]: crc = fbaf66ee; size =     25136; name = WAVE\T4H1.WAV
+    file[]: crc = 00a03414; size =      5388; name = WAVE\T6F5.WAV
+    file[]: crc = 845fadb0; size =     10849; name = WAVE\T6O1.WAV
+    file[]: crc = dd6a6289; size =     11094; name = WAVE\T6O2.WAV
+    file[]: crc = 5a88cb3a; size =      9309; name = WAVE\T6Q1.WAV
+    file[]: crc = dec8c173; size =     13262; name = WAVE\T752.WAV
+    file[]: crc = 9f7eeb2e; size =     14922; name = WAVE\T761.WAV
+    file[]: crc = 7a9dd89a; size =     14682; name = WAVE\T7D1.WAV
+    file[]: crc = 3d1ec19c; size =     26969; name = WAVE\Y111.WAV
+    file[]: crc = bec3489b; size =     39186; name = WAVE\Y131.WAV
+    file[]: crc = 1ce65609; size =     34778; name = WAVE\Y181.WAV
+    file[]: crc = 3528746c; size =     33857; name = WAVE\Y191.WAV
+    file[]: crc = 442fa58c; size =     69639; name = WAVE\Y271.WAV
+    file[]: crc = 98fcc1e9; size =     16378; name = WAVE\Y351.WAV
+    file[]: crc = 68a115dd; size =     17145; name = WAVE\Y391.WAV
+    file[]: crc = b2984d13; size =     20062; name = WAVE\Y441.WAV
+    file[]: crc = 98a26f83; size =     30409; name = WAVE\Y4K1.WAV
+    file[]: crc = e65cdb35; size =      4642; name = WAVE\Y511.WAV
+    file[]: crc = 79216d0e; size =     10593; name = WAVE\Y551.WAV
+    file[]: crc = dc206e88; size =      8797; name = WAVE\Y5D2.WAV
+    file[]: crc = b38e04d7; size =      4018; name = WAVE\Y5F3.WAV
+    file[]: crc = 786e7042; size =     10977; name = WAVE\Y5H1.WAV
+    file[]: crc = e1e3a3db; size =      7853; name = WAVE\Y5I3.WAV
+    file[]: crc = a6ffcf56; size =     10913; name = WAVE\Y5J2.WAV
+    file[]: crc = cb2803d1; size =     13902; name = WAVE\Y621.WAV
+	
+	EXENAME = LBDEMO
+	
+end
+
+end

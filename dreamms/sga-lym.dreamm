@@ -1,0 +1,390 @@
+//
+// Lose Your Marbles
+//
+desc[sga-lym]:
+
+name = Lose Your Marbles
+icon = sga-lym.png
+machine = pc
+rootpath = C:\Program Files\SegaSoft\Lose Your Marbles
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 98
+filter = nonlucas, puzzle, netplay
+winres = 640x480x16
+audiohw = gmidi
+EXENAME = marbles
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\""; attributes = 8; contents = $(NULL)
+
+//config[cd]:
+//	title = Soundtrack
+//	option[soundtrack-cd]: name = CD Audio; dynamicfile[]: path = D:\; attributes = 8; contents = $(NULL)
+//	option[soundtrack-midi]: name = MIDI;  dynamicfile[]: path = $(NULL)
+//end
+
+//
+//Auto install Script
+//
+script[autoinstaller]:
+	condition = is_installer()
+	code = [[[$(CRLF)
+		if(!prop("noautoinstall"))
+		{
+			input_lockout(true);
+			$(AUTOINSTALL_SCRIPT)
+			input_lockout(false);
+		}
+	]]]
+end
+
+//
+//Auto Installer for Enhanced Edition on SEGA Puzzle Pack
+//
+fragment[install-base-pp]:
+	rootpath = D:\LYM
+	launch = D:\LYM\Setup.exe
+	AUTOINSTALL_SCRIPT = [[[$(CRLF)
+		wait("wintitle", "Welcome");
+		sleep(200); wincontrol_click(1);
+		sleep(200); wincontrol_click(1); //Installing process goes here
+		sleep(600); wincontrol_click(1);
+		wait("wintitle", "Setup Complete");
+		//sleep(200); wincontrol_click(1);
+	]]]
+
+	rootpath = C:\
+end
+
+//
+//Auto Installer for Original Release
+//
+fragment[install-base]:
+	rootpath = D:\Setup
+	launch = D:\Setup.exe
+	AUTOINSTALL_SCRIPT = [[[$(CRLF)
+		wait("wintitle", "Welcome");
+		sleep(200); wincontrol_click(1);
+		sleep(200); wincontrol_click(1); //Installing process goes here
+		sleep(600); wincontrol_click(1);
+		wait("wintitle", "Setup Complete");
+		//sleep(200); wincontrol_click(1);
+	]]]
+
+	rootpath = C:\
+end
+
+//
+// Lose Your Marbles Enhanced Edition
+//
+game[pc-cd-4.70.00]:
+    name = Lose Your Marbles Enhanced Edition
+    anchorfile = marbles.exe
+    file[]: crc = d000a32d; size =     17756; name = 16.wav
+    file[]: crc = b6a50483; size =     23684; name = 2.wav
+    file[]: crc = 6c1a5450; size =     16630; name = 32.wav
+    file[]: crc = 5c456d9d; size =     19924; name = 4.wav
+    file[]: crc = d000a32d; size =     17756; name = 8.wav
+    file[]: crc = 7ee68154; size =     22993; name = B1.mid
+    file[]: crc = 6f6a3aac; size =     17610; name = Bldin1.wav
+    file[]: crc = 6f6a3aac; size =     17610; name = Bldin2.wav
+    file[]: crc = b71f37a7; size =     16800; name = Bldin3.wav
+    file[]: crc = a59ba05c; size =     16800; name = Bldout1.wav
+    file[]: crc = a59ba05c; size =     16800; name = Bldout2.wav
+    file[]: crc = 6b8a456b; size =     72468; name = Bldout3.wav
+    file[]: crc = b5989ba9; size =     12970; name = Boing.wav
+    file[]: crc = 4c3bdb2f; size =    232118; name = Bonus-01.bmp
+    file[]: crc = b417ea0d; size =       599; name = Bonus-01.dat
+    file[]: crc = aa2d6fd5; size =    308278; name = Bonus1bg.bmp
+    file[]: crc = d84e6b53; size =      3948; name = Bounce.wav
+    file[]: crc = aa265119; size =    102392; name = Bouncein.wav
+    file[]: crc = 26f56f49; size =     47644; name = Bouncout.wav
+    file[]: crc = 5c2d7949; size =     33854; name = boxin1.wav
+    file[]: crc = 5c2d7949; size =     33854; name = boxin2.wav
+    file[]: crc = 5c2d7949; size =     33854; name = Boxout1.wav
+    file[]: crc = b5989ba9; size =     12970; name = cantmove.wav
+    file[]: crc = 99a204ac; size =    308278; name = Choose1.bmp
+    file[]: crc = 868507a5; size =     62518; name = Choose2.bmp
+    file[]: crc = f47f0043; size =    292278; name = Cmnbonus.bmp
+    file[]: crc = 02b8277e; size =    292278; name = Common01.bmp
+    file[]: crc = acaace6e; size =     81078; name = Common02.bmp
+    file[]: crc = 2ff2aa7a; size =    308278; name = Common03.bmp
+    file[]: crc = 0c38b230; size =    269878; name = Common04.bmp
+    file[]: crc = 65fd7225; size =     93878; name = Common05.bmp
+    file[]: crc = 94377359; size =     47158; name = Crack.bmp
+    file[]: crc = 524c44fe; size =     34191; name = Crd.mid
+    file[]: crc = d137913a; size =   1197878; name = Dialog.bmp
+    file[]: crc = 77e3ad1a; size =    236514; name = Distort.wav
+    file[]: crc = 9d321ea7; size =     21714; name = Dump3.wav
+    file[]: crc = b3a168e0; size =     34750; name = Dump4.wav
+    file[]: crc = 9838bb3c; size =     39940; name = Dump5.wav
+    file[]: crc = a5f60c61; size =     16290; name = Explode1.wav
+    file[]: crc = bee75f36; size =     35324; name = Go.wav
+    file[]: crc = d135f463; size =     29878; name = Grastile.bmp
+    file[]: crc = acc82888; size =     34480; name = Happy.wav
+    file[]: crc = a4d18d92; size =    232118; name = Level-01.bmp
+    file[]: crc = 7478ba46; size =       585; name = Level-01.dat
+    file[]: crc = f17188cc; size =    232118; name = Level-02.bmp
+    file[]: crc = 390e77ea; size =       585; name = Level-02.dat
+    file[]: crc = 652d3fe0; size =    232118; name = Level-03.bmp
+    file[]: crc = 0223cc8e; size =       585; name = Level-03.dat
+    file[]: crc = 0ea5b168; size =    232118; name = Level-04.bmp
+    file[]: crc = a3e3ecb2; size =       585; name = Level-04.dat
+    file[]: crc = 3a7c9039; size =    232118; name = Level-05.bmp
+    file[]: crc = 98ce57d6; size =       585; name = Level-05.dat
+    file[]: crc = 8602b0ac; size =    188930; name = Level1.wav
+    file[]: crc = 76cd987c; size =    308278; name = Level1bg.bmp
+    file[]: crc = c64f8e6b; size =    487938; name = Level2.wav
+    file[]: crc = fd19005e; size =    308278; name = Level2bg.bmp
+    file[]: crc = 42e58177; size =    591918; name = Level3.wav
+    file[]: crc = 1095dcc0; size =    308278; name = Level3bg.bmp
+    file[]: crc = 27649523; size =    639494; name = Level4.wav
+    file[]: crc = f095e3a1; size =    308278; name = Level4bg.bmp
+    file[]: crc = fb2228bf; size =    548188; name = Level5.wav
+    file[]: crc = fa132aac; size =    308278; name = Level5a1.bmp
+    file[]: crc = 4db1ab4a; size =    308278; name = Level5bg.bmp
+    file[]: crc = 457fdfd5; size =      1364; name = Lnup3fst.wav
+    file[]: crc = 26c37f20; size =      2764; name = Lnup4fst.wav
+    file[]: crc = 52c3558b; size =      3772; name = Lnup5fst.wav
+    file[]: crc = 1b38bf07; size =    157484; name = Loss.wav
+    file[]: crc = d136fbc7; size =     52381; name = Lvl1.mid
+    file[]: crc = 980e1796; size =     73871; name = Lvl2.mid
+    file[]: crc = c55ef302; size =     31361; name = Lvl3.mid
+    file[]: crc = b2d166be; size =     95018; name = Lvl4.mid
+    file[]: crc = fed79a5b; size =     27766; name = Lvl5.mid
+    file[]: crc = e45964b9; size =        38; name = marbles.dat
+    file[]: crc = 32b9ff10; size =     25600; name = marbles.exe
+    file[]: crc = 894c2e05; size =       766; name = Marbles.ico
+    file[]: crc = 0f783975; size =    330752; name = marbles95.exe
+    file[]: crc = 8fb94db8; size =    331264; name = marbles98.exe
+    file[]: crc = 861749b0; size =    188204; name = Melt.wav
+    file[]: crc = 848ebd89; size =      2100; name = Move1.wav
+    file[]: crc = f2acf8c6; size =      9498; name = Move2.wav
+    file[]: crc = 58f35809; size =      6718; name = Move3.wav
+    file[]: crc = 7d3c8adf; size =    308276; name = Netdiag1.bmp
+    file[]: crc = f9da4932; size =    206518; name = Netdiag2.bmp
+    file[]: crc = da85ce33; size =    177302; name = Nuspin.wav
+    file[]: crc = f71518e9; size =    308278; name = O_demo.bmp
+    file[]: crc = 0bb3e7de; size =    308278; name = O_logo.bmp
+    file[]: crc = 6be2ac31; size =    308278; name = o_splash.bmp
+    file[]: crc = 129c14e5; size =     90680; name = options.bmp
+    file[]: crc = 1043de09; size =     40192; name = Over6.wav
+    file[]: crc = 7504c78d; size =     14892; name = Poof.wav
+    file[]: crc = 3667d7bd; size =      5172; name = readme.txt
+    file[]: crc = 66bf0116; size =     21420; name = Sad.wav
+    file[]: crc = d9633535; size =      5708; name = Sadrpt.wav
+    file[]: crc = d333e4c8; size =     89394; name = Scanin1.wav
+    file[]: crc = ba61ae6f; size =     62898; name = Scanin2.wav
+    file[]: crc = 3dd8d9a4; size =    142214; name = Scanin3.wav
+    file[]: crc = 2dd67a36; size =     61356; name = Scanout1.wav
+    file[]: crc = b8e64906; size =     32450; name = Scanout2.wav
+    file[]: crc = df9fd77a; size =      4520; name = Select2.wav
+    file[]: crc = 3b8a7272; size =     10382; name = Slap.wav
+    file[]: crc = 9303cbdf; size =     86330; name = Squeegie.wav
+    file[]: crc = 3740f2ee; size =    308006; name = swappri.tga
+    file[]: crc = 6df097bc; size =     77878; name = Textfont.bmp
+    file[]: crc = 8602c792; size =    562660; name = Theme.wav
+    file[]: crc = 9e2aa9ce; size =    308278; name = Trans1a.bmp
+    file[]: crc = 9094abcb; size =    308278; name = Trans2a.bmp
+    file[]: crc = f96ab94e; size =    308278; name = Trans2b.bmp
+    file[]: crc = aac5d762; size =    308278; name = Trans3a.bmp
+    file[]: crc = e03206d7; size =    308278; name = Trans3b.bmp
+    file[]: crc = 688d2f98; size =    308278; name = Trans4a.bmp
+    file[]: crc = f25a86bf; size =    308278; name = Trans4b.bmp
+    file[]: crc = 857d3ddb; size =    308278; name = Trans5a.bmp
+    file[]: crc = 5d9fce6f; size =    308278; name = Trans5b.bmp
+    file[]: crc = 4c48ad05; size =     20097; name = Uninst.isu
+    file[]: crc = 6e257a6a; size =    227628; name = Victory.wav
+    file[]: crc = 71ae23e6; size =    267282; name = Windout1.wav
+    file[]: crc = 1b8cb7ac; size =     34180; name = Zoomin.wav
+	file[]: crc = 06bb1c31; size =       321; name = CD\AUTORUN.INF
+	file[]: crc = 47f83f68; size =        70; name = CD\LYM\SETUP.INI
+	file[]: name = CD\CDDA.SOU; cdda = 180/181/159/179/180/182/180/4	    
+	
+end
+
+//
+// Installer for Puzzle Pack Listed Above
+//
+installer[pc-cd-4.70.00-install]:
+	name = English CD Installer, Puzzle Pack
+	imports = install-base-pp
+	installid = pc-cd-4.70.00
+	anchorfile = OTTO.EXE
+
+	file[]: crc = 38536c37; size =    286699; name = CD\LYM\_INST32I.EX_
+    file[]: crc = 7f5d1745; size =      8704; name = CD\LYM\_ISDEL.EXE
+    file[]: crc = b723bcb5; size =     11776; name = CD\LYM\_SETUP.DLL
+    file[]: crc = 7ab62f06; size =    188170; name = CD\LYM\_SYS1.CAB
+    file[]: crc = 890b960c; size =      8072; name = CD\LYM\_USER1.CAB
+    file[]: crc = c3333aa2; size =       120; name = CD\LYM\DATA.TAG
+    file[]: crc = 1776d0ac; size =   9761369; name = CD\LYM\DATA1.CAB
+    file[]: crc = e4b8ea7c; size =      4881; name = CD\LYM\LANGUAGE.DAT
+    file[]: crc = 128dbb32; size =       334; name = CD\LYM\LAYOUT.BIN
+    file[]: crc = ee1734bc; size =    308280; name = CD\LYM\O_SPLASH.BMP
+    file[]: crc = aaacab72; size =       958; name = CD\LYM\OS.DAT
+    file[]: crc = 27b9d0b4; size =    164864; name = CD\LYM\OTTO.EXE
+    file[]: crc = fcdaf61b; size =     49152; name = CD\LYM\SETUP.EXE
+    file[]: crc = 47f83f68; size =        70; name = CD\LYM\SETUP.INI
+    file[]: crc = 13b2f8df; size =     54436; name = CD\LYM\SETUP.INS
+
+end
+
+
+game[pc-1.0.0.5]:
+    name = Lose Your Marbles
+    anchorfile = o_splash.bmp
+    file[]: crc = d000a32d; size =     17756; name = 16.wav
+    file[]: crc = b6a50483; size =     23684; name = 2.WAV
+    file[]: crc = 6c1a5450; size =     16630; name = 32.WAV
+    file[]: crc = 5c456d9d; size =     19924; name = 4.WAV
+    file[]: crc = d000a32d; size =     17756; name = 8.WAV
+    file[]: crc = 7ee68154; size =     22993; name = B1.MID
+    file[]: crc = 6f6a3aac; size =     17610; name = BLDIN1.WAV
+    file[]: crc = 6f6a3aac; size =     17610; name = BLDIN2.WAV
+    file[]: crc = b71f37a7; size =     16800; name = BLDIN3.WAV
+    file[]: crc = a59ba05c; size =     16800; name = BLDOUT1.WAV
+    file[]: crc = a59ba05c; size =     16800; name = BLDOUT2.WAV
+    file[]: crc = 6b8a456b; size =     72468; name = BLDOUT3.WAV
+    file[]: crc = b5989ba9; size =     12970; name = BOING.WAV
+    file[]: crc = 4c3bdb2f; size =    232118; name = BONUS-01.BMP
+    file[]: crc = b417ea0d; size =       599; name = BONUS-01.DAT
+    file[]: crc = aa2d6fd5; size =    308278; name = BONUS1BG.BMP
+    file[]: crc = d84e6b53; size =      3948; name = BOUNCE.WAV
+    file[]: crc = aa265119; size =    102392; name = BOUNCEIN.WAV
+    file[]: crc = 26f56f49; size =     47644; name = BOUNCOUT.WAV
+    file[]: crc = 5c2d7949; size =     33854; name = boxin1.wav
+    file[]: crc = 5c2d7949; size =     33854; name = boxin2.wav
+    file[]: crc = 5c2d7949; size =     33854; name = BOXOUT1.WAV
+    file[]: crc = b5989ba9; size =     12970; name = cantmove.wav
+    file[]: crc = 99a204ac; size =    308278; name = CHOOSE1.BMP
+    file[]: crc = 868507a5; size =     62518; name = CHOOSE2.BMP
+    file[]: crc = f47f0043; size =    292278; name = CMNBONUS.BMP
+    file[]: crc = 02b8277e; size =    292278; name = COMMON01.BMP
+    file[]: crc = acaace6e; size =     81078; name = COMMON02.BMP
+    file[]: crc = 2ff2aa7a; size =    308278; name = COMMON03.BMP
+    file[]: crc = 0c38b230; size =    269878; name = COMMON04.BMP
+    file[]: crc = 65fd7225; size =     93878; name = COMMON05.BMP
+    file[]: crc = 94377359; size =     47158; name = CRACK.BMP
+    file[]: crc = 524c44fe; size =     34191; name = CRD.MID
+    file[]: crc = d137913a; size =   1197878; name = DIALOG.BMP
+    file[]: crc = 77e3ad1a; size =    236514; name = DISTORT.WAV
+    file[]: crc = 9d321ea7; size =     21714; name = DUMP3.WAV
+    file[]: crc = b3a168e0; size =     34750; name = DUMP4.WAV
+    file[]: crc = 9838bb3c; size =     39940; name = DUMP5.WAV
+    file[]: crc = a5f60c61; size =     16290; name = EXPLODE1.WAV
+    file[]: crc = bee75f36; size =     35324; name = GO.WAV
+    file[]: crc = d135f463; size =     29878; name = GRASTILE.BMP
+    file[]: crc = acc82888; size =     34480; name = HAPPY.WAV
+    file[]: crc = a4d18d92; size =    232118; name = LEVEL-01.BMP
+    file[]: crc = 7478ba46; size =       585; name = LEVEL-01.DAT
+    file[]: crc = f17188cc; size =    232118; name = LEVEL-02.BMP
+    file[]: crc = 390e77ea; size =       585; name = LEVEL-02.DAT
+    file[]: crc = 652d3fe0; size =    232118; name = LEVEL-03.BMP
+    file[]: crc = 0223cc8e; size =       585; name = LEVEL-03.DAT
+    file[]: crc = 0ea5b168; size =    232118; name = LEVEL-04.BMP
+    file[]: crc = a3e3ecb2; size =       585; name = LEVEL-04.DAT
+    file[]: crc = 3a7c9039; size =    232118; name = LEVEL-05.BMP
+    file[]: crc = 98ce57d6; size =       585; name = LEVEL-05.DAT
+    file[]: crc = 8602b0ac; size =    188930; name = LEVEL1.WAV
+    file[]: crc = 76cd987c; size =    308278; name = LEVEL1BG.BMP
+    file[]: crc = c64f8e6b; size =    487938; name = LEVEL2.WAV
+    file[]: crc = fd19005e; size =    308278; name = LEVEL2BG.BMP
+    file[]: crc = 42e58177; size =    591918; name = LEVEL3.WAV
+    file[]: crc = 1095dcc0; size =    308278; name = LEVEL3BG.BMP
+    file[]: crc = 27649523; size =    639494; name = LEVEL4.WAV
+    file[]: crc = f095e3a1; size =    308278; name = LEVEL4BG.BMP
+    file[]: crc = fb2228bf; size =    548188; name = LEVEL5.WAV
+    file[]: crc = fa132aac; size =    308278; name = LEVEL5A1.BMP
+    file[]: crc = 4db1ab4a; size =    308278; name = LEVEL5BG.BMP
+    file[]: crc = 457fdfd5; size =      1364; name = LNUP3FST.WAV
+    file[]: crc = 26c37f20; size =      2764; name = LNUP4FST.WAV
+    file[]: crc = 52c3558b; size =      3772; name = LNUP5FST.WAV
+    file[]: crc = 1b38bf07; size =    157484; name = LOSS.WAV
+    file[]: crc = d136fbc7; size =     52381; name = LVL1.MID
+    file[]: crc = 980e1796; size =     73871; name = LVL2.MID
+    file[]: crc = c55ef302; size =     31361; name = LVL3.MID
+    file[]: crc = b2d166be; size =     95018; name = LVL4.MID
+    file[]: crc = fed79a5b; size =     27766; name = LVL5.MID
+    file[]: crc = f022d599; size =    219136; name = marbles.exe
+    file[]: crc = 894c2e05; size =       766; name = MARBLES.ICO
+    file[]: crc = 861749b0; size =    188204; name = MELT.WAV
+    file[]: crc = 848ebd89; size =      2100; name = MOVE1.WAV
+    file[]: crc = f2acf8c6; size =      9498; name = MOVE2.WAV
+    file[]: crc = 58f35809; size =      6718; name = MOVE3.WAV
+    file[]: crc = 7d3c8adf; size =    308276; name = NETDIAG1.BMP
+    file[]: crc = f9da4932; size =    206518; name = NETDIAG2.BMP
+    file[]: crc = da85ce33; size =    177302; name = NUSPIN.WAV
+    file[]: crc = 0bb3e7de; size =    308278; name = O_LOGO.BMP
+    file[]: crc = ee1734bc; size =    308280; name = o_splash.bmp
+    file[]: crc = 129c14e5; size =     90680; name = options.bmp
+    file[]: crc = 1043de09; size =     40192; name = OVER6.WAV
+    file[]: crc = 7504c78d; size =     14892; name = POOF.WAV
+    file[]:									  name = readme.txt
+    file[]: crc = 66bf0116; size =     21420; name = SAD.WAV
+    file[]: crc = d9633535; size =      5708; name = SADRPT.WAV
+    file[]: crc = d333e4c8; size =     89394; name = SCANIN1.WAV
+    file[]: crc = ba61ae6f; size =     62898; name = SCANIN2.WAV
+    file[]: crc = 3dd8d9a4; size =    142214; name = SCANIN3.WAV
+    file[]: crc = 2dd67a36; size =     61356; name = SCANOUT1.WAV
+    file[]: crc = b8e64906; size =     32450; name = SCANOUT2.WAV
+    file[]: crc = df9fd77a; size =      4520; name = SELECT2.WAV
+    file[]: crc = 3b8a7272; size =     10382; name = SLAP.WAV
+    file[]: crc = 9303cbdf; size =     86330; name = SQUEEGIE.WAV
+    file[]: crc = 6df097bc; size =     77878; name = TEXTFONT.BMP
+    file[]: crc = 8602c792; size =    562660; name = THEME.WAV
+    file[]: crc = 9e2aa9ce; size =    308278; name = TRANS1A.BMP
+    file[]: crc = 9094abcb; size =    308278; name = TRANS2A.BMP
+    file[]: crc = f96ab94e; size =    308278; name = TRANS2B.BMP
+    file[]: crc = aac5d762; size =    308278; name = TRANS3A.BMP
+    file[]: crc = e03206d7; size =    308278; name = TRANS3B.BMP
+    file[]: crc = 688d2f98; size =    308278; name = TRANS4A.BMP
+    file[]: crc = f25a86bf; size =    308278; name = TRANS4B.BMP
+    file[]: crc = 857d3ddb; size =    308278; name = TRANS5A.BMP
+    file[]: crc = 5d9fce6f; size =    308278; name = TRANS5B.BMP
+    file[]: crc = c4c0d942; size =     20868; name = Uninst.isu
+    file[]: crc = 6e257a6a; size =    227628; name = VICTORY.WAV
+    file[]: crc = 71ae23e6; size =    267282; name = WINDOUT1.WAV
+    file[]: crc = 1b8cb7ac; size =     34180; name = ZOOMIN.WAV
+	
+	file[]: crc = b8c59c18; size =        43; name = CD\AUTORUN.INF
+	
+end
+
+//
+// Installer for Standard Listed Above
+//
+installer[pc-1.0.0.5-install]:
+	name = English CD Installer
+	imports = install-base
+	installid = pc-1.0.0.5
+	anchorfile = otto.exe
+    file[]: crc = 38536c37; size =    286699; name = CD\_INST32I.EX_
+    file[]: crc = 7f5d1745; size =      8704; name = CD\_ISDEL.EXE
+    file[]: crc = b723bcb5; size =     11776; name = CD\_SETUP.DLL
+    file[]: crc = 9f0acedd; size =    188170; name = CD\_SYS1.CAB; exactonly = true
+    file[]: crc = fdec948c; size =      8074; name = CD\_USER1.CAB; exactonly = true
+    file[]: crc = b8c59c18; size =        43; name = CD\AUTORUN.INF; exactonly = true
+    file[]: crc = 56434256; size =       131; name = CD\DATA.TAG; exactonly = true
+    file[]: crc = 0cad5119; size =   9419088; name = CD\DATA1.CAB; exactonly = true
+    file[]: crc = e4b8ea7c; size =      4881; name = CD\LANGUAGE.DAT; exactonly = true
+    file[]: crc = abfe94d0; size =       356; name = CD\LAYOUT.BIN; exactonly = true
+    file[]: crc = ee1734bc; size =    308280; name = CD\O_SPLASH.BMP; exactonly = true
+    file[]: crc = aaacab72; size =       958; name = CD\OS.DAT; exactonly = true
+    file[]: crc = 08ac043f; size =    150528; name = CD\OTTO.EXE
+    file[]: crc = fcdaf61b; size =     49152; name = CD\SETUP.EXE
+    file[]: crc = ea839e1b; size =        57; name = CD\SETUP.INI; exactonly = true
+    file[]: crc = 55c34a7e; size =     54434; name = CD\SETUP.INS; exactonly = true
+
+end
+
+end

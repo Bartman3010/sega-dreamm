@@ -1,0 +1,243 @@
+//
+// Virtua Fighter PC
+//
+desc[sga-vfpc]:
+
+name = Virtua Fighter PC
+icon = sga-vfpc.png
+machine = pc
+rootpath = C:\Sega\VFPC
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 95
+filter = sega, nonlucas, arcade
+winres = 640x480x16
+EXENAME = VFPC
+CDLABEL = SEGA_VF_PC
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+game[pc-cd-en]:
+	name = English CD
+	anchorfile = VFPC.EXE
+	anchordepth = 1
+    file[]: crc = 6644dc21; size =    308278; name = AKIRA_BK.BMP
+    file[]: crc = 3c692eab; size =    308278; name = AM2.BMP
+    file[]: crc = 9df6a901; size =    267318; name = BACKSKY.BMP
+    file[]: crc = 4850078f; size =   1066038; name = BACKSKY2.BMP
+    file[]: crc = 188162ee; size =    308278; name = BANKIN.BMP
+    file[]: crc = 9f0a729a; size =    308278; name = BANKIN_T.BMP
+    file[]: crc = c39cb6df; size =    480768; name = DANIDATA.BIN
+    file[]: crc = e6a813be; size =    308278; name = DANISCR.BMP
+    file[]: crc = 1e6e9fe2; size =    308278; name = DURA_BK.BMP
+    file[]: crc = ff38cbe6; size =    366208; name = ENDDATA.BIN
+    file[]: crc = f671cc03; size =     48864; name = F1AKI0.BIN
+    file[]: crc = b10cbb72; size =     48864; name = F1AKI1.BIN
+    file[]: crc = c22b3d64; size =     27604; name = F1DUL0.BIN
+    file[]: crc = 8977da0a; size =     47064; name = F1JAC0.BIN
+    file[]: crc = 0be2aee5; size =     47064; name = F1JAC1.BIN
+    file[]: crc = 40f398f4; size =     47256; name = F1JEF0.BIN
+    file[]: crc = 440a7916; size =     47256; name = F1JEF1.BIN
+    file[]: crc = f2c146d0; size =     47736; name = F1LAU0.BIN
+    file[]: crc = d2eb5c54; size =     47736; name = F1LAU1.BIN
+    file[]: crc = ee23d233; size =     46872; name = F1NIN0.BIN
+    file[]: crc = d63f7892; size =     46872; name = F1NIN1.BIN
+    file[]: crc = 3512d3ab; size =     47340; name = F1PAI0.BIN
+    file[]: crc = 46a994ff; size =     47340; name = F1PAI1.BIN
+    file[]: crc = 23d824b7; size =     47112; name = F1SAR0.BIN
+    file[]: crc = 21c00802; size =     47112; name = F1SAR1.BIN
+    file[]: crc = 864b6ff1; size =     47052; name = F1WOL0.BIN
+    file[]: crc = de762c94; size =     47052; name = F1WOL1.BIN
+    file[]: crc = 2744e521; size =     47580; name = F_AKI0.BIN
+    file[]: crc = 2744e521; size =     47580; name = F_AKI1.BIN
+    file[]: crc = c22b3d64; size =     27604; name = F_DUL0.BIN
+    file[]: crc = 9e1fc762; size =     46632; name = F_JAC0.BIN
+    file[]: crc = c760484a; size =     46632; name = F_JAC1.BIN
+    file[]: crc = 4c39e44a; size =     46392; name = F_JEF0.BIN
+    file[]: crc = af959fa6; size =     46392; name = F_JEF1.BIN
+    file[]: crc = 92071e4c; size =     46632; name = F_LAU0.BIN
+    file[]: crc = 92071e4c; size =     46632; name = F_LAU1.BIN
+    file[]: crc = 42907514; size =     46464; name = F_NIN0.BIN
+    file[]: crc = 37a88f58; size =     46464; name = F_NIN1.BIN
+    file[]: crc = 64444590; size =     46224; name = F_PAI0.BIN
+    file[]: crc = 1c46a40f; size =     46224; name = F_PAI1.BIN
+    file[]: crc = 6b4e4467; size =     46728; name = F_SAR0.BIN
+    file[]: crc = 5172aa35; size =     46728; name = F_SAR1.BIN
+    file[]: crc = 7e515c54; size =     46416; name = F_WOL0.BIN
+    file[]: crc = fc48f229; size =     46416; name = F_WOL1.BIN
+    file[]: crc = 6256d77d; size =    308278; name = JACKY_BK.BMP
+    file[]: crc = 3e12aa13; size =    308278; name = JEFF_BK.BMP
+    file[]: crc = 9260536b; size =    308278; name = KAGE_BK.BMP
+    file[]: crc = 0dd0a5b7; size =    308278; name = LAU_BK.BMP
+    file[]: crc = 495a4baa; size =    305248; name = MOT__COM.BIN
+    file[]: crc = 6c24c70f; size =     68568; name = MOT_AKI.BIN
+    file[]: crc = 4a960a9a; size =    157956; name = MOT_DUR.BIN
+    file[]: crc = cda5c862; size =    109900; name = MOT_JAC.BIN
+    file[]: crc = 2ac9bc18; size =    100376; name = MOT_JEF.BIN
+    file[]: crc = 949cca5e; size =    104676; name = MOT_KAG.BIN
+    file[]: crc = 5028602f; size =     98376; name = MOT_LAU.BIN
+    file[]: crc = df06c0c7; size =     87056; name = MOT_PAI.BIN
+    file[]: crc = 27766faa; size =     98716; name = MOT_SAR.BIN
+    file[]: crc = 271909d5; size =     85588; name = MOT_WOL.BIN
+    file[]: crc = 3429f445; size =    360448; name = NINT_SCL.BIN
+    file[]: crc = 7b259c48; size =     44244; name = P1AKI0.BIN
+    file[]: crc = fd015250; size =     44244; name = P1AKI1.BIN
+    file[]: crc = 4ad12e87; size =     43800; name = P1DUR0.BIN
+    file[]: crc = 22ccd264; size =     44244; name = P1JAC0.BIN
+    file[]: crc = f93a9691; size =     43992; name = P1JAC1.BIN
+    file[]: crc = d46d0531; size =     44856; name = P1JEF0.BIN
+    file[]: crc = e012af30; size =     44376; name = P1JEF1.BIN
+    file[]: crc = d2d727bc; size =     44244; name = P1LAU0.BIN
+    file[]: crc = 0cafc8ad; size =     44244; name = P1LAU1.BIN
+    file[]: crc = 44523182; size =     44928; name = P1NIN0.BIN
+    file[]: crc = 75f84653; size =     44928; name = P1NIN1.BIN
+    file[]: crc = 62b8c4ae; size =     44244; name = P1PAI0.BIN
+    file[]: crc = a401e2b1; size =     44244; name = P1PAI1.BIN
+    file[]: crc = 021f10f6; size =     44244; name = P1SAR0.BIN
+    file[]: crc = ee0a54ac; size =     44244; name = P1SAR1.BIN
+    file[]: crc = ba1fdfc1; size =     44688; name = P1WOL0.BIN
+    file[]: crc = 1778f6ad; size =     44544; name = P1WOL1.BIN
+    file[]: crc = 67c6a466; size =     44040; name = P_AKI0.BIN
+    file[]: crc = 189bf5c9; size =     44040; name = P_AKI1.BIN
+    file[]: crc = d80c57d8; size =     43944; name = P_DUR0.BIN
+    file[]: crc = 69460ad6; size =     44040; name = P_JAC0.BIN
+    file[]: crc = 4c340161; size =     44040; name = P_JAC1.BIN
+    file[]: crc = 65ef36d6; size =     44160; name = P_JEF0.BIN
+    file[]: crc = 0b79eaae; size =     44160; name = P_JEF1.BIN
+    file[]: crc = 8b41d151; size =     43944; name = P_KAG0.BIN
+    file[]: crc = 76018656; size =     44040; name = P_LAU0.BIN
+    file[]: crc = 7e8ea4eb; size =     44040; name = P_LAU1.BIN
+    file[]: crc = 70a269ee; size =     44208; name = P_NIN0.BIN
+    file[]: crc = eae526a7; size =     44208; name = P_NIN1.BIN
+    file[]: crc = 9c483f3f; size =     44040; name = P_PAI0.BIN
+    file[]: crc = df4cc99b; size =     44040; name = P_PAI1.BIN
+    file[]: crc = eba6d7fc; size =     44088; name = P_SAR0.BIN
+    file[]: crc = 62051e2b; size =     44088; name = P_SAR1.BIN
+    file[]: crc = 401ee31f; size =     44376; name = P_WOL0.BIN
+    file[]: crc = 07dc6adc; size =     44376; name = P_WOL1.BIN
+    file[]: crc = c9b5e6eb; size =    308278; name = PAI_BK.BMP
+    file[]: crc = fb4dfdab; size =     49152; name = RANK_ASC.BIN
+    file[]: crc = 8085aaf8; size =     55808; name = RANKDATA.BIN
+    file[]: crc = 2f49791c; size =     28864; name = RAW_J.BIN
+    file[]: crc = 854767f5; size =      5362; name = README.TXT
+    file[]: crc = 9f06745b; size =      2560; name = RING.BIN
+    file[]: crc = 76909bb1; size =    308278; name = SARA_BK.BMP
+    file[]: crc = e41f844b; size =     86988; name = SCL_RMX.BIN
+    file[]: crc = 91e4dfb2; size =    308278; name = SEGA.BMP
+    file[]: crc = ad13f634; size =    208896; name = SEL_WRAM.BIN
+    file[]: crc = 3cb3536b; size =    294912; name = SELE_SCL.BIN
+    file[]: crc = 43c6a8c7; size =   1734994; name = SELECT.BIN
+    file[]: crc = 600ce1ed; size =    120857; name = SND_CNT.BIN
+    file[]: crc = cf4413b6; size =    549206; name = SND_DAN2.BIN
+    file[]: crc = 01b44056; size =    548846; name = SND_DBUF.BIN
+    file[]: crc = a73bbbac; size =      1580; name = SND_MAP.BIN
+    file[]: crc = 9b82d7fb; size =    787718; name = SND_VF.BIN
+    file[]: crc = 0cde7dd3; size =    267318; name = ST1_BIG.BMP
+    file[]: crc = 6f389e75; size =   1066040; name = ST1_HUGE.BMP
+    file[]: crc = 74bef874; size =    327680; name = ST1_SCL.BIN
+    file[]: crc = 4296a7f6; size =    529408; name = ST1_STG.BIN
+    file[]: crc = f0f843bc; size =    267318; name = ST2_BIG.BMP
+    file[]: crc = 15d69ec5; size =   1066040; name = ST2_HUGE.BMP
+    file[]: crc = e261973b; size =    327680; name = ST2_SCL.BIN
+    file[]: crc = a4c518d0; size =    529408; name = ST2_STG.BIN
+    file[]: crc = b7ff7a32; size =    267318; name = ST3_BIG.BMP
+    file[]: crc = df186868; size =   1066040; name = ST3_HUGE.BMP
+    file[]: crc = 3fc02f8f; size =    327680; name = ST3_SCL.BIN
+    file[]: crc = f4e7e7d2; size =    529408; name = ST3_STG.BIN
+    file[]: crc = 9fbd8ac1; size =    267318; name = ST4_BIG.BMP
+    file[]: crc = da10a6a3; size =   1065488; name = ST4_HUGE.BMP
+    file[]: crc = 9a4a65a8; size =    327680; name = ST4_SCL.BIN
+    file[]: crc = 24031389; size =    529408; name = ST4_STG.BIN
+    file[]: crc = 6acf1c5f; size =    267318; name = ST5_BIG.BMP
+    file[]: crc = 6d831081; size =   1066040; name = ST5_HUGE.BMP
+    file[]: crc = cc8ed5ad; size =    327680; name = ST5_SCL.BIN
+    file[]: crc = 98a75121; size =    529408; name = ST5_STG.BIN
+    file[]: crc = 1c50796e; size =    267318; name = ST6_BIG.BMP
+    file[]: crc = 85137905; size =   1066040; name = ST6_HUGE.BMP
+    file[]: crc = 22ad5ba7; size =    327680; name = ST6_SCL.BIN
+    file[]: crc = eed409cf; size =    529408; name = ST6_STG.BIN
+    file[]: crc = aaee77a4; size =    267318; name = ST7_BIG.BMP
+    file[]: crc = 720f0179; size =   1066040; name = ST7_HUGE.BMP
+    file[]: crc = d84a9d07; size =    327680; name = ST7_SCL.BIN
+    file[]: crc = 5e4beb7d; size =    529408; name = ST7_STG.BIN
+    file[]: crc = 722d4135; size =    267318; name = ST8_BIG.BMP
+    file[]: crc = 7732d27f; size =   1065492; name = ST8_HUGE.BMP
+    file[]: crc = 53abc9ed; size =    327680; name = ST8_SCL.BIN
+    file[]: crc = 34a7dc93; size =    529408; name = ST8_STG.BIN
+    file[]: crc = 53bc5398; size =    327680; name = ST9_SCL.BIN
+    file[]: crc = 21bd9683; size =     65536; name = ST_SARA.BIN
+    file[]: crc = e44fafa9; size =    102400; name = ST_TEST.BIN
+    file[]: crc = 99d59e7d; size =      1334; name = T_B_COL.BMP
+    file[]: crc = acb2b6e0; size =   1036176; name = TEAMDATA.BIN
+    file[]: crc = f8ec4cdc; size =     77752; name = TEX1AKI.BIN
+    file[]: crc = effcd3c9; size =     77752; name = TEX1AKI2.BIN
+    file[]: crc = 4e6e163a; size =      3574; name = TEX1DUR.BIN
+    file[]: crc = ffe14f25; size =     10092; name = TEX1DUR2.BIN
+    file[]: crc = 1954587a; size =     64762; name = TEX1JAC.BIN
+    file[]: crc = 1954587a; size =     64762; name = TEX1JAC2.BIN
+    file[]: crc = a5a377dd; size =     71014; name = TEX1JEF.BIN
+    file[]: crc = 17f46a67; size =     70822; name = TEX1JEF2.BIN
+    file[]: crc = 8f180c8d; size =     59500; name = TEX1KAG.BIN
+    file[]: crc = f3c61f1d; size =     59500; name = TEX1KAG2.BIN
+    file[]: crc = 38032170; size =     96124; name = TEX1LAU.BIN
+    file[]: crc = ff7c42e3; size =     96124; name = TEX1LAU2.BIN
+    file[]: crc = 2ae1f154; size =     81232; name = TEX1PAI.BIN
+    file[]: crc = 0ddade62; size =     81808; name = TEX1PAI2.BIN
+    file[]: crc = 881efa2d; size =     58834; name = TEX1SAR.BIN
+    file[]: crc = ff2a7057; size =     64210; name = TEX1SAR2.BIN
+    file[]: crc = a5ceaff2; size =     94918; name = TEX1WOL.BIN
+    file[]: crc = 0869cbf7; size =    112774; name = TEX1WOL2.BIN
+    file[]: crc = 8eb4cf13; size =     85138; name = TEX_AKI.BIN
+    file[]: crc = f001acf0; size =     88330; name = TEX_AKI2.BIN
+    file[]: crc = 82a24ca4; size =      3574; name = TEX_DUR.BIN
+    file[]: crc = e337fdc5; size =      3574; name = TEX_DUR2.BIN
+    file[]: crc = 58530815; size =    104794; name = TEX_JAC.BIN
+    file[]: crc = ed12fc79; size =    105976; name = TEX_JAC2.BIN
+    file[]: crc = f764f82d; size =     87676; name = TEX_JEF.BIN
+    file[]: crc = 17e466e2; size =     96172; name = TEX_JEF2.BIN
+    file[]: crc = aacd5780; size =     76936; name = TEX_KAG.BIN
+    file[]: crc = 36d3d8ee; size =     86158; name = TEX_KAG2.BIN
+    file[]: crc = 79d2ea5a; size =     88084; name = TEX_LAU.BIN
+    file[]: crc = 3b71b27a; size =     86068; name = TEX_LAU2.BIN
+    file[]: crc = 5ef37129; size =     92710; name = TEX_PAI.BIN
+    file[]: crc = 23d810bd; size =     79402; name = TEX_PAI2.BIN
+    file[]: crc = 9662066a; size =     96220; name = TEX_SAR.BIN
+    file[]: crc = 00ff2ec4; size =     84436; name = TEX_SAR2.BIN
+    file[]: crc = bf39c5bd; size =     34648; name = TEX_TABL.BIN
+    file[]: crc = 99bdf2e7; size =     98404; name = TEX_WOL.BIN
+    file[]: crc = 3b29e4d3; size =     97828; name = TEX_WOL2.BIN
+    file[]: crc = 3504230a; size =     43328; name = TEXTURE.BIN
+    file[]: crc = 660cf719; size =       256; name = TEXTURE2.BIN
+    file[]: crc = e01545af; size =    308278; name = TITLE_EG.BMP
+    file[]: crc = 8a919aa4; size =    262144; name = TITLESCL.BIN
+    file[]: crc = fa736375; size =     66137; name = V_AKI.BIN
+    file[]: crc = 0b3d8034; size =     29703; name = V_JAC.BIN
+    file[]: crc = aed81c0c; size =     55209; name = V_JEF.BIN
+    file[]: crc = 581f73f9; size =     79151; name = V_KAG.BIN
+    file[]: crc = c4c73933; size =     60032; name = V_LAU.BIN
+    file[]: crc = 7905a2ad; size =     36179; name = V_PAI.BIN
+    file[]: crc = 501639e3; size =     38779; name = V_SAR.BIN
+    file[]: crc = 963022e3; size =     38182; name = V_WOL.BIN
+    file[]: crc = 4cbe9c1c; size =     23744; name = VFCG.BIN
+    file[]: crc = 627ee8cc; size =   2485248; name = VFPC.EXE
+    file[]: crc = ba904df4; size =    492408; name = VFPC.HLP
+    file[]: crc = 892b1ce3; size =         6; name = VFRRIGHT.TXT
+    file[]: crc = 4e55d6ac; size =    310662; name = VS_CG.BIN
+    file[]: crc = 10a4c517; size =    308278; name = WOLF_BK.BMP
+
+	//CD-ROM
+	file[]: crc = 627ee8cc; size =   2485248; name = CD\VFPC\VFPC.EXE
+    file[]: name = CD\CDDA.SOU; cdda = 15/14/13/24/308/318/312/317/314/314/302/319/320/312/54/15/15/18/39/29
+
+end
+
+end

@@ -1,0 +1,163 @@
+//
+// SEGA Smash Pack 2
+//
+desc[sga-smash2]:
+
+name = SEGA Smash Pack 2
+icon = sga-smash2.png
+machine = pc
+rootpath = C:\Sega\Smash Pack II
+launch = "$(rootpath)\$(EXENAME).EXE"
+osenv = windows 98
+filter = nonlucas, Action
+winres = 640x480x16
+EXENAME = Smash2
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+
+//
+// registry
+//
+script[registry]: code = winregistry_import_file("C:\\DREAMM.REG")
+
+//
+//Auto install Script
+//
+script[autoinstaller]:
+	condition = is_installer()
+	code = [[[$(CRLF)
+		if(!prop("noautoinstall"))
+		{
+			input_lockout(true);
+			$(AUTOINSTALL_SCRIPT)
+			input_lockout(false);
+		}
+	]]]
+end
+
+fragment[install-base]:
+	rootpath = D:\Setup
+	launch = D:\Setup\Setup.exe
+	AUTOINSTALL_SCRIPT = [[[$(CRLF)
+		wait("wintitle", "Welcome");
+		sleep(200); wincontrol_click(1);
+		sleep(200); wincontrol_click(1); //Installing process goes here
+		sleep(600); wincontrol_click(1);
+		
+	]]]
+
+end
+
+//
+// dynamic files
+//
+dynamicfile[]:
+    path = C:\DREAMM.REG
+    contents = [[[$(CRLF)
+	REGEDIT4
+	
+	[HKEY_LOCAL_MACHINE\SOFTWARE\sega\Sega Smash Pack II\1.00.000\FullPath]
+	@="C:\Sega\Smash Pack II"
+
+	[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Sega Smash Pack II\UninstallString]
+	"C:\Windows\IsUninst.exe -f"C:\Sega\Smash Pack II\Uninst.isu""
+	
+	[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Smash2.exe\]
+	@="C:\Sega\Smash Pack II\Smash2.exe"
+	"Path"="C:\\Sega\\Smash Pack II"
+	
+	
+	[HKEY_LOCAL_MACHINE\SOFTWARE\sega\Sega Smash Pack II\1.00.000\UninstallPath]
+	@="C:\WINDOWS\ISUNINST.EXE -f"C:\Sega\Smash Pack II\Uninst.isu""
+
+	]]]
+end
+
+dynamicfile[]:
+	path = $(rootpath)\CD\AUTORUN.INF
+	contents = [[[$(CRLF)[autorun]
+				open=smash2.exe
+				icon=smash2.exe,0
+
+	]]]
+end
+
+dynamicfile[]:
+	path = $(rootpath)\CD\Setup\Setup.ini
+	contents = [[[$(CRLF)[Startup]
+				AppName=Sega Smash Pack II
+				FreeDiskSpace=480
+
+
+	]]]
+end
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\SEGA_SP2; attributes = 8; contents = $(NULL)
+
+//
+// Activision Publishing Version & Twin Pack Version
+//
+game[pc-cd-en-Activision]:
+    name = 1.00.000 Activision
+    anchorfile = Smash2.exe
+	anchordepth = 1
+    file[]: name = Comix Zone.txt
+    file[]: name = Flicky.txt
+    file[]: name = GameSav3.KML
+    file[]: name = Kid Chameleon.txt
+    file[]: name = Sega Smash Pack II.txt
+    file[]: name = Shining Force.txt
+    file[]: crc = d9f51baf; size =    978944; name = Smash2.exe
+    file[]: name = Sonic The Hedgehog II.txt
+    file[]: name = Super Hang-On.txt
+    file[]: name = Vectorman II.txt
+    file[]: crc = 34cc59ca; size =    142704; name = Data\MainBlok.kml
+    file[]: crc = c9174b69; size =     28017; name = Data\SoundBlk.kml
+    file[]: crc = 63d40052; size =   2097160; name = MyGames\Comix Zone.kvq
+    file[]: crc = 4bfaeeed; size =    262152; name = MyGames\Flicky.kvq
+    file[]: crc = cf8c2f79; size =   1048584; name = MyGames\Kid Chameleon.kvq
+    file[]: crc = d5ef4268; size =   2097160; name = MyGames\Shining Force.kvq
+    file[]: crc = 220a8cc5; size =   1048584; name = MyGames\Sonic II.kvq
+    file[]: crc = 279a3f14; size =    524296; name = MyGames\Super Hang-On.kvq
+    file[]: crc = 90d8317f; size =   3145736; name = MyGames\Vectorman ii.kvq
+	file[]: crc = 5F98B1F5; size =        45; name = CD\AUTORUN.INF
+	file[]: crc = 2c66231d; size =        58; name = CD\SETUP\SETUP.INI
+
+end
+
+//
+// Installer for Activision Publishing & Twin Pack Ver. Listed Above
+//
+installer[pc-cd-en-Activision-install]:
+	name = English CD Installer, Activision
+	imports = install-base
+	installid = pc-cd-en-Activision
+	anchorfile = SETUP.EXE
+	anchordepth = 1
+	file[]: crc = 5F98B1F5; size =        45; name = CD\AUTORUN.INF
+	file[]: crc = 1bf8ba0a; size =    316937; name = CD\SETUP\_INST32I.EX_
+    file[]: crc = 5a0674bf; size =      8192; name = CD\SETUP\_ISDEL.EXE
+    file[]: crc = 5c9f380b; size =     11264; name = CD\SETUP\_SETUP.DLL
+    file[]: crc = 1e65e96f; size =    181745; name = CD\SETUP\_SYS1.CAB; exactonly = true
+    file[]: crc = 298bcdb7; size =      7536; name = CD\SETUP\_USER1.CAB; exactonly = true
+    file[]: crc = 212a5783; size =        93; name = CD\SETUP\DATA.TAG; exactonly = true
+    file[]: crc = 70ae59c8; size =  10202026; name = CD\SETUP\DATA1.CAB; exactonly = true
+    file[]: crc = 7aee019c; size =       352; name = CD\SETUP\LANG.DAT; exactonly = true
+    file[]: crc = 4ef67c2f; size =       334; name = CD\SETUP\LAYOUT.BIN; exactonly = true
+    file[]: crc = 6e672cf2; size =       419; name = CD\SETUP\OS.DAT; exactonly = true
+    file[]: crc = a22b1e28; size =     59392; name = CD\SETUP\SETUP.EXE
+    file[]: crc = 2c66231d; size =        58; name = CD\SETUP\SETUP.INI; exactonly = true
+    file[]: crc = 464a668b; size =     57784; name = CD\SETUP\SETUP.INS; exactonly = true
+    file[]: crc = d1b13e0b; size =        47; name = CD\SETUP\SETUP.LID; exactonly = true
+end
+
+end

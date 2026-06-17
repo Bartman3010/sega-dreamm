@@ -1,0 +1,328 @@
+//
+// Ecco the Dolphin
+//
+desc[sga-ecco]:
+
+name = Ecco the Dolphin
+icon = sga-ecco.png
+machine = pc
+rootpath = C:\Sega\ECCO
+launch = "$(rootpath)\$(EXENAME).EXE"
+osenv = windows 95
+filter = nonlucas
+EXENAME = ECCOWIN
+mips = $(MIPS_486DX_33)
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\""; attributes = 8; contents = $(NULL)
+
+//
+// Windows OS Select
+//
+config[windows-os]:
+    title = WINDOWS VERSION
+    option[win31]:  name = Windows 3.1 (16-bit); winres = 640x480x8; 
+    option[win95]: name = Windows 95 (32-bit); winres = 640x480x16; priority = 1
+end
+
+
+//
+// video configuration
+//
+config[video]:
+    title = Video Configuration
+    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
+    option[desktop]: name = Full Desktop;      wincrop = false
+end
+
+//
+// Common Files
+//
+fragment[common]:
+    file[]: crc = 732517a1; size =     75102; name = ECCO.HLP
+    file[]: crc = 1ffc501a; size =  10704248; name = CD\DATA\0.AVI
+    file[]: crc = db05adb1; size =   7447496; name = CD\DATA\1.AVI
+    file[]: crc = 3236f14e; size =   6397352; name = CD\DATA\2.AVI
+    file[]: crc = d9243a8f; size =  17005080; name = CD\DATA\3.AVI
+    file[]: crc = 6237bd91; size =   5611096; name = CD\DATA\4.AVI
+    file[]: crc = 3f5cd2d9; size =   8695272; name = CD\DATA\5.AVI
+    file[]: crc = faa61a77; size =  17256264; name = CD\DATA\6.AVI
+    file[]: crc = 37ed52d1; size =   3699096; name = CD\DATA\7.AVI
+    file[]: crc = dcc5f462; size =   8667944; name = CD\DATA\8.AVI
+    file[]: crc = ea219f6e; size =   4562808; name = CD\DATA\9.AVI
+    file[]: crc = aff4622c; size =   8271480; name = CD\DATA\A.AVI
+    file[]: crc = 7c57bbf7; size =    503340; name = CD\DATA\A_DELFIN.FLM
+    file[]: crc = 365c97b6; size =   1004676; name = CD\DATA\A_DELFIN.ZLM
+    file[]: crc = f96f5358; size =     62884; name = CD\DATA\ASTERI29.ZLM
+    file[]: crc = 0db7b2c2; size =      4035; name = CD\DATA\ASTERITE.BOR
+    file[]: crc = 83a1c32c; size =    883314; name = CD\DATA\ASTERITE.PLZ
+    file[]: crc = 1f7b8994; size =    208908; name = CD\DATA\ASTERITE.S
+    file[]: crc = 4fab7008; size =     62884; name = CD\DATA\ASTERITE.ZLM
+    file[]: crc = a3c0b2d9; size =     11124; name = CD\DATA\ASTERX.FLM
+    file[]: crc = dccbf20f; size =   5737496; name = CD\DATA\B.AVI
+    file[]: crc = 1d517527; size =     64180; name = CD\DATA\BEHAL.FLM
+    file[]: crc = 30d4259f; size =    202904; name = CD\DATA\BEHAL.ZLM
+    file[]: crc = 29dfc671; size =      5298; name = CD\DATA\BIGSHIP.BOR
+    file[]: crc = 26ba83c8; size =   1423046; name = CD\DATA\BIGSHIP.PLZ
+    file[]: crc = fd5ac970; size =    253110; name = CD\DATA\BIGSHIP.S
+    file[]: crc = 0f4781d3; size =       780; name = CD\DATA\BLUEYEE.FLM
+    file[]: crc = 4b99b855; size =      4692; name = CD\DATA\BOSSJAWS.FLM
+    file[]: crc = b8de3564; size =     18528; name = CD\DATA\BOSSJAWS.ZLM
+    file[]: crc = 6d581251; size =     65668; name = CD\DATA\BOSSSUCK.WAV
+    file[]: crc = 436a571e; size =  30179304; name = CD\DATA\C.AVI
+    file[]: crc = e1a36fbf; size =      2251; name = CD\DATA\CBUILD.BOR
+    file[]: crc = 438054e2; size =    428412; name = CD\DATA\CBUILD.PLZ
+    file[]: crc = 248e3bf3; size =    162881; name = CD\DATA\CBUILD.S
+    file[]: crc = 0c42d591; size =    150340; name = CD\DATA\CITYSPR.BBB
+    file[]: crc = 3ff179dd; size =      3284; name = CD\DATA\CLANTIS.BOR
+    file[]: crc = 0a6ad337; size =    370292; name = CD\DATA\CLANTIS.PLZ
+    file[]: crc = ad079565; size =    149297; name = CD\DATA\CLANTIS.S
+    file[]: crc = 099f8ed3; size =      2056; name = CD\DATA\CRAB.FLM
+    file[]: crc = 599696c4; size =      8892; name = CD\DATA\CRAB.ZLM
+    file[]: crc = 2b466c3a; size =      8892; name = CD\DATA\CRAB2.ZLM
+    file[]: crc = 3594267d; size =      2200; name = CD\DATA\CSIGA.FLM
+    file[]: crc = 8729d55f; size =      7780; name = CD\DATA\CSIGA.ZLM
+    file[]: crc = d0bf404c; size =     10680; name = CD\DATA\CSOALLAT.FLM
+    file[]: crc = b5c0af25; size =     30480; name = CD\DATA\CSOALLAT.ZLM
+    file[]: crc = 1dd940a8; size =     26782; name = CD\DATA\CSOBB_BE.WAV
+    file[]: crc = 392af0c8; size =     16036; name = CD\DATA\CSOBB_KI.WAV
+    file[]: crc = 0ff11bbb; size =     40756; name = CD\DATA\CSUJ.FLM
+    file[]: crc = 8dba596b; size =    152376; name = CD\DATA\CSUJ.ZLM
+    file[]: crc = 85013873; size =      6674; name = CD\DATA\CTIME1.BOR
+    file[]: crc = 1b98c60e; size =    448900; name = CD\DATA\CTIME1.PLZ
+    file[]: crc = 5c2ca016; size =    171844; name = CD\DATA\CTIME1.S
+    file[]: crc = 49848cad; size =      8135; name = CD\DATA\CTIME2.BOR
+    file[]: crc = 784d025d; size =    369290; name = CD\DATA\CTIME2.PLZ
+    file[]: crc = f45e780c; size =    152694; name = CD\DATA\CTIME2.S
+    file[]: crc = de11a843; size =     10550; name = CD\DATA\DEEP.BOR
+    file[]: crc = e42bda52; size =    778982; name = CD\DATA\DEEP.PLZ
+    file[]: crc = f5806037; size =    173906; name = CD\DATA\DEEP.S
+    file[]: crc = 1ad2d392; size =      3005; name = CD\DATA\DEEPWS.BOR
+    file[]: crc = a527d1d7; size =    860534; name = CD\DATA\DEEPWS.PLZ
+    file[]: crc = 033dc20d; size =    238674; name = CD\DATA\DEEPWS.S
+    file[]: crc = 5ebc4e04; size =      1981; name = CD\DATA\DEMO.DEM
+    file[]: crc = 4459f538; size =       141; name = CD\DATA\DEMO33.DEM
+    file[]: crc = baadd994; size =       471; name = CD\DATA\DEMO34.DEM
+    file[]: crc = 1e7c1c1b; size =       397; name = CD\DATA\DEMO40.DEM
+    file[]: crc = 76673547; size =       581; name = CD\DATA\DEMO41.DEM
+    file[]: crc = 04b10e99; size =       439; name = CD\DATA\DEMO42.DEM
+    file[]: crc = 0af5ac29; size =      1339; name = CD\DATA\DEMO43.DEM
+    file[]: crc = e4b683c8; size =       685; name = CD\DATA\DEMO44.DEM
+    file[]: crc = 2269e41d; size =      1111; name = CD\DATA\DEMO45.DEM
+    file[]: crc = e745b67b; size =       825; name = CD\DATA\DEMO47.DEM
+    file[]: crc = edf87e19; size =      1705; name = CD\DATA\DEMO48.DEM
+    file[]: crc = f06f9b0b; size =      1593; name = CD\DATA\DEMO49.DEM
+    file[]: crc = ef9c5c20; size =        15; name = CD\DATA\ECCOWIN.DAT
+    file[]: crc = df542ba3; size =      5474; name = CD\DATA\ED.BOR
+    file[]: crc = c13c4bb5; size =   1421590; name = CD\DATA\ED.PLZ
+    file[]: crc = 1fda98df; size =    311163; name = CD\DATA\ED.S
+    file[]: crc = 1866df7c; size =      8256; name = CD\DATA\GLYPH.FLM
+    file[]: crc = 6025cbc1; size =     32920; name = CD\DATA\GLYPH.ZLM
+    file[]: crc = b2a1054d; size =      2020; name = CD\DATA\GOLO.FLM
+    file[]: crc = 8bef1759; size =      7852; name = CD\DATA\GOLO.ZLM
+    file[]: crc = 27814bf6; size =    145408; name = CD\DATA\GREATWH3.FLM
+    file[]: crc = 06f8f673; size =    147456; name = CD\DATA\GREATWHU.FLM
+    file[]: crc = 4f1f33b1; size =     20216; name = CD\DATA\GYORSIT.WAV
+    file[]: crc = fc2dc564; size =      4175; name = CD\DATA\HAJO.BOR
+    file[]: crc = 9676e2f6; size =   1209724; name = CD\DATA\HAJO.PLZ
+    file[]: crc = 0ccc142e; size =    267331; name = CD\DATA\HAJO.S
+    file[]: crc = 9b05b8a1; size =       987; name = CD\DATA\HOMAGAIN.BOR
+    file[]: crc = 560d2662; size =      2053; name = CD\DATA\HOME.BOR
+    file[]: crc = 575c0396; size =    861994; name = CD\DATA\HOME.PLZ
+    file[]: crc = b6f7cb83; size =    243342; name = CD\DATA\HOME.S
+    file[]: crc = 684d3623; size =      4373; name = CD\DATA\HORSE.BOR
+    file[]: crc = 091294f6; size =    665384; name = CD\DATA\HORSE.PLZ
+    file[]: crc = b9e787b5; size =    166322; name = CD\DATA\HORSE.S
+    file[]: crc = 4eae3c61; size =      3562; name = CD\DATA\ICE01.BOR
+    file[]: crc = d8f5b08d; size =    571442; name = CD\DATA\ICE01.PLZ
+    file[]: crc = c05f8967; size =    173988; name = CD\DATA\ICE01.S
+    file[]: crc = a5dfff22; size =      4440; name = CD\DATA\ICE03.BOR
+    file[]: crc = 3218df87; size =    402714; name = CD\DATA\ICE03.PLZ
+    file[]: crc = 8c1b672c; size =    132576; name = CD\DATA\ICE03.S
+    file[]: crc = b48e5c6f; size =     42200; name = CD\DATA\ICECRA1.ZLM
+    file[]: crc = 36f3f9d2; size =     42200; name = CD\DATA\ICECRA2.ZLM
+    file[]: crc = 4e4bc65a; size =     11352; name = CD\DATA\ICECRAB.FLM
+    file[]: crc = b5528b5a; size =     57104; name = CD\DATA\ICESPR.BBB
+    file[]: crc = c28e6571; size =     10484; name = CD\DATA\IVILL.FLM
+    file[]: crc = 58024e73; size =     30160; name = CD\DATA\IVILL.ZLM
+    file[]: crc = 34593a03; size =      3626; name = CD\DATA\IWHALE.BOR
+    file[]: crc = cfa5251d; size =    506968; name = CD\DATA\IWHALE.PLZ
+    file[]: crc = 8bce941f; size =    159190; name = CD\DATA\IWHALE.S
+    file[]: crc = f6f0042a; size =      3824; name = CD\DATA\JELLY.FLM
+    file[]: crc = e59675e9; size =     13184; name = CD\DATA\JELLY.ZLM
+    file[]: crc = bd3fa196; size =        48; name = CD\DATA\KAMU.ZLM
+    file[]: crc = 65b15b56; size =      4202; name = CD\DATA\KORALL2.BOR
+    file[]: crc = 6299497a; size =   1125832; name = CD\DATA\KORALL2.PLZ
+    file[]: crc = aeabf7ec; size =    246514; name = CD\DATA\KORALL2.S
+    file[]: crc = 20f039c2; size =      5582; name = CD\DATA\LACI.BOR
+    file[]: crc = aa69f864; size =   1790330; name = CD\DATA\LACI.PLZ
+    file[]: crc = 16a27e39; size =    326334; name = CD\DATA\LACI.S
+    file[]: crc = d6ef6045; size =    235776; name = CD\DATA\LEOSHAR1.ZLM
+    file[]: crc = 891b2e1e; size =    235776; name = CD\DATA\LEOSHAR2.ZLM
+    file[]: crc = ad33184d; size =    235776; name = CD\DATA\LEOSHAR3.ZLM
+    file[]: crc = 429b3f66; size =     91384; name = CD\DATA\LEOSHARK.FLM
+    file[]: crc = a9c7a69a; size =      4209; name = CD\DATA\MEDUSA.BOR
+    file[]: crc = 74b43391; size =   1337980; name = CD\DATA\MEDUSA.PLZ
+    file[]: crc = 22f25f6a; size =    283102; name = CD\DATA\MEDUSA.S
+    file[]: crc = c9753937; size =     11146; name = CD\DATA\MEGOL.WAV
+    file[]: crc = 3da7bb18; size =      4664; name = CD\DATA\METAMORP.FLM
+    file[]: crc = 9aff0614; size =     16472; name = CD\DATA\METAMORP.ZLM
+    file[]: crc = 72c9d5c1; size =     47620; name = CD\DATA\NAUTILUS.FLM
+    file[]: crc = e43e9632; size =     94464; name = CD\DATA\NAUTILUS.ZLM
+    file[]: crc = b38975e2; size =      4096; name = CD\DATA\OCEAN.BOR
+    file[]: crc = 2a433e82; size =    100876; name = CD\DATA\OCEAN.PLZ
+    file[]: crc = dab6d062; size =     67532; name = CD\DATA\OCEAN.S
+    file[]: crc = 8f3084e1; size =      4074; name = CD\DATA\OCEAN2.BOR
+    file[]: crc = 0809d357; size =    100346; name = CD\DATA\OCEAN2.PLZ
+    file[]: crc = e948110e; size =     73868; name = CD\DATA\OCEAN2.S
+    file[]: crc = 63c8e3ce; size =      1380; name = CD\DATA\OPEN.BOR
+    file[]: crc = b5505fc0; size =     27344; name = CD\DATA\ORCA.FLM
+    file[]: crc = 783ecda5; size =     63284; name = CD\DATA\ORCA.ZLM
+    file[]: crc = 3bdf030d; size =    166908; name = CD\DATA\POLIPKAR.FLM
+    file[]: crc = 30fb7ef4; size =    975468; name = CD\DATA\POLIPKAR.ZLM
+    file[]: crc = bb6febac; size =      5092; name = CD\DATA\POWER.FLM
+    file[]: crc = 1d770add; size =     11812; name = CD\DATA\POWER.ZLM
+    file[]: crc = c8b3c1d6; size =      4430; name = CD\DATA\PRE.BOR
+    file[]: crc = ff729c1b; size =    857030; name = CD\DATA\PRE.PLZ
+    file[]: crc = f5cc0f64; size =    205318; name = CD\DATA\PRE.S
+    file[]: crc = 5b360aa8; size =      3950; name = CD\DATA\PREASTER.BOR
+    file[]: crc = c8941cba; size =    819410; name = CD\DATA\PREASTER.PLZ
+    file[]: crc = 54ffeec7; size =    183212; name = CD\DATA\PREASTER.S
+    file[]: crc = 50ff4515; size =      5696; name = CD\DATA\PREJELL2.FLM
+    file[]: crc = e38c82f9; size =     21552; name = CD\DATA\PREJELLY.ZLM
+    file[]: crc = cd397ae7; size =    117136; name = CD\DATA\PRESHARK.FLM
+    file[]: crc = 7aaa67d7; size =    311832; name = CD\DATA\PRESHARK.ZLM
+    file[]: crc = d8a57f13; size =     67116; name = CD\DATA\PRESPR.BBB
+    file[]: crc = 2602ebd6; size =      1297; name = CD\DATA\PROBA.BOR
+    file[]: crc = eb76450c; size =    104200; name = CD\DATA\PTERANOD.FLM
+    file[]: crc = 629391ee; size =     89196; name = CD\DATA\PTERANOD.ZLM
+    file[]: crc = 2ceb3c59; size =     14240; name = CD\DATA\RAJA.FLM
+    file[]: crc = 27c3da54; size =     31216; name = CD\DATA\RAJA.ZLM
+    file[]: crc = 6da2b298; size =    148460; name = CD\DATA\ROCKSPR.BBB
+    file[]: crc = 17631731; size =      5327; name = CD\DATA\ROWMAT.BOR
+    file[]: crc = 1c1556ec; size =    750038; name = CD\DATA\ROWMAT.PLZ
+    file[]: crc = cd48de2b; size =    186436; name = CD\DATA\ROWMAT.S
+    file[]: crc = 2951989e; size =     64388; name = CD\DATA\S6SPR.BBB
+    file[]: crc = e840e8d1; size =     52008; name = CD\DATA\S7SPR.BBB
+    file[]: crc = 05d66281; size =     67324; name = CD\DATA\S8SPR.BBB
+    file[]: crc = b6192fe4; size =     88592; name = CD\DATA\S9SPR.BBB
+    file[]: crc = 01157e6f; size =    419164; name = CD\DATA\SEAHORSE.FLM
+    file[]: crc = 4bb154fb; size =    142816; name = CD\DATA\SEAHORSE.ZLM
+    file[]: crc = 7cbc77ac; size =     73476; name = CD\DATA\SEGASTR.WAV
+    file[]: crc = a057beb2; size =    118848; name = CD\DATA\SHARK.FLM
+    file[]: crc = 6cc5885f; size =    263248; name = CD\DATA\SHARK.ZLM
+    file[]: crc = 6a0f9c23; size =      1160; name = CD\DATA\SHELL.FLM
+    file[]: crc = a828c4a6; size =      4372; name = CD\DATA\SHELL.ZLM
+    file[]: crc = ee20b7cf; size =      4372; name = CD\DATA\SHELL3.ZLM
+    file[]: crc = d1ee0650; size =      8348; name = CD\DATA\SMAP.FLM
+    file[]: crc = f1653167; size =     29280; name = CD\DATA\SON1.WAV
+    file[]: crc = 3844b5a7; size =     19478; name = CD\DATA\SON2.WAV
+    file[]: crc = 023a12e8; size =     76388; name = CD\DATA\SONAR.FLM
+    file[]: crc = d5c577b2; size =    161320; name = CD\DATA\SONAR.ZLM
+    file[]: crc = fef4b54e; size =     24256; name = CD\DATA\SONARMAP.ZLM
+    file[]: crc = e0e601b4; size =     66376; name = CD\DATA\SONARX.FLM
+    file[]: crc = 5eb4352b; size =    251268; name = CD\DATA\SONARX.ZLM
+    file[]: crc = a580fc23; size =      2246; name = CD\DATA\SZIKLA.BOR
+    file[]: crc = 9b8638e0; size =    950004; name = CD\DATA\SZIKLA.PLZ
+    file[]: crc = 757c8270; size =    197547; name = CD\DATA\SZIKLA.S
+    file[]: crc = 757c8270; size =    197547; name = CD\DATA\SZIKLAU.S
+    file[]: crc = cec40c7d; size =      2240; name = CD\DATA\TENTAC1.ZLM
+    file[]: crc = da57dcf4; size =      2240; name = CD\DATA\TENTAC2.ZLM
+    file[]: crc = 7fce3025; size =       568; name = CD\DATA\TENTACLE.FLM
+    file[]: crc = cafc404f; size =      1660; name = CD\DATA\THAL.FLM
+    file[]: crc = 8b5ed34d; size =      4864; name = CD\DATA\THAL.ZLM
+    file[]: crc = a678eb51; size =    117824; name = CD\DATA\THUNDER.FLM
+    file[]: crc = ca4e4c2a; size =    333264; name = CD\DATA\THUNDER.ZLM
+    file[]: crc = 55da8478; size =     83518; name = CD\DATA\TIME.WAV
+    file[]: crc = e7708116; size =     99642; name = CD\DATA\TORNADO.WAV
+    file[]: crc = 80c98f4a; size =     22528; name = CD\DATA\TRILOBIT.FLM
+    file[]: crc = 1e00b193; size =     31440; name = CD\DATA\TRILOBIT.ZLM
+    file[]: crc = 1a59d620; size =      3147; name = CD\DATA\TUNNEL.BOR
+    file[]: crc = 666fdf3f; size =    796994; name = CD\DATA\TUNNEL.PLZ
+    file[]: crc = c7f11a89; size =    191196; name = CD\DATA\TUNNEL.S
+    file[]: crc = 07a58120; size =      6345; name = CD\DATA\TURTLE.BOR
+    file[]: crc = 79069423; size =     39276; name = CD\DATA\TURTLE.FLM
+    file[]: crc = cee3e635; size =   1277054; name = CD\DATA\TURTLE.PLZ
+    file[]: crc = 7a525595; size =    279622; name = CD\DATA\TURTLE.S
+    file[]: crc = 2d4f306f; size =    108972; name = CD\DATA\TURTLE.ZLM
+    file[]: crc = 63219646; size =      8406; name = CD\DATA\VBIG.BOR
+    file[]: crc = b14bcfa5; size =    321112; name = CD\DATA\VBIG.PLZ
+    file[]: crc = aa7844f1; size =     93614; name = CD\DATA\VBIG.S
+    file[]: crc = 58bae1ed; size =      1083; name = CD\DATA\VBOS.BOR
+    file[]: crc = 6a13ddd7; size =    312602; name = CD\DATA\VBOS.PLZ
+    file[]: crc = b716d92b; size =     88420; name = CD\DATA\VBOS.S
+    file[]: crc = 50d73cd8; size =     33184; name = CD\DATA\VBOSSPR.BBB
+    file[]: crc = e414f85b; size =     65044; name = CD\DATA\VOR.FLM
+    file[]: crc = 45314dd7; size =    158936; name = CD\DATA\VOR.ZLM
+    file[]: crc = a512ed14; size =     64600; name = CD\DATA\VORTESPR.BBB
+    file[]: crc = 1f94b8f5; size =      1419; name = CD\DATA\VRETURN.BOR
+    file[]: crc = 13568ca3; size =      5093; name = CD\DATA\VTUBE.BOR
+    file[]: crc = 5bd332a9; size =     79128; name = CD\DATA\VTUBE.PLZ
+    file[]: crc = b742f533; size =     30986; name = CD\DATA\VTUBE.S
+    file[]: crc = cb61bdcd; size =      6997; name = CD\DATA\ZSOLT.BOR
+    file[]: crc = 269d2f88; size =   1776166; name = CD\DATA\ZSOLT.PLZ
+    file[]: crc = a2310f6b; size =    348647; name = CD\DATA\ZSOLT.S
+end
+
+//
+// Ecco the Dolphin CD US English
+//
+game[pc-en-cd-us]:
+    name = English CD US Ver. 1.1
+	imports = common
+    anchorfile = ECCOWIN.DAT
+	anchordepth = 1
+    file[]: crc = e8a056bf; size =    860672; name = ECCOWIN.EXE
+    file[]: crc = 1e81fd4b; size =    514616; name = CD\DATA\ABC.FLM
+    file[]: crc = 28a3e441; size =     34644; name = CD\DATA\ABECE.ZLM
+    file[]: crc = 6119bb07; size =      3385; name = CD\DATA\DEMO46.DEM	
+    file[]: crc = 8cafd5da; size =      5060; name = CD\DATA\KABC.FLM
+    file[]: crc = cbb04b8a; size =     18460; name = CD\DATA\KBETU.ZLM
+    file[]: crc = 78392e0f; size =   3764754; name = CD\DATA\N_MVID.AVI
+	file[]: name = CD\CDDA.SOU; cdda = 277/246/214/373/225/338/61/118/61/213/333/229/4
+end
+
+//
+// Ecco the Dolphin CD US English Tuneland Packard Bell Bundle 
+//
+game[pc-en-cd-us-packard]:
+    name = English CD US Ver. 1.1 + Tuneland Packard Bell Bundle
+	imports = common
+    anchorfile = ECCOWIN.DAT
+	anchordepth = 1
+    file[]: crc = F91D15C4; size =    864256; name = ECCOWIN.EXE
+    file[]: crc = 763bc70f; size =     11232; name = CD\DATA\ABC.FLM
+    file[]: crc = 4e58d912; size =      7112; name = CD\DATA\ABECE.FLM
+    file[]: crc = a4609249; size =     43348; name = CD\DATA\ABECE.ZLM
+    file[]: crc = 4459f538; size =       141; name = CD\DATA\DEMO33.D32
+    file[]: crc = baadd994; size =       471; name = CD\DATA\DEMO34.D32
+    file[]: crc = 1e7c1c1b; size =       397; name = CD\DATA\DEMO40.D32
+    file[]: crc = 76673547; size =       581; name = CD\DATA\DEMO41.D32
+    file[]: crc = 04b10e99; size =       439; name = CD\DATA\DEMO42.D32
+    file[]: crc = 0af5ac29; size =      1339; name = CD\DATA\DEMO43.D32
+    file[]: crc = e4b683c8; size =       685; name = CD\DATA\DEMO44.D32
+    file[]: crc = 2269e41d; size =      1111; name = CD\DATA\DEMO45.D32
+    file[]: crc = 422a06db; size =      2413; name = CD\DATA\DEMO46.D32
+    file[]: crc = 744c0e21; size =      3789; name = CD\DATA\DEMO46.DEM
+    file[]: crc = 526d19e7; size =      1017; name = CD\DATA\DEMO47.D32
+    file[]: crc = cd972cff; size =      1093; name = CD\DATA\DEMO48.D32
+    file[]: crc = c3f9b0eb; size =      1549; name = CD\DATA\DEMO49.D32
+    file[]: crc = 47805ac3; size =      5248; name = CD\DATA\KABC.FLM
+    file[]: crc = 8921dd41; size =     19184; name = CD\DATA\KBETU.ZLM
+    file[]: crc = 81e536ea; size =   3906144; name = CD\DATA\N_MVID.AVI
+    
+	
+    file[]: name = CD\CDDA.SOU; cdda = 118/246/214/277/225/338/61/118/61/213/333/229/4
+
+end
+
+end

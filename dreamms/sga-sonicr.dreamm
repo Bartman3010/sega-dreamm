@@ -1,0 +1,1263 @@
+//
+// Sonic R
+//
+desc[sga-sonicr]:
+
+name = Sonic R
+icon = sga-sonicr.png
+machine = pc
+rootpath = C:\Sega\SonicR
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 98
+filter = nonlucas, racing, sonic, netplay
+winres = 640x480x16
+EXENAME = SONICR
+NETWORKMODE = 0
+CDLABEL = SONICR
+
+//
+// filesystem
+//
+mount[]: vpath = $(rootpath);  srcpath = $(ifsupgradepath); writable = true; condition = is_upgrader()
+mount[]: vpath = C:\;          srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath);  srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+//
+// autoinstall script
+//
+script[autoinstall]:
+    condition = is_installer() || is_upgrader()
+    code = [[[$(CRLF)
+        if (!prop("noautoinstall"))
+        {
+            input_lockout(true);
+            $(AUTOINSTALL_SCRIPT)
+            input_lockout(false);
+        }
+    ]]]
+end
+
+//
+// Network Mode Toggle
+//
+config[network]:
+	title = Network Mode
+	option[neton]: name = On; EXENAME = SR_NET; condition = $(NETWORKMODE)
+	option[netoff]: name = Off; EXENAME = SONICR; condition = $(NETWORKMODE)
+end
+
+//
+// EU REV00 Common Files
+//
+fragment[eu-cd-common]:
+	file[]: crc = 75ab6a2e; size =   1263104; name = sonicr.exe
+    file[]: crc = 4bb84d39; size =    921600; name = bin\end\amy.raw
+    file[]: crc = 3e5f5232; size =    921600; name = bin\titles\titles.raw\
+	CDLABEL = SONICR
+end
+
+//
+// US Common Files
+//
+fragment[us-cd-common]:
+	imports = eu-cd-common
+    file[]: crc = 7f8e8b74; size =     25557; name = CITY\CITY07.RAW
+	CDLABEL = SONICR
+end
+
+//
+// JP Common Files
+//
+fragment[jp-cd-common]:
+    file[]: crc = 717d0e39; size =   1268736; name = sonicr.exe
+    file[]: crc = 9dd81bb6; size =    921600; name = bin\end\Amy.raw
+    file[]: crc = 42e49a13; size =    921600; name = BIN\titles\titles.raw
+	CDLABEL = SONICR
+end
+
+//
+// EU REV01 Common Files
+//
+fragment[eu-cd-common-rev2]:
+    file[]: crc = 75ab6a2e; size =   1263104; name = sonicr.exe
+    file[]: crc = 9dd81bb6; size =    921600; name = bin\end\Amy.raw
+    file[]: crc = 42e49a13; size =    921600; name = BIN\titles\titles.raw
+	CDLABEL = SONIC R
+end
+
+fragment[common]:
+	
+    file[]: crc = 250c882f; size =     22144; name = ai\aistuffc.bin
+    file[]: crc = f385b431; size =     21664; name = ai\aistuffe.bin
+    file[]: crc = eda61a48; size =     22144; name = ai\aistufff.bin
+    file[]: crc = e8c19a4f; size =     22304; name = ai\aistuffi.bin
+    file[]: crc = e752581e; size =     22144; name = ai\aistuffr.bin
+    file[]: crc = 82675a40; size =    196608; name = bin\credits\credit00.raw
+    file[]: crc = 023d6e4f; size =    196608; name = bin\credits\views00.raw
+    file[]: crc = 3de57d65; size =    196608; name = bin\credits\views01.raw
+    file[]: crc = fa78baa7; size =    196608; name = bin\credits\views02.raw
+    file[]: crc = 14bbaee4; size =      3834; name = bin\demos\city.dem
+    file[]: crc = 2bb17ced; size =     10450; name = BIN\DEMOS\EMERALD2.DEM
+    file[]: crc = eaacacda; size =      5674; name = bin\demos\factory.dem
+    file[]: crc = 52346823; size =      2174; name = bin\demos\island.dem
+    file[]: crc = ee84a884; size =      3014; name = bin\demos\ruin.dem
+    file[]: crc = 2025a072; size =     49152; name = bin\emap\no1.raw
+    file[]: crc = 41f801a9; size =     49152; name = bin\emap\no2.raw
+    file[]: crc = 0ffc2316; size =     49152; name = bin\emap\no3.raw
+    file[]: crc = 6654e560; size =     49152; name = bin\emap\no4.raw
+    file[]: crc = 733d7e07; size =     49152; name = bin\emap\no5.raw
+    file[]: crc = 2cd3c5c3; size =     49152; name = bin\emap\sonicr.raw
+    file[]: crc = 4bb84d39; size =    921600; name = bin\end\amy.raw
+    file[]: crc = 1c90dcdd; size =    921600; name = bin\end\dtails.raw
+    file[]: crc = 699f82f4; size =    921600; name = bin\end\emeralds.raw
+    file[]: crc = a8d1c0f7; size =    921600; name = bin\end\knuckles.raw
+    file[]: crc = 51f648d2; size =    921600; name = bin\end\mknuck.raw
+    file[]: crc = 1389a047; size =    921600; name = bin\end\mrobot.raw
+    file[]: crc = bc3fdf30; size =    921600; name = bin\end\msonic.raw
+    file[]: crc = ad99dbd2; size =    921600; name = bin\end\robotnik.raw
+    file[]: crc = 402f753e; size =    921600; name = bin\end\sonic.raw
+    file[]: crc = 2f7bfba2; size =    921600; name = bin\end\ssonic.raw
+    file[]: crc = dc039178; size =    921600; name = bin\end\tails.raw
+    file[]: crc = 356f1ef7; size =    921600; name = bin\end\the_end.raw
+    file[]: crc = 5e28dfda; size =     46396; name = bin\extras\city.ter
+    file[]: crc = aa6d78a9; size =     30112; name = bin\extras\emerald.ter
+    file[]: crc = 32a9932d; size =     63864; name = bin\extras\factory.ter
+    file[]: crc = 54713705; size =     80492; name = bin\extras\island.ter
+    file[]: crc = e9da213c; size =     64164; name = bin\extras\ruin.ter
+    file[]: crc = cb1aa146; size =      3460; name = bin\objects\amy\aan1.bin
+    file[]: crc = 11428a10; size =      1156; name = bin\objects\amy\aan10.bin
+    file[]: crc = 8223a886; size =      3460; name = bin\objects\amy\aan11.bin
+    file[]: crc = 09c35aef; size =      1444; name = bin\objects\amy\aan2.bin
+    file[]: crc = 45a4c8e3; size =      1444; name = bin\objects\amy\aan3.bin
+    file[]: crc = a595e8a5; size =      4612; name = bin\objects\amy\aan4.bin
+    file[]: crc = 89bb6bba; size =      1732; name = bin\objects\amy\aan5.bin
+    file[]: crc = 867ebfb0; size =      3460; name = bin\objects\amy\aan6.bin
+    file[]: crc = 01b4dffe; size =      3460; name = bin\objects\amy\aan7.bin
+    file[]: crc = abb00b51; size =      4612; name = bin\objects\amy\aan8.bin
+    file[]: crc = ef07c348; size =      6916; name = bin\objects\amy\aan9.bin
+    file[]: crc = 3a340e00; size =      8408; name = bin\objects\amy\amy_h3.bin
+    file[]: crc = 9da2558f; size =     29280; name = bin\objects\amy\amy_h3.grd
+    file[]: crc = 23c09f58; size =     25824; name = bin\objects\dtails\dtails.grd
+    file[]: crc = 337384bd; size =      7684; name = bin\objects\dtails\dtailsz.bin
+    file[]: crc = 48b38a10; size =      6916; name = bin\objects\dtails\dtan1.bin
+    file[]: crc = 6cfa7926; size =     15556; name = bin\objects\dtails\dtan10.bin
+    file[]: crc = ccd25ba2; size =      5188; name = bin\objects\dtails\dtan2.bin
+    file[]: crc = 078d95c0; size =       868; name = bin\objects\dtails\dtan3.bin
+    file[]: crc = b09186b8; size =       868; name = bin\objects\dtails\dtan4.bin
+    file[]: crc = fb3bbc7e; size =       868; name = bin\objects\dtails\dtan5.bin
+    file[]: crc = f33edaf0; size =     11668; name = bin\objects\dtails\dtan6.bin
+    file[]: crc = 1698669f; size =     15556; name = bin\objects\dtails\dtan7.bin
+    file[]: crc = c6b898eb; size =      5188; name = bin\objects\dtails\dtan8.bin
+    file[]: crc = 1dc8ccca; size =      2164; name = bin\objects\dtails\dtan9.bin
+    file[]: crc = 7e2de54e; size =      3172; name = bin\objects\knuckles\kan1.bin
+    file[]: crc = e79628b1; size =      1588; name = bin\objects\knuckles\kan10.bin
+    file[]: crc = 63a81e1a; size =       532; name = bin\objects\knuckles\kan11.bin
+    file[]: crc = ff8b91f7; size =       532; name = bin\objects\knuckles\kan12.bin
+    file[]: crc = e4134612; size =       532; name = bin\objects\knuckles\kan13.bin
+    file[]: crc = f1c28bb5; size =      2116; name = bin\objects\knuckles\kan14.bin
+    file[]: crc = 75d5f5b8; size =      6340; name = bin\objects\knuckles\kan15.bin
+    file[]: crc = 28b5e7cd; size =      6340; name = bin\objects\knuckles\kan16.bin
+    file[]: crc = 193f2547; size =      1588; name = bin\objects\knuckles\kan2.bin
+    file[]: crc = e54acddc; size =      1324; name = bin\objects\knuckles\kan3.bin
+    file[]: crc = d4ad7c2f; size =      1324; name = bin\objects\knuckles\kan4.bin
+    file[]: crc = bad05807; size =      3172; name = bin\objects\knuckles\kan5.bin
+    file[]: crc = d488a6ed; size =      3172; name = bin\objects\knuckles\kan6.bin
+    file[]: crc = bca39286; size =      6868; name = bin\objects\knuckles\kan7.bin
+    file[]: crc = 257340e9; size =      1324; name = bin\objects\knuckles\kan8.bin
+    file[]: crc = f4d72fae; size =      4228; name = bin\objects\knuckles\kan9.bin
+    file[]: crc = f40ef325; size =     11228; name = bin\objects\knuckles\knuck_h.bin
+    file[]: crc = edcbb523; size =     39936; name = bin\objects\knuckles\knuck_h.grd
+    file[]: crc = c819c24e; size =      1924; name = bin\objects\mknuck\mkan1.bin
+    file[]: crc = 96db704a; size =       484; name = bin\objects\mknuck\mkan10.bin
+    file[]: crc = 99035a86; size =       484; name = bin\objects\mknuck\mkan11.bin
+    file[]: crc = 95751533; size =      5764; name = bin\objects\mknuck\mkan12.bin
+    file[]: crc = 65d00f44; size =       484; name = bin\objects\mknuck\mkan13.bin
+    file[]: crc = 73d9f839; size =      1924; name = bin\objects\mknuck\mkan2.bin
+    file[]: crc = 826c4c41; size =      1204; name = bin\objects\mknuck\mkan3.bin
+    file[]: crc = 26313bb3; size =      1204; name = bin\objects\mknuck\mkan4.bin
+    file[]: crc = bdbd4425; size =      1204; name = bin\objects\mknuck\mkan5.bin
+    file[]: crc = dae892fe; size =      9364; name = bin\objects\mknuck\mkan6.bin
+    file[]: crc = 8a1bc7b4; size =      2884; name = bin\objects\mknuck\mkan7.bin
+    file[]: crc = 390e87cb; size =     11044; name = bin\objects\mknuck\mkan8.bin
+    file[]: crc = 4be06c8c; size =      1204; name = bin\objects\mknuck\mkan9.bin
+    file[]: crc = d48b2bcb; size =     40608; name = bin\objects\mknuck\mknuck.grd
+    file[]: crc = 2c95d8dc; size =     10416; name = bin\objects\mknuck\mknuckz.bin
+    file[]: crc = c04cd098; size =      2596; name = bin\objects\mrobot\mran1.bin
+    file[]: crc = 6a19c4d9; size =       436; name = bin\objects\mrobot\mran10.bin
+    file[]: crc = e41f20cd; size =       436; name = bin\objects\mrobot\mran11.bin
+    file[]: crc = 90b74ab6; size =      5188; name = bin\objects\mrobot\mran12.bin
+    file[]: crc = 826f200a; size =       436; name = bin\objects\mrobot\mran13.bin
+    file[]: crc = 14898454; size =      5188; name = bin\objects\mrobot\mran14.bin
+    file[]: crc = beb3698d; size =      2596; name = bin\objects\mrobot\mran2.bin
+    file[]: crc = cff420a5; size =      1084; name = bin\objects\mrobot\mran3.bin
+    file[]: crc = bcafab4b; size =      1084; name = bin\objects\mrobot\mran4.bin
+    file[]: crc = 8280923a; size =      7780; name = bin\objects\mrobot\mran5.bin
+    file[]: crc = 9ff626d4; size =      1084; name = bin\objects\mrobot\mran6.bin
+    file[]: crc = 12a9bc2e; size =      2596; name = bin\objects\mrobot\mran7.bin
+    file[]: crc = b0ec0ae8; size =      9076; name = bin\objects\mrobot\mran8.bin
+    file[]: crc = 6a7d6022; size =       436; name = bin\objects\mrobot\mran9.bin
+    file[]: crc = dc90f3af; size =     44832; name = bin\objects\mrobot\mrobot.grd
+    file[]: crc = 8aa7c644; size =     10756; name = bin\objects\mrobot\mrobotz.bin
+    file[]: crc = 1c597d68; size =      1924; name = bin\objects\msonic\msan1.bin
+    file[]: crc = bf44269c; size =      8644; name = bin\objects\msonic\msan10.bin
+    file[]: crc = 3db68081; size =      1204; name = bin\objects\msonic\msan11.bin
+    file[]: crc = 65311a9b; size =      3844; name = bin\objects\msonic\msan12.bin
+    file[]: crc = 55aa2514; size =       484; name = bin\objects\msonic\msan13.bin
+    file[]: crc = e4bd908a; size =      1924; name = bin\objects\msonic\msan2.bin
+    file[]: crc = 2992b890; size =      1204; name = bin\objects\msonic\msan3.bin
+    file[]: crc = 30f02e3a; size =       484; name = bin\objects\msonic\msan4.bin
+    file[]: crc = abed1bc0; size =       484; name = bin\objects\msonic\msan5.bin
+    file[]: crc = fd10949f; size =      1204; name = bin\objects\msonic\msan6.bin
+    file[]: crc = b2825ad5; size =      1204; name = bin\objects\msonic\msan7.bin
+    file[]: crc = 9ee95a1a; size =      1924; name = bin\objects\msonic\msan8.bin
+    file[]: crc = 155a1e89; size =      1924; name = bin\objects\msonic\msan9.bin
+    file[]: crc = 0b39a003; size =     28416; name = bin\objects\msonic\msonic.grd
+    file[]: crc = 04ddf11c; size =      8292; name = bin\objects\msonic\msonicz.bin
+    file[]: crc = 4a0cdf65; size =      6484; name = bin\objects\old\anfile_x.bin
+    file[]: crc = 82a2de74; size =      5084; name = bin\objects\old\anim_0.bin
+    file[]: crc = 7a5bd911; size =      6492; name = bin\objects\old\anim_1.bin
+    file[]: crc = 4a0cdf65; size =      6484; name = bin\objects\old\anim_2.bin
+    file[]: crc = 4a0cdf65; size =      6484; name = bin\objects\old\anim_3.bin
+    file[]: crc = 7a5bd911; size =      6492; name = bin\objects\old\animfile.bin
+    file[]: crc = 0f54001e; size =      3172; name = bin\objects\old\kan1.bin
+    file[]: crc = b278b634; size =      1588; name = bin\objects\old\kan10.bin
+    file[]: crc = ebe4c0bb; size =       532; name = bin\objects\old\kan11.bin
+    file[]: crc = 42b07fd3; size =       532; name = bin\objects\old\kan12.bin
+    file[]: crc = 2ab9d97f; size =       532; name = bin\objects\old\kan13.bin
+    file[]: crc = 839dad3a; size =      2116; name = bin\objects\old\kan14.bin
+    file[]: crc = cd6ce71c; size =      6340; name = bin\objects\old\kan15.bin
+    file[]: crc = 28b5e7cd; size =      6340; name = bin\objects\old\kan16.bin
+    file[]: crc = 128029ea; size =      3172; name = bin\objects\old\kan1_0.bin
+    file[]: crc = 0f54001e; size =      3172; name = bin\objects\old\kan1_1.bin
+    file[]: crc = 128029ea; size =      3172; name = bin\objects\old\kan1_x.bin
+    file[]: crc = 6d63460c; size =      1588; name = bin\objects\old\kan2.bin
+    file[]: crc = 154a771e; size =      1324; name = bin\objects\old\kan3.bin
+    file[]: crc = 3878a3ad; size =      1324; name = bin\objects\old\kan4.bin
+    file[]: crc = b7cd1133; size =      3172; name = bin\objects\old\kan5.bin
+    file[]: crc = 44ed35dc; size =      3172; name = bin\objects\old\kan6.bin
+    file[]: crc = e8ca855d; size =      6868; name = bin\objects\old\kan7.bin
+    file[]: crc = 2bd133d6; size =      1324; name = bin\objects\old\kan8.bin
+    file[]: crc = 6cdd1e3a; size =      4228; name = bin\objects\old\kan9.bin
+    file[]: crc = 9aa8352e; size =      2020; name = bin\objects\robotnik\ran1.bin
+    file[]: crc = 82bc14de; size =       844; name = bin\objects\robotnik\ran2.bin
+    file[]: crc = ccae9db3; size =       844; name = bin\objects\robotnik\ran3.bin
+    file[]: crc = 221b2c06; size =      2020; name = bin\objects\robotnik\ran4.bin
+    file[]: crc = 2c823cf7; size =      2020; name = bin\objects\robotnik\ran5.bin
+    file[]: crc = afd4e03c; size =      2692; name = bin\objects\robotnik\ran6.bin
+    file[]: crc = 385f77d5; size =      6052; name = bin\objects\robotnik\ran7.bin
+    file[]: crc = 0029df30; size =       676; name = bin\objects\robotnik\ran8.bin
+    file[]: crc = 1d2e5440; size =      2020; name = bin\objects\robotnik\ran9.bin
+    file[]: crc = 31a22795; size =     24960; name = bin\objects\robotnik\robotnik.grd
+    file[]: crc = e68d10a1; size =      7376; name = bin\objects\robotnik\robotz.bin
+    file[]: crc = 349dae09; size =      3172; name = bin\objects\sonic\san1.bin
+    file[]: crc = 4e99d10b; size =      2116; name = bin\objects\sonic\san10.bin
+    file[]: crc = 07be59b2; size =       532; name = bin\objects\sonic\san11.bin
+    file[]: crc = b73be64f; size =       532; name = bin\objects\sonic\san12.bin
+    file[]: crc = 34f4842b; size =       532; name = bin\objects\sonic\san13.bin
+    file[]: crc = 46b00fef; size =      3172; name = bin\objects\sonic\san14.bin
+    file[]: crc = fddf53a4; size =      1588; name = bin\objects\sonic\san2.bin
+    file[]: crc = e57bc176; size =      1324; name = bin\objects\sonic\san3.bin
+    file[]: crc = 913c1425; size =      1324; name = bin\objects\sonic\san4.bin
+    file[]: crc = 13721faf; size =      9508; name = bin\objects\sonic\san5.bin
+    file[]: crc = e692b86e; size =      2116; name = bin\objects\sonic\san6.bin
+    file[]: crc = 06aab17b; size =      2116; name = bin\objects\sonic\san7.bin
+    file[]: crc = ed1da8f5; size =      1324; name = bin\objects\sonic\san8.bin
+    file[]: crc = 87dfc877; size =      1324; name = bin\objects\sonic\san9.bin
+    file[]: crc = 93da7892; size =      8060; name = bin\objects\sonic\sonic_h.bin
+    file[]: crc = eddeb3b5; size =     27360; name = bin\objects\sonic\sonic_h.grd
+    file[]: crc = 62e3b03c; size =      3172; name = bin\objects\ssonic\ssan1.bin
+    file[]: crc = d1cd9471; size =      1324; name = bin\objects\ssonic\ssan10.bin
+    file[]: crc = 814cf452; size =      1324; name = bin\objects\ssonic\ssan11.bin
+    file[]: crc = 89064c23; size =      7396; name = bin\objects\ssonic\ssan12.bin
+    file[]: crc = 626ddd87; size =      4228; name = bin\objects\ssonic\ssan13.bin
+    file[]: crc = c6f38dbd; size =      6340; name = bin\objects\ssonic\ssan14.bin
+    file[]: crc = e63c6e29; size =      3172; name = bin\objects\ssonic\ssan2.bin
+    file[]: crc = d9b741c4; size =       532; name = bin\objects\ssonic\ssan3.bin
+    file[]: crc = 8881fca6; size =       532; name = bin\objects\ssonic\ssan4.bin
+    file[]: crc = de56536b; size =      1588; name = bin\objects\ssonic\ssan5.bin
+    file[]: crc = cbf182e9; size =      1324; name = bin\objects\ssonic\ssan6.bin
+    file[]: crc = ad730798; size =       532; name = bin\objects\ssonic\ssan7.bin
+    file[]: crc = df4653bd; size =      9508; name = bin\objects\ssonic\ssan8.bin
+    file[]: crc = f3a3b3de; size =      1324; name = bin\objects\ssonic\ssan9.bin
+    file[]: crc = 420da55b; size =     25536; name = bin\objects\ssonic\ssonic.grd
+    file[]: crc = 7d1237f2; size =      7588; name = bin\objects\ssonic\ssonicz.bin
+    file[]: crc = cce35f97; size =     10736; name = bin\objects\tails\tails_h.bin
+    file[]: crc = 026f02f0; size =     34752; name = bin\objects\tails\tails_h.grd
+    file[]: crc = bca667e5; size =      4612; name = bin\objects\tails\tan1.bin
+    file[]: crc = e039b411; size =      3076; name = bin\objects\tails\tan10.bin
+    file[]: crc = f846df4c; size =      1924; name = bin\objects\tails\tan11.bin
+    file[]: crc = 1c9b0f90; size =       772; name = bin\objects\tails\tan12.bin
+    file[]: crc = 235b1316; size =       772; name = bin\objects\tails\tan13.bin
+    file[]: crc = 458c40c4; size =       772; name = bin\objects\tails\tan14.bin
+    file[]: crc = 954d2372; size =      4612; name = bin\objects\tails\tan15.bin
+    file[]: crc = 568a4995; size =      2308; name = bin\objects\tails\tan2.bin
+    file[]: crc = 11b2aee9; size =      1924; name = bin\objects\tails\tan3.bin
+    file[]: crc = 03f940e3; size =      1924; name = bin\objects\tails\tan4.bin
+    file[]: crc = 46035589; size =      4612; name = bin\objects\tails\tan5.bin
+    file[]: crc = 62aaf712; size =      7684; name = bin\objects\tails\tan6.bin
+    file[]: crc = e18609c5; size =      4612; name = bin\objects\tails\tan7.bin
+    file[]: crc = 0fd4504c; size =      1924; name = bin\objects\tails\tan8.bin
+    file[]: crc = d8ed0568; size =      6148; name = bin\objects\tails\tan9.bin
+    file[]: crc = 7868b011; size =     66308; name = bin\option\option00.256
+    file[]: crc = 81522fcd; size =    196608; name = bin\option\option00.raw
+    file[]: crc = f7764193; size =    174160; name = bin\option\option3.bin
+    file[]: crc = c17e90f7; size =    196608; name = bin\option\scrse01.raw
+    file[]: crc = 287a290b; size =    196608; name = bin\result\em01.raw
+    file[]: crc = 50090f84; size =    921600; name = bin\titles\segalogo.raw
+    file[]: crc = 3b15a61d; size =    196608; name = BIN\OPTION\OPT01.RAW
+    file[]: crc = 9a6bb4e3; size =     27050; name = bin\titles\titles3.bin
+    file[]: crc = 65ae1726; size =    921600; name = bin\titles\ttlogo.raw
+    file[]: crc = 8ac31da8; size =     65536; name = city\city.map
+    file[]: crc = 6682309f; size =    368640; name = city\city.ply
+    file[]: crc = 91c9d7fe; size =    196608; name = city\city00.raw
+    file[]: crc = 0ff8246b; size =    196608; name = city\city01.raw
+    file[]: crc = a33316ab; size =    196608; name = city\city02.raw
+    file[]: crc = 60541eaa; size =    196608; name = city\city03.raw
+    file[]: crc = 798c165d; size =    196608; name = city\city06.raw
+    file[]: crc = 071fb400; size =    673288; name = city\city_b.bin
+    file[]: crc = 504a03b6; size =     23040; name = city\map_c.raw
+    file[]: crc = a9c81139; size =    638976; name = city\parallax\_c.raw
+    file[]: crc = 0ff7f278; size =    638976; name = city\parallax\_c_dd.raw
+    file[]: crc = 4e619f06; size =    638976; name = city\parallax\_c_n.raw
+    file[]: crc = dc0787f9; size =    638976; name = city\parallax\_c_r.raw
+    file[]: crc = c4226019; size =    638976; name = city\parallax\_c_r_dd.raw
+    file[]: crc = 90cd9809; size =    638976; name = city\parallax\_c_r_n.raw
+    file[]: crc = 788ef2d6; size =    638976; name = city\parallax\_c_s.raw
+    file[]: crc = a39b3155; size =    638976; name = city\parallax\_c_s_dd.raw
+    file[]: crc = 12e9a061; size =    638976; name = city\parallax\_c_s_n.raw
+    file[]: crc = 27696326; size =    196608; name = city\snow\cit_s_00.raw
+    file[]: crc = 015c1f17; size =    196608; name = city\snow\cit_s_01.raw
+    file[]: crc = 01f99586; size =    196608; name = city\snow\cit_s_02.raw
+    file[]: crc = 8001377c; size =    196608; name = city\snow\cit_s_03.raw
+    file[]: crc = 51052408; size =    196608; name = city\snow\cit_s_06.raw
+    file[]: crc = e1a71b9e; size =    368640; name = city\snow\city_s.ply
+    file[]: crc = 9b2fe195; size =     66308; name = emerald\cas00.256
+    file[]: crc = 16f6e866; size =    196608; name = emerald\cas00.raw
+    file[]: crc = 4f6551aa; size =    196608; name = emerald\cas01.raw
+    file[]: crc = aac0af7e; size =    196608; name = emerald\cas02.raw
+    file[]: crc = 8067a963; size =    575524; name = emerald\emrald_b.bin
+    file[]: crc = 6d06e7f7; size =     23040; name = emerald\map_e.raw
+    file[]: crc = efa8b94c; size =    638976; name = emerald\parallax\_e.raw
+    file[]: crc = f0bb0f85; size =    196608; name = factory\fact00.raw
+    file[]: crc = c53e29e1; size =    196608; name = factory\fact01.raw
+    file[]: crc = 76b6d944; size =     66308; name = factory\fact02.256
+    file[]: crc = d0557db5; size =    196608; name = factory\fact02.raw
+    file[]: crc = dfcb9e6a; size =    196608; name = factory\fact03.raw
+    file[]: crc = 087b26fb; size =    196608; name = factory\fact04.raw
+    file[]: crc = d8758653; size =     65536; name = factory\factory.map
+    file[]: crc = 51dc7622; size =    368640; name = factory\factory.ply
+    file[]: crc = efb39d9d; size =    674028; name = factory\factry_e.bin
+    file[]: crc = 6377e48f; size =     23040; name = factory\map_f.raw
+    file[]: crc = 492be754; size =    638976; name = factory\parallax\_f.raw
+    file[]: crc = 810f0392; size =    638976; name = factory\parallax\_f_dd.raw
+    file[]: crc = c92caf52; size =    638976; name = factory\parallax\_f_n.raw
+    file[]: crc = f2979c2a; size =    638976; name = factory\parallax\_f_r.raw
+    file[]: crc = 6c38476f; size =    638976; name = factory\parallax\_f_r_dd.raw
+    file[]: crc = a86e6151; size =    638976; name = factory\parallax\_f_r_n.raw
+    file[]: crc = 9210a3dc; size =    638976; name = factory\parallax\_f_s.raw
+    file[]: crc = 30b59f7c; size =    638976; name = factory\parallax\_f_s_dd.raw
+    file[]: crc = afac16e4; size =    638976; name = factory\parallax\_f_s_n.raw
+    file[]: crc = 343df1ec; size =    196608; name = factory\snow\fac_s_00.raw
+    file[]: crc = c2cfe389; size =    196608; name = factory\snow\fac_s_01.raw
+    file[]: crc = 12a7afa9; size =    196608; name = factory\snow\fac_s_02.raw
+    file[]: crc = d8c46b63; size =    196608; name = factory\snow\fac_s_03.raw
+    file[]: crc = 58d86021; size =    368640; name = factory\snow\factry_s.ply
+    file[]: crc = bc87dbe7; size =     21504; name = general\flake.raw
+    file[]: crc = 33b23244; size =     21504; name = general\flake2.raw
+    file[]: crc = 42cced79; size =    196608; name = general\icon01.raw
+    file[]: crc = 54afb265; size =    196608; name = general\misc00.raw
+    file[]: crc = 7ccb0b6d; size =     66308; name = general\misc01.256
+    file[]: crc = 4cdba102; size =    196608; name = general\misc01.raw
+    file[]: crc = 18df62af; size =     66308; name = general\player00.256
+    file[]: crc = b173721c; size =    196608; name = general\player00.raw
+    file[]: crc = ac3dd1c7; size =     66308; name = general\player01.256
+    file[]: crc = d245ad47; size =    196608; name = general\player01.raw
+    file[]: crc = f21fcf62; size =     21504; name = general\plop.raw
+    file[]: crc = 8906ef5b; size =     21504; name = general\plop2.raw
+    file[]: crc = f2315d2e; size =    196608; name = general\rainbow.raw
+    file[]: crc = 9a324a23; size =     66308; name = general\sonicr.256
+    file[]: crc = 90a1728b; size =    196608; name = general\sonicr.bit
+    file[]: crc = f8c1e1a3; size =    196608; name = general\sonicr.raw
+    file[]: crc = 9df50a92; size =    196608; name = general\switch00.raw
+    file[]: crc = 6e1eb5a6; size =    196608; name = general\water.raw
+    file[]: crc = 7d4246a4; size =        18; name = ghost\normal\city\readme.txt
+    file[]: crc = 7d4246a4; size =        18; name = ghost\normal\emerald\readme.txt
+    file[]: crc = 7d4246a4; size =        18; name = ghost\normal\factory\readme.txt
+    file[]: crc = 7d4246a4; size =        18; name = ghost\normal\island\readme.txt
+    file[]: crc = 7d4246a4; size =        18; name = ghost\normal\ruin\readme.txt
+    file[]: crc = 7d4246a4; size =        18; name = ghost\reverse\city\readme.txt
+    file[]: crc = 7d4246a4; size =        18; name = ghost\reverse\emerald\readme.txt
+    file[]: crc = 7d4246a4; size =        18; name = ghost\reverse\factory\readme.txt
+    file[]: crc = 7d4246a4; size =        18; name = ghost\reverse\island\readme.txt
+    file[]: crc = 7d4246a4; size =        18; name = ghost\reverse\ruin\readme.txt
+    file[]: crc = 1b4cb18e; size =     21688; name = help\chara\amy.jpg
+    file[]: crc = 4b6f6ed4; size =     18011; name = help\chara\eggman.jpg
+    file[]: crc = 5d9cd1e8; size =     14897; name = help\chara\knuckles.jpg
+    file[]: crc = a5799396; size =     13240; name = help\chara\sonic.jpg
+    file[]: crc = 86589b94; size =     18081; name = help\chara\tails.jpg
+    file[]: crc = f81852cb; size =     26290; name = help\course\course01.jpg
+    file[]: crc = cbae5aba; size =     22720; name = help\course\course02.jpg
+    file[]: crc = acb2c118; size =     27879; name = help\course\course03.jpg
+    file[]: crc = 70778002; size =     25449; name = help\course\course04.jpg
+    file[]: crc = d0c11963; size =      4020; name = help\course\course05.jpg
+
+    file[]: crc = 7a15e479; size =      9934; name = help\item\10ring.jpg
+    file[]: crc = 514fb6d1; size =      9393; name = help\item\20ring.jpg
+    file[]: crc = b2345b78; size =     10376; name = help\item\5ring.jpg
+    file[]: crc = 2b0aae8a; size =      8910; name = help\item\aqua.jpg
+    file[]: crc = 17347e78; size =      7594; name = help\item\chaos.jpg
+    file[]: crc = 62a7df6f; size =     10066; name = help\item\gate.jpg
+    file[]: crc = a891ca24; size =     11580; name = help\item\item.jpg
+    file[]: crc = 74091fd5; size =     11335; name = help\item\ring.jpg
+    file[]: crc = 95e0a906; size =      9687; name = help\item\speed.jpg
+    file[]: crc = c17a2814; size =      9598; name = help\item\thunder.jpg
+    file[]: crc = ded7b992; size =      8209; name = help\item\tokun.jpg
+    file[]: crc = af39330c; size =      9746; name = help\item\warp.jpg
+    file[]: crc = 5f7ebd07; size =     35411; name = help\other\baloon.jpg
+    file[]: crc = 1598df3f; size =     19222; name = help\other\cut.jpg
+    file[]: crc = 9f533a25; size =     31455; name = help\other\gohost.jpg
+    file[]: crc = 8939f49d; size =     38708; name = help\other\grandpri.jpg
+    file[]: crc = 9f12aa05; size =     18229; name = help\other\igai.jpg
+    file[]: crc = 204e20a1; size =     16497; name = help\other\packag.jpg
+    file[]: crc = bbb23329; size =     32219; name = help\other\pause.jpg
+    file[]: crc = 668cb16f; size =     19425; name = help\other\race.jpg
+    file[]: crc = 40b3ac82; size =      7756; name = help\other\sega.jpg
+    file[]: crc = f248ddc7; size =     33855; name = help\other\tag4.jpg
+    file[]: crc = 419f8633; size =     16567; name = help\other\tikamiti.jpg
+    file[]: crc = 790c1eca; size =     65536; name = island\island.map
+    file[]: crc = ea6f84c2; size =    368640; name = island\island.ply
+    file[]: crc = 59f29bae; size =    196608; name = island\island00.raw
+    file[]: crc = 47d29875; size =    196608; name = island\island01.raw
+    file[]: crc = 5fb3a6f7; size =     66308; name = island\island02.256
+    file[]: crc = 89070d05; size =    196608; name = island\island02.raw
+    file[]: crc = 8e9ed20f; size =     66308; name = island\island03.256
+    file[]: crc = 06c1bbcd; size =    196608; name = island\island03.raw
+    file[]: crc = eb0eafad; size =     66308; name = island\island04.256
+    file[]: crc = 04d20d06; size =    196608; name = island\island04.raw
+    file[]: crc = d89e602c; size =    196608; name = island\island05.raw
+    file[]: crc = 0ab6b398; size =    196608; name = island\island06.raw
+    file[]: crc = cbc17f95; size =    538998; name = island\island_e.bin
+    file[]: crc = 7d360af7; size =     23040; name = island\map_i.raw
+    file[]: crc = d5fec2e8; size =    638976; name = island\parallax\_i.raw
+    file[]: crc = ef3e828d; size =    638976; name = island\parallax\_i_dd.raw
+    file[]: crc = fcf02250; size =    638976; name = island\parallax\_i_n.raw
+    file[]: crc = 10ad0291; size =    638976; name = island\parallax\_i_r.raw
+    file[]: crc = 0e2532a2; size =    638976; name = island\parallax\_i_r_dd.raw
+    file[]: crc = ba54fbc4; size =    638976; name = island\parallax\_i_r_n.raw
+    file[]: crc = ad9f1bca; size =    638976; name = island\parallax\_i_s.raw
+    file[]: crc = 9ff41269; size =    638976; name = island\parallax\_i_s_dd.raw
+    file[]: crc = 1218b7f7; size =    638976; name = island\parallax\_i_s_n.raw
+    file[]: crc = 5413c6a7; size =    196608; name = island\snow\isl_s_00.raw
+    file[]: crc = 9ab5adef; size =    196608; name = island\snow\isl_s_01.raw
+    file[]: crc = d1963b93; size =    196608; name = island\snow\isl_s_02.raw
+    file[]: crc = d43cd142; size =    196608; name = island\snow\isl_s_03.raw
+    file[]: crc = 86218264; size =    196608; name = island\snow\isl_s_04.raw
+    file[]: crc = 36ca1aa6; size =    196608; name = island\snow\isl_s_05.raw
+    file[]: crc = 31d2dfae; size =    368640; name = island\snow\island_s.ply
+    file[]: crc = 61689981; size =     23040; name = ruin\map_r.raw
+    file[]: crc = ac2d5743; size =     65536; name = ruin\ruin.map
+    file[]: crc = 30500adf; size =    368640; name = ruin\ruin.ply
+    file[]: crc = 8297f347; size =    196608; name = ruin\ruin00.raw
+    file[]: crc = 473ea4b1; size =    196608; name = ruin\ruin01.raw
+    file[]: crc = cb783d21; size =    196608; name = ruin\ruin02.raw
+    file[]: crc = ffd3797e; size =     66308; name = ruin\ruin03.256
+    file[]: crc = 786514d4; size =    196608; name = ruin\ruin03.raw
+    file[]: crc = 7ebcb701; size =    196608; name = ruin\ruin04.raw
+    file[]: crc = 7ee91dc4; size =    734588; name = ruin\ruin_d.bin
+    file[]: crc = 01c906fe; size =    638976; name = ruin\parallax\_r.raw
+    file[]: crc = 433e8b73; size =    638976; name = ruin\parallax\_r_dd.raw
+    file[]: crc = bcfdfe9b; size =    638976; name = ruin\parallax\_r_n.raw
+    file[]: crc = a968b1af; size =    638976; name = ruin\parallax\_r_r.raw
+    file[]: crc = d820576d; size =    638976; name = ruin\parallax\_r_r_dd.raw
+    file[]: crc = 3fdf5410; size =    638976; name = ruin\parallax\_r_r_n.raw
+    file[]: crc = da08e4e0; size =    638976; name = ruin\parallax\_r_s.raw
+    file[]: crc = 1626628c; size =    638976; name = ruin\parallax\_r_s_dd.raw
+    file[]: crc = 1c032848; size =    638976; name = ruin\parallax\_r_s_n.raw
+    file[]: crc = ca4642a0; size =    196608; name = ruin\snow\rui_s_00.raw
+    file[]: crc = 5f2257e4; size =    196608; name = ruin\snow\rui_s_01.raw
+    file[]: crc = f048c760; size =    196608; name = ruin\snow\rui_s_02.raw
+    file[]: crc = 531221b0; size =    196608; name = ruin\snow\rui_s_03.raw
+    file[]: crc = f7c87c11; size =    368640; name = ruin\snow\ruin_s.ply
+    file[]: crc = 7d4246a4; size =        18; name = save\readme.txt
+    file[]: crc = 1c199ac3; size =     18814; name = sound\sfx\amy.wav
+    file[]: crc = 0d207877; size =     35618; name = sound\sfx\amyskid.wav
+    file[]: crc = 2ea6f766; size =     14932; name = sound\sfx\amywater.wav
+    file[]: crc = 3ce00376; size =     52694; name = sound\sfx\bonus.wav
+    file[]: crc = ea8f924b; size =     20478; name = sound\sfx\bubble.wav
+    file[]: crc = 4fc0d9cd; size =     26494; name = sound\sfx\bumper1.wav
+    file[]: crc = 6028d46c; size =     31358; name = sound\sfx\bumper2.wav
+    file[]: crc = 53f82e07; size =     24500; name = sound\sfx\choose.wav
+    file[]: crc = a15388e2; size =     65918; name = sound\sfx\door.wav
+    file[]: crc = 6c6864c2; size =     60798; name = sound\sfx\explode.wav
+    file[]: crc = 6ae33476; size =     42110; name = sound\sfx\fire.wav
+    file[]: crc = 3cb82989; size =    106668; name = sound\sfx\getchaos.wav
+    file[]: crc = 4fb2f7f0; size =     76878; name = sound\sfx\gettoken.wav
+    file[]: crc = 02917275; size =     41516; name = sound\sfx\go.wav
+    file[]: crc = a00fee5b; size =     91724; name = sound\sfx\gotall.wav
+    file[]: crc = e64623b7; size =     15486; name = sound\sfx\hitchar.wav
+    file[]: crc = dd3803bc; size =     29566; name = sound\sfx\jet.wav
+    file[]: crc = 60acbdc9; size =     22654; name = sound\sfx\jump.wav
+    file[]: crc = 2a3a6db1; size =     56100; name = sound\sfx\pause.wav
+    file[]: crc = 4439bf40; size =     19198; name = sound\sfx\pop.wav
+    file[]: crc = 4c6eacc5; size =     32300; name = sound\sfx\ready.wav
+    file[]: crc = 12d7b03f; size =     75740; name = sound\sfx\record.wav
+    file[]: crc = 16992b58; size =    251612; name = sound\sfx\replay1.wav
+    file[]: crc = 0b16ca32; size =    149246; name = sound\sfx\replay2.wav
+    file[]: crc = 4a69789c; size =    224638; name = sound\sfx\replay3.wav
+    file[]: crc = e9c28b8a; size =    326526; name = sound\sfx\replay4.wav
+    file[]: crc = 6ddfbfb9; size =    170844; name = sound\sfx\replay5.wav
+    file[]: crc = 7318a591; size =    167584; name = sound\sfx\replay6.wav
+    file[]: crc = 74fc2125; size =     28072; name = sound\sfx\ring1.wav
+    file[]: crc = 65e97833; size =     13310; name = sound\sfx\runleft.wav
+    file[]: crc = 5f49752c; size =     13694; name = sound\sfx\runright.wav
+    file[]: crc = 8f9a5129; size =     36714; name = sound\sfx\select.wav
+    file[]: crc = c3c67881; size =     30636; name = sound\sfx\set.wav
+    file[]: crc = bdfc94d6; size =     26110; name = sound\sfx\skid1.wav
+    file[]: crc = ccb871ae; size =      9086; name = sound\sfx\skid2.wav
+    file[]: crc = 12c32a75; size =     95468; name = sound\sfx\spin.wav
+    file[]: crc = e99019e4; size =     36862; name = sound\sfx\spingo.wav
+    file[]: crc = 1a306002; size =     90750; name = sound\sfx\spinrev.wav
+    file[]: crc = aed19d6d; size =     77054; name = sound\sfx\splash.wav
+    file[]: crc = e44b84bd; size =     57598; name = sound\sfx\spring.wav
+    file[]: crc = e2aaa637; size =     67148; name = sound\sfx\tag.wav
+    file[]: crc = d0fa66d0; size =    221310; name = sound\sfx\tails.wav
+    file[]: crc = 999a013c; size =     67372; name = sound\sfx\thunder.wav
+    file[]: crc = 5156b637; size =     78278; name = sound\sfx\warp.wav
+    file[]: crc = 340a3ee2; size =     15998; name = sound\sfx\waterrun.wav
+    file[]: crc = 1b4cb18e; size =     21688; name = HELP\CHARA\AMY.JPG
+    file[]: crc = 4b6f6ed4; size =     18011; name = HELP\CHARA\EGGMAN.JPG
+    file[]: crc = 5d9cd1e8; size =     14897; name = HELP\CHARA\KNUCKLES.JPG
+    file[]: crc = a5799396; size =     13240; name = HELP\CHARA\SONIC.JPG
+    file[]: crc = 86589b94; size =     18081; name = HELP\CHARA\TAILS.JPG
+    file[]: crc = f81852cb; size =     26290; name = HELP\COURSE\COURSE01.JPG
+    file[]: crc = cbae5aba; size =     22720; name = HELP\COURSE\COURSE02.JPG
+    file[]: crc = acb2c118; size =     27879; name = HELP\COURSE\COURSE03.JPG
+    file[]: crc = 70778002; size =     25449; name = HELP\COURSE\COURSE04.JPG
+    file[]: crc = d0c11963; size =      4020; name = HELP\COURSE\COURSE05.JPG
+    file[]: crc = 7a15e479; size =      9934; name = HELP\ITEM\10RING.JPG
+    file[]: crc = 514fb6d1; size =      9393; name = HELP\ITEM\20RING.JPG
+    file[]: crc = b2345b78; size =     10376; name = HELP\ITEM\5RING.JPG
+    file[]: crc = 2b0aae8a; size =      8910; name = HELP\ITEM\AQUA.JPG
+    file[]: crc = 17347e78; size =      7594; name = HELP\ITEM\CHAOS.JPG
+    file[]: crc = 62a7df6f; size =     10066; name = HELP\ITEM\GATE.JPG
+    file[]: crc = a891ca24; size =     11580; name = HELP\ITEM\ITEM.JPG
+    file[]: crc = 74091fd5; size =     11335; name = HELP\ITEM\RING.JPG
+    file[]: crc = 95e0a906; size =      9687; name = HELP\ITEM\SPEED.JPG
+    file[]: crc = c17a2814; size =      9598; name = HELP\ITEM\THUNDER.JPG
+    file[]: crc = ded7b992; size =      8209; name = HELP\ITEM\TOKUN.JPG
+    file[]: crc = af39330c; size =      9746; name = HELP\ITEM\WARP.JPG
+    file[]: crc = 5f7ebd07; size =     35411; name = HELP\OTHER\BALOON.JPG
+    file[]: crc = 1598df3f; size =     19222; name = HELP\OTHER\CUT.JPG
+    file[]: crc = 9f533a25; size =     31455; name = HELP\OTHER\GOHOST.JPG
+    file[]: crc = 8939f49d; size =     38708; name = HELP\OTHER\GRANDPRI.JPG
+    file[]: crc = 9f12aa05; size =     18229; name = HELP\OTHER\IGAI.JPG
+    file[]: crc = 204e20a1; size =     16497; name = HELP\OTHER\PACKAG.JPG
+    file[]: crc = bbb23329; size =     32219; name = HELP\OTHER\PAUSE.JPG
+    file[]: crc = 668cb16f; size =     19425; name = HELP\OTHER\RACE.JPG
+    file[]: crc = 40b3ac82; size =      7756; name = HELP\OTHER\SEGA.JPG
+    file[]: crc = f248ddc7; size =     33855; name = HELP\OTHER\TAG4.JPG
+    file[]: crc = 419f8633; size =     16567; name = HELP\OTHER\TIKAMITI.JPG
+
+	//CD-ROM
+    file[]: crc = 6E354524; size =        16; name = CD\SONR_CPY.TXT
+	
+end
+
+//
+// English Localization
+//
+fragment[english-common]:
+    file[]: crc = a46475d8; size =    196608; name = bin\option\ctrl00.raw
+    file[]: crc = 39d075d3; size =    196608; name = bin\result\em00.raw
+    file[]: crc = 42d33ccf; size =    196608; name = general\icon00.raw
+    file[]: crc = 307403f2; size =    196608; name = bin\option\load00.raw
+    file[]: crc = b1137ef4; size =    196608; name = bin\option\mp00.raw
+    file[]: crc = dc7e07b8; size =    196608; name = bin\option\net00.raw
+    file[]: crc = 5d943cd1; size =    196608; name = bin\option\opt00.raw
+    file[]: crc = 96fe9382; size =    196608; name = bin\option\opt01.raw
+    file[]: crc = b44dc8ae; size =    196608; name = bin\option\rank00.raw
+    file[]: crc = c4656140; size =    196608; name = bin\result\res00.raw
+    file[]: crc = 2c321da2; size =    196608; name = bin\option\schar00.raw
+    file[]: crc = 2676eea7; size =    196608; name = bin\option\scrse00.raw
+    file[]: crc = caed781d; size =    196608; name = bin\option\smode00.raw
+    file[]: crc = 79b6900b; size =    196608; name = bin\option\smpmod00.raw
+    file[]: crc = 5bc7d2cf; size =    196608; name = bin\option\stamod00.raw
+    file[]: crc = 05fcedeb; size =    196608; name = bin\titles\titles00.raw
+    file[]: crc = 9643eb0c; size =      3544; name = help\html\attack.html
+    file[]: crc = 641c4a80; size =      6419; name = help\html\chara.html
+    file[]: crc = 01fd7267; size =      6784; name = help\html\control.html
+    file[]: crc = 24164921; size =      1321; name = help\html\copy.html
+    file[]: crc = 981d4738; size =      4736; name = help\html\course.html
+    file[]: crc = 0cca4a17; size =      1954; name = help\html\grandpri.html
+    file[]: crc = ae7795cc; size =      3093; name = help\html\hajime.html
+    file[]: crc = 1f3dfd7f; size =      2487; name = help\html\index.html
+    file[]: crc = 2726ce2b; size =      6087; name = help\html\item.html
+    file[]: crc = 2d3e9182; size =      2780; name = help\html\multi.html
+    file[]: crc = c40cd043; size =      2765; name = help\html\option.html
+    file[]: crc = 583fcf07; size =      2790; name = help\html\prologue.html
+    file[]: crc = e1fe3b6d; size =      3787; name = help\html\screen.html
+    file[]: crc = f2ad8c6d; size =      1623; name = help\html\staff.html
+    file[]: crc = 309ae3bf; size =      2278; name = help\html\start.html
+    file[]: crc = 96b82ead; size =      2137; name = help\html\tactics.html
+	
+	//locale = en-US
+	
+end
+
+//
+// French Localization
+//
+fragment[french-common]:
+    file[]: crc = 6e48dce9; size =    196608; name = bin\option\ctrl00.raw
+    file[]: crc = bac101c7; size =    196608; name = bin\result\em00.raw
+    file[]: crc = b5624956; size =    196608; name = general\icon00.raw
+    file[]: crc = 4eba5308; size =    196608; name = bin\option\load00.raw
+    file[]: crc = 0136329c; size =    196608; name = bin\option\mp00.raw
+    file[]: crc = 5e8dbef7; size =    196608; name = bin\option\net00.raw
+    file[]: crc = aa918c91; size =    196608; name = bin\option\opt00.raw
+    file[]: crc = 83474dea; size =    196608; name = bin\option\opt01.raw
+    file[]: crc = 72427643; size =    196608; name = bin\option\rank00.raw
+    file[]: crc = 7470cc76; size =    196608; name = bin\result\res00.raw
+    file[]: crc = 002168bc; size =    196608; name = bin\option\schar00.raw
+    file[]: crc = 73a916f0; size =    196608; name = bin\option\scrse00.raw
+    file[]: crc = 9b05f01e; size =    196608; name = bin\option\smode00.raw
+    file[]: crc = ff89b2cc; size =    196608; name = bin\option\smpmod00.raw
+    file[]: crc = 495df82d; size =    196608; name = bin\option\stamod00.raw
+    file[]: crc = f1abb241; size =    196608; name = bin\titles\titles00.raw
+    file[]: crc = 11c2c844; size =      2966; name = help\html\ATTACK.HTM
+    file[]: crc = 62987391; size =     11810; name = help\html\CHARA.HTM
+    file[]: crc = 6e45573d; size =      3215; name = help\html\CONTROL.HTM
+    file[]: crc = 2dd9b364; size =      1430; name = help\html\COPY.HTM
+    file[]: crc = 166f1ae3; size =      3841; name = help\html\COURSE.HTM
+    file[]: crc = 2e274779; size =      2013; name = help\html\GRANDPRI.HTM
+    file[]: crc = 15c546e8; size =      3203; name = help\html\HAJIME.HTM
+    file[]: crc = 781c21f3; size =      2380; name = help\html\INDEX.HTM
+    file[]: crc = a3a952bb; size =      3832; name = help\html\ITEM.HTM
+    file[]: crc = 41946d5c; size =      2411; name = help\html\MULTI.HTM
+    file[]: crc = 238bdedb; size =      3420; name = help\html\OPTION.HTM
+    file[]: crc = 779d8c6c; size =      2585; name = help\html\PROLOGUE.HTM
+    file[]: crc = f5b3fdc9; size =      2943; name = help\html\SCREEN.HTM
+    file[]: crc = a1731102; size =      1521; name = help\html\STAFF.HTM
+    file[]: crc = 87eee61d; size =      2159; name = help\html\START.HTM
+    file[]: crc = 4500be8a; size =      2199; name = help\html\TACTICS.HTM
+	
+	locale = fr-FR
+	
+end
+
+//
+// German Localization
+//
+fragment[german-common]:
+    file[]: crc = cde68f62; size =    196608; name = bin\option\ctrl00.raw
+    file[]: crc = 9f53eec4; size =    196608; name = bin\result\em00.raw
+    file[]: crc = af3d0129; size =    196608; name = general\icon00.raw
+    file[]: crc = 08033e8c; size =    196608; name = bin\option\load00.raw
+    file[]: crc = 5c4c1b17; size =    196608; name = bin\option\mp00.raw
+    file[]: crc = 881325de; size =    196608; name = bin\option\net00.raw
+    file[]: crc = a5111bc4; size =    196608; name = bin\option\opt00.raw
+    file[]: crc = 52388ffd; size =    196608; name = bin\option\opt01.raw
+    file[]: crc = 2a911643; size =    196608; name = bin\option\rank00.raw
+    file[]: crc = daadbdbd; size =    196608; name = bin\result\res00.raw
+    file[]: crc = 662bb720; size =    196608; name = bin\option\schar00.raw
+    file[]: crc = 9e45eaa7; size =    196608; name = bin\option\scrse00.raw
+    file[]: crc = accabf89; size =    196608; name = bin\option\smode00.raw
+    file[]: crc = f7feb74e; size =    196608; name = bin\option\smpmod00.raw
+    file[]: crc = ec8835ae; size =    196608; name = bin\option\stamod00.raw
+    file[]: crc = fd14ba24; size =    196608; name = bin\titles\titles00.raw
+    file[]: crc = 9ba84d39; size =      2858; name = help\html\ATTACK.HTM
+    file[]: crc = 8e9e217b; size =     11885; name = help\html\CHARA.HTM
+    file[]: crc = e68b0265; size =      7055; name = help\html\CONTROL.HTM
+    file[]: crc = f14fce5b; size =      1433; name = help\html\COPY.HTM
+    file[]: crc = 1c61bc8f; size =      3866; name = help\html\COURSE.HTM
+    file[]: crc = 237aa409; size =      2161; name = help\html\GRANDPRI.HTM
+    file[]: crc = ac0b6f57; size =      3489; name = help\html\HAJIME.HTM
+    file[]: crc = a5a5ed90; size =      1153; name = help\html\INDEX.HTM
+    file[]: crc = 5e069917; size =      3661; name = help\html\ITEM.HTM
+    file[]: crc = a1ddb026; size =      2367; name = help\html\MULTI.HTM
+    file[]: crc = 813a5837; size =      2315; name = help\html\OPTION.HTM
+    file[]: crc = 41b3065e; size =      2936; name = help\html\PROLOGUE.HTM
+    file[]: crc = 38707f04; size =      2744; name = help\html\SCREEN.HTM
+    file[]: crc = 5f54a633; size =      1521; name = help\html\STAFF.HTM
+    file[]: crc = fafcf43b; size =      2014; name = help\html\START.HTM
+    file[]: crc = 62ba96a3; size =      2404; name = help\html\TACTICS.HTM
+
+	locale = de-DE
+
+end
+
+//
+// Italian Localization
+//
+fragment[italian-common]:
+    file[]: crc = 7643f379; size =    196608; name = bin\option\ctrl00.raw
+    file[]: crc = fe57861b; size =    196608; name = bin\result\em00.raw
+    file[]: crc = 9ed49066; size =    196608; name = general\icon00.raw
+    file[]: crc = 95fa5a7a; size =    196608; name = bin\option\load00.raw
+    file[]: crc = 9dbb4212; size =    196608; name = bin\option\mp00.raw
+    file[]: crc = 8973f652; size =    196608; name = bin\option\net00.raw
+    file[]: crc = 23466e76; size =    196608; name = bin\option\opt00.raw
+    file[]: crc = 10a5f0bc; size =    196608; name = bin\option\opt01.raw
+    file[]: crc = c7ea51f1; size =    196608; name = bin\option\rank00.raw
+    file[]: crc = d21c24b5; size =    196608; name = bin\result\res00.raw
+    file[]: crc = f4ca67a9; size =    196608; name = bin\option\schar00.raw
+    file[]: crc = cdc0fbe2; size =    196608; name = bin\option\scrse00.raw
+    file[]: crc = 4b7c49e2; size =    196608; name = bin\option\smode00.raw
+    file[]: crc = 12a69852; size =    196608; name = bin\option\smpmod00.raw
+    file[]: crc = 25d42ca4; size =    196608; name = bin\option\stamod00.raw
+    file[]: crc = 4daf43be; size =    196608; name = bin\titles\titles00.raw
+    file[]: crc = 9643eb0c; size =      3544; name = help\html\ATTACK.HTM
+    file[]: crc = 641c4a80; size =      6419; name = help\html\CHARA.HTM
+    file[]: crc = 2593e129; size =      6826; name = help\html\CONTROL.HTM
+    file[]: crc = 24164921; size =      1321; name = help\html\COPY.HTM
+    file[]: crc = 981d4738; size =      4736; name = help\html\COURSE.HTM
+    file[]: crc = 28153195; size =      1837; name = help\html\GRANDPRI.HTM
+    file[]: crc = ae7795cc; size =      3093; name = help\html\HAJIME.HTM
+    file[]: crc = 1f3dfd7f; size =      2487; name = help\html\INDEX.HTM
+    file[]: crc = ec7f60d3; size =      3706; name = help\html\ITEM.HTM
+    file[]: crc = 9737753a; size =      2735; name = help\html\MULTI.HTM
+    file[]: crc = 099bb503; size =      2768; name = help\html\OPTION.HTM
+    file[]: crc = 583fcf07; size =      2790; name = help\html\PROLOGUE.HTM
+    file[]: crc = 280096fb; size =      3741; name = help\html\SCREEN.HTM
+    file[]: crc = f2ad8c6d; size =      1623; name = help\html\STAFF.HTM
+    file[]: crc = 443c968b; size =      2239; name = help\html\START.HTM
+    file[]: crc = 96b82ead; size =      2137; name = help\html\TACTICS.HTM
+
+	locale = it-IT
+
+end
+
+//
+// Spanish Localization
+//
+fragment[spanish-common]:
+    file[]: crc = 60e240b7; size =    196608; name = bin\option\ctrl00.raw
+    file[]: crc = dedb4052; size =    196608; name = bin\result\em00.raw
+    file[]: crc = 8de42d08; size =    196608; name = general\icon00.raw
+    file[]: crc = 06b61360; size =    196608; name = bin\option\load00.raw
+    file[]: crc = 04af1c46; size =    196608; name = bin\option\mp00.raw
+    file[]: crc = b77f4234; size =    196608; name = bin\option\net00.raw
+    file[]: crc = f503415e; size =    196608; name = bin\option\opt00.raw
+    file[]: crc = 2e17efb6; size =    196608; name = bin\option\opt01.raw
+    file[]: crc = 628a058f; size =    196608; name = bin\option\rank00.raw
+    file[]: crc = 8c1e896f; size =    196608; name = bin\result\res00.raw
+    file[]: crc = f81a4ad5; size =    196608; name = bin\option\scrse00.raw
+    file[]: crc = 8ad5cb1f; size =    196608; name = bin\option\smode00.raw
+    file[]: crc = cc9b0146; size =    196608; name = bin\option\smpmod00.raw
+    file[]: crc = 5d868408; size =    196608; name = bin\option\stamod00.raw
+    file[]: crc = 8e26be4f; size =    196608; name = bin\titles\titles00.raw
+    file[]: crc = a2b26558; size =      3534; name = help\html\ATTACK.HTM
+    file[]: crc = c3fc39ea; size =     11853; name = help\html\CHARA.HTM
+    file[]: crc = f33d0eaa; size =      6989; name = help\html\CONTROL.HTM
+    file[]: crc = 5f703601; size =      1506; name = help\html\COPY.HTM
+    file[]: crc = 8794b8ce; size =      4596; name = help\html\COURSE.HTM
+    file[]: crc = 0a1a9abd; size =      2131; name = help\html\GRANDPRI.HTM
+    file[]: crc = d723681f; size =      3058; name = help\html\HAJIME.HTM
+    file[]: crc = 0c45c97f; size =      2507; name = help\html\INDEX.HTM
+    file[]: crc = 465da701; size =      6089; name = help\html\ITEM.HTM
+    file[]: crc = 63f3ea49; size =      3098; name = help\html\MULTI.HTM
+    file[]: crc = 9f753c28; size =      3202; name = help\html\OPTION.HTM
+    file[]: crc = fa8f583a; size =      2935; name = help\html\PROLOGUE.HTM
+    file[]: crc = e2f38233; size =      3957; name = help\html\SCREEN.HTM
+    file[]: crc = d5db41ed; size =      1409; name = help\html\STAFF.HTM
+    file[]: crc = 65c6628c; size =      2515; name = help\html\START.HTM
+    file[]: crc = 830f9ef1; size =      2567; name = help\html\TACTICS.HTM
+
+	locale = es-ES_tradnl
+
+end
+
+fragment[spanish-REV00]:
+    file[]: crc = a6ae498c; size =    196608; name = bin\option\schar00.raw
+	
+end
+
+fragment[spanish-REV01]:
+	file[]: crc = b79d55ee; size =    196608; name = bin\option\schar00.raw
+	
+end
+
+//
+// Japanese Localization (English)
+//
+fragment[japanese-common]:
+    file[]: crc = a46475d8; size =    196608; name = bin\option\ctrl00.raw
+    file[]: crc = 39d075d3; size =    196608; name = bin\result\em00.raw
+    file[]: crc = 42d33ccf; size =    196608; name = general\icon00.raw
+    file[]: crc = 307403f2; size =    196608; name = bin\option\load00.raw
+    file[]: crc = b1137ef4; size =    196608; name = bin\option\mp00.raw
+    file[]: crc = dc7e07b8; size =    196608; name = bin\option\net00.raw
+    file[]: crc = 5d943cd1; size =    196608; name = bin\option\opt00.raw
+    file[]: crc = 96fe9382; size =    196608; name = bin\option\opt01.raw
+    file[]: crc = b44dc8ae; size =    196608; name = bin\option\rank00.raw
+    file[]: crc = c4656140; size =    196608; name = bin\result\res00.raw
+    file[]: crc = 2c321da2; size =    196608; name = bin\option\schar00.raw
+    file[]: crc = 2676eea7; size =    196608; name = bin\option\scrse00.raw
+    file[]: crc = caed781d; size =    196608; name = bin\option\smode00.raw
+    file[]: crc = 79b6900b; size =    196608; name = bin\option\smpmod00.raw
+    file[]: crc = 5bc7d2cf; size =    196608; name = bin\option\stamod00.raw
+    file[]: crc = 05fcedeb; size =    196608; name = bin\titles\titles00.raw
+    file[]: crc = 7b3a0362; size =      2500; name = help\jpn_html\attack.htm
+    file[]: crc = 79ad8b0c; size =      6117; name = help\jpn_html\chara.htm
+    file[]: crc = 68dbfa13; size =      5140; name = help\jpn_html\control.htm; optional = true
+    file[]: crc = 68dbfa13; size =      5140; name = help\jpn_html\control.htm; optional = true
+    file[]: crc = 4d7f07a9; size =      1273; name = help\jpn_html\copy.htm
+    file[]: crc = cc371b03; size =      3039; name = help\jpn_html\course.htm
+    file[]: crc = 6ebd9641; size =      2961; name = help\jpn_html\grandpri.htm
+    file[]: crc = 35276499; size =      2406; name = help\jpn_html\hajime.htm; optional = true
+    file[]: crc = 35276499; size =      2406; name = help\jpn_html\hajime.htm; optional = true
+    file[]: crc = 9418a940; size =      1076; name = help\jpn_html\index.htm
+    file[]: crc = 1262d5d2; size =      3115; name = help\jpn_html\item.htm
+    file[]: crc = 5c5bd38d; size =      2295; name = help\jpn_html\multi.htm
+    file[]: crc = 5380d233; size =      2219; name = help\jpn_html\option.htm; optional = true
+    file[]: crc = 5380d233; size =      2219; name = help\jpn_html\option.htm; optional = true
+    file[]: crc = df713c0e; size =      3497; name = help\jpn_html\prologue.htm
+    file[]: crc = 9ef3d50f; size =      2873; name = help\jpn_html\screen.htm
+    file[]: crc = 144f444d; size =      1044; name = help\jpn_html\staff.htm; optional = true
+    file[]: crc = 144f444d; size =      1044; name = help\jpn_html\staff.htm; optional = true
+    file[]: crc = 4d6e80b1; size =      1510; name = help\jpn_html\start.htm
+    file[]: crc = aa5242cc; size =      2104; name = help\jpn_html\tactics.htm
+	
+	locale = ja-JP
+	
+end
+
+//
+// Sonic R English CD US
+//
+game[pc-cd-us-en]:
+    name = English CD US
+	imports = common, us-cd-common, english-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R French CD US
+//
+game[pc-cd-us-fr]:
+    name = French CD US
+	imports = common, us-cd-common, french-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R German CD US
+//
+game[pc-cd-us-ge]:
+    name = German CD US
+	imports = common, us-cd-common, german-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R Spanish REV00 CD US
+//
+game[pc-cd-us-sp-rv1]:
+    name = Spanish REV00 CD US
+	imports = common, us-cd-common, spanish-common, spanish-REV00
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R Spanish REV01 CD US
+//
+game[pc-cd-us-sp]:
+    name = Spanish REV01 CD US
+	imports = common, us-cd-common, spanish-common, spanish-REV01
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R Italian CD US
+//
+game[pc-cd-us-it]:
+    name = Italian CD US
+	imports = common, us-cd-common, italian-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R English CD US NOMUSIC
+//
+game[pc-cd-us-en-EXPERT]:
+    name = English CD US No Music
+	imports = common, us-cd-common, english-common
+    anchorfile = sonicr.exe
+  
+
+end
+
+//
+// Sonic R French CD US NOMUSIC
+//
+game[pc-cd-us-fr-EXPERT]:
+    name = French CD US No Music
+	imports = common, us-cd-common, french-common
+    anchorfile = sonicr.exe
+  
+
+end
+
+//
+// Sonic R German CD US NOMUSIC
+//
+game[pc-cd-us-ge-EXPERT]:
+    name = German CD US No Music
+	imports = common, us-cd-common, german-common
+    anchorfile = sonicr.exe
+  
+
+end
+
+//
+// Sonic R Spanish CD US NOMUSIC
+//
+game[pc-cd-us-sp-EXPERT]:
+    name = Spanish REV01 CD US No Music
+	imports = common, us-cd-common, spanish-common, spanish-REV00
+    anchorfile = sonicr.exe
+  
+
+end
+
+//
+// Sonic R Italian CD US NOMUSIC
+//
+game[pc-cd-us-it-EXPERT]:
+    name = Italian CD US No Music
+	imports = common, us-cd-common, italian-common
+    anchorfile = sonicr.exe
+  
+
+end
+
+//
+// Sonic R English CD EU
+//
+game[pc-cd-eu-en]:
+    name = English CD EU
+	imports = common, eu-cd-common, english-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R French CD eu
+//
+game[pc-cd-eu-fr]:
+    name = French CD EU
+	imports = common, eu-cd-common, french-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R German CD eu
+//
+game[pc-cd-eu-ge]:
+    name = German CD EU
+	imports = common, eu-cd-common, german-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R Spanish REV00 CD eu
+//
+game[pc-cd-eu-sp-rv1]:
+    name = Spanish REV00 CD EU
+	imports = common, eu-cd-common, spanish-common, spanish-REV00
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R Spanish REV00 CD eu
+//
+game[pc-cd-eu-sp-rv1-xplosiv]:
+    name = Spanish REV00 CD EU No Music
+	imports = common, eu-cd-common, spanish-common, spanish-REV00
+    anchorfile = sonicr.exe
+  
+end
+
+//
+// Sonic R Spanish REV01 CD eu
+//
+game[pc-cd-eu-sp]:
+    name = Spanish REV01 CD EU
+	imports = common, eu-cd-common, spanish-common, spanish-REV01
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R Italian CD eu
+//
+game[pc-cd-eu-it]:
+    name = Italian CD EU
+	imports = common, eu-cd-common, italian-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R Italian CD eu
+//
+game[pc-cd-eu-it-xplosiv]:
+    name = Italian CD EU No Music
+	imports = common, eu-cd-common, italian-common
+    anchorfile = sonicr.exe
+  
+end
+
+//
+// Sonic R English CD EU REV2
+//
+game[pc-cd-eu-en-rev2]:
+    name = English CD EU REV2
+	imports = common, eu-cd-common-rev2, english-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R English CD EU REV2
+//
+game[pc-cd-eu-en-rev2-xplosiv]:
+    name = English CD EU REV2 No Music
+	imports = common, eu-cd-common-rev2, english-common
+    anchorfile = sonicr.exe
+
+end
+
+//
+// Sonic R French CD eu REV2
+//
+game[pc-cd-eu-fr-rev2]:
+    name = French CD EU REV2
+	imports = common, eu-cd-common-rev2, french-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R French CD eu REV2
+//
+game[pc-cd-eu-fr-rev2-xplosiv]:
+    name = French CD EU REV2 No Music
+	imports = common, eu-cd-common-rev2, french-common
+    anchorfile = sonicr.exe
+
+end
+
+//
+// Sonic R German CD eu REV2
+//
+game[pc-cd-eu-ge-rev2]:
+    name = German CD EU REV2
+	imports = common, eu-cd-common-rev2, german-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R German CD eu REV2
+//
+game[pc-cd-eu-ge-rev2-xplosiv]:
+    name = German CD EU REV2 No Music
+	imports = common, eu-cd-common-rev2, german-common
+    anchorfile = sonicr.exe
+  
+end
+
+//
+// Sonic R Spanish REV01 CD eu REV2
+//
+game[pc-cd-eu-sp-rev2]:
+    name = Spanish REV01 CD EU REV2
+	imports = common, eu-cd-common-rev2, spanish-common, spanish-REV01
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R Spanish REV01 CD eu REV2
+//
+game[pc-cd-eu-sp-rev2-xplosiv]:
+    name = Spanish REV01 CD EU REV2 No Music
+	imports = common, eu-cd-common-rev2, spanish-common, spanish-REV01
+    anchorfile = sonicr.exe
+
+end
+
+//
+// Sonic R Italian CD eu REV2
+//
+game[pc-cd-eu-it-rev2]:
+    name = Italian CD EU REV2
+	imports = common, eu-cd-common-rev2, italian-common
+    anchorfile = sonicr.exe
+  
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+//
+// Sonic R Italian CD eu REV2
+//
+game[pc-cd-eu-it-rev2-xplosiv]:
+    name = Italian CD EU REV2 No Music
+	imports = common, eu-cd-common-rev2, italian-common
+    anchorfile = sonicr.exe
+
+end
+
+//
+// Sonic R Japanese CD eu REV2
+//
+game[pc-cd-eu-jp-rev2]:
+    name = Japanese CD EU
+	imports = common, eu-cd-common, japanese-common
+    anchorfile = sonicr.exe
+
+	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
+
+end
+
+
+//
+// Sonic R Japanese CD eu REV2 No Music
+//
+game[pc-cd-eu-jp-rev2-xsplosiv]:
+    name = Japanese CD EU REV2B No Music
+	imports = common, eu-cd-common-rev2, japanese-common
+    anchorfile = sonicr.exe
+
+end
+
+//
+// Sonic R English CD JP
+//
+game[pc-cd-jp-en]:
+	name = English CD JP
+	imports = common, english-common, jp-cd-common
+	anchorfile = sonicr.exe
+	
+    file[]: name = CD\CDDA.SOU; cdda = 51/15/18/63/313/292/279/286/303/250/249/172/217/219/210/218/246/12/15/7
+	
+end
+
+//
+// Sonic R Japanese CD JP
+//
+game[pc-cd-jp-jp]:
+	name = Japanese CD JP
+	imports = common, japanese-common, jp-cd-common
+	anchorfile = sonicr.exe
+	
+    file[]: name = CD\CDDA.SOU; cdda = 51/15/18/63/313/292/279/286/303/250/249/172/217/219/210/218/246/12/15/7
+	
+end
+
+//
+// Sonic R French CD JP
+//
+game[pc-cd-jp-fr]:
+	name = French CD JP
+	imports = common, french-common, jp-cd-common
+	anchorfile = sonicr.exe
+	
+    file[]: name = CD\CDDA.SOU; cdda = 51/15/18/63/313/292/279/286/303/250/249/172/217/219/210/218/246/12/15/7	
+	
+end
+
+//
+// Sonic R German CD JP
+//
+game[pc-cd-jp-ge]:
+	name = German CD JP
+	imports = common, german-common, jp-cd-common
+	anchorfile = sonicr.exe
+	
+    file[]: name = CD\CDDA.SOU; cdda = 51/15/18/63/313/292/279/286/303/250/249/172/217/219/210/218/246/12/15/7	
+	
+end
+
+//
+// Sonic R Spanish CD JP
+//
+game[pc-cd-jp-sp]:
+	name = Spanish CD JP
+	imports = common, spanish-common, jp-cd-common, spanish-REV01
+	anchorfile = sonicr.exe
+	
+    file[]: name = CD\CDDA.SOU; cdda = 51/15/18/63/313/292/279/286/303/250/249/172/217/219/210/218/246/12/15/7	
+	
+end
+
+//
+// Sonic R Italian CD JP
+//
+game[pc-cd-jp-it]:
+	name = Italian CD JP
+	imports = common, italian-common, jp-cd-common
+	anchorfile = sonicr.exe
+	
+    file[]: name = CD\CDDA.SOU; cdda = 51/15/18/63/313/292/279/286/303/250/249/172/217/219/210/218/246/12/15/7	
+	
+end
+
+addon[sr_net]:
+    name = Network Patch
+	upgradeids = pc-cd-us-en, pc-cd-us-en-EXPERT, pc-cd-us-ge, pc-cd-us-ge-EXPERT, pc-cd-us-fr, pc-cd-us-fr-EXPERT, pc-cd-us-sp, pc-cd-us-sp-rv1, pc-cd-us-sp-EXPERT, pc-cd-us-it, pc-cd-us-it-EXPERT, pc-cd-jp-jp, pc-cd-jp-en, pc-cd-jp-ge, pc-cd-jp-fr, pc-cd-jp-sp, pc-cd-jp-it,  pc-cd-eu-en, pc-cd-eu-en-rev2, pc-cd-eu-it, pc-cd-eu-it-rev2, pc-cd-eu-fr, pc-cd-eu-fr-rev2, pc-cd-eu-ge, pc-cd-eu-ge-rev2, pc-cd-eu-sp, pc-cd-eu-sp-rev2
+    anchorfile = sr_net.exe
+	NETWORKMODE = file_exists("$$(rootpath)\\sr_net.exe")
+    file[]: crc = cf94dbd3; size =   1077248; name = sr_net.exe
+end
+
+end

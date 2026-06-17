@@ -1,0 +1,224 @@
+//
+// Daytona USA
+//
+desc[sga-daytona]:
+
+name = Daytona USA
+icon = sga-daytona.png
+machine = pc
+rootpath = C:\Sega\DAYTONA
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 95
+filter = sega, nonlucas, racing, arcade
+winres = 640x480x16
+EXENAME = daytona
+CDLABEL = DAYTONA USA
+maxfps = 20
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// dynamic files
+//
+dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+
+fragment[common]:
+    file[]: crc = df30163e; size =     16312; name = 00000000.FNT
+    file[]: crc = e5091a23; size =     17780; name = 00000001.FNT
+    file[]: crc = 767cec68; size =     17780; name = 00000002.FNT
+    file[]: crc = da2f815c; size =      2740; name = 00000003.FNT
+    file[]: crc = c4664bcb; size =      3052; name = 00000004.FNT
+    file[]: crc = 0f17cf10; size =      3052; name = 00000005.FNT
+    file[]: crc = e02b5611; size =      4148; name = 00000006.FNT
+    file[]: crc = caf6b0ea; size =      6964; name = 00000007.FNT
+    file[]: crc = 372ff2d1; size =      6964; name = 00000008.FNT
+    file[]: crc = 1c89fb8e; size =      9780; name = 00000009.FNT
+    file[]: crc = e3cb15be; size =      2740; name = 00000010.FNT
+    file[]: crc = 513979e9; size =     17780; name = 00000011.FNT
+    file[]: crc = cf3e90cd; size =     16312; name = 00000012.FNT
+    file[]: crc = 3bdbe29b; size =     25864; name = 00000013.FNT
+    file[]: crc = 3ca6ac30; size =     72984; name = 00000014.FNT
+    file[]: crc = 743aa1c8; size =      3052; name = 00000015.FNT
+    file[]: crc = 2a6db83e; size =      3052; name = 00000016.FNT
+    file[]: crc = a8ebf8ee; size =      2896; name = 00000017.FNT
+    file[]: crc = 1fb56067; size =    124961; name = ADDD.BIN
+    file[]: crc = dcb89942; size =    315524; name = BONNET_A.BIN
+    file[]: crc = caee3d88; size =    315524; name = BONNET_B.BIN
+    file[]: crc = 0db5ef9a; size =    315524; name = BONNET_G.BIN
+    file[]: crc = 7ddc211e; size =    315524; name = BONNET_K.BIN
+    file[]: crc = 5440fbf3; size =    315524; name = BONNET_M.BIN
+    file[]: crc = b06c51c3; size =    315524; name = BONNET_O.BIN
+    file[]: crc = 3729d34a; size =    315524; name = BONNET_P.BIN
+    file[]: crc = 70174d9e; size =    315524; name = BONNET_R.BIN
+    file[]: crc = 5c07cea5; size =    315524; name = BONNET_S.BIN
+    file[]: crc = c8db8358; size =    315524; name = BONNET_Y.BIN
+    file[]: crc = 022bef21; size =     51608; name = COURSE0.BIN
+    file[]: crc = 13deacc3; size =    130968; name = COURSE1.BIN
+    file[]: crc = ea51e923; size =    135600; name = COURSE2.BIN
+    file[]: crc = 18976ddd; size =    205302; name = CRS_CAN0.BMP
+    file[]: crc = 0d27c0e3; size =    205302; name = CRS_CAN1.BMP
+    file[]: crc = ca72310b; size =    205366; name = CRS_CTY0.BMP
+    file[]: crc = 1ab7626e; size =    205366; name = CRS_CTY1.BMP
+    file[]: crc = 82860b92; size =    205366; name = CRS_OVL0.BMP
+    file[]: crc = c448ba7c; size =    205366; name = CRS_OVL1.BMP
+    file[]: crc = e0d0bb1c; size =     34990; name = CS0_LINE.BIN
+    file[]: crc = 088a335d; size =    297472; name = CS0POLY.BIN
+    file[]: crc = cd80ca90; size =     82970; name = CS1_LINE.BIN
+    file[]: crc = e8155bdd; size =    631808; name = CS1POLY.BIN
+    file[]: crc = 892eeb27; size =    164594; name = CS2_LINE.BIN
+    file[]: crc = 1f1756bf; size =   1048576; name = CS2POLY.BIN
+    file[]: crc = 8a0be8a4; size =      2463; name = DAYTONA.DAT
+    file[]: crc = a1ce80e1; size =    729600; name = DAYTONA.EXE
+    file[]: crc = 7f3b0ce1; size =       263; name = DAYTONA.INI
+    file[]: crc = 5e03c787; size =    181878; name = DD_CAN0L.BMP
+    file[]: crc = 54fb2d88; size =    181878; name = DD_CAN1L.BMP
+    file[]: crc = 1bea7474; size =    181878; name = DD_CTY0L.BMP
+    file[]: crc = efc25a0d; size =    181878; name = DD_CTY1L.BMP
+    file[]: crc = 494e4857; size =    181878; name = DD_OVL0L.BMP
+    file[]: crc = 7ab32e52; size =    181878; name = DD_OVL1L.BMP
+    file[]: crc = d40bf307; size =    446464; name = GAMED.BIN
+    file[]: crc = 9cf865d5; size =    446464; name = NAMD.BIN
+    file[]: crc = a1583f89; size =    446464; name = OVERD.BIN
+    file[]: crc = ede5d003; size =     68580; name = PC_ADV.BIN
+    file[]: crc = 13cfa4ad; size =    797284; name = PC_END.BIN
+    file[]: crc = 389c1076; size =     81412; name = PC_GAME.BIN
+    file[]: crc = 76e3ed0e; size =     80612; name = PC_LOGO.BIN
+    file[]: crc = 29014609; size =    279428; name = PC_MODE.BIN
+    file[]: crc = 30049568; size =    176164; name = PC_NAME.BIN
+    file[]: crc = 52c4bef4; size =    632196; name = PC_OPT.BIN
+    file[]: crc = ea41a9e8; size =    414916; name = PC_OVER.BIN
+    file[]: crc = 52cd288b; size =    337444; name = PC_RANK.BIN
+    file[]: crc = be1d237b; size =   2219492; name = PC_SEL.BIN
+    file[]: crc = 41a0e729; size =     72324; name = PC_START.BIN
+    file[]: crc = 13be72b0; size =    264804; name = PC_TITLE.BIN
+    file[]: crc = 599b5d12; size =     32256; name = PIT.BIN
+    file[]: crc = 1c4b6487; size =     26624; name = POLYGON.BIN
+    file[]: crc = 0d3280ce; size =    140800; name = RES_USA.DLL
+    file[]: crc = ac47c697; size =    327736; name = SCROLL.BIN
+    file[]: crc = 1df299b0; size =    446464; name = SLCTD.BIN
+    file[]: crc = 97c19f15; size =     28448; name = TABLE.BIN
+    file[]: crc = 5562bedc; size =    177529; name = TEX_C0.BIN
+    file[]: crc = 4f05f8b4; size =    243369; name = TEX_C1.BIN
+    file[]: crc = a5ef7a86; size =    250097; name = TEX_C2.BIN
+    file[]: crc = 0e81cc53; size =     38824; name = TEX_PL.BIN
+    file[]: crc = 2785661d; size =       972; name = DAYTONAE.CNT
+    file[]: crc = 36441198; size =   2044213; name = DAYTONAE.HLP
+    file[]:									  name = READMEE.TXT	
+    file[]: crc = 18976ddd; size =    205302; name = CD\GAME\MINI\CRS_CAN0.BMP
+    file[]: crc = 0d27c0e3; size =    205302; name = CD\GAME\MINI\CRS_CAN1.BMP
+    file[]: crc = ca72310b; size =    205366; name = CD\GAME\MINI\CRS_CTY0.BMP
+    file[]: crc = 1ab7626e; size =    205366; name = CD\GAME\MINI\CRS_CTY1.BMP
+    file[]: crc = 82860b92; size =    205366; name = CD\GAME\MINI\CRS_OVL0.BMP
+    file[]: crc = c448ba7c; size =    205366; name = CD\GAME\MINI\CRS_OVL1.BMP
+    file[]: crc = 8a0be8a4; size =      2463; name = CD\GAME\MINI\DAYTONA.DAT
+    file[]: crc = a1ce80e1; size =    729600; name = CD\GAME\MINI\DAYTONA.EXE
+    file[]: crc = 7f3b0ce1; size =       263; name = CD\GAME\MINI\DAYTONA.INI
+    file[]: crc = 5e03c787; size =    181878; name = CD\GAME\MINI\DD_CAN0L.BMP
+    file[]: crc = 54fb2d88; size =    181878; name = CD\GAME\MINI\DD_CAN1L.BMP
+    file[]: crc = 1bea7474; size =    181878; name = CD\GAME\MINI\DD_CTY0L.BMP
+    file[]: crc = efc25a0d; size =    181878; name = CD\GAME\MINI\DD_CTY1L.BMP
+    file[]: crc = 494e4857; size =    181878; name = CD\GAME\MINI\DD_OVL0L.BMP
+    file[]: crc = 7ab32e52; size =    181878; name = CD\GAME\MINI\DD_OVL1L.BMP
+    file[]: crc = 0d3280ce; size =    140800; name = CD\GAME\MINI\RES_USA.DLL
+
+end
+
+//
+// dummy game description;
+//
+game[pc-cd-en-V1.1]:
+    name = English V1.1 EXPERT
+	imports = common
+    anchorfile = DAYTONA.EXE
+	anchordepth = 2
+	//CD-ROM
+    file[]: crc = dbe47e49; size =     74240; name = CD\DAYUS.DLL
+    file[]: 								  name = CD\README.TXT
+    file[]: crc = db6fb03b; size =  29595610; name = CD\GAME\ETC\MUSIC.BIN
+	
+
+
+//    file[]: crc = 2ab04125; size =     10855; name = CD\HLP\DAYTONAE.GID	
+	file[]: name = CD\CDDA.SOU; cdda = 8/58/35/32/298/258/283/291/10/11/11/11/36/39/39/39/11/25/258/283/288
+	
+	CDLABEL = DAYTONA_USA
+end
+
+game[pc-cd-en]:
+    name = English V1.0
+	imports = common
+    anchorfile = DAYTONA.EXE
+	anchordepth = 2
+    file[]: name = CD\CDDA.SOU; cdda = 11/59/37/33/300/260/285/294/12/12/12/12/37/41/40/40/12/27/259/285/290
+end
+
+game[pc-en-demo]:
+	name = English Demo V1.0
+    anchorfile = DAYTONAD.EXE
+    file[]: crc = df30163e; size =     16312; name = 00000000.FNT
+    file[]: crc = e5091a23; size =     17780; name = 00000001.FNT
+    file[]: crc = 767cec68; size =     17780; name = 00000002.FNT
+    file[]: crc = da2f815c; size =      2740; name = 00000003.FNT
+    file[]: crc = c4664bcb; size =      3052; name = 00000004.FNT
+    file[]: crc = 0f17cf10; size =      3052; name = 00000005.FNT
+    file[]: crc = e02b5611; size =      4148; name = 00000006.FNT
+    file[]: crc = caf6b0ea; size =      6964; name = 00000007.FNT
+    file[]: crc = 372ff2d1; size =      6964; name = 00000008.FNT
+    file[]: crc = 1c89fb8e; size =      9780; name = 00000009.FNT
+    file[]: crc = e3cb15be; size =      2740; name = 00000010.FNT
+    file[]: crc = 513979e9; size =     17780; name = 00000011.FNT
+    file[]: crc = cf3e90cd; size =     16312; name = 00000012.FNT
+    file[]: crc = 3bdbe29b; size =     25864; name = 00000013.FNT
+    file[]: crc = 3ca6ac30; size =     72984; name = 00000014.FNT
+    file[]: crc = 743aa1c8; size =      3052; name = 00000015.FNT
+    file[]: crc = 2a6db83e; size =      3052; name = 00000016.FNT
+    file[]: crc = a8ebf8ee; size =      2896; name = 00000017.FNT
+    file[]: crc = 1fb56067; size =    124961; name = ADDD.BIN
+    file[]: crc = dcb89942; size =    315524; name = BONNET_A.BIN
+    file[]: crc = 5440fbf3; size =    315524; name = BONNET_M.BIN
+    file[]: crc = 022bef21; size =     51608; name = COURSE0.BIN
+    file[]: crc = 82860b92; size =    205366; name = CRS_OVL0.BMP
+    file[]: crc = c448ba7c; size =    205366; name = CRS_OVL1.BMP
+    file[]: crc = e0d0bb1c; size =     34990; name = CS0_LINE.BIN
+    file[]: crc = 088a335d; size =    297472; name = CS0POLY.BIN
+    file[]: crc = 70081782; size =       394; name = DAYDEMOE.TXT
+    file[]: crc = 190ef361; size =       458; name = DAYDEMOJ.TXT
+    file[]: crc = 0a1a8995; size =      2463; name = DAYTONA.DAT
+    file[]: crc = 7f3b0ce1; size =       263; name = DAYTONA.INI
+    file[]: crc = 842db01e; size =    798720; name = DAYTONAD.EXE
+    file[]: crc = 494e4857; size =    181878; name = DD_OVL0L.BMP
+    file[]: crc = 7ab32e52; size =    181878; name = DD_OVL1L.BMP
+    file[]: crc = d40bf307; size =    446464; name = GAMED.BIN
+    file[]: crc = 9cf865d5; size =    446464; name = NAMD.BIN
+    file[]: crc = a1583f89; size =    446464; name = OVERD.BIN
+    file[]: crc = ede5d003; size =     68580; name = PC_ADV.BIN
+    file[]: crc = 13cfa4ad; size =    797284; name = PC_END.BIN
+    file[]: crc = e3eca9a5; size =     83172; name = PC_GAME.BIN
+    file[]: crc = 76e3ed0e; size =     80612; name = PC_LOGO.BIN
+    file[]: crc = 259377bd; size =    281508; name = PC_MODE.BIN
+    file[]: crc = 30049568; size =    176164; name = PC_NAME.BIN
+    file[]: crc = 52c4bef4; size =    632196; name = PC_OPT.BIN
+    file[]: crc = ea41a9e8; size =    414916; name = PC_OVER.BIN
+    file[]: crc = 52cd288b; size =    337444; name = PC_RANK.BIN
+    file[]: crc = be1d237b; size =   2219492; name = PC_SEL.BIN
+    file[]: crc = 41a0e729; size =     72324; name = PC_START.BIN
+    file[]: crc = 13be72b0; size =    264804; name = PC_TITLE.BIN
+    file[]: crc = 599b5d12; size =     32256; name = PIT.BIN
+    file[]: crc = 1c4b6487; size =     26624; name = POLYGON.BIN
+    file[]: crc = f0e72654; size =    140800; name = RES_JPN.DLL
+    file[]: crc = 0d3280ce; size =    140800; name = RES_USA.DLL
+    file[]: crc = ac47c697; size =    327736; name = SCROLL.BIN
+    file[]: crc = 1df299b0; size =    446464; name = SLCTD.BIN
+    file[]: crc = 97c19f15; size =     28448; name = TABLE.BIN
+    file[]: crc = 5562bedc; size =    177529; name = TEX_C0.BIN
+    file[]: crc = 0e81cc53; size =     38824; name = TEX_PL.BIN
+	EXENAME = DAYTONAD
+
+end
+
+end
