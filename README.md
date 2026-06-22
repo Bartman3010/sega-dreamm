@@ -16,13 +16,13 @@ Supported Games:
 |Manx TT Superbike|Windows 95|US|
 |Panzer Dragoon|Windows 95|US|
 |SEGA Puzzle Pack|Windows 95|US|
-|SEGA Smash Pack|Windows 95|US, US Expert Software, Twin Pack (Activision)|
-|SEGA Smash Pack 2|Windows 95|US|
+|SEGA Smash Pack|Windows 95|US, US Expert Software, US Twin Pack (Activision)|
+|SEGA Smash Pack 2|Windows 95|US, US Twin Pack (Activision), EU, JP|
 |SEGA Swirl|Windows 95|US|
 |Sonic & Knuckles Collection|Windows 95|US, US Sonic & Garfield Pack, EU, CH, JP, US Demo, EU Demo (Sonic Dancepower)|
 |Sonic 3D Blast / Sonic 3D Flickies' Island|Windows 95|US, EU, CH, US Demo|
 |Sonic CD|Windows 95|US, JP, US Demo|
-|Sonic R|Windows 95|US, EU, CH, JP|
+|Sonic R|Windows 95|US, US Expert Software, US Expert Software (No Music) EU, EU REV01 (No Music), JP|
 |Sonic the Hedgehog The Screen Saver|Windows 95|US, JP Demo|
 |Sonic's Schoolhouse|Windows 95|US, US REV1, US Demo|
 |The House of the Dead|Windows 95|US, EU, JP|
