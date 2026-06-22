@@ -12,23 +12,23 @@ Supported Games:
 |Enemy Zero|Windows 98|US|
 |Garfield Caught in the Act / Garfield in TV Land / Garfield|Windows 95|US, US Sonic & Garfield Pack|
 |Last Bronx|Windows 95|US, EU|
-|Lose Your Marbles / Lose Your Marbles Enhanced Edition|Windows 95|US, US SEGA Puzzle Pack|
+|Lose Your Marbles / Lose Your Marbles Enhanced Edition|Windows 95|US, US SEGA Puzzle Pack (Enhanced Edition)|
 |Manx TT Superbike|Windows 95|US|
 |Panzer Dragoon|Windows 95|US|
 |SEGA Puzzle Pack|Windows 95|US|
-|SEGA Smash Pack|Windows 95|US|
+|SEGA Smash Pack|Windows 95|US, US Expert Software, Twin Pack (Activision)|
 |SEGA Smash Pack 2|Windows 95|US|
 |SEGA Swirl|Windows 95|US|
-|Sonic & Knuckles Collection|Windows 95|US, US Sonic & Garfield Pack, EU, CH, JP|
-|Sonic 3D Blast / Sonic 3D Flickies' Island|Windows 95|US, EU, AU, CH|
-|Sonic CD|Windows 95|US, JP|
+|Sonic & Knuckles Collection|Windows 95|US, US Sonic & Garfield Pack, EU, CH, JP, US Demo, EU Demo (Sonic Dancepower)|
+|Sonic 3D Blast / Sonic 3D Flickies' Island|Windows 95|US, EU, CH, US Demo|
+|Sonic CD|Windows 95|US, JP, US Demo|
 |Sonic R|Windows 95|US, EU, CH, JP|
-|Sonic the Hedgehog The Screen Saver|Windows 95|US, JP|
-|Sonic's Schoolhouse|Windows 95|US, US REV1, Demo|
+|Sonic the Hedgehog The Screen Saver|Windows 95|US, JP Demo|
+|Sonic's Schoolhouse|Windows 95|US, US REV1, US Demo|
 |The House of the Dead|Windows 95|US, EU, JP|
 |The Typing of the Dead|Windows 95|US|
 |Virtua Cop / Virtua Squad|Windows 95|US, US Demo|
 |Virtua Cop 2 / Virtua Squad 2|Windows 95|US, JP|
 |Virtua Fighter PC|Windows 95|US|
-Virtua Fighter 2
-Yoot Tower
+|Virtua Fighter 2|Windows 95|US, US Demo|
+|Yoot Tower|Windows 95|US|
