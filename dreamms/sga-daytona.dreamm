@@ -131,7 +131,7 @@ end
 //
 // dummy game description;
 //
-game[pc-cd-en-V1.1]:
+game[pc-cd-en-v1-1]:
     name = English V1.1 EXPERT
 	imports = common
     anchorfile = DAYTONA.EXE

@@ -31,7 +31,7 @@ dynamicfile[]: path = D:\""; attributes = 8; contents = $(NULL)
 //
 // Motion Smoothing (60fps) Toggle for Sonic 3D Blast (US)
 //
-script[patch]:
+script[motion-script]:
 condition = $(SMOOTH) && is_game() && $(BLAST)
     code = [[[$(CRLF)
         wait("progload", "pcsonic.exe");

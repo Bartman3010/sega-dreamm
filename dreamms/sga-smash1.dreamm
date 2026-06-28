@@ -83,7 +83,7 @@ game[pc-cd-en]:
 	EXENAME = Smash
 end
 
-game[pc-cd-en-EXPERT]:
+game[pc-cd-en-expert]:
 	name = 1.00.000 EXPERT Software
 	anchorfile = Smash.pdf
 	anchordepth = 1
@@ -118,7 +118,7 @@ end
 //
 // Twin Pack SEGA Smash Pack + SEGA Smash Pack 2 No CD
 //
-game[pc-cd-en-Twin-Activision]:
+game[pc-cd-en-twin-activision]:
 	name = 1.00.000 Twin Pack Activision
 	anchorfile = Patch.exe
 	anchordepth = 1

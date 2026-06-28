@@ -773,12 +773,12 @@ fragment[spanish-common]:
 
 end
 
-fragment[spanish-REV00]:
+fragment[spanish-rev00]:
     file[]: crc = a6ae498c; size =    196608; name = bin\option\schar00.raw
 	
 end
 
-fragment[spanish-REV01]:
+fragment[spanish-rev01]:
 	file[]: crc = b79d55ee; size =    196608; name = bin\option\schar00.raw
 	
 end
@@ -869,7 +869,7 @@ end
 //
 game[pc-cd-us-sp-rv1]:
     name = Spanish REV00 CD US
-	imports = common, us-cd-common, spanish-common, spanish-REV00
+	imports = common, us-cd-common, spanish-common, spanish-rev00
     anchorfile = sonicr.exe
   
 	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
@@ -881,7 +881,7 @@ end
 //
 game[pc-cd-us-sp]:
     name = Spanish REV01 CD US
-	imports = common, us-cd-common, spanish-common, spanish-REV01
+	imports = common, us-cd-common, spanish-common, spanish-rev01
     anchorfile = sonicr.exe
   
 	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
@@ -903,7 +903,7 @@ end
 //
 // Sonic R English CD US NOMUSIC
 //
-game[pc-cd-us-en-EXPERT]:
+game[pc-cd-us-en-expert]:
     name = English CD US No Music
 	imports = common, us-cd-common, english-common
     anchorfile = sonicr.exe
@@ -914,7 +914,7 @@ end
 //
 // Sonic R French CD US NOMUSIC
 //
-game[pc-cd-us-fr-EXPERT]:
+game[pc-cd-us-fr-expert]:
     name = French CD US No Music
 	imports = common, us-cd-common, french-common
     anchorfile = sonicr.exe
@@ -925,7 +925,7 @@ end
 //
 // Sonic R German CD US NOMUSIC
 //
-game[pc-cd-us-ge-EXPERT]:
+game[pc-cd-us-ge-expert]:
     name = German CD US No Music
 	imports = common, us-cd-common, german-common
     anchorfile = sonicr.exe
@@ -936,9 +936,9 @@ end
 //
 // Sonic R Spanish CD US NOMUSIC
 //
-game[pc-cd-us-sp-EXPERT]:
+game[pc-cd-us-sp-expert]:
     name = Spanish REV01 CD US No Music
-	imports = common, us-cd-common, spanish-common, spanish-REV00
+	imports = common, us-cd-common, spanish-common, spanish-rev00
     anchorfile = sonicr.exe
   
 
@@ -947,7 +947,7 @@ end
 //
 // Sonic R Italian CD US NOMUSIC
 //
-game[pc-cd-us-it-EXPERT]:
+game[pc-cd-us-it-expert]:
     name = Italian CD US No Music
 	imports = common, us-cd-common, italian-common
     anchorfile = sonicr.exe
@@ -996,7 +996,7 @@ end
 //
 game[pc-cd-eu-sp-rv1]:
     name = Spanish REV00 CD EU
-	imports = common, eu-cd-common, spanish-common, spanish-REV00
+	imports = common, eu-cd-common, spanish-common, spanish-rev00
     anchorfile = sonicr.exe
   
 	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
@@ -1008,7 +1008,7 @@ end
 //
 game[pc-cd-eu-sp-rv1-xplosiv]:
     name = Spanish REV00 CD EU No Music
-	imports = common, eu-cd-common, spanish-common, spanish-REV00
+	imports = common, eu-cd-common, spanish-common, spanish-rev00
     anchorfile = sonicr.exe
   
 end
@@ -1018,7 +1018,7 @@ end
 //
 game[pc-cd-eu-sp]:
     name = Spanish REV01 CD EU
-	imports = common, eu-cd-common, spanish-common, spanish-REV01
+	imports = common, eu-cd-common, spanish-common, spanish-rev01
     anchorfile = sonicr.exe
   
 	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
@@ -1118,7 +1118,7 @@ end
 //
 game[pc-cd-eu-sp-rev2]:
     name = Spanish REV01 CD EU REV2
-	imports = common, eu-cd-common-rev2, spanish-common, spanish-REV01
+	imports = common, eu-cd-common-rev2, spanish-common, spanish-rev01
     anchorfile = sonicr.exe
   
 	file[]: name = CD\CDDA.SOU; cdda = 41/7/10/55/305/284/270/278/295/241/241/164/209/210/202/210/238/4/6/5
@@ -1130,7 +1130,7 @@ end
 //
 game[pc-cd-eu-sp-rev2-xplosiv]:
     name = Spanish REV01 CD EU REV2 No Music
-	imports = common, eu-cd-common-rev2, spanish-common, spanish-REV01
+	imports = common, eu-cd-common-rev2, spanish-common, spanish-rev01
     anchorfile = sonicr.exe
 
 end
@@ -1233,7 +1233,7 @@ end
 //
 game[pc-cd-jp-sp]:
 	name = Spanish CD JP
-	imports = common, spanish-common, jp-cd-common, spanish-REV01
+	imports = common, spanish-common, jp-cd-common, spanish-rev01
 	anchorfile = sonicr.exe
 	
     file[]: name = CD\CDDA.SOU; cdda = 51/15/18/63/313/292/279/286/303/250/249/172/217/219/210/218/246/12/15/7	
@@ -1252,9 +1252,9 @@ game[pc-cd-jp-it]:
 	
 end
 
-addon[sr_net]:
+addon[sr-net]:
     name = Network Patch
-	upgradeids = pc-cd-us-en, pc-cd-us-en-EXPERT, pc-cd-us-ge, pc-cd-us-ge-EXPERT, pc-cd-us-fr, pc-cd-us-fr-EXPERT, pc-cd-us-sp, pc-cd-us-sp-rv1, pc-cd-us-sp-EXPERT, pc-cd-us-it, pc-cd-us-it-EXPERT, pc-cd-jp-jp, pc-cd-jp-en, pc-cd-jp-ge, pc-cd-jp-fr, pc-cd-jp-sp, pc-cd-jp-it,  pc-cd-eu-en, pc-cd-eu-en-rev2, pc-cd-eu-it, pc-cd-eu-it-rev2, pc-cd-eu-fr, pc-cd-eu-fr-rev2, pc-cd-eu-ge, pc-cd-eu-ge-rev2, pc-cd-eu-sp, pc-cd-eu-sp-rev2
+	upgradeids = pc-cd-us-en, pc-cd-us-en-expert, pc-cd-us-ge, pc-cd-us-ge-expert, pc-cd-us-fr, pc-cd-us-fr-expert, pc-cd-us-sp, pc-cd-us-sp-rv1, pc-cd-us-sp-expert, pc-cd-us-it, pc-cd-us-it-expert, pc-cd-jp-jp, pc-cd-jp-en, pc-cd-jp-ge, pc-cd-jp-fr, pc-cd-jp-sp, pc-cd-jp-it,  pc-cd-eu-en, pc-cd-eu-en-rev2, pc-cd-eu-it, pc-cd-eu-it-rev2, pc-cd-eu-fr, pc-cd-eu-fr-rev2, pc-cd-eu-ge, pc-cd-eu-ge-rev2, pc-cd-eu-sp, pc-cd-eu-sp-rev2
     anchorfile = sr_net.exe
 	NETWORKMODE = file_exists("$$(rootpath)\\sr_net.exe")
     file[]: crc = cf94dbd3; size =   1077248; name = sr_net.exe

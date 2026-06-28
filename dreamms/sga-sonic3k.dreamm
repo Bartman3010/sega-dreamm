@@ -131,7 +131,7 @@ fragment[pc-en-common]:
 	file[]: crc = 929B0672; size = 5510144; name = SONIC3K.EXE
 end
 
-fragment[pc-en-EXPERT-common]:
+fragment[pc-en-expert-common]:
     file[]: crc = 3693A530; size =  489984; name = RUNSONIC.EXE
 	file[]: crc = EFB60A8F; size =  992768; name = MIDIOUT.DLL
 	file[]: crc = E6F01342; size = 3696512; name = SONIC3K.DS2
@@ -251,9 +251,9 @@ end
 //
 // Sonic & Knuckles Collection English EXPERT Software
 //
-game[pc-en-EXPERT]:
+game[pc-en-expert]:
     name = English Expert Software
-	imports = pc-en-EXPERT-common
+	imports = pc-en-expert-common
     anchorfile = RUNSONIC.EXE
 	anchordepth = 1
 	LANGMODE = 0
@@ -268,9 +268,9 @@ end
 //
 // Sonic & Knuckles Collection French US EXPERT Software
 //
-game[pc-fr-EXPERT]:
+game[pc-fr-expert]:
     name = French Expert Software
-	imports = pc-en-EXPERT-common
+	imports = pc-en-expert-common
     anchorfile = RUNSONIC.EXE
 	anchordepth = 1
 	LANGMODE = 1
@@ -285,9 +285,9 @@ end
 //
 // Sonic & Knuckles Collection German EXPERT Software
 //
-game[pc-ge-EXPERT]:
+game[pc-ge-expert]:
     name = German Expert Software
-	imports = pc-en-EXPERT-common
+	imports = pc-en-expert-common
     anchorfile = RUNSONIC.EXE
 	anchordepth = 1
 	LANGMODE = 2
@@ -302,9 +302,9 @@ end
 //
 // Sonic & Knuckles Collection Spanish EXPERT Software
 //
-game[pc-sp-EXPERT]:
+game[pc-sp-expert]:
     name = Spanish Expert Software
-	imports = pc-en-EXPERT-common
+	imports = pc-en-expert-common
     anchorfile = RUNSONIC.EXE
 	anchordepth = 1
 	LANGMODE = 3

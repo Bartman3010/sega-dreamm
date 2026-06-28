@@ -106,7 +106,7 @@ dynamicfile[]: path = D:\SEGA_SP2; attributes = 8; contents = $(NULL)
 //
 // Activision Publishing Version & Twin Pack Version
 //
-game[pc-cd-en-Activision]:
+game[pc-cd-en-activision]:
     name = 1.00.000 Activision
     anchorfile = Smash2.exe
 	anchordepth = 1
@@ -137,10 +137,10 @@ end
 //
 // Installer for Activision Publishing & Twin Pack Ver. Listed Above
 //
-installer[pc-cd-en-Activision-install]:
+installer[pc-cd-en-activision-install]:
 	name = English CD Installer, Activision
 	imports = install-base
-	installid = pc-cd-en-Activision
+	installid = pc-cd-en-activision
 	anchorfile = SETUP.EXE
 	anchordepth = 1
 	file[]: crc = 5F98B1F5; size =        45; name = CD\AUTORUN.INF

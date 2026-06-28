@@ -48,7 +48,7 @@ end
 //
 // Columns 3 EXPERT Software
 //
-game[pc-cd-c3-EXPERT]:
+game[pc-cd-c3-expert]:
     name = Columns 3 - CD EXPERT Software
     anchorfile = Columns3.exe
 	anchordepth = 2
@@ -92,7 +92,7 @@ end
 //
 // Dr. Robotnik's Mean Bean Machine - CD EXPERT Software
 //
-game[pc-cd-mbm-EXPERT]:
+game[pc-cd-mbm-expert]:
     name = Dr. Robotnik's Mean Bean Machine - CD EXPERT Software
     anchorfile = Robotnik.exe
 	anchordepth = 2

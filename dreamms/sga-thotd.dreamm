@@ -45,7 +45,7 @@ config[graphics]:
 	title = Graphics Driver
 	option[ddraw]: name = DirectDraw (Software); CMDLINE = -ddraw
 	option[d3d]: name = Direct3D (Hardware); CMDLINE = -d3d
-	option[d3d_setup]: name = Direct3D (Hardware) Setup; CMDLINE = -d3d -d3d_setup
+	option[d3d-setup]: name = Direct3D (Hardware) Setup; CMDLINE = -d3d -d3d_setup
 end
 
 //
@@ -67,8 +67,8 @@ end
 //
 config[cd]:
 	title = CD Check
-	option[checkCD]: name = Check for CD; CMDLINE_CD = $(NULL)
-	option[noCD]: name = No Check; CMDLINE_CD = -cd_nocheck; priority = 1
+	option[check-cd]: name = Check for CD; CMDLINE_CD = $(NULL)
+	option[no-cd]: name = No Check; CMDLINE_CD = -cd_nocheck; priority = 1
 end
 
 //

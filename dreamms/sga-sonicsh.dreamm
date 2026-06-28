@@ -2916,7 +2916,7 @@ end
 ///
 // Sonic's Schoolhouse Prototype 05/16/1996 -- Source [Hidden Palace]
 ///
-game[pc-en-E3-05161996]:
+game[pc-en-e3-05161996]:
 	name = English Prototype May 16 1996
     anchorfile = ANSWHUNT.exe
 	anchordepth = 1
