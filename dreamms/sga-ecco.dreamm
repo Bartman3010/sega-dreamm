@@ -8,7 +8,7 @@ icon = sga-ecco.png
 machine = pc
 rootpath = C:\Sega\ECCO
 launch = "$(rootpath)\$(EXENAME).EXE"
-osenv = windows 95
+osenv = windows 98
 filter = nonlucas
 EXENAME = ECCOWIN
 mips = $(MIPS_486DX_33)
@@ -30,8 +30,8 @@ dynamicfile[]: path = D:\""; attributes = 8; contents = $(NULL)
 //
 config[windows-os]:
     title = WINDOWS VERSION
-    option[win31]:  name = Windows 3.1 (16-bit); winres = 640x480x8; 
-    option[win95]: name = Windows 95 (32-bit); winres = 640x480x16; priority = 1
+    option[win31]:  name = Windows 3.1 (16-bit); winres = 640x480x8; osenv= windows 3.11.002
+    option[win95]: name = Windows 95 (32-bit); winres = 640x480x16; priority = 1; osenv= windows 98
 end
 
 

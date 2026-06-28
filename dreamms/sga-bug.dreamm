@@ -8,7 +8,7 @@ icon = sga-bug.png
 machine = pc
 rootpath = C:\Sega\Bug
 launch = "$(rootpath)\bug!.exe"
-osenv = windows 95
+
 winres = 640x480x8
 filter = nonlucas
 
@@ -165,6 +165,7 @@ game[pc-cd-bug95-en-us]:
     file[]: name = CD\CDDA.SOU; cdda = 389/393/317/381/346/351/130/395/352/82
 	
 	locale = en_US
+	osenv = windows 95
 	
 end
 
@@ -179,6 +180,7 @@ game[pc-cd-bug95-en-eu]:
     file[]: name = CDDA.SOU; cdda = 453/393/380/381/346/351/130/316/177/246
 
 	locale = en_US
+	osenv = windows 95
 	
 end
 
@@ -193,6 +195,7 @@ game[pc-cd-bug95-fr-eu]:
     file[]: name = CDDA.SOU; cdda = 453/393/380/381/346/351/130/316/177/246
 	
 	locale = fr-FR
+	osenv = windows 95
 	
 end
 
@@ -207,6 +210,7 @@ game[pc-cd-bug95-ge-eu]:
     file[]: name = CDDA.SOU; cdda = 453/393/380/381/346/351/130/316/177/246
 	
 	locale = de-DE
+	osenv = windows 95
 	
 end
 
@@ -221,6 +225,7 @@ game[pc-cd-bug95-sp-eu]:
     file[]: name = CDDA.SOU; cdda = 453/393/380/381/346/351/130/316/177/246
 
 	locale = es-ES_tradnl
+	osenv = windows 95
 	
 end
 
@@ -250,6 +255,7 @@ game[pc-cd-bug31-en-us]:
     file[]:	crc = 2A31AEB6; size = 		 377; name = CD\WIN95\BUG!.CFG
 	
 	locale = en_US
+	osenv= windows 3.11.002
 	
 end
 
@@ -266,6 +272,7 @@ game[pc-bug95-en-demo]:
     file[]: crc = 286eed9d; size =    170298; name = W01.SND
 	
 	locale = en_US
+	osenv = windows 95
 	
 end
 
