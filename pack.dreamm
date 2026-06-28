@@ -1,4 +1,4 @@
-pack[]:
-    name = SEGA PC V0.07.3
+pack[sega]:
+    name = SEGA PC V0.07.4
     author = Bartman3010
 end
