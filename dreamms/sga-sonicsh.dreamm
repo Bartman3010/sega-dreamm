@@ -21,9 +21,7 @@ mount[]: vpath = $(rootpath);         srcpath = $(ifsinstallpath)
 mount[]: vpath = C:\WINDOWS\SYSTEM32; srcpath = $(ifsinstallpath) // for WAVMIX32.DLL for Answer Hunt Prototype
 
 //V1.0 System File
-dynamicfile[]:
-    path = C:\WINDOWS\SONIC.INI
-    contents = [[[$(CRLF)
+CONFIGFILE = [[[$(CRLF)
 		[PATHS]
 		Tex=C:\Sega\Sonicsh\tex\
 		Wav=C:\Sega\Sonicsh\wav\
@@ -35,12 +33,16 @@ dynamicfile[]:
 		GraphicsQuality=1
 
     ]]]
+	
+script[sonic-init]:
+    code = [[[$(CRLF)
+        file_save("C:\\WINDOWS\\SONIC.INI", "$$(CONFIGFILE)");
+    ]]]
+	
 end
 
 //V1.1 System File
-dynamicfile[]:
-    path = C:\WINDOWS\SONICSH.INI
-    contents = [[[$(CRLF)
+CONFIGFILE = [[[$(CRLF)
 		[PATHS]
 		Tex=C:\Sega\Sonicsh\tex\
 		Wav=C:\Sega\Sonicsh\wav\
@@ -52,12 +54,16 @@ dynamicfile[]:
 		GraphicsQuality=1
 
     ]]]
+	
+script[sonicsh-init]:
+    code = [[[$(CRLF)
+        file_save("C:\\WINDOWS\\SONICSH.INI", "$$(CONFIGFILE)");
+    ]]]
+	
 end
 
 //05/16/1996 Prototype System File
-dynamicfile[]:
-    path = C:\WINDOWS\AH.INI
-    contents = [[[$(CRLF)
+CONFIGFILE = [[[$(CRLF)
 		[PATHS]
 		Tex=C:\Sega\Sonicsh\tex\
 		Wav=C:\Sega\Sonicsh\wav\
@@ -65,16 +71,18 @@ dynamicfile[]:
 		MAP=C:\Sega\Sonicsh\map\
 		Art=C:\Sega\Sonicsh\art\
 		MIDI=C:\Sega\Sonicsh\midi\
-//		[Setup]
-//		GraphicsQuality=1
 
     ]]]
+	
+script[ah-init]:
+    code = [[[$(CRLF)
+        file_save("C:\\WINDOWS\\AH.INI", "$$(CONFIGFILE)");
+    ]]]
+	
 end
 
 //To add Wavmix.ini for Prototype
-dynamicfile[]:
-    path = C:\WINDOWS\WAVEMIX.INI
-    contents = [[[$(CRLF)
+CONFIGFILE = [[[$(CRLF)
         [general]
         ShowDevices=0
 
@@ -92,6 +100,12 @@ dynamicfile[]:
         WaveBlockLen=688
         SamplesPerSec=22
     ]]]
+	
+script[wavmix-init]:
+    code = [[[$(CRLF)
+        file_save("C:\\WINDOWS\\WAVEMIX.INI", "$$(CONFIGFILE)");
+    ]]]
+	
 end
 
 //

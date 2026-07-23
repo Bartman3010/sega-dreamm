@@ -12,7 +12,7 @@ osenv = windows 98
 winres = 640x480x16
 filter = nonlucas
 EXENAME = T2
-CDLABEL = YOOTTOWER
+CDID = YOOTTOWER
 
 //
 // filesystem
@@ -22,9 +22,15 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
-// dynamic files
+// initialization script
 //
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+script[init]:
+    code = [[[$(CRLF)
+	        // set the volume label on the CD
+        drive_set_label("D", "$$(CDID)");
+	]]]
+	
+end
 
 //
 //Auto install Script
@@ -262,7 +268,7 @@ game[pc-cd-en]:
     file[]: crc = 71231462; size =     10811; name = Plugins\Yoot.t2p
 
 	EXENAME = T2
-	CDLABEL = YOOTTOWER
+	CDID = YOOTTOWER
 
 end
 

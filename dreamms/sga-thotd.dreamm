@@ -12,7 +12,7 @@ osenv = windows 98
 winres = 640x480x16
 filter = nonlucas
 EXENAME = THOTD
-CDLABEL = Hotd
+CDID = Hotd
 REGLANGUAGE = ENGLISH
 REGBLOOD = RED
 ISJAPANESE = 0 //if user installed the japanese cd version of the game
@@ -31,12 +31,6 @@ warning[blood]:
 condition = $(ISJAPANESE)
     text = Choosing red blood color in the in-game options menu (If available) will show corrupted textures on characters. You will need to choose the other blood color options for textures to appear normally.
 end
-
-//
-// dynamic files
-//
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
-
 
 //
 // Graphics Driver Select
@@ -72,11 +66,6 @@ config[cd]:
 end
 
 //
-// dummy launcher file to satisfy the upgrader
-//
-//dynamicfile[]: path = $(rootpath)\$(EXENAME).EXE
-
-//
 // autoinstaller script
 //
 script[autoinstaller]:
@@ -95,9 +84,7 @@ end
 // Registry
 //
 script[registry]: code = winregistry_import_file("C:\\DREAMM.REG")
-dynamicfile[]:
-    path = C:\DREAMM.REG
-    contents = [[[$(CRLF)
+REGISTRY = [[[$(CRLF)
 		REGEDIT4
 		[HKEY_LOCAL_MACHINE\SOFTWARE\sega\The House Of The Dead]
 		"bloodcolor"="$$(REGBLOOD)"
@@ -109,6 +96,15 @@ dynamicfile[]:
 		"RunNative"="$$(rootpath)\\$(EXENAME).exe\\"-ddraw"\\$(CMDLINE_CD)"
 		[HKEY_LOCAL_MACHINE\SOFTWARE\sega\The House Of The Dead\1.0]
 	]]]
+script[init]:
+    code = [[[$(CRLF)
+        winregistry_import_raw("$$(REGISTRY)");
+		
+			
+		//Set volume label on the CD
+		drive_set_label("D", "$$(CDID)");
+    ]]]
+
 end
 
 //

@@ -20,11 +20,7 @@ CDLABEL = SEGA_VF_PC
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
-
-//
-// dynamic files
-//
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+mount[]: vpath = D:\SEGA_VF_PC; srcpath = $(ifsinstallpath)\CD; optional = true
 
 game[pc-cd-en]:
 	name = English CD

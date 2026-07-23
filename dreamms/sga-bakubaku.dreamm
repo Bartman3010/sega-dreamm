@@ -12,7 +12,7 @@ osenv = windows 95
 winres = 640x480x8
 filter = nonlucas, netplay
 EXENAME = Baku
-CDLABEL = Baku
+CDID = Baku
 
 //
 // filesystem
@@ -20,11 +20,27 @@ CDLABEL = Baku
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)
 
 //
-// dynamic files
+// CD-ROM mount
 //
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+//dynamicfile[]: path = D:\$(CDID); attributes = 8; contents = $(NULL)
+
+
+//
+// initialization script
+//
+script[init]:
+	code = [[[$(CRLF)
+	
+		// create CD.ID files, both locally and on the D drive
+		 // set the volume label on the CD
+        drive_set_label("D", "$(CDID)");
+
+	]]]
+	
+end
 
 //
 // video configuration
@@ -43,8 +59,6 @@ config[sound]:
     option[mt32]:    name = $(MT32_NAME);    audiohw = mt32
     option[gmidi]:   name = $(GMIDI_NAME);   audiohw = gmidi; priority = 1
 end
-
-
 
 
 fragment[common]:
@@ -173,7 +187,7 @@ game[pc-cd-en]:
 	
 	//CD-ROM
     file[]: crc = a3018f05; size =       766; name = CD\BAKU.ICO
-	CDLABEL = BAKU_PC
+	CDID = BAKU_PC
 	
 	//locale = en_US
 	
@@ -188,7 +202,7 @@ game[pc-cd-songar-en]:
     anchorfile = STUFF_1.MID
 	anchordepth = 2
     file[]: crc = 521efc90; size =     22474; name = MID\STUFF_1.MID
-	CDLABEL = Sega_3in1
+	CDID = Sega_3in1
 	
 	//locale = en_US
 	
@@ -206,7 +220,7 @@ game[pc-cd-fr]:
 	
 	//CD-ROM
     file[]: crc = a3018f05; size =       766; name = CD\BAKU.ICO
-	CDLABEL = BAKU_PC
+	CDID = BAKU_PC
 	
 	locale = fr-FR
 	
@@ -222,7 +236,7 @@ game[pc-cd-songar-fr]:
     anchorfile = STUFF_1.MID
 	anchordepth = 2
     file[]: crc = 521efc90; size =     22474; name = MID\STUFF_1.MID
-	CDLABEL = Sega_3in1
+	CDID = Sega_3in1
 	
 	locale = fr-FR
 	
@@ -240,7 +254,7 @@ game[pc-cd-ge]:
 	
 	//CD-ROM
     file[]: crc = a3018f05; size =       766; name = CD\BAKU.ICO
-	CDLABEL = BAKU_PC
+	CDID = BAKU_PC
 	
 	locale = de-DE
 	
@@ -255,7 +269,7 @@ game[pc-cd-songar-ge]:
     anchorfile = STUFF_1.MID
 	anchordepth = 2
     file[]: crc = 521efc90; size =     22474; name = MID\STUFF_1.MID
-	CDLABEL = Sega_3in1
+	CDID = Sega_3in1
 	
 	locale = de-DE
 	
@@ -274,7 +288,7 @@ game[pc-cd-jp]:
 	
 	//CD-ROM
     file[]: crc = a3018f05; size =       766; name = CD\BAKU.ICO
-	CDLABEL = BAKU_PC
+	CDID = BAKU_PC
 	
 	locale = ja-JP
 	
@@ -289,7 +303,7 @@ game[pc-cd-songar-jp]:
     anchorfile = STUFF_1.MID
 	anchordepth = 2
     file[]: crc = 521efc90; size =     22474; name = MID\STUFF_1.MID
-	CDLABEL = Sega_3in1
+	CDID = Sega_3in1
 	
 	locale = ja-JP
 	
@@ -307,7 +321,7 @@ game[pc-cd-sp]:
 	
 	//CD-ROM
     file[]: crc = a3018f05; size =       766; name = CD\BAKU.ICO
-	CDLABEL = BAKU_PC
+	CDID = BAKU_PC
 	
 	locale = es-ES_tradnl
 	
@@ -322,7 +336,7 @@ game[pc-cd-songar-sp]:
     anchorfile = STUFF_1.MID
 	anchordepth = 2
     file[]: crc = 521efc90; size =     22474; name = MID\STUFF_1.MID
-	CDLABEL = Sega_3in1
+	CDID = Sega_3in1
 	
 	locale = es-ES_tradnl
 	

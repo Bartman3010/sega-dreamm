@@ -10,8 +10,9 @@ rootpath = C:\Sega\BugToo!
 launch = $(rootpath)\$(EXENAME).EXE
 osenv = windows 95
 filter = nonlucas
-CDLABEL = BUGTOO
+CDID = BUGTOO
 EXENAME = BUGTOO!
+
 //
 // filesystem
 //
@@ -20,9 +21,15 @@ mount[]: vpath = $(rootpath);   srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
 
 //
-// dynamic files
+// initialization script
 //
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+script[init]:
+    code = [[[$(CRLF)
+	        // set the volume label on the CD
+        drive_set_label("D", "$$(CDID)");
+	]]]
+	
+end
 
 fragment[common]:
 	file[]: crc = C7128B56; size =    143872; name = DUKDLL95.DLL
@@ -121,7 +128,7 @@ game[pc-en-cd-eu]:
 	
 	file[]: name = CDDA.SOU; cdda = 221/143/262/292/138/269/289/214/154/112/93
 	
-	CDLABEL = DEMO
+	CDID = DEMO
 	
 end
 
@@ -140,7 +147,7 @@ game[pc-en-cd-us]:
 	
 	file[]: name = CDDA.SOU; cdda = 221/143/262/292/138/269/289/214/154/112/93
 	
-	CDLABEL = BUGTOO
+	CDID = BUGTOO
 	
 end
 

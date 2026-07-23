@@ -18,11 +18,7 @@ winres = 640x480x16
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
-
-//
-// dynamic files
-//
-dynamicfile[]: path = D:\Puzzle_Pack; attributes = 8; contents = $(NULL)
+mount[]: vpath = D:\Puzzle_Pack; srcpath = $(ifsinstallpath)\CD
 
 //
 // Columns 3

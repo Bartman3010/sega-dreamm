@@ -12,7 +12,7 @@ osenv = windows 95
 filter = sega, nonlucas, arcade, netplay
 winres = 640x480x16
 EXENAME = PPJ2DD
-CDLABEL = VCOP2
+CDID = VCOP2
 
 //
 // filesystem
@@ -22,9 +22,15 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
-// dynamic files
+// initialization script
 //
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+script[init]:
+    code = [[[$(CRLF)
+	        // set the volume label on the CD
+        drive_set_label("D", "$$(CDID)");
+	]]]
+	
+end
 
 //
 // CD Check
@@ -181,7 +187,7 @@ game[pc-cd-en]:
 	file[]: crc = 1a03354e; size =    992768; name = CD\VCOP2\PROJECT\PPJ2DD.EXE
     file[]: name = CD\CDDA.SOU; cdda = 13/65/10/70/10/10/10/10/126/122/134/113/115/120/114/201/111/108/72/102/11/71/82/10/10/10/10/10/10/10/10/10/10/10/8
 	
-	CDLABEL = VS2
+	CDID = VS2
 end
 
 //
@@ -205,7 +211,7 @@ game[pc-cd-jp]:
     file[]: name = CD\CDDA.SOU; cdda = 13/65/10/70/10/10/10/10/126/122/134/113/115/120/114/201/111/108/72/102/11/71/82/10/10/10/10/10/10/10/10/10/10/10/8
 	
 	locale = ja-JP
-	CDLABEL = VCOP2J
+	CDID = VCOP2J
 	
 end
 

@@ -19,12 +19,7 @@ EXENAME = VF2
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
-
-//
-// dynamic files
-//
-dynamicfile[]: path = D:\VF2; attributes = 8; contents = $(NULL)
-
+mount[]: vpath = D:\VF2; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
 //Auto install Script

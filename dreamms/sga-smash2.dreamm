@@ -19,12 +19,7 @@ EXENAME = Smash2
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
-
-
-//
-// registry
-//
-script[registry]: code = winregistry_import_file("C:\\DREAMM.REG")
+mount[]: vpath = D:\SEGA_SP2; srcpath = $(ifsinstallpath)\CD
 
 //
 //Auto install Script
@@ -55,11 +50,9 @@ fragment[install-base]:
 end
 
 //
-// dynamic files
+// Registry File
 //
-dynamicfile[]:
-    path = C:\DREAMM.REG
-    contents = [[[$(CRLF)
+REGISTRY = [[[$(CRLF)
 	REGEDIT4
 	
 	[HKEY_LOCAL_MACHINE\SOFTWARE\sega\Sega Smash Pack II\1.00.000\FullPath]
@@ -77,31 +70,38 @@ dynamicfile[]:
 	@="C:\WINDOWS\ISUNINST.EXE -f"C:\Sega\Smash Pack II\Uninst.isu""
 
 	]]]
+
+	script[registry-init]:
+    code = [[[$(CRLF)
+        winregistry_import_raw("$$(REGISTRY)");
+    ]]]
 end
 
-dynamicfile[]:
-	path = $(rootpath)\CD\AUTORUN.INF
-	contents = [[[$(CRLF)[autorun]
+CONFIGFILE = [[[$(CRLF)[autorun]
 				open=smash2.exe
 				icon=smash2.exe,0
 
 	]]]
+	
+	script[config-init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\CD\\AUTORUN.INF", "$$(CONFIGFILE)");
+    ]]]
+	
 end
 
-dynamicfile[]:
-	path = $(rootpath)\CD\Setup\Setup.ini
-	contents = [[[$(CRLF)[Startup]
+CONFIGFILE = [[[$(CRLF)[Startup]
 				AppName=Sega Smash Pack II
 				FreeDiskSpace=480
 
 
 	]]]
+	
+	script[configcd-init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\CD\\Setup\\Setup.ini", "$$(CONFIGFILE)");
+    ]]]
 end
-
-//
-// dynamic files
-//
-dynamicfile[]: path = D:\SEGA_SP2; attributes = 8; contents = $(NULL)
 
 //
 // Activision Publishing Version & Twin Pack Version

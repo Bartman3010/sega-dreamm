@@ -12,7 +12,7 @@ osenv = windows 95
 filter = sega, nonlucas, arcade, netplay
 winres = 640x480x16
 EXENAME = VCOP
-CDLABEL = VCOP
+CDID = VCOP
 
 //
 // filesystem
@@ -22,9 +22,15 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
-// dynamic files
+// initialization script
 //
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+script[init]:
+    code = [[[$(CRLF)
+	        // set the volume label on the CD
+        drive_set_label("D", "$$(CDID)");
+	]]]
+	
+end
 
 fragment[common]:
     file[]: crc = c618dd23; size =     21696; name = A-B01-5.WAV
@@ -463,7 +469,7 @@ game[pc-cd-en]:
     file[]: name = CD\CDDA.SOU; cdda = 11/141/55/70/253/220/213/102/161/143/140/166/9/11/80/234/250/278
 	
 	EXENAME = PPJDD
-	CDLABEL = VSQUAD
+	CDID = VSQUAD
 	
 end
 
@@ -593,7 +599,7 @@ game[pc-cd-en-nv]:
     file[]: name = CD\CDDA.SOU; cdda = 11/141/55/70/253/220/213/102/161/143/140/166/9/11/80/234/250/278
 
 	EXENAME = VCOP
-	CDLABEL = VSQUAD
+	CDID = VSQUAD
 	
 end
 
@@ -825,7 +831,7 @@ game[pc-cd-en-eur]:
     file[]: crc = 78fb4ec6; size =      9792; name = WOOD-01.WAV
     file[]: crc = 96598492; size =      5942; name = WOOD-02.WAV
 	
-	CDLABEL = VCOP_E
+	CDID = VCOP_E
 
 end
 

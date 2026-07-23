@@ -13,7 +13,7 @@ filter = nonlucas, netplay
 winres = 640x480x16
 EXENAME = V_ON
 NETWORKMODE = 0
-CDLABEL = VON
+CDID = VON
 
 //
 // filesystem
@@ -23,9 +23,15 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
-// dynamic files
+// initialization script
 //
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+script[init]:
+    code = [[[$(CRLF)
+	        // set the volume label on the CD
+        drive_set_label("D", "$$(CDID)");
+	]]]
+	
+end
 
 fragment[common]:
     file[]: crc = d151169b; size =    758200; name = BSEL_APH.BIN

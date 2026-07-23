@@ -12,7 +12,7 @@ osenv = windows 98
 winres = 640x480x8
 filter = nonlucas
 EXENAME = PANZERDG
-CDLABEL = PDEU1121
+CDID = PDEU1121
 
 //
 // filesystem
@@ -22,9 +22,15 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
-// dynamic files
+// initialization script
 //
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+script[init]:
+    code = [[[$(CRLF)
+	        // set the volume label on the CD
+        drive_set_label("D", "$$(CDID)");
+	]]]
+	
+end
 
 fragment[common]:
     file[]: crc = 76aa0dad; size =     76202; name = ASCII.CGX

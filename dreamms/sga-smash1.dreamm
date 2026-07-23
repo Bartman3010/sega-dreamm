@@ -18,6 +18,7 @@ winres = 640x480x32
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+mount[]: vpath = D:\SMASH_PACK; srcpath = $(ifsinstallpath)\CD
 
 //
 // registry
@@ -27,9 +28,7 @@ script[registry]: code = winregistry_import_file("C:\\DREAMM.REG")
 //
 // dynamic files
 //
-dynamicfile[]:
-    path = C:\DREAMM.REG
-    contents = [[[$(CRLF)
+REGISTRY = [[[$(CRLF)
 	REGEDIT4
 
 	[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\App Paths\Smash.exe]
@@ -46,9 +45,12 @@ dynamicfile[]:
 	"Installed"=dword:00000001
 	"UninstallPath"="C:\\WINDOWS\\ISUNINST.EXE -f\"C:\\Sega\\Smash Pack\\Uninst.isu\""
 	]]]
+	
+script[init]:
+    code = [[[$(CRLF)
+        winregistry_import_raw("$$(REGISTRY)");
+    ]]]
 end
-
-dynamicfile[]: path = D:\SMASH_PACK; attributes = 8; contents = $(NULL)
 
 //
 // SEGA Smash Pack English CD US

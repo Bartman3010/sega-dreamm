@@ -26,7 +26,7 @@ mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
 //
 // dynamic files
 //
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+//dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
 
 //
 // autoinstall script
@@ -41,6 +41,17 @@ script[autoinstall]:
             input_lockout(false);
         }
     ]]]
+end
+
+//
+// initialization script
+//
+script[init]:
+    code = [[[$(CRLF)
+	        // set the volume label on the CD
+        drive_set_label("D", "$$(CDID)");
+	]]]
+	
 end
 
 //

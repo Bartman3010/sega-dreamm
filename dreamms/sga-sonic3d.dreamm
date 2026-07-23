@@ -24,11 +24,6 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
-// dynamic files
-//
-dynamicfile[]: path = D:\""; attributes = 8; contents = $(NULL)
-
-//
 // Motion Smoothing (60fps) Toggle for Sonic 3D Blast (US)
 //
 script[motion-script]:
@@ -69,14 +64,16 @@ end
 //
 // Registry for Sonic 3D
 //
-script[registry]: code = winregistry_import_file("C:\\DREAMM.REG")
-dynamicfile[]:
-   path = C:\DREAMM.REG
-   contents = [[[$(CRLF)
+REGISTRY = [[[$(CRLF)
       REGEDIT4
       [HKEY_LOCAL_MACHINE\Software\SEGA\Sonic 3D]
       "CdPath"="D:\\"
    ]]]
+   
+script[init]:
+    code = [[[$(CRLF)
+        winregistry_import_raw("$$(REGISTRY)");
+    ]]]
 end
 
 fragment[common-us]:

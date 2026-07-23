@@ -12,7 +12,7 @@ osenv = windows 95
 filter = sega, nonlucas, arcade, netplay
 winres = 640x480x16
 EXENAME = DAYTONA USA Deluxe
-CDLABEL = DAYTONA_DLX
+CDID = DAYTONA_DLX
 
 //
 // filesystem
@@ -24,7 +24,19 @@ mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 //
 // dynamic files
 //
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
+//dynamicfile[]: path = D:\$(CDID); attributes = 8; contents = $(NULL)
+
+//
+// initialization script
+//
+script[init]:
+    code = [[[$(CRLF)
+	        // set the volume label on the CD
+        drive_set_label("D", "$$(CDID)");
+	]]]
+	
+end
+
 
 //
 // Common Retail Files
@@ -4659,7 +4671,7 @@ game[pc-cd-en-special]:
     file[]: crc = 4c09e362; size =      1401; name = Thanks.txt
 
 	EXENAME = DAYTONA USA Deluxe SE
-	CDLABEL = Skittles	
+	CDID = Skittles	
 end
 
 //
@@ -4675,7 +4687,7 @@ game[pc-cd-fr-special]:
     file[]: crc = 4c09e362; size =      1401; name = Thanks.txt
 
 	EXENAME = DAYTONA USA Deluxe SE
-	CDLABEL = Skittles
+	CDID = Skittles
 	locale = fr-FR
     
 end
@@ -4694,7 +4706,7 @@ game[pc-cd-ge-special]:
 
 
 	EXENAME = DAYTONA USA Deluxe SE
-	CDLABEL = Skittles
+	CDID = Skittles
 	locale = de-DE
 	
 end
@@ -4712,7 +4724,7 @@ game[pc-cd-sp-special]:
     file[]: crc = 4c09e362; size =      1401; name = Thanks.txt
 	
 	EXENAME = DAYTONA USA Deluxe SE
-	CDLABEL = Skittles
+	CDID = Skittles
 	locale = es-ES_tradnl
 	
 end

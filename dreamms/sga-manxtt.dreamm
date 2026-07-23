@@ -12,7 +12,7 @@ osenv = windows 98
 winres = 640x480x8
 filter = nonlucas, arcade, netplay
 EXENAME = manxtt
-CDLABEL = MANX TT
+CDID = MANX TT
 
 //
 // filesystem
@@ -21,14 +21,7 @@ mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
 
-//
-// dynamic files
-//
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
-
-dynamicfile[]:
-    path = C:\DREAMM.REG
-    contents = [[[$(CRLF)
+REGISTRY = [[[$(CRLF)
 	REGEDIT4
 	[HKEY_LOCAL_MACHINE\SOFTWARE\sega\ManxTT\1.0]
 	"(Default)"=""
@@ -37,6 +30,13 @@ dynamicfile[]:
 	"path"="$$(rootpath)"
 	"Run3Dfx"="$$(rootpath)\\glManxTT.exe"
 	"RunNative"="$$(rootpath)\\ManxTT.exe"
+	]]]
+	
+
+script[init]:
+	code = [[[$(CRLF)
+		winregistry_import_raw("$$(REGISTRY)");
+		drive_set_label("D", "$$(CDID)");
 	]]]
 end
 

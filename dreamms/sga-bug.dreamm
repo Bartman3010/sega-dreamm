@@ -18,18 +18,22 @@ filter = nonlucas
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
-
+mount[]: vpath = D:\BUG!; srcpath = $(ifsinstallpath)\CD; optional = true
 //
 // dynamic files
 //
-dynamicfile[]: path = D:\BUG!; attributes = 8; contents = $(NULL)
+//dynamicfile[]: path = D:\BUG!; attributes = 8; contents = $(NULL)
+
+
+
+CONFIGFILE = [[[$(CRLF)
+
+]]]
 
 //Bug Install Config
-dynamicfile[]:
-    path = C:\Sega\Bug\BUG!.INF
-    contents = [[[$(CRLF)
-		$(rootpath)
-
+script[init]:
+	code = [[[$(CRLF)
+    file_save("$$(rootpath)\\BUG!.INF", "$$(CONFIGFILE)");
     ]]]
 end
 

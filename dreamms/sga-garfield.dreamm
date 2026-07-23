@@ -12,7 +12,7 @@ osenv = windows 95
 winres = 640x480x8
 filter = nonlucas
 EXENAME = garfield
-CDLABEL = garfield
+CDID = garfield
 
 //
 // filesystem
@@ -22,10 +22,15 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
-// dynamic files
+// initialization script
 //
-dynamicfile[]: path = D:\$(CDLABEL); attributes = 8; contents = $(NULL)
-
+script[init]:
+    code = [[[$(CRLF)
+	        // set the volume label on the CD
+        drive_set_label("D", "$$(CDID)");
+	]]]
+	
+end
 //
 // video configuration
 //
@@ -52,7 +57,7 @@ game[pc-cd-us-english]:
     file[]: crc = b04a080a; size =   1195266; name = WSB.DIR
 	file[]: name = CD\CDDA.SOU; cdda = 85/125/72/110/57/113/61/91/27/101/157/113/137/60/88/9/59/56
 	
-	CDLABEL = ""
+	CDID = ""
 end
 
 game[pc-cd-songar-english]:
@@ -62,7 +67,7 @@ game[pc-cd-songar-english]:
     file[]: crc = 846e0681; size =     12105; name = README.TXT
     file[]: name = CD\CDDA.SOU; cdda = 82/122/69/107/55/110/58/88/24/98/154/110/134/58/85/6/56/56
 	
-	CDLABEL = Sega_3in1
+	CDID = Sega_3in1
 end
 
 

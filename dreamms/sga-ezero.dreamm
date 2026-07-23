@@ -11,6 +11,7 @@ launch = "$(rootpath)\$(EXENAME).exe"
 osenv = windows 98
 winres = 640x480x16
 filter = nonlucas
+CDBASED = 1
 EXENAME = EZERO
 
 //
@@ -19,11 +20,11 @@ EXENAME = EZERO
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)/LOCAL
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISK1; disc = 1; attributes = 8; contents = $(NULL)
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISK2; disc = 2; attributes = 8; contents = $(NULL)
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISK3; disc = 3; attributes = 8; contents = $(NULL)
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISK4; disc = 4; attributes = 8; contents = $(NULL)
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)/LOCAL; condition = $(CDBASED)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISK1; disc = 1; condition = $(CDBASED)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISK2; disc = 2; condition = $(CDBASED)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISK3; disc = 3; condition = $(CDBASED)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISK4; disc = 4; condition = $(CDBASED)
 
 //
 // warnings

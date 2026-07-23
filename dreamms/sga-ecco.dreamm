@@ -21,10 +21,15 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
 
 //
-// dynamic files
+// initialization script
 //
-dynamicfile[]: path = D:\""; attributes = 8; contents = $(NULL)
-
+script[init]:
+    code = [[[$(CRLF)
+	        // set the volume label on the CD
+        drive_set_label("D", "");
+	]]]
+	
+end
 //
 // Windows OS Select
 //

@@ -92,11 +92,9 @@ config[video]:
 end
 
 //
-//V1.0 System File
+// System File
 //
-dynamicfile[]:
-    path = C:\WINDOWS\S3K.INI
-    contents = [[[$(CRLF)
+CONFIGFILE = [[[$(CRLF)
 		[Debug]
 		DebugMode="$$(DEBUG)"
 		EnableFrameDrop="$$(FRAMEDROP)"
@@ -111,6 +109,12 @@ dynamicfile[]:
 		GameMode="$$(ISDEMO)"
 		LangMode="$$(LANGMODE)"
     ]]]
+	
+	script[init]:
+		code = [[[$(CRLF)
+			file_save("C:\\WINDOWS\\S3K.INI", "$$(CONFIGFILE)");
+		]]]
+		
 end
 
 //
