@@ -1,0 +1,371 @@
+//
+// Puyo Puyo
+//
+desc[com-puyopuyo]:
+
+name = Puyo Puyo
+icon = com-puyopuyo.png
+machine = pc
+rootpath = C:\COMPILE\puyopuyo
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 3.11.002
+audiohw = gmidi
+winres = 640x480x8
+locale = ja-JP
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// video configuration
+//
+config[video]:
+    title = Video Configuration
+    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
+    option[desktop]: name = Full Desktop;      wincrop = false
+end
+
+//
+// Puyo Puyo for Windows
+//
+game[pc-w31-jp]:
+    name = Puyo Puyo for Windows - Bothtec
+    anchorfile = puyo.exe
+	anchordepth = 1
+    file[]: crc = 097ee2ee; size =       438; name = 001.WAV
+    file[]: crc = f807d8b1; size =       467; name = 002.WAV
+    file[]: crc = e8120d9e; size =      3160; name = 003.WAV
+    file[]: crc = 22d7cafa; size =      1081; name = 004.WAV
+    file[]: crc = 67dc0286; size =      5386; name = 005.WAV
+    file[]: crc = 9f165a19; size =      1910; name = 006.WAV
+    file[]: crc = a964ccd7; size =      8928; name = 007.WAV
+    file[]: crc = 28255eac; size =     12167; name = 008.WAV
+    file[]: crc = 2edb9b62; size =     12138; name = 009.WAV
+    file[]: crc = 12fcb0ee; size =     10007; name = 010.WAV
+    file[]: crc = 67b52fcb; size =     12196; name = 011.WAV
+    file[]: crc = 3afac5ef; size =     12121; name = 012.WAV
+    file[]: crc = 2cc66c7a; size =     12174; name = 013.WAV
+    file[]: crc = e45b3080; size =      6673; name = 014.WAV
+    file[]: crc = c7f90f3e; size =      1195; name = 015.WAV
+    file[]: crc = 6f3c20fa; size =     12128; name = 016.WAV
+    file[]: crc = 58dc2bf2; size =      1189; name = 017.WAV
+    file[]: crc = de5eacd5; size =     18118; name = 018.WAV
+    file[]: crc = 5e2ccca1; size =       718; name = 019.WAV
+    file[]: crc = dd5cbe5f; size =     13860; name = 020.WAV
+    file[]: crc = f48c622a; size =      5570; name = 021.WAV
+    file[]: crc = c92ccffc; size =       447; name = 022.WAV
+    file[]: crc = 10abbec9; size =      1449; name = 023.WAV
+    file[]: crc = b4f5f044; size =      4305; name = 024.WAV
+    file[]: crc = 81272d4d; size =      6782; name = 025.WAV
+    file[]: crc = 64a28564; size =      1547; name = 026.WAV
+    file[]: crc = 32fe4f2f; size =      2912; name = 027.WAV
+    file[]: crc = 6c6a9e22; size =      2776; name = 028.WAV
+    file[]: crc = 51e268d9; size =      9316; name = 029.WAV
+    file[]: crc = ee0c6210; size =      9305; name = 030.WAV
+    file[]: crc = d58527f3; size =      5104; name = 031.WAV
+    file[]: crc = f4b7fbdd; size =     33294; name = 032.WAV
+    file[]: crc = 02237910; size =     14698; name = 033.WAV
+    file[]: crc = fad44eef; size =      7884; name = 034.WAV
+    file[]: crc = 628dcfc6; size =      6640; name = 035.WAV
+    file[]: crc = 938113b6; size =     13384; name = 036.WAV
+    file[]: crc = 9936927e; size =      8874; name = 037.WAV
+    file[]: crc = 7cfc517e; size =      6442; name = 038.WAV
+    file[]: crc = 96f63122; size =      9051; name = 039.WAV
+    file[]: crc = f7519fa5; size =      6590; name = 040.WAV
+    file[]: crc = 96d97044; size =      7608; name = 041.WAV
+    file[]: crc = b7499ce6; size =      9014; name = 042.WAV
+    file[]: crc = 788aeaaf; size =       997; name = 043.WAV
+    file[]: crc = 84d2667b; size =      1003; name = 044.WAV
+    file[]: crc = f4740763; size =      6698; name = 045.WAV
+    file[]: crc = 4a274fa9; size =      9249; name = 046.WAV
+    file[]: crc = da907096; size =     12129; name = 047.WAV
+    file[]: crc = cf5fd0e7; size =     10034; name = 048.WAV
+    file[]: crc = 11d206bb; size =     13768; name = 049.WAV
+    file[]: crc = c081489e; size =      8540; name = 050.WAV
+    file[]: crc = 1fc757d1; size =     10583; name = 051.WAV
+    file[]: crc = 2fcbe923; size =     10073; name = 052.WAV
+    file[]: crc = d0b5be0a; size =      7769; name = 053.WAV
+    file[]: crc = b9778976; size =      9434; name = 054.WAV
+    file[]: crc = 64ca7594; size =     14820; name = 055.WAV
+    file[]: crc = 2c9c3277; size =      7933; name = 056.WAV
+    file[]: crc = 1bbb97bb; size =      7107; name = 057.WAV
+    file[]: crc = 434c9e34; size =      3884; name = 058.WAV
+    file[]: crc = f666c450; size =     20300; name = 059.WAV
+    file[]: crc = a3ed0bad; size =      8219; name = 060.WAV
+    file[]: crc = 5ea4f0c0; size =      2395; name = 061.WAV
+    file[]: crc = 180eb1e0; size =      9368; name = 062.WAV
+    file[]: crc = f8f39e5b; size =      7854; name = 063.WAV
+    file[]: crc = 19da6501; size =     18191; name = 064.WAV
+    file[]: crc = d473ab6f; size =      8166; name = 065.WAV
+    file[]: crc = b641187a; size =     18478; name = 066.WAV
+    file[]: crc = db2c2a29; size =      8472; name = 067.WAV
+    file[]: crc = cd573699; size =     17315; name = 068.WAV
+    file[]: crc = 58bfb9da; size =      3450; name = ALPHA32.PR3
+    file[]: crc = ffa841db; size =      1381; name = ALPHA32.PR4
+    file[]: crc = 7d8035ba; size =     37008; name = ALULU2.PR3
+    file[]: crc = 68535c56; size =     15578; name = ARLE.PR3
+    file[]: crc = 475ac591; size =      4497; name = ARLE2.PR4
+    file[]: crc = 7b24d6f2; size =      4342; name = BAROQUE.MID
+    file[]: crc = b38bdc9a; size =     73979; name = BG1.PR3
+    file[]: crc = 44e21b0a; size =     13124; name = BG1.PR4
+    file[]: crc = 218ccd87; size =       241; name = BG1N.COL
+    file[]: crc = c9fbfb13; size =        96; name = BG2.COL
+    file[]: crc = be412080; size =    132635; name = BG2.PR3
+    file[]: crc = e42fb48c; size =     12943; name = BG2.PR4
+    file[]: crc = 2d822f6d; size =     25660; name = BLOCK.PR3
+    file[]: crc = 98a75f3f; size =      6648; name = BLOCK.PR4
+    file[]: crc = c86c6fde; size =       768; name = BLOCKS.COL
+    file[]: crc = a6106a2d; size =     96180; name = BRAVE.MID
+    file[]: crc = b93faac3; size =      4457; name = COOKING.MID
+    file[]: crc = 98b6480c; size =     19879; name = DRAK.PR3
+    file[]: crc = 7592f462; size =        48; name = DRAK2.COL
+    file[]: crc = f29be830; size =      6731; name = DRAK2.PR4
+    file[]: crc = 706cb264; size =       768; name = EDABG.COL
+    file[]: crc = 6cd3b906; size =       768; name = EDSARU.COL
+    file[]: crc = 342082fc; size =      7996; name = EDSARU.PR4
+    file[]: crc = e884f7cb; size =       457; name = EDSFON.PR4
+    file[]: crc = 78c36ae0; size =       768; name = EDSGND.COL
+    file[]: crc = 44f475a1; size =     12137; name = EDSGND.PR4
+    file[]: crc = 706cb264; size =       768; name = EDSMOJ.COL
+    file[]: crc = fc43e06a; size =      1599; name = EDSMOJ.PR4
+    file[]: crc = abf35376; size =       768; name = EDSSPC.COL
+    file[]: crc = 248aa242; size =      5417; name = EDSSPC.PR3
+    file[]: crc = 248aa242; size =      5417; name = EDSSPC.PR4
+    file[]: crc = c2a85f4b; size =       768; name = EDSSUN.COL
+    file[]: crc = 994d8bf5; size =      2589; name = EDSSUN.PR4
+    file[]: crc = e5eb776a; size =     20394; name = ELEP.PR3
+    file[]: crc = 919bf82d; size =        48; name = ELEP2.COL
+    file[]: crc = a4f032d4; size =      5613; name = ELEP2.PR4
+    file[]: crc = 95acd352; size =      3755; name = EMOJI.PR3
+    file[]: crc = c88ea1d7; size =     67612; name = ENDABG.PR3
+    file[]: crc = b1706747; size =     34827; name = FINAL.MID
+    file[]: crc = 695b0b3b; size =      2942; name = FONT16.PR3
+    file[]: crc = 11e770e8; size =      1626; name = FONT16S.PR4
+    file[]: crc = 21aa2c18; size =       144; name = FRAME1.COL
+    file[]: crc = eda2ef86; size =     31532; name = FRAME1U.PR3
+    file[]: crc = 1a6acb6c; size =     12939; name = FRAME1U.PR4
+    file[]: crc = b71712a9; size =     36452; name = FRAME2U.PR3
+    file[]: crc = 91b2a0ca; size =      8352; name = FRAME2U.PR4
+    file[]: crc = 00073802; size =     35465; name = FRAME3U.PR3
+    file[]: crc = e0a3b7b6; size =      6650; name = FRAME3U.PR4
+    file[]: crc = 611a91ae; size =     24202; name = FRAME4U.PR3
+    file[]: crc = 4d011972; size =      5666; name = FRAME4U.PR4
+    file[]: crc = 48e44195; size =     57263; name = FRAME5U.PR3
+    file[]: crc = 1d8d59b6; size =     16871; name = FRAME5U.PR4
+    file[]: crc = 6bd18494; size =       299; name = FUKIDAS2.PR3
+    file[]: crc = 3cf8df7c; size =        48; name = GFRAME1.COL
+    file[]: crc = f6aa3277; size =        48; name = GFRAME5.COL
+    file[]: crc = a31ab877; size =     25409; name = GG_PUYO.MID
+    file[]: crc = 378f54c9; size =     23125; name = HARP.PR3
+    file[]: crc = 69c80f3a; size =        48; name = HARP2.COL
+    file[]: crc = bc86e0d8; size =      7344; name = HARP2.PR4
+    file[]: crc = ab35a277; size =      6302; name = HARPY.MID
+    file[]: crc = 6b345765; size =      5062; name = INSKABE.HLP
+    file[]: crc = 05d9e232; size =     19526; name = KARDANC1.PR3
+    file[]: crc = 511d0e1c; size =      7196; name = KARDANC1.PR4
+    file[]: crc = fdc83b09; size =     26232; name = KARDANC2.PR3
+    file[]: crc = a63df9aa; size =      8786; name = KARDANC2.PR4
+    file[]: crc = 6898da63; size =       768; name = LASTBG.COL
+    file[]: crc = 4d17ccbb; size =     76703; name = LASTBG.PR3
+    file[]: crc = f9d84f7b; size =      7725; name = LM_DRA.PR3
+    file[]: crc = 26ca9996; size =      3198; name = LM_HAP.PR3
+    file[]: crc = f2ddfa29; size =      9417; name = LM_LUL.PR3
+    file[]: crc = 8c3e8612; size =      7632; name = LM_MIN.PR3
+    file[]: crc = 82922633; size =      4885; name = LM_MUMY.PR3
+    file[]: crc = db015a65; size =      2140; name = LM_NAS.PR3
+    file[]: crc = b4c3615d; size =      6822; name = LM_PANO.PR3
+    file[]: crc = ddda2a7d; size =      5350; name = LM_POTE.PR3
+    file[]: crc = b91750ab; size =     10175; name = LM_SAT.PR3
+    file[]: crc = 50c0298f; size =      6680; name = LM_SAT0.PR3
+    file[]: crc = 8c9b2cda; size =      5379; name = LM_SCO.PR3
+    file[]: crc = f1f720cf; size =      9403; name = LM_SHE.PR3
+    file[]: crc = 8afdb9a8; size =      6358; name = LM_SKE.PR3
+    file[]: crc = 9e9276cc; size =      3381; name = LM_TARA.PR3
+    file[]: crc = f838b511; size =      6422; name = LM_WIT.PR3
+    file[]: crc = 41295175; size =      8105; name = LM_ZOH.PR3
+    file[]: crc = cfe20349; size =      3271; name = LM_ZON.PR3
+    file[]: crc = 8dd67366; size =     25228; name = LULU.PR3
+    file[]: crc = 2338bb2d; size =        48; name = LULU2.COL
+    file[]: crc = 99375e25; size =      7077; name = LULU2.PR4
+    file[]: crc = c99c6071; size =     32926; name = MEMORIES.MID
+    file[]: crc = 36f2e297; size =       768; name = MENU_0.COL
+    file[]: crc = 960079a2; size =     78966; name = MENU_0.PR3
+    file[]: crc = 474cfdd0; size =     14805; name = MENU_0.PR4
+    file[]: crc = 18207caf; size =       768; name = MENU_2.COL
+    file[]: crc = d60c2b94; size =     61390; name = MENU_2.PR3
+    file[]: crc = 404e4e49; size =     14952; name = MENU_2.PR4
+    file[]: crc = 4c7e1689; size =     26185; name = MI_MENU.PR3
+    file[]: crc = 6f8255db; size =      5459; name = MI_MENU.PR4
+    file[]: crc = 9be8720f; size =     18909; name = MINO.PR3
+    file[]: crc = aabc7afe; size =        48; name = MINO2.COL
+    file[]: crc = 262d2fac; size =      5940; name = MINO2.PR4
+    file[]: crc = 34af99d9; size =     16397; name = MISSFON2.PR3
+    file[]: crc = aa50df5a; size =      5834; name = MISSFON2.PR4
+    file[]: crc = c668600a; size =      5120; name = MISSNUM.256
+    file[]: crc = 73ca94e3; size =       503; name = MISSNUM.PR4
+    file[]: crc = 8cfc3d94; size =      1280; name = MISSNUM.S
+    file[]: crc = 25fef7f2; size =     12800; name = MISSPAT.DAT
+    file[]: crc = 6217f12e; size =      5370; name = MORNING.MID
+    file[]: crc = 79807521; size =     20117; name = MUMM.PR3
+    file[]: crc = 31d378f7; size =       768; name = MUMM2.COL
+    file[]: crc = 3645bdde; size =      7168; name = MUMM2.PR4
+    file[]: crc = 4cb94f3d; size =      9669; name = NASU.PR3
+    file[]: crc = ffdf00c3; size =        48; name = NASU2.COL
+    file[]: crc = 092676cc; size =      3619; name = NASU2.PR4
+    file[]: crc = 0069ac57; size =     10166; name = NAZOARU.PR3
+    file[]: crc = ae02f023; size =       768; name = NAZOARUS.COL
+    file[]: crc = 66c7cd9f; size =      3578; name = NAZOARUS.PR4
+    file[]: crc = 5c645bb9; size =       768; name = NAZOEND.COL
+    file[]: crc = c17b406d; size =     39262; name = NAZOEND1.PR3
+    file[]: crc = 598fb0bc; size =        48; name = NAZOENGS.COL
+    file[]: crc = 21aa3e22; size =      9790; name = NAZOENGS.PR4
+    file[]: crc = 67260caa; size =     64088; name = NAZOSCR.PR3
+    file[]: crc = 49027a84; size =        48; name = NAZOSCRS.COL
+    file[]: crc = 6b7ea787; size =     18437; name = NAZOSCRS.PR4
+    file[]: crc = 0be79175; size =       238; name = NUM32.PR4
+    file[]: crc = 1f3ad7f7; size =     40521; name = ONDO.MID
+    file[]: crc = 6948ea3d; size =     44170; name = OP_ARU2.PR3
+    file[]: crc = 41275ca2; size =        96; name = OP_ARUU.COL
+    file[]: crc = 6cd3b906; size =       768; name = OPPX.COL
+    file[]: crc = c46dc50b; size =      8316; name = OPPX.PR4
+    file[]: crc = e5baf863; size =      2784; name = OPT_BG2.PR3
+    file[]: crc = 5034d795; size =       888; name = OPT_BG2.PR4
+    file[]: crc = f31c267f; size =       768; name = OVER1.COL
+    file[]: crc = b4b108e8; size =     35416; name = OVER1.PR3
+    file[]: crc = 6b8a9cce; size =     10724; name = OVER1.PR4
+    file[]: crc = f31c267f; size =       768; name = OVER1S.COL
+    file[]: crc = c8f4b877; size =     15886; name = OVER_F.PR3
+    file[]: crc = 549ce040; size =      5074; name = OVER_F.PR4
+    file[]: crc = 7e8629a4; size =     19969; name = PANO.PR3
+    file[]: crc = bdbbcdb5; size =        48; name = PANO2.COL
+    file[]: crc = 17ab9970; size =      6415; name = PANO2.PR4
+    file[]: crc = e22e466e; size =     79156; name = PUYO.BMP
+    file[]: crc = 60882b7c; size =    209920; name = PUYO.EXE
+    file[]: crc = 38a9e1a6; size =     37169; name = PUYO_F2.PR3
+    file[]: crc = 40208ab0; size =     15765; name = PUYO_F2.PR4
+    file[]: crc = 5442484b; size =     40960; name = PUYO_F2.S
+    file[]: crc = 79003d44; size =     14659; name = PUYO_HLP.TXT
+    file[]: crc = 5772a032; size =     27136; name = PUYODEL.EXE
+    file[]: crc = 59489993; size =      8225; name = PUYOED1.PR3
+    file[]: crc = f46bc352; size =     49983; name = PUYOED2.PR3
+    file[]: crc = 6a5b7989; size =       768; name = PUYOED3.COL
+    file[]: crc = bc70b651; size =     16678; name = PUYOED3.PR3
+    file[]: crc = cb193b62; size =        96; name = PUYOED_1.COL
+    file[]: crc = 31facb12; size =     14848; name = PUYOFON2.PR3
+    file[]: crc = 4999158b; size =      4423; name = PUYOFON2.PR4
+    file[]: crc = 4fa4f5ae; size =    203264; name = PUYOS.EXE
+    file[]: crc = d7dabc8a; size =     13538; name = QUEST.MID
+    file[]: crc = 899475f6; size =      7639; name = SARLE.DEM
+    file[]: crc = 1d09b6ca; size =     19753; name = SATA.PR3
+    file[]: crc = d38cb606; size =        48; name = SATA2.COL
+    file[]: crc = 56e9c531; size =      6852; name = SATA2.PR4
+    file[]: crc = 24c6efc5; size =      8594; name = SATAN.MID
+    file[]: crc = 3922c205; size =      6161; name = SATAN2.PR4
+    file[]: crc = a57b16ce; size =        96; name = SBG1.COL
+    file[]: crc = 057ac547; size =     21077; name = SBG1.PR4
+    file[]: crc = 35838be8; size =        96; name = SBG2.COL
+    file[]: crc = 2d7fd9de; size =     26284; name = SBG2.PR4
+    file[]: crc = 1773396a; size =     19946; name = SCOR.PR3
+    file[]: crc = 9e88a9d5; size =        48; name = SCOR2.COL
+    file[]: crc = 34e66e51; size =      6010; name = SCOR2.PR4
+    file[]: crc = 0355d6d5; size =       768; name = SCORE.COL
+    file[]: crc = 747cc512; size =    106175; name = SCORE.PR3
+    file[]: crc = 15f3df14; size =     33016; name = SCORE_F.PR3
+    file[]: crc = 1276a447; size =      9143; name = SCORE_F.PR4
+    file[]: crc = 2d58b8d5; size =       161; name = SCOREBAK.DAT
+    file[]: crc = 2d58b8d5; size =       161; name = SCOREDAT.DAT
+    file[]: crc = 322c1835; size =        96; name = SCORES.COL
+    file[]: crc = 030756bb; size =      6125; name = SDRAK.DEM
+    file[]: crc = 7377c946; size =      3058; name = SHARP.DEM
+    file[]: crc = baf7836d; size =     22819; name = SHEZ.PR3
+    file[]: crc = e08700fc; size =        48; name = SHEZ2.COL
+    file[]: crc = f2a0bd12; size =      7372; name = SHEZ2.PR4
+    file[]: crc = f380ebde; size =      3262; name = SHONE.DEM
+    file[]: crc = d3230b73; size =     19829; name = SKEL.PR3
+    file[]: crc = af781194; size =       768; name = SKEL2.COL
+    file[]: crc = f54f1366; size =      6998; name = SKEL2.PR4
+    file[]: crc = 6b40c59f; size =        96; name = SLASTBG.COL
+    file[]: crc = 49adf80d; size =     27692; name = SLASTBG.PR4
+    file[]: crc = e83cbaa9; size =      5205; name = SLULU.DEM
+    file[]: crc = e659f73c; size =      3376; name = SM_DRA.PR4
+    file[]: crc = c71ac6f7; size =      1412; name = SM_HAP.PR4
+    file[]: crc = 8030bb77; size =      4125; name = SM_LUL.PR4
+    file[]: crc = 62e99c0b; size =      3336; name = SM_MIN.PR4
+    file[]: crc = 5fe1e151; size =      2111; name = SM_MUMY.PR4
+    file[]: crc = c2fd1c6b; size =       940; name = SM_NAS.PR4
+    file[]: crc = 08ca29e1; size =      2919; name = SM_PANO.PR4
+    file[]: crc = 074d9965; size =      2345; name = SM_POTE.PR4
+    file[]: crc = b09cfe0e; size =      4438; name = SM_SAT.PR4
+    file[]: crc = 06d8fb84; size =      2855; name = SM_SAT0.PR4
+    file[]: crc = 289b243a; size =      2340; name = SM_SCO.PR4
+    file[]: crc = 55d35359; size =      4085; name = SM_SHE.PR4
+    file[]: crc = 6db390dc; size =      2758; name = SM_SKE.PR4
+    file[]: crc = 6588feef; size =      1486; name = SM_TARA.PR4
+    file[]: crc = 223e05dd; size =      2842; name = SM_WIT.PR4
+    file[]: crc = 6b3f06e3; size =      3544; name = SM_ZOH.PR4
+    file[]: crc = 6bed5793; size =      1438; name = SM_ZON.PR4
+    file[]: crc = d235c2e2; size =      5773; name = SMUMM.DEM
+    file[]: crc = 6e0cbee2; size =       699; name = SNASU.DEM
+    file[]: crc = ea4fecab; size =      2171; name = SORROW.MID
+    file[]: crc = 8842f3df; size =      5507; name = SPANO.DEM
+    file[]: crc = 516c55ef; size =      7148; name = SSATA.DEM
+    file[]: crc = 01a32d62; size =      5347; name = SSCOR.DEM
+    file[]: crc = a63faad0; size =     41330; name = SSCORE.PR4
+    file[]: crc = 82c6fbdd; size =      5616; name = SSHEZ.DEM
+    file[]: crc = b5ae80cd; size =      5373; name = SSUKI.DEM
+    file[]: crc = 8ea20917; size =       869; name = STAGE_C.MID
+    file[]: crc = 14d53039; size =      5783; name = STARA.DEM
+    file[]: crc = 2f262a3f; size =     21274; name = STICKER.MID
+    file[]: crc = 7bcfc959; size =        96; name = STITLE.COL
+    file[]: crc = 1ba40ca4; size =     39085; name = STITLE.PR4
+    file[]: crc = b7a489ac; size =     16200; name = SUKI.PR3
+    file[]: crc = 349443d4; size =      4332; name = SUKI2.PR4
+    file[]: crc = f1a069c6; size =       143; name = SUKIDAS.PR3
+    file[]: crc = 8d5567a3; size =     20937; name = SUNSET.MID
+    file[]: crc = e2e084b3; size =      5273; name = SUSHI.DEM
+    file[]: crc = 2b4e729c; size =      4374; name = SWITCH.DEM
+    file[]: crc = 4a0327ab; size =      5865; name = SZOMB.DEM
+    file[]: crc = 9f414425; size =      4175; name = SZOU.DEM
+    file[]: crc = c15d571d; size =     20746; name = TARA.PR3
+    file[]: crc = cb3071b2; size =        48; name = TARA2.COL
+    file[]: crc = 16ed396b; size =      6380; name = TARA2.PR4
+    file[]: crc = c63fde1e; size =     24658; name = THEME.MID
+    file[]: crc = 70196c2d; size =      2912; name = TIMEDLL.DLL
+    file[]: crc = 1fb9e2b0; size =    146500; name = TITLE.PR3
+    file[]: crc = 8bd9480e; size =     29618; name = TITLE.PR4
+    file[]: crc = addfc137; size =     18250; name = TOY.MID
+    file[]: crc = 3a7eff0a; size =     40779; name = TRY.PR3
+    file[]: crc = 618c170e; size =     13172; name = TRY.PR4
+    file[]: crc = 2a6fc1e3; size =       856; name = TRY2.PR4
+    file[]: crc = 63c320c1; size =     17679; name = VDORAKE.PR3
+    file[]: crc = 26448495; size =      9085; name = VHARP.PR3
+    file[]: crc = 9e3dd3f0; size =      8916; name = VHONE.PR3
+    file[]: crc = 5fe664b5; size =      3210; name = VICTORY.MID
+    file[]: crc = 50b3394d; size =     19095; name = VLULU.PR3
+    file[]: crc = 4844d768; size =     22866; name = VMINOTA.PR3
+    file[]: crc = 89edccc9; size =     16828; name = VMUMY.PR3
+    file[]: crc = d765fe09; size =      1982; name = VNASU.PR3
+    file[]: crc = 0a8ea68a; size =     15337; name = VPANO.PR3
+    file[]: crc = c43ec28d; size =     12510; name = VPODES.PR3
+    file[]: crc = ca575768; size =     18089; name = VSASOR.PR3
+    file[]: crc = 1a973a25; size =     26512; name = VSATA.PR3
+    file[]: crc = 98598ac9; size =     17155; name = VSHEZO.PR3
+    file[]: crc = 913e4509; size =     14648; name = VTARA.PR3
+    file[]: crc = 3fa39ca4; size =     12057; name = VWITCH.PR3
+    file[]: crc = 115eae25; size =     20183; name = VZOMB.PR3
+    file[]: crc = 701f6d08; size =     11485; name = VZOU.PR3
+    file[]: crc = a939be45; size =     10545; name = WARNING.MID
+    file[]: crc = fdbde23c; size =     42840; name = WINP.EXE
+    file[]: crc = f7c00599; size =     28119; name = WITC.PR3
+    file[]: crc = 3b5e35ad; size =        48; name = WITC2.COL
+    file[]: crc = eaf65266; size =      7840; name = WITC2.PR4
+    file[]: crc = 67685310; size =     28868; name = ZOMB.PR3
+    file[]: crc = d2865393; size =        48; name = ZOMB2.COL
+    file[]: crc = 5f268ce8; size =      8114; name = ZOMB2.PR4
+	EXENAME = puyo
+end
+
+end

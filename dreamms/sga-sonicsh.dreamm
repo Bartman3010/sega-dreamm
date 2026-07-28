@@ -42,7 +42,7 @@ script[sonic-init]:
 end
 
 //V1.1 System File
-CONFIGFILE = [[[$(CRLF)
+CONFIGFILESH = [[[$(CRLF)
 		[PATHS]
 		Tex=C:\Sega\Sonicsh\tex\
 		Wav=C:\Sega\Sonicsh\wav\
@@ -57,13 +57,13 @@ CONFIGFILE = [[[$(CRLF)
 	
 script[sonicsh-init]:
     code = [[[$(CRLF)
-        file_save("C:\\WINDOWS\\SONICSH.INI", "$$(CONFIGFILE)");
+        file_save("C:\\WINDOWS\\SONICSH.INI", "$$(CONFIGFILESH)");
     ]]]
 	
 end
 
 //05/16/1996 Prototype System File
-CONFIGFILE = [[[$(CRLF)
+CONFIGFILEAH = [[[$(CRLF)
 		[PATHS]
 		Tex=C:\Sega\Sonicsh\tex\
 		Wav=C:\Sega\Sonicsh\wav\
@@ -76,13 +76,13 @@ CONFIGFILE = [[[$(CRLF)
 	
 script[ah-init]:
     code = [[[$(CRLF)
-        file_save("C:\\WINDOWS\\AH.INI", "$$(CONFIGFILE)");
+        file_save("C:\\WINDOWS\\AH.INI", "$$(CONFIGFILEAH)");
     ]]]
 	
 end
 
 //To add Wavmix.ini for Prototype
-CONFIGFILE = [[[$(CRLF)
+CONFIGFILEWAV = [[[$(CRLF)
         [general]
         ShowDevices=0
 
@@ -103,7 +103,7 @@ CONFIGFILE = [[[$(CRLF)
 	
 script[wavmix-init]:
     code = [[[$(CRLF)
-        file_save("C:\\WINDOWS\\WAVEMIX.INI", "$$(CONFIGFILE)");
+        file_save("C:\\WINDOWS\\WAVEMIX.INI", "$$(CONFIGFILEWAV)");
     ]]]
 	
 end
