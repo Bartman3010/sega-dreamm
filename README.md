@@ -15,6 +15,9 @@ Supported Games:
 |Lose Your Marbles / Lose Your Marbles Enhanced Edition|Windows 95|US, US SEGA Puzzle Pack (Enhanced Edition)|
 |Manx TT Superbike|Windows 95|US|
 |Panzer Dragoon|Windows 95|US|
+|Puyo Puyo|Windows 3.1|JP|
+|Puyo Puyo 2|DOS, Windows 95|JP, KR|
+|Puyo Puyo Sun|Windows 95|JP, KR|
 |SEGA Puzzle Pack|Windows 95|US|
 |SEGA Smash Pack|Windows 95|US, US Expert Software, US Twin Pack (Activision)|
 |SEGA Smash Pack 2|Windows 95|US, US Twin Pack (Activision), EU, JP|
@@ -32,3 +35,9 @@ Supported Games:
 |Virtua Fighter PC|Windows 95|US|
 |Virtua Fighter 2|Windows 95|US, US Demo|
 |Yoot Tower|Windows 95|US|
+
+Contributors
+
+Bartman3010
+
+JeffCharizardFlame
