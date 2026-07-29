@@ -13,6 +13,7 @@ filter = nonlucas, action, sonic, sega
 audiohw = gmidi
 winres = 640x480x16
 EXENAME = RUNSONIC
+INIPATH = C:\\WINDOWS\\S3K.INI
 
 //INI Settings
 DEBUG = 0
@@ -42,13 +43,13 @@ end
 // game mode configuration
 //
 config[gamemode]:
-	title = Mode Select
+	title = Game Select
 		option[select]: name = Launcher; EXENAME = RUNSONIC; ISDEMO = 0
-		option[game1]: name = Sonic the Hedgehog 3; EXENAME = SONIC3K; SONICGAME = 2; ISDEMO = 0; condition = is_game()
-		option[game2]: name = Sonic & Knuckles; EXENAME = SONIC3K; SONICGAME = 1; ISDEMO = 0; condition = is_game()
-		option[game3]: name = Sonic 3 & Knuckles; EXENAME = SONIC3K; SONICGAME = 0; ISDEMO = 0; condition = is_game()
-		option[game4]:name = Sonic 3 & Knuckles (Demonstration) ; EXENAME = SONIC3K; SONICGAME = 0; ISDEMO = 1; condition = is_game()
-		option[game5]:name = Sonic 3 & Knuckles (Trial); EXENAME = SONIC3K; SONICGAME = 0; ISDEMO = 2
+		option[game1]: name = Sonic the Hedgehog 3; SONICGAME = 2; EXENAME = SONIC3K; ISDEMO = 0; condition = is_game()
+		option[game2]: name = Sonic & Knuckles; SONICGAME = 1; ISDEMO = 0; EXENAME = SONIC3K; condition = is_game()
+		option[game3]: name = Sonic 3 & Knuckles; SONICGAME = 0; ISDEMO = 0; EXENAME = SONIC3K; condition = is_game()
+		option[game4]: name = Sonic 3 & Knuckles [Demonstration] (Non-playable); SONICGAME = 0; ISDEMO = 1; EXENAME = SONIC3K; condition = is_game()
+		option[game5]: name = Sonic 3 & Knuckles [Trial]; SONICGAME = 0; ISDEMO = 2; EXENAME = SONIC3K
 		
 
 end
@@ -94,25 +95,25 @@ end
 //
 // System File
 //
-CONFIGFILE = [[[$(CRLF)
+INIFILE = [[[$(CRLF)
 		[Debug]
-		DebugMode="$$(DEBUG)"
-		EnableFrameDrop="$$(FRAMEDROP)"
+		DebugMode=$$(DEBUG)
+		EnableFrameDrop=$$(FRAMEDROP)
 		MukaiDropFrame=0
 		ShowFrameCount=0
 		EnableFrameCapture=0
 		UseModeX=0
 		NoSoundEffect=0
 		CDCheckEnable=0
-		SonicGameMode="$$(SONICGAME)"
+		SonicGameMode=$$(SONICGAME)
 		BGMMode=2
-		GameMode="$$(ISDEMO)"
-		LangMode="$$(LANGMODE)"
+		GameMode=$$(ISDEMO)
+		LangMode=$$(LANGMODE)
     ]]]
 	
-	script[init]:
+script[ini-init]:
 		code = [[[$(CRLF)
-			file_save("C:\\WINDOWS\\S3K.INI", "$$(CONFIGFILE)");
+			file_save("$$(INIPATH)", "$$(INIFILE)");
 		]]]
 		
 end
