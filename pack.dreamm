@@ -1,4 +1,4 @@
-pack[sega]:
-    name = SEGA PC V0.07.4
+pack[sega-dreamm-main]:
+    name = SEGA PC V0.08.3
     author = Bartman3010
 end
