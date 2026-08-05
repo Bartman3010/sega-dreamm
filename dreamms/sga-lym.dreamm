@@ -11,7 +11,7 @@ launch = "$(rootpath)\$(EXENAME).exe"
 osenv = windows 98
 filter = nonlucas, puzzle, netplay
 winres = 640x480x16
-audiohw = gmidi
+
 EXENAME = marbles
 
 //
@@ -19,7 +19,7 @@ EXENAME = marbles
 //
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
 // initialization script
@@ -32,11 +32,14 @@ script[init]:
 	
 end
 
-//config[cd]:
-//	title = Soundtrack
-//	option[soundtrack-cd]: name = CD Audio; dynamicfile[]: path = D:\; attributes = 8; contents = $(NULL)
-//	option[soundtrack-midi]: name = MIDI;  dynamicfile[]: path = $(NULL)
-//end
+config[exe]:
+	condition = file_exists("$$(rootpath)\\marbles95.exe") && file_exists("$$(rootpath)\\marbles98.exe")
+	title = Windows OS
+	option[standard]: name = Marbles; EXENAME = Marbles; osenv = windows 95
+	option[standard95]: name = Marbles 95; EXENAME = Marbles95; osenv = windows 95
+	option[standard98]: name = Marbles 98; EXENAME = Marbles98; osenv = windows 98
+	
+end
 
 //
 //Auto install Script
@@ -56,7 +59,7 @@ end
 //
 //Auto Installer for Enhanced Edition on SEGA Puzzle Pack
 //
-fragment[install-base-pp]:
+fragment[install-base-cd-pp]:
 	rootpath = D:\LYM
 	launch = D:\LYM\Setup.exe
 	AUTOINSTALL_SCRIPT = [[[$(CRLF)
@@ -65,7 +68,7 @@ fragment[install-base-pp]:
 		sleep(200); wincontrol_click(1); //Installing process goes here
 		sleep(600); wincontrol_click(1);
 		wait("wintitle", "Setup Complete");
-		//sleep(200); wincontrol_click(1);
+		sleep(200); wincontrol_click(1);
 	]]]
 
 	rootpath = C:\
@@ -89,12 +92,7 @@ fragment[install-base]:
 	rootpath = C:\
 end
 
-//
-// Lose Your Marbles Enhanced Edition
-//
-game[pc-cd-puzzlepack]:
-    name = English CD Enhanced Edition
-    anchorfile = marbles.exe
+fragment[puzzlepack]:
     file[]: crc = d000a32d; size =     17756; name = 16.wav
     file[]: crc = b6a50483; size =     23684; name = 2.wav
     file[]: crc = 6c1a5450; size =     16630; name = 32.wav
@@ -185,7 +183,6 @@ game[pc-cd-puzzlepack]:
     file[]: crc = 129c14e5; size =     90680; name = options.bmp
     file[]: crc = 1043de09; size =     40192; name = Over6.wav
     file[]: crc = 7504c78d; size =     14892; name = Poof.wav
-    file[]: crc = 3667d7bd; size =      5172; name = readme.txt
     file[]: crc = 66bf0116; size =     21420; name = Sad.wav
     file[]: crc = d9633535; size =      5708; name = Sadrpt.wav
     file[]: crc = d333e4c8; size =     89394; name = Scanin1.wav
@@ -211,9 +208,22 @@ game[pc-cd-puzzlepack]:
     file[]: crc = 6e257a6a; size =    227628; name = Victory.wav
     file[]: crc = 71ae23e6; size =    267282; name = Windout1.wav
     file[]: crc = 1b8cb7ac; size =     34180; name = Zoomin.wav
-	file[]: crc = 06bb1c31; size =       321; name = CD\AUTORUN.INF
-	file[]: name = CD\CDDA.SOU; cdda = 180/181/159/179/180/182/180/4	    
 	
+    file[]: crc = cd57f848; size =      6090; name = LYM.TXT	
+	
+end
+
+//
+// Lose Your Marbles Enhanced Edition
+//
+game[pc-cd-puzzlepack]:
+    name = English CD Enhanced Edition
+	imports = puzzlepack
+    anchorfile = marbles.exe
+
+	
+	file[]: name = CD\CDDA.SOU; cdda = 180/181/159/179/180/182/180/4	    
+
 end
 
 //
@@ -221,7 +231,7 @@ end
 //
 installer[pc-cd-4.70.00-install]:
 	name = English CD Installer, Puzzle Pack
-	imports = install-base-pp
+	imports = install-base-cd-pp
 	installid = pc-cd-puzzlepack
 	anchorfile = OTTO.EXE
 	anchordepth = 1
@@ -240,7 +250,9 @@ installer[pc-cd-4.70.00-install]:
     file[]: crc = fcdaf61b; size =     49152; name = CD\LYM\SETUP.EXE
     file[]: crc = 47f83f68; size =        70; name = CD\LYM\SETUP.INI; exactonly = true
     file[]: crc = 13b2f8df; size =     54436; name = CD\LYM\SETUP.INS; exactonly = true
-
+	file[]: crc = cd57f848; size =      6090; name = CD\LYM.TXT	
+	file[]: name = CD\CDDA.SOU; cdda = 180/181/159/179/180/182/180/4	
+	
 end
 
 
@@ -360,6 +372,8 @@ game[pc-1.0.0.5]:
     file[]: crc = 1b8cb7ac; size =     34180; name = ZOOMIN.WAV
 	
 	file[]: crc = b8c59c18; size =        43; name = CD\AUTORUN.INF
+	
+	audiohw = gmidi
 	
 end
 
