@@ -92,8 +92,8 @@ end
 //
 // Lose Your Marbles Enhanced Edition
 //
-game[pc-cd-4.70.00]:
-    name = Lose Your Marbles Enhanced Edition
+game[pc-cd-puzzlepack]:
+    name = English CD Enhanced Edition
     anchorfile = marbles.exe
     file[]: crc = d000a32d; size =     17756; name = 16.wav
     file[]: crc = b6a50483; size =     23684; name = 2.wav
@@ -208,12 +208,10 @@ game[pc-cd-4.70.00]:
     file[]: crc = f25a86bf; size =    308278; name = Trans4b.bmp
     file[]: crc = 857d3ddb; size =    308278; name = Trans5a.bmp
     file[]: crc = 5d9fce6f; size =    308278; name = Trans5b.bmp
-    file[]: crc = 4c48ad05; size =     20097; name = Uninst.isu
     file[]: crc = 6e257a6a; size =    227628; name = Victory.wav
     file[]: crc = 71ae23e6; size =    267282; name = Windout1.wav
     file[]: crc = 1b8cb7ac; size =     34180; name = Zoomin.wav
 	file[]: crc = 06bb1c31; size =       321; name = CD\AUTORUN.INF
-	file[]: crc = 47f83f68; size =        70; name = CD\LYM\SETUP.INI
 	file[]: name = CD\CDDA.SOU; cdda = 180/181/159/179/180/182/180/4	    
 	
 end
@@ -224,30 +222,30 @@ end
 installer[pc-cd-4.70.00-install]:
 	name = English CD Installer, Puzzle Pack
 	imports = install-base-pp
-	installid = pc-cd-4.70.00
+	installid = pc-cd-puzzlepack
 	anchorfile = OTTO.EXE
-
+	anchordepth = 1
 	file[]: crc = 38536c37; size =    286699; name = CD\LYM\_INST32I.EX_
     file[]: crc = 7f5d1745; size =      8704; name = CD\LYM\_ISDEL.EXE
     file[]: crc = b723bcb5; size =     11776; name = CD\LYM\_SETUP.DLL
-    file[]: crc = 7ab62f06; size =    188170; name = CD\LYM\_SYS1.CAB
-    file[]: crc = 890b960c; size =      8072; name = CD\LYM\_USER1.CAB
-    file[]: crc = c3333aa2; size =       120; name = CD\LYM\DATA.TAG
-    file[]: crc = 1776d0ac; size =   9761369; name = CD\LYM\DATA1.CAB
-    file[]: crc = e4b8ea7c; size =      4881; name = CD\LYM\LANGUAGE.DAT
-    file[]: crc = 128dbb32; size =       334; name = CD\LYM\LAYOUT.BIN
-    file[]: crc = ee1734bc; size =    308280; name = CD\LYM\O_SPLASH.BMP
-    file[]: crc = aaacab72; size =       958; name = CD\LYM\OS.DAT
+    file[]: crc = 7ab62f06; size =    188170; name = CD\LYM\_SYS1.CAB; exactonly = true
+    file[]: crc = 890b960c; size =      8072; name = CD\LYM\_USER1.CAB; exactonly = true
+    file[]: crc = c3333aa2; size =       120; name = CD\LYM\DATA.TAG; exactonly = true
+    file[]: crc = 1776d0ac; size =   9761369; name = CD\LYM\DATA1.CAB; exactonly = true
+    file[]: crc = e4b8ea7c; size =      4881; name = CD\LYM\LANGUAGE.DAT; exactonly = true
+    file[]: crc = 128dbb32; size =       334; name = CD\LYM\LAYOUT.BIN; exactonly = true
+    file[]: crc = ee1734bc; size =    308280; name = CD\LYM\O_SPLASH.BMP; exactonly = true
+    file[]: crc = aaacab72; size =       958; name = CD\LYM\OS.DAT; exactonly = true
     file[]: crc = 27b9d0b4; size =    164864; name = CD\LYM\OTTO.EXE
     file[]: crc = fcdaf61b; size =     49152; name = CD\LYM\SETUP.EXE
-    file[]: crc = 47f83f68; size =        70; name = CD\LYM\SETUP.INI
-    file[]: crc = 13b2f8df; size =     54436; name = CD\LYM\SETUP.INS
+    file[]: crc = 47f83f68; size =        70; name = CD\LYM\SETUP.INI; exactonly = true
+    file[]: crc = 13b2f8df; size =     54436; name = CD\LYM\SETUP.INS; exactonly = true
 
 end
 
 
 game[pc-1.0.0.5]:
-    name = Lose Your Marbles
+    name = English
     anchorfile = o_splash.bmp
     file[]: crc = d000a32d; size =     17756; name = 16.wav
     file[]: crc = b6a50483; size =     23684; name = 2.WAV
@@ -357,7 +355,6 @@ game[pc-1.0.0.5]:
     file[]: crc = f25a86bf; size =    308278; name = TRANS4B.BMP
     file[]: crc = 857d3ddb; size =    308278; name = TRANS5A.BMP
     file[]: crc = 5d9fce6f; size =    308278; name = TRANS5B.BMP
-    file[]: crc = c4c0d942; size =     20868; name = Uninst.isu
     file[]: crc = 6e257a6a; size =    227628; name = VICTORY.WAV
     file[]: crc = 71ae23e6; size =    267282; name = WINDOUT1.WAV
     file[]: crc = 1b8cb7ac; size =     34180; name = ZOOMIN.WAV

@@ -1,0 +1,66 @@
+//
+// SEGA Puzzle Pack
+//
+desc[sga-puzzle-col3]:
+
+name = SEGA Puzzle Pack: Columns III
+icon = sga-puzzlepack-col3.png
+machine = pc
+rootpath = C:\Sega\
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 98
+filter = nonlucas, puzzle
+winres = 640x480x16
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+mount[]: vpath = D:\Puzzle_Pack; srcpath = $(ifsinstallpath)\CD
+
+//
+// Columns 3
+//
+game[pc-cd-c3]:
+    name = English CD
+    anchorfile = Columns3.exe
+	anchordepth = 2
+    file[]: crc = edd9263d; size =    901120; name = Columns3.exe
+    file[]: crc = 5c6d10c4; size =     64188; name = Data\MainBlok.kml
+    file[]: crc = ee6d6d74; size =    137501; name = Data\SoundBlk.kml
+    file[]: crc = a3424f95; size =    524296; name = MyGames\Columns III.kvq
+    file[]:									  name = README.TXT
+    file[]:									  name = COLUMNS3.TXT
+	
+	//CD-ROM
+	file[]: crc = 06bb1c31; size =       321; name = CD\AUTORUN.INF
+	file[]: crc = 3bd87f21; size =        51; name = CD\COLUMNS3\SETUP.INI
+	file[]: crc = ef099df5; size =        72; name = CD\ROBOTNIK\SETUP.INI
+	EXENAME = Columns3
+end
+
+//
+// Columns 3 EXPERT Software
+//
+game[pc-cd-c3-expert]:
+    name = English CD EXPERT Software
+    anchorfile = Columns3.exe
+	anchordepth = 2
+    file[]: crc = edd9263d; size =    901120; name = Columns3.exe
+    file[]: crc = 5c6d10c4; size =     64188; name = Data\MainBlok.kml
+    file[]: crc = ee6d6d74; size =    137501; name = Data\SoundBlk.kml
+    file[]: crc = a3424f95; size =    524296; name = MyGames\Columns III.kvq
+    file[]:								   	  name = README.TXT
+    file[]: 								  name = COLUMNS3.TXT
+    file[]: crc = 2dc7323b; size =    231082; name = Puzzle.pdf	
+	
+	//CD-ROM
+    file[]: crc = 7eb4fdc4; size =       450; name = CD\AUTORUN.INF
+    file[]: crc = 3bd87f21; size =        51; name = CD\COLUMNS3\SETUP.INI
+    file[]: crc = ef099df5; size =        72; name = ROBOTNIK\SETUP.INI
+	EXENAME = Columns3
+end
+
+end

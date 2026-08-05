@@ -1,0 +1,69 @@
+//
+// SEGA Puzzle Pack
+//
+desc[sga-puzzle-mbm]:
+
+name = SEGA Puzzle Pack: Dr. Robotnik's Mean Bean Machine
+icon = sga-puzzlepack-mbm.png
+machine = pc
+rootpath = C:\Sega\
+launch = "$(rootpath)\$(EXENAME).exe"
+osenv = windows 98
+filter = nonlucas, puzzle
+winres = 640x480x16
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+mount[]: vpath = D:\Puzzle_Pack; srcpath = $(ifsinstallpath)\CD
+
+
+//
+// Dr. Robotnik's Mean Bean Machine
+//
+game[pc-cd-mbm]:
+    name = English CD
+    anchorfile = Robotnik.exe
+	anchordepth = 2
+    file[]: crc = 88ed5662; size =    901120; name = Robotnik.exe
+    file[]: crc = 5c6d10c4; size =     64188; name = Data\MainBlok.kml
+    file[]: crc = ee6d6d74; size =    137501; name = Data\SoundBlk.kml
+    file[]: crc = 41cf6ef2; size =   1048584; name = MyGames\Dr. Robotnik's Mean Bean Machine.kvq
+    file[]:									  name = ROBOTNIK.TXT
+    file[]:									  name = README.TXT
+	
+	//CD-ROM
+	file[]: crc = 06bb1c31; size =       321; name = CD\AUTORUN.INF
+	file[]: crc = 3bd87f21; size =        51; name = CD\COLUMNS3\SETUP.INI
+	file[]: crc = ef099df5; size =        72; name = CD\ROBOTNIK\SETUP.INI
+
+	EXENAME = Robotnik
+end
+
+//
+// Dr. Robotnik's Mean Bean Machine - CD EXPERT Software
+//
+game[pc-cd-mbm-expert]:
+    name = English CD EXPERT Software
+    anchorfile = Robotnik.exe
+	anchordepth = 2
+    file[]: crc = 88ed5662; size =    901120; name = Robotnik.exe
+    file[]: crc = 5c6d10c4; size =     64188; name = Data\MainBlok.kml
+    file[]: crc = ee6d6d74; size =    137501; name = Data\SoundBlk.kml
+    file[]: crc = 41cf6ef2; size =   1048584; name = MyGames\Dr. Robotnik's Mean Bean Machine.kvq
+    file[]:									  name = ROBOTNIK.TXT
+    file[]:									  name = README.TXT
+    file[]: crc = 2dc7323b; size =    231082; name = Puzzle.pdf	
+	
+	//CD-ROM
+    file[]: crc = 7eb4fdc4; size =       450; name = CD\AUTORUN.INF
+	file[]: crc = 3bd87f21; size =        51; name = CD\COLUMNS3\SETUP.INI
+	file[]: crc = ef099df5; size =        72; name = CD\ROBOTNIK\SETUP.INI
+
+	EXENAME = Robotnik
+end
+
+end
