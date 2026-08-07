@@ -3,8 +3,9 @@ Supported Games:
 | Games          | Platforms  | Region/Version |
 |----------------|:----------:|-------:|
 |Baku Baku Animal|Windows 95| US, US Sonic & Garfield Pack|
-|Bug!|Windows 3.1, Windows 95 |US, EU|
+|Bug!|Windows 3.1, Windows 95|US, EU|
 |Bug Too!|Windows 95|US, EU|
+|Comix Zone|Windows 3.1, Windows 95|US|
 |Cyber Troopers - Virtual On|Windows 95|US|
 |Daytona USA| Windows 95|US|
 |Daytona USA Deluxe|Windows 95|US, US Special Edition|
