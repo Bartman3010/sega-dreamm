@@ -14,7 +14,7 @@ Supported Games:
 |Last Bronx|Windows 95|US, EU|
 |Lose Your Marbles / Lose Your Marbles Enhanced Edition|Windows 95|US, US SEGA Puzzle Pack (Enhanced Edition)|
 |Manx TT Superbike|Windows 95|US|
-|Panzer Dragoon|Windows 95|US|
+|Panzer Dragoon|Windows 95|US, EU, JP|
 |Puyo Puyo|Windows 3.1|JP|
 |Puyo Puyo 2|DOS, Windows 95|JP, KR|
 |Puyo Puyo Sun|Windows 95|JP, KR, Demo, Demo (No Voices)|
