@@ -194,21 +194,6 @@ game[pc-cd-en]:
 end
 
 //
-// Baku Baku Animal US Sonic & Garfield Pack English
-//
-game[pc-cd-songar-en]:
-    name = English CD Sonic & Garfield Pack
-	imports = common, pc-cd-en
-    anchorfile = STUFF_1.MID
-	anchordepth = 2
-    file[]: crc = 521efc90; size =     22474; name = MID\STUFF_1.MID
-	CDID = Sega_3in1
-	
-	//locale = en_US
-	
-end
-
-//
 // Baku Baku Animal US CD French
 //
 game[pc-cd-fr]:
@@ -221,22 +206,6 @@ game[pc-cd-fr]:
 	//CD-ROM
     file[]: crc = a3018f05; size =       766; name = CD\BAKU.ICO
 	CDID = BAKU_PC
-	
-	locale = fr-FR
-	
-end
-
-
-//
-// Baku Baku Animal US Sonic & Garfield Pack French
-//
-game[pc-cd-songar-fr]:
-    name = French CD Sonic & Garfield Pack
-	imports = common, pc-cd-fr
-    anchorfile = STUFF_1.MID
-	anchordepth = 2
-    file[]: crc = 521efc90; size =     22474; name = MID\STUFF_1.MID
-	CDID = Sega_3in1
 	
 	locale = fr-FR
 	
@@ -255,21 +224,6 @@ game[pc-cd-ge]:
 	//CD-ROM
     file[]: crc = a3018f05; size =       766; name = CD\BAKU.ICO
 	CDID = BAKU_PC
-	
-	locale = de-DE
-	
-end
-
-//
-// Baku Baku Animal US Sonic & Garfield Pack German
-//
-game[pc-cd-songar-ge]:
-    name = German CD Sonic & Garfield Pack
-	imports = common, pc-cd-ge
-    anchorfile = STUFF_1.MID
-	anchordepth = 2
-    file[]: crc = 521efc90; size =     22474; name = MID\STUFF_1.MID
-	CDID = Sega_3in1
 	
 	locale = de-DE
 	
@@ -295,21 +249,6 @@ game[pc-cd-jp]:
 end
 
 //
-// Baku Baku Animal US Sonic & Garfield Pack Japanese
-//
-game[pc-cd-songar-jp]:
-    name = Japanese CD Sonic & Garfield Pack
-	imports = common, pc-cd-jp
-    anchorfile = STUFF_1.MID
-	anchordepth = 2
-    file[]: crc = 521efc90; size =     22474; name = MID\STUFF_1.MID
-	CDID = Sega_3in1
-	
-	locale = ja-JP
-	
-end
-
-//
 // Baku Baku Animal US CD Spanish
 //
 game[pc-cd-sp]:
@@ -322,21 +261,6 @@ game[pc-cd-sp]:
 	//CD-ROM
     file[]: crc = a3018f05; size =       766; name = CD\BAKU.ICO
 	CDID = BAKU_PC
-	
-	locale = es-ES_tradnl
-	
-end
-
-//
-// Baku Baku Animal US Sonic & Garfield Pack Spanish
-//
-game[pc-cd-songar-sp]:
-    name = Spanish CD Sonic & Garfield Pack
-	imports = common, pc-cd-sp
-    anchorfile = STUFF_1.MID
-	anchordepth = 2
-    file[]: crc = 521efc90; size =     22474; name = MID\STUFF_1.MID
-	CDID = Sega_3in1
 	
 	locale = es-ES_tradnl
 	
