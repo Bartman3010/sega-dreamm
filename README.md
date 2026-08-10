@@ -23,6 +23,7 @@ Supported Games:
 |SEGA Smash Pack|Windows 95|US, US Expert Software, US Twin Pack (Activision)|
 |SEGA Smash Pack 2|Windows 95|US, US Twin Pack (Activision), EU, JP|
 |SEGA Swirl|Windows 95|US|
+|SEGA Touring Car Championship|Windows 95|US|
 |Sonic & Knuckles Collection|Windows 95|US, US Sonic & Garfield Pack, EU, CH, JP, US Demo, EU Demo (Sonic Dancepower)|
 |Sonic 3D Blast / Sonic 3D Flickies' Island|Windows 95|US, EU, CH, US Demo|
 |Sonic CD|Windows 95|US, JP, US Demo|
