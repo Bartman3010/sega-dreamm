@@ -8,7 +8,7 @@ icon = sga-sonicss.png
 machine = pc
 filter = nonlucas, multimedia
 rootpath = C:\Sega\SonicSS
-launch = "$(rootpath)\$(EXENAME).$(CMDEXT)"
+launch = "$(rootpath)\SONICSS.SCR"
 osenv = windows 95
 winres = 640x480x32
 EXENAME = SCRNSVR
@@ -34,15 +34,34 @@ fragment[icon]:
 end
 
 //
-// exe select, command line config
+// Advanced Settings
 //
-config[cmdline]:
-	title = Mode Select
-	option[scrnsvr]: name = Run Screen Saver; EXENAME = SONICSS; CMDEXT = SCR; CMDLINE = /s; PGRMMODE = SSAVER; condition = file_exists("$$(rootpath)\\SCRNSVR.EXE")
-	option[editor]: name = Screen Saver Editor; EXENAME = SONICSS; CMDEXT = SCR; CMDLINE = /c; PGRMMODE = GALLERY; winres =  640x480;  WIDTH =  640; HEIGHT = 480; condition = file_exists("$$(rootpath)\\SCRNSVR.EXE")
-	option[bgm]: name = BGM File; EXENAME = SCRNSVR; CMDEXT = EXE; CMDLINE = S; PGRMMODE = GALLERY; winres =  640x480;  WIDTH =  640; HEIGHT = 480; condition = file_exists("$$(rootpath)\\SCRNSVR.EXE"); condition = ("$$(ISDEMO)" == "FALSE")
-	option[icon]: name = Icon Gallery; EXENAME = SCRNSVR; CMDEXT = EXE; CMDLINE = I; PGRMMODE = GALLERY; winres =  640x480;  WIDTH =  640; HEIGHT = 480; condition = file_exists("$$(rootpath)\\SCRNSVR.EXE"); condition = ("$$(ISDEMO)" == "FALSE")
-	option[pict]: name = Picture; EXENAME = SCRNSVR; CMDEXT = EXE; CMDLINE = W; PGRMMODE = GALLERY; winres =  640x480;  WIDTH =  640; HEIGHT = 480; condition = file_exists("$$(rootpath)\\SCRNSVR.EXE"); condition = ("$$(ISDEMO)" == "FALSE")
+configutil[]:
+	condition = file_exists("$$(rootpath)\\SCRNSVR.EXE")
+	name = Screen Saver Editor; winres =  640x480;  WIDTH =  640; HEIGHT = 480
+	launch = "$(rootpath)\SONICSS.SCR /c"
+
+end
+
+configutil[]:
+	condition = ("$$(ISDEMO)" == "FALSE")
+	name = BGM File; winres =  640x480;  WIDTH =  640; HEIGHT = 480
+	launch = $(rootpath)\SCRNSVR.EXE S
+	
+end
+
+configutil[]:
+	condition = ("$$(ISDEMO)" == "FALSE")
+	name = Icon Gallery; winres = 640x480; WIDTH =  640; HEIGHT = 480
+	launch = $(rootpath)\SCRNSVR.EXE I
+	
+end
+
+configutil[]:
+	condition = ("$$(ISDEMO)" == "FALSE")
+	name = Picture; winres = 640x480; WIDTH =  640; HEIGHT = 480
+	launch = $(rootpath)\SCRNSVR.EXE W
+	
 end
 
 //
@@ -50,11 +69,11 @@ end
 //
 config[vidsize]:
     title = Video Resolution
-    option[640]:  name =  640×480;  winres =  640x480;  WIDTH =  640; HEIGHT = 480;  priority = 1; condition = ("$$(PGRMMODE)" == "SSAVER") 
-    option[800]:  name =  800×600;  winres =  800x600;  WIDTH =  800; HEIGHT = 600; condition = ("$$(PGRMMODE)" == "SSAVER") 
-    option[1024]: name = 1024×768;  winres = 1024x768;  WIDTH = 1024; HEIGHT = 768; condition = ("$$(PGRMMODE)" == "SSAVER")
-    option[1280]: name = 1280×960;  winres = 1280x960;  WIDTH = 1280; HEIGHT = 960;  condition = ("$$(PGRMMODE)" == "SSAVER") 
-    option[1600]: name = 1600x1200; winres = 1600x1200; WIDTH = 1600; HEIGHT = 1200;  condition = ("$$(PGRMMODE)" == "SSAVER") 
+    option[640]:  name =  640×480;  winres =  640x480;  WIDTH =  640; HEIGHT = 480
+    option[800]:  name =  800×600;  winres =  800x600;  WIDTH =  800; HEIGHT = 600
+    option[1024]: name = 1024×768;  winres = 1024x768;  WIDTH = 1024; HEIGHT = 768
+    option[1280]: name = 1280×960;  winres = 1280x960;  WIDTH = 1280; HEIGHT = 960
+    option[1600]: name = 1600x1200; winres = 1600x1200; WIDTH = 1600; HEIGHT = 1200
 end
 
 //
@@ -62,8 +81,8 @@ end
 //
 config[video]:
     title = Video Configuration
-    option[window]:  name = Cropped to Window; wincrop = true; priority = 1; condition = ("$$(PGRMMODE)" == "GALLERY") 
-    option[desktop]: name = Full Desktop;      wincrop = false; condition = ("$$(PGRMMODE)" == "GALLERY") 
+    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
+    option[desktop]: name = Full Desktop;      wincrop = false
 end
 
 //

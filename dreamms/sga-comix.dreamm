@@ -12,6 +12,7 @@ osenv = windows 95
 audiohw = gmidi
 winres = 640x480x8
 filter = nonlucas
+INIPATH = C:\\WINDOWS\\WIN.INI
 
 //
 // filesystem
@@ -48,12 +49,27 @@ config[sound]:
 end
 
 //
+// System File
+//
+INIFILE = [[[$(CRLF)
+	[Comix]
+	path=C:\Sega\COMIX
+	files=D:\
+	
+]]]
+script[ini-init]:
+	code = [[[$(CRLF)
+		file_save("$$(INIPATH)", "$$(INIFILE)");
+	]]]
+
+end
+
+//
 //Auto Installer for Enhanced Edition on SEGA Puzzle Pack
 //
 fragment[install-base]:
 	rootpath = D:\
 	launch = D:\Setup.exe
-
 
 	rootpath = C:\
 end
