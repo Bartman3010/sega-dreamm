@@ -15,11 +15,28 @@ EXENAME = SCRNSVR
 CMDEXT = EXE
 PGRMMODE = SSAVER
 ISDEMO = FALSE
+locale = ja-JP
+INIPATH = $$(rootpath)\SONICSS\SCRNSVR.INI
+
 //
 // filesystem
 //
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = C:\Sega\SONICSS\SONICSS
+
+//
+// System File
+//
+INIFILE = [[[$(CRLF)
+DefDir=$(rootpath)
+DataFile=$(rootpath)\S3L.BSS	
+]]]
+script[ini-init]:
+	code = [[[$(CRLF)
+		file_save("$$(INIPATH)", "$$(INIFILE)");
+	]]]
+
+end
 
 fragment[picture]:
 
@@ -39,7 +56,7 @@ end
 configutil[]:
 	condition = file_exists("$$(rootpath)\\SCRNSVR.EXE")
 	name = Screen Saver Editor; winres =  640x480;  WIDTH =  640; HEIGHT = 480
-	launch = "$(rootpath)\SONICSS.SCR /c"
+	launch = $(rootpath)\SONICSS.SCR /c
 
 end
 

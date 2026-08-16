@@ -7,7 +7,7 @@ name = The House of the Dead
 icon = sga-thotd.png
 machine = pc
 rootpath = C:\Sega\THOTD
-launch = $(rootpath)\$(EXENAME).exe $(CMDLINE_GFX) $(CMDLINE_CD)
+launch = "$$(rootpath)\\$$(EXENAME).exe" $$(CMDLINE_GFX) $$(CMDLINE_CD)
 osenv = windows 98
 winres = 640x480x16
 filter = nonlucas
@@ -88,13 +88,14 @@ REGISTRY = [[[$(CRLF)
 		REGEDIT4
 		[HKEY_LOCAL_MACHINE\SOFTWARE\sega\The House Of The Dead]
 		"bloodcolor"="$$(REGBLOOD)"
-		"file"="$$(rootpath)\\$(EXENAME).exe"
+		"file"="$(rootpath)\$(EXENAME).exe"
 		"language"="$$(REGLANGUAGE)"
-		"path"="$$(rootpath)"
-		"RunD3D"="$$(rootpath)\\$(EXENAME).exe\\"-d3d"\\$(CMDLINE_CD)"
-		"RunD3DSetup"="$$(rootpath)\\$(EXENAME).exe\\"-d3d -d3d_setup"\\$(CMDLINE_CD)"
-		"RunNative"="$$(rootpath)\\$(EXENAME).exe\\"-ddraw"\\$(CMDLINE_CD)"
+		"path"="$(rootpath)"
+		"RunD3D"="$(rootpath)\$(EXENAME).exe\ $(CMDLINE_CD) -d3d"
+		"RunD3DSetup"="$(rootpath)\$(EXENAME).exe\ $(CMDLINE_CD) -d3d -d3d_setup"
+		"RunNative"="$(rootpath)\$(EXENAME).exe\ $(CMDLINE_CD) -ddraw"
 		[HKEY_LOCAL_MACHINE\SOFTWARE\sega\The House Of The Dead\1.0]
+		@=
 	]]]
 script[init]:
     code = [[[$(CRLF)

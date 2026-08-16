@@ -29,8 +29,6 @@ LANGMODE = 0
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
-
-
 //
 // show warning for debug mode keys
 //
