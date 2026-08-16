@@ -20,6 +20,7 @@ Supported Games:
 |Puyo Puyo 2|DOS, Windows 95|JP, KR|
 |Puyo Puyo Sun|Windows 95|JP, KR, Demo, Demo (No Voices)|
 |SEGA Puzzle Pack|Windows 95|US|
+|SEGA Rally Championship|Windows 95|US|
 |SEGA Smash Pack|Windows 95|US, US Expert Software, US Twin Pack (Activision)|
 |SEGA Smash Pack 2|Windows 95|US, US Twin Pack (Activision), EU, JP|
 |SEGA Swirl|Windows 95|US|
