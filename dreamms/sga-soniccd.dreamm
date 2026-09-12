@@ -13,6 +13,8 @@ filter = nonlucas, action, sonic
 winres = 640x480x8
 EXENAME = soniccd
 CDID = SONICPC
+DEBUGGER = ""
+
 //
 // filesystem
 //
@@ -20,16 +22,68 @@ mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
+
+
+//
+// INIFILE
+//
+script[ini-init]:
+    code = [[[$(CRLF)
+	file_save("C:\\WINDOWS\\SONIC.INI",
+	"`s:[Directory]\n",
+	"`s:InstallPath=`s:$$(rootpath)",
+	"`s:\nExePath=`s:$$(rootpath)",
+	"`s:\nInstall=`s:$$(rootpath)",
+	"`s:\nPlay=`s:$$(rootpath)",
+	"`s:\n[Secret]\n",
+	"`s:\nUser=`s:$$(DEBUGGER)");
+	
+	]]]
+
+end
+
+REGISTRY = [[[$(CRLF)
+REGEDIT4
+[HKEY_LOCAL_MACHINE\Software\SonicCD]
+@=
+[HKEY_LOCAL_MACHINE\Software\SonicCD\InstallPath]
+@="$$(rootpath)"
+[HKEY_LOCAL_MACHINE\Software\SonicCD\ExePath]
+@="$$(rootpath)"
+[HKEY_LOCAL_MACHINE\Software\SonicCD\Install]
+@="$$(rootpath)"
+[HKEY_LOCAL_MACHINE\Software\SonicCD\Play]
+@="$$(rootpath)"
+[HKEY_LOCAL_MACHINE\Software\SonicCD\User]
+@="Debugger"
+]]]
+
 //
 // initialization script
 //
 script[init]:
     code = [[[$(CRLF)
-	        // set the volume label on the CD
+        // set the volume label on the CD
         drive_set_label("D", "$$(CDID)");
+		
+		winregistry_import_raw("$$(REGISTRY)");
 	]]]
 	
 end
+
+//
+// Debugger
+//
+config[debugger-arg]:
+	condition = is_game()
+    title = Game Mode
+    option[off]:  name = Original Mode; DEBUGGER = ""; priority = 1
+	option[fujiwara]: name = Ring Keep Mode (Fujiwara); DEBUGGER = Fujiwara
+    option[debugger]: name = Stage Select & Debug (Debugger); DEBUGGER = Debugger
+	option[satoh]: name = Stage Select & Debug Advanced (Satoh); DEBUGGER = Satoh
+
+end
+	
 //
 // video configuration
 //
@@ -37,6 +91,24 @@ config[video]:
     title = Video Configuration
     option[window]:  name = Cropped to Window; wincrop = true; priority = 1
     option[desktop]: name = Full Desktop;      wincrop = false
+end
+
+//
+// warning for ring keep mode
+//
+warning[ringkeep]:
+condition = is_game()
+    text = Ring Keep Mode allows Sonic to keep half of his rings, while appearing to drop all of them, when taking damage. This will affect save data!
+	
+end
+
+//
+// for stage select and debug
+//
+warning[debugmode]:
+condition = is_game()
+    text = Stage Select & Debug Modes allow to select any level in the game as well as activate debug features. Some will not function or cause odd behavior in game. This will affect save data!
+	
 end
 
 fragment[common]:
@@ -760,7 +832,7 @@ end
 // SEGA Entertainment US Original Release
 //
 game[pc-cd-en]:
-    name = English Version 1.0
+    name = English CD PC V1.0
 	imports = common, retail-us
     anchorfile = soniccd.exe
 	anchordepth = 3
@@ -779,7 +851,7 @@ end
 // Expert Software Release
 //
 game[pc-cd-en-expert]:
-    name = Version 1.0 Expert Software
+    name = English CD PC V1.0 Expert Software
 	imports = common, retail-us, pc-cd-en
     anchorfile = SonicCD.pdf
 	anchordepth = 2
@@ -798,7 +870,7 @@ end
 // SEGA Entertainment Japan Re-release
 //
 game[pc-cd-jp]:
-	name = Japanese Version 1.0
+	name = Japanese CD PC V1.0
 	imports = common, retail-jp
 	anchorfile = soniccd.exe
 	anchordepth = 3
@@ -812,13 +884,15 @@ game[pc-cd-jp]:
 
 	CDID = SONICCD
 	
+	locale = ja-JP
+	
 end
 
 //
 // English US Pentium Processor Edition V1.0
 //
 game[pc-cd-en-oem-1.00]:
-    name = English Pentium Processor Edition V1.00
+    name = English CD Pentium Processor Edition V1.00
 	imports = common, oem
     anchorfile = DINOWAVE.DLL
 	anchordepth = 1
@@ -914,7 +988,7 @@ end
 // English US Pentium Processor Edition V1.01
 //
 game[pc-cd-en-oem-1.01]:
-    name = English Pentium Processor Edition V1.01
+    name = English CD Pentium Processor Edition V1.01
 	imports = common, oem
     anchorfile = SONICCD.EXE
 	anchordepth = 1
@@ -1225,6 +1299,8 @@ demo[pc-cd-fr-demo-cd]:
     file[]: crc = 03a0e8dd; size =     19968; name = TITLE\AVIOPEN\AVIOPEN.DLL
     file[]: crc = dfebcf4c; size =     35918; name = TITLE\BMP\OPNAVI\OPWP.BMP
 	
+	locale = fr-FR
+	
 end
 
 demo[pc-cd-ge-demo-cd]:
@@ -1239,6 +1315,8 @@ demo[pc-cd-ge-demo-cd]:
     file[]: crc = 0abcd88f; size =  19846094; name = TITLE\AVI\OPN.AVI
     file[]: crc = 03a0e8dd; size =     19968; name = TITLE\AVIOPEN\AVIOPEN.DLL
     file[]: crc = dfebcf4c; size =     35918; name = TITLE\BMP\OPNAVI\OPWP.BMP
+	
+	locale = de-DE
 	
 end
 
@@ -1270,6 +1348,7 @@ demo[pc-cd-sp-demo-cd]:
     file[]: crc = 03a0e8dd; size =     19968; name = TITLE\AVIOPEN\AVIOPEN.DLL
     file[]: crc = dfebcf4c; size =     35918; name = TITLE\BMP\OPNAVI\OPWP.BMP
 	
+	locale = es-ES_tradnl
 end
 
 demo[pc-cd-en-demo]:
@@ -1295,6 +1374,8 @@ demo[pc-cd-jp-demo]:
 	file[]: crc = 348325C7; size =       378; name = MESSAGE.TXT
 	file[]: crc = 2D1AB93C; size =      1876; name = SONIC.CNT
 	file[]: crc = A40236E9; size =    631838; name = SONIC.HLP
+	
+	locale = ja-JP
 end
 
 end
