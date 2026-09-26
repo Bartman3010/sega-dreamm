@@ -22,9 +22,21 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
-// dynamic files
+// Registry Information
 //
-//dynamicfile[]: path = D:\$(CDID); attributes = 8; contents = $(NULL)
+REGISTRY = [[[$(CRLF)
+REGEDIT4
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe\Profile\D3DOPTIONS]
+@=
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe\Profile\JoystickSettings]
+@=
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe\Profile\KeyboardSettings]
+@=
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe\Profile\System]
+@=
+[HKEY_CURRENT_USER\Software\SEGA\DAYTONA USA Deluxe\Profile\Hidden]
+@=
+]]]
 
 //
 // initialization script
@@ -33,10 +45,10 @@ script[init]:
     code = [[[$(CRLF)
 	        // set the volume label on the CD
         drive_set_label("D", "$$(CDID)");
+		winregistry_import_raw("$$(REGISTRY)");
 	]]]
 	
 end
-
 
 //
 // Common Retail Files
@@ -2700,6 +2712,806 @@ fragment[common]:
 	
 end
 
+
+fragment[sample]:
+    file[]: crc = cf05c4e4; size =   1082880; name = GAME\DAYTONA USA Deluxe Demo CD.exe
+    file[]: crc = 3e9e3437; size =    122880; name = GAME\ddse.dll
+    file[]: crc = 1f7fbbec; size =     94720; name = GAME\dpctrl.dll
+    file[]: crc = 6418bf7f; size =     52224; name = GAME\DXERROR.dll
+    file[]: crc = a9240e38; size =    129536; name = GAME\Resource.dll
+    file[]: crc = 0645b3fb; size =    122368; name = GAME\WINCPUID.DLL
+    file[]: crc = 8e32ed82; size =   2564792; name = GAME\Resource\22_8_mo00.bin
+    file[]: crc = 319dc5c2; size =   1551394; name = GAME\Resource\22_8_mo01.bin
+    file[]: crc = 1f109766; size =   3135488; name = GAME\Resource\22_8_st00.bin
+    file[]: crc = 319dc5c2; size =   1551394; name = GAME\Resource\22_8_st01.bin
+    file[]: crc = b09f2310; size =   1030129; name = GAME\Resource\8_8_mo00.bin
+    file[]: crc = 73d4bbd4; size =    623339; name = GAME\Resource\8_8_mo01.bin
+    file[]: crc = fde2c3a8; size =   1258357; name = GAME\Resource\8_8_st00.bin
+    file[]: crc = 73d4bbd4; size =    623339; name = GAME\Resource\8_8_st01.bin
+    file[]: crc = 28f3c09d; size =      5780; name = GAME\Resource\carefc.mdl
+    file[]: crc = 604f0fd5; size =      6598; name = GAME\Resource\carefc.tex
+    file[]: crc = 7edebcd0; size =    308278; name = GAME\Resource\Chat.bmp
+    file[]: crc = 366855d6; size =     13657; name = GAME\Resource\cmvdata.bin
+    file[]: crc = fd4ef783; size =    104339; name = GAME\Resource\course0.mdl
+    file[]: crc = 846a2ddc; size =    190830; name = GAME\Resource\course0.tex
+    file[]: crc = 85779e85; size =    223674; name = GAME\Resource\course1.mdl
+    file[]: crc = 8391033b; size =    217169; name = GAME\Resource\course1.tex
+    file[]: crc = 5c4088cd; size =    341763; name = GAME\Resource\course2.mdl
+    file[]: crc = 34bc59d6; size =    180127; name = GAME\Resource\course2.tex
+    file[]: crc = 8c59941c; size =    175765; name = GAME\Resource\course3.mdl
+    file[]: crc = d5899020; size =    127750; name = GAME\Resource\course3.tex
+    file[]: crc = b0e27061; size =    196770; name = GAME\Resource\course4.mdl
+    file[]: crc = 601bff91; size =    229327; name = GAME\Resource\course4.tex
+    file[]: crc = 85bd02a5; size =    155431; name = GAME\Resource\course5.mdl
+    file[]: crc = e144adaa; size =    264473; name = GAME\Resource\course5.tex
+    file[]: crc = f2b24443; size =     16783; name = GAME\Resource\cs0_1.blk
+    file[]: crc = d87b8248; size =     16933; name = GAME\Resource\cs0_2.blk
+    file[]: crc = b1ea3668; size =     65413; name = GAME\Resource\cs0_2.mdl
+    file[]: crc = 0ec15029; size =     64226; name = GAME\Resource\cs0_2.tex
+    file[]: crc = 752bc445; size =     16773; name = GAME\Resource\cs0_blk.bin
+    file[]: crc = 4a9a3524; size =     50492; name = GAME\Resource\cs0_col.bin
+    file[]: crc = 3a874943; size =       411; name = GAME\Resource\cs0obj.mdl
+    file[]: crc = 302ff3e8; size =      2449; name = GAME\Resource\cs0obj.tex
+    file[]: crc = 39e02a2e; size =    146686; name = GAME\Resource\cs12_col.bin
+    file[]: crc = 6c022078; size =     17728; name = GAME\Resource\cs1_1.blk
+    file[]: crc = 8cffa67e; size =     17726; name = GAME\Resource\cs1_2.blk
+    file[]: crc = 6e623eac; size =    167473; name = GAME\Resource\cs1_2.mdl
+    file[]: crc = 4caf86b8; size =    134613; name = GAME\Resource\cs1_2.tex
+    file[]: crc = 154bb50a; size =     17725; name = GAME\Resource\cs1_blk.bin
+    file[]: crc = d2d7bf55; size =    146712; name = GAME\Resource\cs1_col.bin
+    file[]: crc = 7ab7c4a0; size =      1871; name = GAME\Resource\cs1obj.mdl
+    file[]: crc = 77bed440; size =      4537; name = GAME\Resource\cs1obj.tex
+    file[]: crc = 69d3feea; size =     34335; name = GAME\Resource\cs2_1.blk
+    file[]: crc = 12ba6718; size =     34038; name = GAME\Resource\cs2_2.blk
+    file[]: crc = 18ff49c9; size =    291257; name = GAME\Resource\cs2_2.mdl
+    file[]: crc = 8522574a; size =     65510; name = GAME\Resource\cs2_2.tex
+    file[]: crc = 0685f7bb; size =     34333; name = GAME\Resource\cs2_blk.bin
+    file[]: crc = 1e337f2e; size =    342875; name = GAME\Resource\cs2_col.bin
+    file[]: crc = 021cfe06; size =     13753; name = GAME\Resource\cs2obj.mdl
+    file[]: crc = f1c37e22; size =      5676; name = GAME\Resource\cs2obj.tex
+    file[]: crc = 66c79b5d; size =     19150; name = GAME\Resource\cs3_1.blk
+    file[]: crc = bb77b5d0; size =     19171; name = GAME\Resource\cs3_2.blk
+    file[]: crc = cc45038c; size =    145545; name = GAME\Resource\cs3_2.mdl
+    file[]: crc = c0bb9f43; size =     60400; name = GAME\Resource\cs3_2.tex
+    file[]: crc = 82bb116e; size =     19147; name = GAME\Resource\cs3_blk.bin
+    file[]: crc = 45a5063d; size =    154358; name = GAME\Resource\cs3_col.bin
+    file[]: crc = 4472966f; size =     19020; name = GAME\Resource\cs3obj.mdl
+    file[]: crc = 224508a1; size =      4260; name = GAME\Resource\cs3obj.tex
+    file[]: crc = 65323947; size =     16563; name = GAME\Resource\cs4_1.blk
+    file[]: crc = abffae1c; size =     16506; name = GAME\Resource\cs4_2.blk
+    file[]: crc = 2cef31c8; size =    161884; name = GAME\Resource\cs4_2.mdl
+    file[]: crc = 1403ac3a; size =     84973; name = GAME\Resource\cs4_2.tex
+    file[]: crc = ef01f625; size =     16561; name = GAME\Resource\cs4_blk.bin
+    file[]: crc = 13b71b12; size =    117488; name = GAME\Resource\cs4_col.bin
+    file[]: crc = 75cbcc7c; size =      9097; name = GAME\Resource\cs4obj.mdl
+    file[]: crc = c10d95e6; size =     12678; name = GAME\Resource\cs4obj.tex
+    file[]: crc = 7f2532e0; size =     18891; name = GAME\Resource\cs5_1.blk
+    file[]: crc = 7f2532e0; size =     18891; name = GAME\Resource\cs5_2.blk
+    file[]: crc = 314031b9; size =    155429; name = GAME\Resource\cs5_2.mdl
+    file[]: crc = 5507b818; size =    146392; name = GAME\Resource\cs5_2.tex
+    file[]: crc = 7f2532e0; size =     18891; name = GAME\Resource\cs5_blk.bin
+    file[]: crc = 2672681b; size =    173590; name = GAME\Resource\cs5_col.bin
+    file[]: crc = c6a3739d; size =      2005; name = GAME\Resource\emcar01.mdl
+    file[]: crc = 543e7259; size =      4378; name = GAME\Resource\emcar01.tex
+    file[]: crc = 4b2438fb; size =      8319; name = GAME\Resource\emcar19.mdl
+    file[]: crc = b0f3eeed; size =     34156; name = GAME\Resource\emcar19.tex
+    file[]: crc = 68c6c21a; size =     11496; name = GAME\Resource\emcar29.mdl
+    file[]: crc = 00ddbb68; size =     46947; name = GAME\Resource\emcar29.tex
+    file[]: crc = 71c3acde; size =     14770; name = GAME\Resource\emcar39.mdl
+    file[]: crc = 871d2c19; size =     60152; name = GAME\Resource\emcar39.tex
+    file[]: crc = ae54e008; size =    301942; name = GAME\Resource\eng.bin
+    file[]: crc = 9edf72fe; size =    324946; name = GAME\Resource\eng_mo.bin
+    file[]: crc = bc3fe61e; size =    479648; name = GAME\Resource\eng_st.bin
+    file[]: crc = 193af120; size =      4332; name = GAME\Resource\otline0.bin
+    file[]: crc = 2503bc5e; size =     10679; name = GAME\Resource\otline1.bin
+    file[]: crc = 1a843d19; size =     12453; name = GAME\Resource\otline2.bin
+    file[]: crc = cada6001; size =      5395; name = GAME\Resource\otline3.bin
+    file[]: crc = 541e77ae; size =      8947; name = GAME\Resource\otline4.bin
+    file[]: crc = 11172abb; size =     13712; name = GAME\Resource\otline5.bin
+    file[]: crc = 871d2c19; size =     60152; name = GAME\Resource\placr12.mdl
+    file[]: crc = 871d2c19; size =     60152; name = GAME\Resource\placr28.tex
+    file[]: crc = 50ae6760; size =      4861; name = GAME\Resource\plcar01.mdl
+    file[]: crc = 94c0cbfd; size =     21019; name = GAME\Resource\plcar01.tex
+    file[]: crc = a88f7425; size =      4866; name = GAME\Resource\plcar02.mdl
+    file[]: crc = 03582c44; size =     19743; name = GAME\Resource\plcar02.tex
+    file[]: crc = f75544b0; size =      4942; name = GAME\Resource\plcar03.mdl
+    file[]: crc = 079bd6f5; size =     22089; name = GAME\Resource\plcar03.tex
+    file[]: crc = 8110d4a5; size =      4797; name = GAME\Resource\plcar04.mdl
+    file[]: crc = 926ee834; size =     19317; name = GAME\Resource\plcar04.tex
+    file[]: crc = 972bf2e6; size =      4867; name = GAME\Resource\plcar05.mdl
+    file[]: crc = e4790ee0; size =     21425; name = GAME\Resource\plcar05.tex
+    file[]: crc = 536d5f5c; size =      4850; name = GAME\Resource\plcar06.mdl
+    file[]: crc = 43308c3b; size =     20755; name = GAME\Resource\plcar06.tex
+    file[]: crc = db8ee960; size =      4803; name = GAME\Resource\plcar07.mdl
+    file[]: crc = 3ce4f8b6; size =     18858; name = GAME\Resource\plcar07.tex
+    file[]: crc = ad519cd0; size =      4852; name = GAME\Resource\plcar08.mdl
+    file[]: crc = 0fb86e7c; size =     21175; name = GAME\Resource\plcar08.tex
+    file[]: crc = 7d7f292e; size =      4824; name = GAME\Resource\plcar09.mdl
+    file[]: crc = 38524eb4; size =     10226; name = GAME\Resource\plcar09.tex
+    file[]: crc = 79c98430; size =      6566; name = GAME\Resource\plcar10.mdl
+    file[]: crc = 6e41180c; size =       865; name = GAME\Resource\plcar10.tex
+    file[]: crc = f1a61665; size =      6565; name = GAME\Resource\plcar11.mdl
+    file[]: crc = e26d72fd; size =       876; name = GAME\Resource\plcar11.tex
+    file[]: crc = 79c98430; size =      6566; name = GAME\Resource\plcar12.mdl
+    file[]: crc = 6e41180c; size =       865; name = GAME\Resource\plcar12.tex
+    file[]: crc = 305f8ca2; size =      1959; name = GAME\Resource\plcar21.mdl
+    file[]: crc = 4c065e86; size =     11450; name = GAME\Resource\plcar21.tex
+    file[]: crc = fadcc8d7; size =      1957; name = GAME\Resource\plcar22.mdl
+    file[]: crc = 080a748a; size =     11146; name = GAME\Resource\plcar22.tex
+    file[]: crc = 5cd64bbf; size =      1979; name = GAME\Resource\plcar23.mdl
+    file[]: crc = d254d963; size =     10873; name = GAME\Resource\plcar23.tex
+    file[]: crc = 4d3e1c65; size =      1953; name = GAME\Resource\plcar24.mdl
+    file[]: crc = 87defbb2; size =     10713; name = GAME\Resource\plcar24.tex
+    file[]: crc = 334f0c45; size =      1976; name = GAME\Resource\plcar25.mdl
+    file[]: crc = 17886703; size =     12085; name = GAME\Resource\plcar25.tex
+    file[]: crc = 17c05d9b; size =      1976; name = GAME\Resource\plcar26.mdl
+    file[]: crc = af3bdf65; size =     11483; name = GAME\Resource\plcar26.tex
+    file[]: crc = df6c4219; size =      1954; name = GAME\Resource\plcar27.mdl
+    file[]: crc = 786151c9; size =     11066; name = GAME\Resource\plcar27.tex
+    file[]: crc = 054756d9; size =      1975; name = GAME\Resource\plcar28.mdl
+    file[]: crc = 9105a1ff; size =     11530; name = GAME\Resource\plcar28.tex
+    file[]: crc = 5a6c796f; size =      2233; name = GAME\Resource\plcar29.mdl
+    file[]: crc = 243a1f20; size =      7869; name = GAME\Resource\plcar29.tex
+    file[]: crc = d92a51e0; size =     57466; name = GAME\Resource\screen.bin
+    file[]: crc = 829ba282; size =       939; name = GAME\Resource\320X240X16\loading.bmp
+    file[]: crc = 527d5ba4; size =      1974; name = GAME\Resource\320X240X16\Advertise\pressenterkey.bmp
+    file[]: crc = a490651f; size =      1974; name = GAME\Resource\320X240X16\Advertise\pressenterkey_disable.bmp
+    file[]: crc = 90e178c7; size =      2351; name = GAME\Resource\320X240X16\Advertise\pressstartbutton.bmp
+    file[]: crc = 5481e639; size =      2348; name = GAME\Resource\320X240X16\Advertise\pressstartbutton_disable.bmp
+    file[]: crc = 6b7f4325; size =       261; name = GAME\Resource\320X240X16\Advertise\reverse.bmp
+    file[]: crc = d04077f2; size =    161687; name = GAME\Resource\320X240X16\BG\course0_0.bmp
+    file[]: crc = cd1dfe48; size =    154196; name = GAME\Resource\320X240X16\BG\course0_1.bmp
+    file[]: crc = 297f0084; size =    197675; name = GAME\Resource\320X240X16\BG\course1_0.bmp
+    file[]: crc = 8b267be1; size =    214410; name = GAME\Resource\320X240X16\BG\course1_1.bmp
+    file[]: crc = 802232f2; size =    161337; name = GAME\Resource\320X240X16\BG\course2_0.bmp
+    file[]: crc = 87a32f09; size =    185596; name = GAME\Resource\320X240X16\BG\course2_1.bmp
+    file[]: crc = e5217fd5; size =    214926; name = GAME\Resource\320X240X16\BG\course3_0.bmp
+    file[]: crc = cbd896d5; size =    209096; name = GAME\Resource\320X240X16\BG\course3_1.bmp
+    file[]: crc = e943095d; size =    198705; name = GAME\Resource\320X240X16\BG\course4_0.bmp
+    file[]: crc = d5732db2; size =    177410; name = GAME\Resource\320X240X16\BG\course4_1.bmp
+    file[]: crc = 6e6f5b74; size =    317107; name = GAME\Resource\320X240X16\BG\course5_0.bmp
+    file[]: crc = ead13242; size =    317359; name = GAME\Resource\320X240X16\BG\course5_1.bmp
+    file[]: crc = 3fb8cc52; size =     48338; name = GAME\Resource\320X240X16\Bonnet\GALLOP\ca.bmp
+    file[]: crc = d77e940b; size =     48616; name = GAME\Resource\320X240X16\Bonnet\GALLOP\cl.bmp
+    file[]: crc = eef9d132; size =     48099; name = GAME\Resource\320X240X16\Bonnet\GALLOP\cr.bmp
+    file[]: crc = a6b78466; size =     47350; name = GAME\Resource\320X240X16\Bonnet\GALLOP\nm.bmp
+    file[]: crc = 6d895db8; size =     52560; name = GAME\Resource\320X240X16\Bonnet\HORNET\ca.bmp
+    file[]: crc = 3cb15ab8; size =     51763; name = GAME\Resource\320X240X16\Bonnet\HORNET\cl.bmp
+    file[]: crc = 535e2d4b; size =     50470; name = GAME\Resource\320X240X16\Bonnet\HORNET\cr.bmp
+    file[]: crc = 2c42c58e; size =     52238; name = GAME\Resource\320X240X16\Bonnet\HORNET\nm.bmp
+    file[]: crc = 4f058730; size =      4486; name = GAME\Resource\320X240X16\Font\advertise_0.bmp
+    file[]: crc = 90da0fc6; size =      2688; name = GAME\Resource\320X240X16\Font\advertise_1.bmp
+    file[]: crc = fec0df62; size =      2657; name = GAME\Resource\320X240X16\Font\advertise_2.bmp
+    file[]: crc = 7a13ef60; size =      2205; name = GAME\Resource\320X240X16\Font\advertise_3.bmp
+    file[]: crc = f8a66039; size =       611; name = GAME\Resource\320X240X16\Font\advertise_4.bmp
+    file[]: crc = de598a9e; size =      1196; name = GAME\Resource\320X240X16\Font\arcadetimer.bmp
+    file[]: crc = fe574458; size =     18886; name = GAME\Resource\320X240X16\Font\gameover_0.bmp
+    file[]: crc = 7ec5bae4; size =      1078; name = GAME\Resource\320X240X16\Font\gameover_1.bmp
+    file[]: crc = f2341380; size =       910; name = GAME\Resource\320X240X16\Font\laps.bmp
+    file[]: crc = 981cc020; size =       419; name = GAME\Resource\320X240X16\Font\laptime_red.bmp
+    file[]: crc = fcbd89e0; size =       421; name = GAME\Resource\320X240X16\Font\laptime_white.bmp
+    file[]: crc = d904921b; size =       417; name = GAME\Resource\320X240X16\Font\laptime_yellow.bmp
+    file[]: crc = 4a674ab2; size =      2044; name = GAME\Resource\320X240X16\Font\position.bmp
+    file[]: crc = 978bdaf3; size =     43428; name = GAME\Resource\320X240X16\Font\result.bmp
+    file[]: crc = 6914b653; size =     19673; name = GAME\Resource\320X240X16\Font\result_big.bmp
+    file[]: crc = 67462484; size =     33078; name = GAME\Resource\320X240X16\Font\result_red.bmp
+    file[]: crc = 53934dc6; size =     15822; name = GAME\Resource\320X240X16\Font\result_small.bmp
+    file[]: crc = 8578a3c9; size =       290; name = GAME\Resource\320X240X16\Font\shift.bmp
+    file[]: crc = 05043fd2; size =      1299; name = GAME\Resource\320X240X16\Font\speed.bmp
+    file[]: crc = 3443bd30; size =       871; name = GAME\Resource\320X240X16\Font\timedifference_red.bmp
+    file[]: crc = 8398cb24; size =       869; name = GAME\Resource\320X240X16\Font\timedifference_yellow.bmp
+    file[]: crc = c7b47ec9; size =      1425; name = GAME\Resource\320X240X16\Font\timeextension.bmp
+    file[]: crc = bd81d90b; size =      1434; name = GAME\Resource\320X240X16\GameOver\bestlap.bmp
+    file[]: crc = a3eab031; size =      5749; name = GAME\Resource\320X240X16\GameOver\congratulations.bmp
+    file[]: crc = d6c17eb0; size =      4380; name = GAME\Resource\320X240X16\GameOver\gameover.bmp
+    file[]: crc = f7020051; size =       890; name = GAME\Resource\320X240X16\GameOver\nd.bmp
+    file[]: crc = f533e065; size =       773; name = GAME\Resource\320X240X16\GameOver\rd.bmp
+    file[]: crc = 0080621b; size =      3077; name = GAME\Resource\320X240X16\GameOver\results.bmp
+    file[]: crc = 9de44202; size =       655; name = GAME\Resource\320X240X16\GameOver\st.bmp
+    file[]: crc = 18ef3aed; size =       673; name = GAME\Resource\320X240X16\GameOver\th.bmp
+    file[]: crc = 1886e1ed; size =      1764; name = GAME\Resource\320X240X16\GameOver\totaltime.bmp
+    file[]: crc = a918e52a; size =       227; name = GAME\Resource\320X240X16\Race\auto.bmp
+    file[]: crc = 9e423879; size =      2297; name = GAME\Resource\320X240X16\Race\exit_no.bmp
+    file[]: crc = 4094a01c; size =      2289; name = GAME\Resource\320X240X16\Race\exit_restart.bmp
+    file[]: crc = 38175ee9; size =      2297; name = GAME\Resource\320X240X16\Race\exit_yes.bmp
+    file[]: crc = e00bece2; size =      6428; name = GAME\Resource\320X240X16\Race\goal.bmp
+    file[]: crc = c413dca4; size =       101; name = GAME\Resource\320X240X16\Race\hari.bmp
+    file[]: crc = f125e885; size =       329; name = GAME\Resource\320X240X16\Race\km_h.bmp
+    file[]: crc = f0a2081d; size =       205; name = GAME\Resource\320X240X16\Race\lap.bmp
+    file[]: crc = 0108e8cb; size =       295; name = GAME\Resource\320X240X16\Race\mph.bmp
+    file[]: crc = 7d2e9418; size =      1224; name = GAME\Resource\320X240X16\Race\pit_work.bmp
+    file[]: crc = ca920fea; size =      1117; name = GAME\Resource\320X240X16\Race\replay.bmp
+    file[]: crc = 7d2c8d24; size =      1174; name = GAME\Resource\320X240X16\Race\reverse.bmp
+    file[]: crc = 0b108df6; size =      2285; name = GAME\Resource\320X240X16\Race\save_no.bmp
+    file[]: crc = d4d03602; size =      2285; name = GAME\Resource\320X240X16\Race\save_yes.bmp
+    file[]: crc = ac42b86a; size =       388; name = GAME\Resource\320X240X16\Race\sectionlap.bmp
+    file[]: crc = 5c86e17f; size =       225; name = GAME\Resource\320X240X16\Race\shift.bmp
+    file[]: crc = 0970ea12; size =      1634; name = GAME\Resource\320X240X16\Race\tacho.bmp
+    file[]: crc = 68bab0c8; size =       824; name = GAME\Resource\320X240X16\Race\Arcade\1mark_1.bmp
+    file[]: crc = 8bfcca6d; size =       824; name = GAME\Resource\320X240X16\Race\Arcade\2mark_1.bmp
+    file[]: crc = e6508888; size =       824; name = GAME\Resource\320X240X16\Race\Arcade\3mark_1.BMP
+    file[]: crc = d0ebb9cb; size =       824; name = GAME\Resource\320X240X16\Race\Arcade\4mark_1.BMP
+    file[]: crc = ba47513c; size =       824; name = GAME\Resource\320X240X16\Race\Arcade\5mark_1.BMP
+    file[]: crc = 89330945; size =       824; name = GAME\Resource\320X240X16\Race\Arcade\6mark_1.BMP
+    file[]: crc = 6967a76a; size =       824; name = GAME\Resource\320X240X16\Race\Arcade\7mark_1.BMP
+    file[]: crc = 0cac19a7; size =       824; name = GAME\Resource\320X240X16\Race\Arcade\8mark_1.BMP
+    file[]: crc = 800efd6b; size =       170; name = GAME\Resource\320X240X16\Race\Arcade\apmark_1.bmp
+    file[]: crc = 96c599f2; size =       344; name = GAME\Resource\320X240X16\Race\Arcade\bestlap.bmp
+    file[]: crc = a946ddd3; size =       336; name = GAME\Resource\320X240X16\Race\Arcade\condition.bmp
+    file[]: crc = d9d542ed; size =       169; name = GAME\Resource\320X240X16\Race\Arcade\g2bmark_1.bmp
+    file[]: crc = 0f8ac1fb; size =       328; name = GAME\Resource\320X240X16\Race\Arcade\laptime.bmp
+    file[]: crc = 4148868d; size =      1819; name = GAME\Resource\320X240X16\Race\Arcade\map0.bmp
+    file[]: crc = 17c40516; size =      1821; name = GAME\Resource\320X240X16\Race\Arcade\map0_mirror.bmp
+    file[]: crc = e2263d43; size =      1821; name = GAME\Resource\320X240X16\Race\Arcade\map1.bmp
+    file[]: crc = 1bd0d18d; size =      1821; name = GAME\Resource\320X240X16\Race\Arcade\map1_mirror.bmp
+    file[]: crc = c6dda208; size =      3674; name = GAME\Resource\320X240X16\Race\Arcade\map2.bmp
+    file[]: crc = 77055d8c; size =      3673; name = GAME\Resource\320X240X16\Race\Arcade\map2_mirror.bmp
+    file[]: crc = 832da2c6; size =      2178; name = GAME\Resource\320X240X16\Race\Arcade\map3.bmp
+    file[]: crc = 5a1efdc5; size =      2176; name = GAME\Resource\320X240X16\Race\Arcade\map3_mirror.bmp
+    file[]: crc = 31899f15; size =      2681; name = GAME\Resource\320X240X16\Race\Arcade\map4.bmp
+    file[]: crc = d8c09a51; size =      2686; name = GAME\Resource\320X240X16\Race\Arcade\map4_mirror.bmp
+    file[]: crc = bfe3a83b; size =      3340; name = GAME\Resource\320X240X16\Race\Arcade\map5.bmp
+    file[]: crc = 51eab3ed; size =      3341; name = GAME\Resource\320X240X16\Race\Arcade\map5_mirror.bmp
+    file[]: crc = 42ace329; size =       171; name = GAME\Resource\320X240X16\Race\Arcade\mpmark_1.bmp
+    file[]: crc = 3394fdf2; size =       361; name = GAME\Resource\320X240X16\Race\Arcade\position.bmp
+    file[]: crc = 23d3fc41; size =      2024; name = GAME\Resource\320X240X16\Race\Arcade\radar.bmp
+    file[]: crc = 0fafb7e2; size =       104; name = GAME\Resource\320X240X16\Race\Arcade\rd_at.bmp
+    file[]: crc = 6d5c0043; size =       106; name = GAME\Resource\320X240X16\Race\Arcade\rd_mt.bmp
+    file[]: crc = 4d5a6fe1; size =        96; name = GAME\Resource\320X240X16\Race\Arcade\rd_ot_01.bmp
+    file[]: crc = 1c828a9e; size =       960; name = GAME\Resource\320X240X16\Race\Arcade\timeextention.bmp
+    file[]: crc = cf8e4d04; size =       345; name = GAME\Resource\320X240X16\Race\Arcade\traffic.bmp
+    file[]: crc = cdcc94e4; size =      3895; name = GAME\Resource\320X240X16\Race\Multiplayer\loser.bmp
+    file[]: crc = b6b8d17d; size =       468; name = GAME\Resource\320X240X16\Race\Multiplayer\player_no0.BMP
+    file[]: crc = 6557dd96; size =       470; name = GAME\Resource\320X240X16\Race\Multiplayer\player_no1.BMP
+    file[]: crc = 6b3a7ddb; size =       469; name = GAME\Resource\320X240X16\Race\Multiplayer\player_no2.BMP
+    file[]: crc = cc0f60bb; size =       472; name = GAME\Resource\320X240X16\Race\Multiplayer\player_no3.BMP
+    file[]: crc = af6f5d64; size =       470; name = GAME\Resource\320X240X16\Race\Multiplayer\player_no4.BMP
+    file[]: crc = 3be2e63b; size =       470; name = GAME\Resource\320X240X16\Race\Multiplayer\player_no5.BMP
+    file[]: crc = f2006c5f; size =       476; name = GAME\Resource\320X240X16\Race\Multiplayer\player_no6.BMP
+    file[]: crc = b949902d; size =       470; name = GAME\Resource\320X240X16\Race\Multiplayer\player_no7.BMP
+    file[]: crc = 3394fdf2; size =       361; name = GAME\Resource\320X240X16\Race\Multiplayer\position.bmp
+    file[]: crc = 23d3fc41; size =      2024; name = GAME\Resource\320X240X16\Race\Multiplayer\radar.bmp
+    file[]: crc = 0e35f48a; size =      3972; name = GAME\Resource\320X240X16\Race\Multiplayer\winner.bmp
+    file[]: crc = e6ee1623; size =       674; name = GAME\Resource\320X240X16\RollingStart\1.bmp
+    file[]: crc = 29cf7b41; size =       677; name = GAME\Resource\320X240X16\RollingStart\2.bmp
+    file[]: crc = 4073eda3; size =       680; name = GAME\Resource\320X240X16\RollingStart\3.bmp
+    file[]: crc = 7d3c48d3; size =      1600; name = GAME\Resource\320X240X16\RollingStart\accel_on.bmp
+    file[]: crc = 7dd285d5; size =      1529; name = GAME\Resource\320X240X16\RollingStart\auto_drive.bmp
+    file[]: crc = a1459c13; size =       486; name = GAME\Resource\320X240X16\RollingStart\car.bmp
+    file[]: crc = a464219e; size =      2680; name = GAME\Resource\320X240X16\RollingStart\go!.bmp
+    file[]: crc = 93c4519d; size =      4137; name = GAME\Resource\320X240X16\RollingStart\rollingstart.bmp
+    file[]: crc = bf100ab1; size =       838; name = GAME\Resource\320X240X16\StartSignal\1.bmp
+    file[]: crc = e387ca55; size =       839; name = GAME\Resource\320X240X16\StartSignal\2.bmp
+    file[]: crc = e7788151; size =       838; name = GAME\Resource\320X240X16\StartSignal\3.bmp
+    file[]: crc = d7110357; size =       846; name = GAME\Resource\320X240X16\StartSignal\go.bmp
+    file[]: crc = 3585e42c; size =       574; name = GAME\Resource\320X240X8\loading.bmp
+    file[]: crc = 8d76ca6f; size =      1333; name = GAME\Resource\320X240X8\Advertise\pressenterkey.bmp
+    file[]: crc = 069bb9ae; size =      1333; name = GAME\Resource\320X240X8\Advertise\pressenterkey_disable.bmp
+    file[]: crc = 00ce9af3; size =      1456; name = GAME\Resource\320X240X8\Advertise\pressstartbutton.bmp
+    file[]: crc = 6f3e5c5e; size =      1456; name = GAME\Resource\320X240X8\Advertise\pressstartbutton_disable.bmp
+    file[]: crc = 737c2b03; size =       722; name = GAME\Resource\320X240X8\Advertise\reverse.bmp
+    file[]: crc = 55cdd961; size =     26637; name = GAME\Resource\320X240X8\BG\course0_0.bmp
+    file[]: crc = d900896c; size =     24705; name = GAME\Resource\320X240X8\BG\course0_1.bmp
+    file[]: crc = 44bac0f9; size =     37839; name = GAME\Resource\320X240X8\BG\course1_0.bmp
+    file[]: crc = 1b007cc1; size =     37767; name = GAME\Resource\320X240X8\BG\course1_1.bmp
+    file[]: crc = 2c45eb9e; size =     24505; name = GAME\Resource\320X240X8\BG\course2_0.bmp
+    file[]: crc = a75f9f89; size =     25640; name = GAME\Resource\320X240X8\BG\course2_1.bmp
+    file[]: crc = ee9d7522; size =     35447; name = GAME\Resource\320X240X8\BG\course3_0.bmp
+    file[]: crc = 81e3256b; size =     34988; name = GAME\Resource\320X240X8\BG\course3_1.bmp
+    file[]: crc = 9d84e535; size =     29050; name = GAME\Resource\320X240X8\BG\course4_0.bmp
+    file[]: crc = 1aa669e8; size =     28472; name = GAME\Resource\320X240X8\BG\course4_1.bmp
+    file[]: crc = 2ed5c0db; size =     38666; name = GAME\Resource\320X240X8\BG\course5_0.bmp
+    file[]: crc = 64e2a5e3; size =     38494; name = GAME\Resource\320X240X8\BG\course5_1.bmp
+    file[]: crc = 5bc6bb80; size =     10957; name = GAME\Resource\320X240X8\BONNET\GALLOP\ca.bmp
+    file[]: crc = 22d19b7e; size =     11135; name = GAME\Resource\320X240X8\BONNET\GALLOP\cl.bmp
+    file[]: crc = d7cef321; size =     10939; name = GAME\Resource\320X240X8\BONNET\GALLOP\cr.bmp
+    file[]: crc = 72d11792; size =     10704; name = GAME\Resource\320X240X8\BONNET\GALLOP\nm.bmp
+    file[]: crc = 7f0fcf45; size =     11950; name = GAME\Resource\320X240X8\BONNET\HORNET\ca.bmp
+    file[]: crc = d44c6a50; size =     11882; name = GAME\Resource\320X240X8\BONNET\HORNET\cl.bmp
+    file[]: crc = 73137206; size =     11723; name = GAME\Resource\320X240X8\BONNET\HORNET\cr.bmp
+    file[]: crc = ba893996; size =     11765; name = GAME\Resource\320X240X8\BONNET\HORNET\nm.bmp
+    file[]: crc = 49762845; size =      2294; name = GAME\Resource\320X240X8\Font\advertise_0.bmp
+    file[]: crc = 0c0a1902; size =      1580; name = GAME\Resource\320X240X8\Font\advertise_1.bmp
+    file[]: crc = a9587a6a; size =      1492; name = GAME\Resource\320X240X8\Font\advertise_2.bmp
+    file[]: crc = 2f1197a6; size =      1830; name = GAME\Resource\320X240X8\Font\advertise_3.bmp
+    file[]: crc = 37d1ea40; size =       876; name = GAME\Resource\320X240X8\Font\advertise_4.bmp
+    file[]: crc = cd2bfbca; size =       770; name = GAME\Resource\320X240X8\Font\arcadetimer.bmp
+    file[]: crc = 77429504; size =      6360; name = GAME\Resource\320X240X8\Font\gameover_0.bmp
+    file[]: crc = 7a00e3ce; size =      1138; name = GAME\Resource\320X240X8\Font\gameover_1.bmp
+    file[]: crc = 412f7db9; size =       558; name = GAME\Resource\320X240X8\Font\laps.bmp
+    file[]: crc = 241b055e; size =       416; name = GAME\Resource\320X240X8\Font\laptime_red.bmp
+    file[]: crc = 9681f63b; size =       439; name = GAME\Resource\320X240X8\Font\laptime_white.bmp
+    file[]: crc = 5099b827; size =       419; name = GAME\Resource\320X240X8\Font\laptime_yellow.bmp
+    file[]: crc = 4aa20ca3; size =      1032; name = GAME\Resource\320X240X8\Font\position.bmp
+    file[]: crc = 21ad53ef; size =     15082; name = GAME\Resource\320X240X8\Font\result.bmp
+    file[]: crc = 12aff379; size =     11041; name = GAME\Resource\320X240X8\Font\result_red.bmp
+    file[]: crc = 2f5ba915; size =       396; name = GAME\Resource\320X240X8\Font\shift.bmp
+    file[]: crc = 70662ac6; size =       699; name = GAME\Resource\320X240X8\Font\speed.bmp
+    file[]: crc = 24466177; size =       591; name = GAME\Resource\320X240X8\Font\timedifference_red.bmp
+    file[]: crc = bf4641a5; size =       584; name = GAME\Resource\320X240X8\Font\timedifference_yellow.bmp
+    file[]: crc = a2c733f1; size =       799; name = GAME\Resource\320X240X8\Font\timeextension.bmp
+    file[]: crc = 8baa7dc4; size =      1223; name = GAME\Resource\320X240X8\GameOver\bestlap.bmp
+    file[]: crc = 1d23d61a; size =      3453; name = GAME\Resource\320X240X8\GameOver\congratulations.bmp
+    file[]: crc = 1b12baa7; size =      2050; name = GAME\Resource\320X240X8\GameOver\gameover.bmp
+    file[]: crc = 89bdc60d; size =      1081; name = GAME\Resource\320X240X8\GameOver\nd.bmp
+    file[]: crc = 43e80e13; size =       996; name = GAME\Resource\320X240X8\GameOver\rd.bmp
+    file[]: crc = a239a021; size =      2302; name = GAME\Resource\320X240X8\GameOver\results.bmp
+    file[]: crc = 845acbcc; size =       940; name = GAME\Resource\320X240X8\GameOver\st.bmp
+    file[]: crc = 67691acf; size =      2197; name = GAME\Resource\320X240X8\GameOver\st01.bmp
+    file[]: crc = 20f0d3f4; size =       980; name = GAME\Resource\320X240X8\GameOver\th.bmp
+    file[]: crc = 9a539bc5; size =      1341; name = GAME\Resource\320X240X8\GameOver\totaltime.bmp
+    file[]: crc = 2bf62843; size =       306; name = GAME\Resource\320X240X8\Race\auto.bmp
+    file[]: crc = dcdee7b8; size =      1076; name = GAME\Resource\320X240X8\Race\exit_no.bmp
+    file[]: crc = 41772604; size =      1076; name = GAME\Resource\320X240X8\Race\exit_restart.bmp
+    file[]: crc = e7dc4902; size =      1078; name = GAME\Resource\320X240X8\Race\exit_yes.bmp
+    file[]: crc = df7e1b21; size =      3017; name = GAME\Resource\320X240X8\Race\goal.bmp
+    file[]: crc = b15b2be4; size =       255; name = GAME\Resource\320X240X8\Race\hari.bmp
+    file[]: crc = 2003b2b6; size =       369; name = GAME\Resource\320X240X8\Race\km_h.bmp
+    file[]: crc = a5eebda3; size =       342; name = GAME\Resource\320X240X8\Race\lap.bmp
+    file[]: crc = 3bac7662; size =       349; name = GAME\Resource\320X240X8\Race\mph.bmp
+    file[]: crc = e75eb24a; size =       741; name = GAME\Resource\320X240X8\Race\pit_work.bmp
+    file[]: crc = 912e46d2; size =       649; name = GAME\Resource\320X240X8\Race\replay.bmp
+    file[]: crc = 733eda4d; size =       694; name = GAME\Resource\320X240X8\Race\reverse.bmp
+    file[]: crc = bc2519a3; size =      1070; name = GAME\Resource\320X240X8\Race\save_no.bmp
+    file[]: crc = c71721ac; size =      1070; name = GAME\Resource\320X240X8\Race\save_yes.bmp
+    file[]: crc = c8b62289; size =       458; name = GAME\Resource\320X240X8\Race\sectionlap.bmp
+    file[]: crc = dcb4b1d0; size =       302; name = GAME\Resource\320X240X8\Race\shift.bmp
+    file[]: crc = 43e2418a; size =       898; name = GAME\Resource\320X240X8\Race\tacho.bmp
+    file[]: crc = c665b9e6; size =      1334; name = GAME\Resource\320X240X8\Race\Arcade\1mark_1.bmp
+    file[]: crc = d579c9f2; size =      1334; name = GAME\Resource\320X240X8\Race\Arcade\2mark_1.bmp
+    file[]: crc = 515cf32a; size =      1334; name = GAME\Resource\320X240X8\Race\Arcade\3mark_1.BMP
+    file[]: crc = d62d898d; size =      1334; name = GAME\Resource\320X240X8\Race\Arcade\4mark_1.BMP
+    file[]: crc = 7ed14bdc; size =      1334; name = GAME\Resource\320X240X8\Race\Arcade\5mark_1.BMP
+    file[]: crc = 8856a76c; size =      1334; name = GAME\Resource\320X240X8\Race\Arcade\6mark_1.BMP
+    file[]: crc = 5b9cfa83; size =      1334; name = GAME\Resource\320X240X8\Race\Arcade\7mark_1.BMP
+    file[]: crc = 2dd8ba32; size =      1334; name = GAME\Resource\320X240X8\Race\Arcade\8mark_1.BMP
+    file[]: crc = 0809adbc; size =       694; name = GAME\Resource\320X240X8\Race\Arcade\apmark_1.bmp
+    file[]: crc = 5333891a; size =       365; name = GAME\Resource\320X240X8\Race\Arcade\bestlap.bmp
+    file[]: crc = 7491db2c; size =       407; name = GAME\Resource\320X240X8\Race\Arcade\condition.bmp
+    file[]: crc = 52bcbdc6; size =       695; name = GAME\Resource\320X240X8\Race\Arcade\g2bmark_1.bmp
+    file[]: crc = d539a732; size =       384; name = GAME\Resource\320X240X8\Race\Arcade\laptime.bmp
+    file[]: crc = 9c0a0893; size =       830; name = GAME\Resource\320X240X8\Race\Arcade\map0.bmp
+    file[]: crc = fd90e04a; size =       832; name = GAME\Resource\320X240X8\Race\Arcade\map0_mirror.bmp
+    file[]: crc = d57cd5d0; size =       847; name = GAME\Resource\320X240X8\Race\Arcade\map1.bmp
+    file[]: crc = 43e5c325; size =       844; name = GAME\Resource\320X240X8\Race\Arcade\map1_mirror.bmp
+    file[]: crc = bd3a3827; size =      1467; name = GAME\Resource\320X240X8\Race\Arcade\map2.bmp
+    file[]: crc = 90ebf596; size =      1469; name = GAME\Resource\320X240X8\Race\Arcade\map2_mirror.bmp
+    file[]: crc = 25560626; size =       953; name = GAME\Resource\320X240X8\Race\Arcade\map3.bmp
+    file[]: crc = 3feb5f00; size =       951; name = GAME\Resource\320X240X8\Race\Arcade\map3_mirror.bmp
+    file[]: crc = 12383618; size =      1117; name = GAME\Resource\320X240X8\Race\Arcade\map4.bmp
+    file[]: crc = f0500ea6; size =      1120; name = GAME\Resource\320X240X8\Race\Arcade\map4_mirror.bmp
+    file[]: crc = f3ca640e; size =      1345; name = GAME\Resource\320X240X8\Race\Arcade\map5.bmp
+    file[]: crc = dfe54fb5; size =      1340; name = GAME\Resource\320X240X8\Race\Arcade\map5_mirror.bmp
+    file[]: crc = 10ede571; size =       694; name = GAME\Resource\320X240X8\Race\Arcade\mpmark_1.bmp
+    file[]: crc = ea165019; size =       425; name = GAME\Resource\320X240X8\Race\Arcade\position.bmp
+    file[]: crc = 2e346250; size =      1455; name = GAME\Resource\320X240X8\Race\Arcade\radar.bmp
+    file[]: crc = 9c8c1ff7; size =       680; name = GAME\Resource\320X240X8\Race\Arcade\rd_at.bmp
+    file[]: crc = 32e77e8b; size =       680; name = GAME\Resource\320X240X8\Race\Arcade\rd_mt.bmp
+    file[]: crc = c7bbc45d; size =       670; name = GAME\Resource\320X240X8\Race\Arcade\rd_ot_01.bmp
+    file[]: crc = 820b86e4; size =       607; name = GAME\Resource\320X240X8\Race\Arcade\timeextention.bmp
+    file[]: crc = 75a69081; size =       413; name = GAME\Resource\320X240X8\Race\Arcade\traffic.bmp
+    file[]: crc = 61e0a04c; size =      1318; name = GAME\Resource\320X240X8\Race\Multiplayer\loser.bmp
+    file[]: crc = 84e2e73c; size =       816; name = GAME\Resource\320X240X8\Race\Multiplayer\player_no0.BMP
+    file[]: crc = 78402554; size =       815; name = GAME\Resource\320X240X8\Race\Multiplayer\player_no1.BMP
+    file[]: crc = ee7a52c1; size =       825; name = GAME\Resource\320X240X8\Race\Multiplayer\player_no2.BMP
+    file[]: crc = b894721b; size =       818; name = GAME\Resource\320X240X8\Race\Multiplayer\player_no3.BMP
+    file[]: crc = cf07b6e0; size =       819; name = GAME\Resource\320X240X8\Race\Multiplayer\player_no4.BMP
+    file[]: crc = f4bdf464; size =       821; name = GAME\Resource\320X240X8\Race\Multiplayer\player_no5.BMP
+    file[]: crc = 5726ddaf; size =       827; name = GAME\Resource\320X240X8\Race\Multiplayer\player_no6.bmp
+    file[]: crc = 209b1140; size =       817; name = GAME\Resource\320X240X8\Race\Multiplayer\player_no7.BMP
+    file[]: crc = ea165019; size =       425; name = GAME\Resource\320X240X8\Race\Multiplayer\position.bmp
+    file[]: crc = 2e346250; size =      1455; name = GAME\Resource\320X240X8\Race\Multiplayer\radar.bmp
+    file[]: crc = 45514139; size =      1198; name = GAME\Resource\320X240X8\Race\Multiplayer\winner.bmp
+    file[]: crc = 46f46401; size =       458; name = GAME\Resource\320X240X8\RollingStart\1.bmp
+    file[]: crc = cd64496f; size =       465; name = GAME\Resource\320X240X8\RollingStart\2.bmp
+    file[]: crc = 9317da7b; size =       470; name = GAME\Resource\320X240X8\RollingStart\3.bmp
+    file[]: crc = 69bc9a43; size =       875; name = GAME\Resource\320X240X8\RollingStart\accel_on.bmp
+    file[]: crc = 330bc67b; size =       799; name = GAME\Resource\320X240X8\RollingStart\auto_drive.bmp
+    file[]: crc = 661e5d2b; size =       446; name = GAME\Resource\320X240X8\RollingStart\car.bmp
+    file[]: crc = 0dd2b531; size =      1158; name = GAME\Resource\320X240X8\RollingStart\go!.bmp
+    file[]: crc = 6442f7be; size =      1783; name = GAME\Resource\320X240X8\RollingStart\rollingstart.bmp
+    file[]: crc = 7276e0f4; size =       526; name = GAME\Resource\320X240X8\StartSignal\1.bmp
+    file[]: crc = 152f1517; size =       539; name = GAME\Resource\320X240X8\StartSignal\2.bmp
+    file[]: crc = 4821de0d; size =       550; name = GAME\Resource\320X240X8\StartSignal\3.bmp
+    file[]: crc = a56761cd; size =       557; name = GAME\Resource\320X240X8\StartSignal\go.bmp
+    file[]: crc = ea6456e5; size =      3894; name = GAME\Resource\640X480X16\loading.bmp
+    file[]: crc = f73bec19; size =      6895; name = GAME\Resource\640X480X16\Advertise\pressenterkey.bmp
+    file[]: crc = 6a9f63c2; size =      6888; name = GAME\Resource\640X480X16\Advertise\pressenterkey_disable.bmp
+    file[]: crc = 35e737d4; size =      8232; name = GAME\Resource\640X480X16\Advertise\pressstartbutton.bmp
+    file[]: crc = 8c0df340; size =      8280; name = GAME\Resource\640X480X16\Advertise\pressstartbutton_disable.bmp
+    file[]: crc = d41aff02; size =       578; name = GAME\Resource\640X480X16\Advertise\reverse.bmp
+    file[]: crc = d0d3b034; size =    606811; name = GAME\Resource\640X480X16\BG\course0_0.bmp
+    file[]: crc = 83c77b29; size =    580699; name = GAME\Resource\640X480X16\BG\course0_1.bmp
+    file[]: crc = 7d03a216; size =    239179; name = GAME\Resource\640X480X16\BG\course1_0.bmp
+    file[]: crc = 82dfe08e; size =    243782; name = GAME\Resource\640X480X16\BG\course1_1.bmp
+    file[]: crc = 21a45fca; size =    591309; name = GAME\Resource\640X480X16\BG\course2_0.bmp
+    file[]: crc = b1eb13a5; size =    689797; name = GAME\Resource\640X480X16\BG\course2_1.bmp
+    file[]: crc = ed1c620b; size =    816916; name = GAME\Resource\640X480X16\BG\course3_0.bmp
+    file[]: crc = a594c27f; size =    786911; name = GAME\Resource\640X480X16\BG\course3_1.bmp
+    file[]: crc = 6a20c3e1; size =    776600; name = GAME\Resource\640X480X16\BG\course4_0.bmp
+    file[]: crc = ece310c2; size =    693516; name = GAME\Resource\640X480X16\BG\course4_1.bmp
+    file[]: crc = fe43ad1c; size =   1121700; name = GAME\Resource\640X480X16\BG\course5_0.bmp
+    file[]: crc = 8d55a451; size =   1076390; name = GAME\Resource\640X480X16\BG\course5_1.bmp
+    file[]: crc = de19357f; size =    171902; name = GAME\Resource\640X480X16\BONNET\GALLOP\ca.bmp
+    file[]: crc = 8213ba1d; size =    173160; name = GAME\Resource\640X480X16\BONNET\GALLOP\cl.bmp
+    file[]: crc = ee30d24e; size =    171086; name = GAME\Resource\640X480X16\BONNET\GALLOP\cr.bmp
+    file[]: crc = d4906600; size =    169354; name = GAME\Resource\640X480X16\BONNET\GALLOP\nm.bmp
+    file[]: crc = d71b442a; size =    188349; name = GAME\Resource\640X480X16\BONNET\HORNET\ca.bmp
+    file[]: crc = 08561607; size =    184700; name = GAME\Resource\640X480X16\BONNET\HORNET\cl.bmp
+    file[]: crc = fd7b3223; size =    182648; name = GAME\Resource\640X480X16\BONNET\HORNET\cr.bmp
+    file[]: crc = 920e704a; size =    187590; name = GAME\Resource\640X480X16\BONNET\HORNET\nm.bmp
+    file[]: crc = 1c5d5235; size =     16628; name = GAME\Resource\640X480X16\Font\advertise_0.bmp
+    file[]: crc = 988ab2b9; size =     11637; name = GAME\Resource\640X480X16\Font\advertise_1.bmp
+    file[]: crc = 8fcdfeba; size =      6656; name = GAME\Resource\640X480X16\Font\advertise_2.bmp
+    file[]: crc = 6c66a64d; size =      7519; name = GAME\Resource\640X480X16\Font\advertise_3.bmp
+    file[]: crc = be98e2cb; size =      1425; name = GAME\Resource\640X480X16\Font\advertise_4.bmp
+    file[]: crc = 35e8b4c7; size =      4474; name = GAME\Resource\640X480X16\Font\arcadetimer.bmp
+    file[]: crc = e8e58193; size =     69196; name = GAME\Resource\640X480X16\Font\gameover_0.bmp
+    file[]: crc = 4b5979b5; size =      4699; name = GAME\Resource\640X480X16\Font\gameover_1.bmp
+    file[]: crc = fabc88f9; size =      3218; name = GAME\Resource\640X480X16\Font\laps.bmp
+    file[]: crc = 6335e394; size =      1418; name = GAME\Resource\640X480X16\Font\laptime_red.bmp
+    file[]: crc = 92cab6c4; size =      2292; name = GAME\Resource\640X480X16\Font\laptime_white.bmp
+    file[]: crc = dfac88dc; size =      1403; name = GAME\Resource\640X480X16\Font\laptime_yellow.bmp
+    file[]: crc = 0f0104fa; size =     12402; name = GAME\Resource\640X480X16\Font\position.bmp
+    file[]: crc = 56416854; size =     43982; name = GAME\Resource\640X480X16\Font\result.bmp
+    file[]: crc = c0d684a2; size =      4803; name = GAME\Resource\640X480X16\Font\result_2.bmp
+    file[]: crc = eb8bbeed; size =      1272; name = GAME\Resource\640X480X16\Font\result_3.bmp
+    file[]: crc = 3f64d92d; size =     20063; name = GAME\Resource\640X480X16\Font\result_big.bmp
+    file[]: crc = 7566ab4c; size =     33670; name = GAME\Resource\640X480X16\Font\result_red.bmp
+    file[]: crc = f97885b3; size =     15967; name = GAME\Resource\640X480X16\Font\result_small.bmp
+    file[]: crc = 5d6af1d5; size =       788; name = GAME\Resource\640X480X16\Font\shift.bmp
+    file[]: crc = 8693710e; size =      5410; name = GAME\Resource\640X480X16\Font\speed.bmp
+    file[]: crc = 8e91c0a8; size =      2970; name = GAME\Resource\640X480X16\Font\timedifference_red.bmp
+    file[]: crc = 930581d9; size =      3002; name = GAME\Resource\640X480X16\Font\timedifference_yellow.bmp
+    file[]: crc = 994c07d5; size =      5206; name = GAME\Resource\640X480X16\Font\timeextension.bmp
+    file[]: crc = 6cdb916c; size =      3467; name = GAME\Resource\640X480X16\GameOver\bestlap.bmp
+    file[]: crc = e07b03b5; size =     37905; name = GAME\Resource\640X480X16\GameOver\congratulations.bmp
+    file[]: crc = 075f27f2; size =     15492; name = GAME\Resource\640X480X16\GameOver\gameover.bmp
+    file[]: crc = 9b227298; size =      3595; name = GAME\Resource\640X480X16\GameOver\nd.bmp
+    file[]: crc = ced5f6ea; size =      3365; name = GAME\Resource\640X480X16\GameOver\rd.bmp
+    file[]: crc = 95f2167f; size =     20719; name = GAME\Resource\640X480X16\GameOver\results.bmp
+    file[]: crc = 070b965c; size =      2763; name = GAME\Resource\640X480X16\GameOver\st.bmp
+    file[]: crc = be8491d2; size =      2852; name = GAME\Resource\640X480X16\GameOver\th.bmp
+    file[]: crc = b2cfd95e; size =      4456; name = GAME\Resource\640X480X16\GameOver\totaltime.bmp
+    file[]: crc = f15e7665; size =    216724; name = GAME\Resource\640X480X16\LOGO\nascar.bmp
+    file[]: crc = 5522cbd6; size =    128899; name = GAME\Resource\640X480X16\LOGO\sega_logo.bmp
+    file[]: crc = 07eb2c0f; size =    184200; name = GAME\Resource\640X480X16\LOGO\sega_spo.bmp
+    file[]: crc = 4c117718; size =      3472; name = GAME\Resource\640X480X16\MODE\1P_VS_2P.bmp
+    file[]: crc = 84591148; size =      3511; name = GAME\Resource\640X480X16\MODE\1P_VS_2P_disable.bmp
+    file[]: crc = 8dd1f760; size =      3392; name = GAME\Resource\640X480X16\MODE\arcade.bmp
+    file[]: crc = 8a7a5acb; size =      3373; name = GAME\Resource\640X480X16\MODE\arcade_disable.bmp
+    file[]: crc = 0418e7f7; size =    277138; name = GAME\Resource\640X480X16\MODE\bg.bmp
+    file[]: crc = f4d33dd0; size =      3501; name = GAME\Resource\640X480X16\MODE\exit.bmp
+    file[]: crc = aa86cf7b; size =      3445; name = GAME\Resource\640X480X16\MODE\exit_disable.bmp
+    file[]: crc = 975dbc62; size =      3496; name = GAME\Resource\640X480X16\MODE\multiplayer.bmp
+    file[]: crc = db453fd3; size =      3528; name = GAME\Resource\640X480X16\MODE\multiplayer_disable.bmp
+    file[]: crc = d1892278; size =      3465; name = GAME\Resource\640X480X16\MODE\records.bmp
+    file[]: crc = 2592600a; size =      3419; name = GAME\Resource\640X480X16\MODE\records_disable.bmp
+    file[]: crc = 9a434e59; size =      3490; name = GAME\Resource\640X480X16\MODE\replay.bmp
+    file[]: crc = 0665e80e; size =      3473; name = GAME\Resource\640X480X16\MODE\replay_disable.bmp
+    file[]: crc = cf590833; size =      3489; name = GAME\Resource\640X480X16\MODE\timeattack.bmp
+    file[]: crc = 9e6e53c8; size =      3410; name = GAME\Resource\640X480X16\MODE\timeattack_disable.bmp
+    file[]: crc = 6ece7526; size =      2981; name = GAME\Resource\640X480X16\MODE\Arcade\acceleration.bmp
+    file[]: crc = 84dcc90c; size =       703; name = GAME\Resource\640X480X16\MODE\Arcade\at.bmp
+    file[]: crc = 047cc442; size =       716; name = GAME\Resource\640X480X16\MODE\Arcade\at_disable.bmp
+    file[]: crc = 603fb633; size =      2114; name = GAME\Resource\640X480X16\MODE\Arcade\beginner.bmp
+    file[]: crc = d8ed1aa8; size =    206578; name = GAME\Resource\640X480X16\MODE\Arcade\bg.bmp
+    file[]: crc = 48ee02df; size =     42806; name = GAME\Resource\640X480X16\MODE\Arcade\car00.bmp
+    file[]: crc = 18cc8453; size =     37972; name = GAME\Resource\640X480X16\MODE\Arcade\car01.bmp
+    file[]: crc = ccade907; size =     44612; name = GAME\Resource\640X480X16\MODE\Arcade\car02.bmp
+    file[]: crc = 48fadc77; size =     31312; name = GAME\Resource\640X480X16\MODE\Arcade\car03.bmp
+    file[]: crc = f73cb60b; size =     40532; name = GAME\Resource\640X480X16\MODE\Arcade\car04.bmp
+    file[]: crc = d1065166; size =     42139; name = GAME\Resource\640X480X16\MODE\Arcade\car05.bmp
+    file[]: crc = 5f661a65; size =     44229; name = GAME\Resource\640X480X16\MODE\Arcade\car06.bmp
+    file[]: crc = bfc4e15f; size =     36613; name = GAME\Resource\640X480X16\MODE\Arcade\car07.bmp
+    file[]: crc = 5af79b37; size =     44625; name = GAME\Resource\640X480X16\MODE\Arcade\car08.bmp
+    file[]: crc = f6b16db5; size =     23282; name = GAME\Resource\640X480X16\MODE\Arcade\car09.bmp
+    file[]: crc = b1aa1581; size =     22728; name = GAME\Resource\640X480X16\MODE\Arcade\car10.bmp
+    file[]: crc = 9f655b1c; size =      5632; name = GAME\Resource\640X480X16\MODE\Arcade\car_select.bmp
+    file[]: crc = 645b9a17; size =      5501; name = GAME\Resource\640X480X16\MODE\Arcade\car_settings.bmp
+    file[]: crc = 11090724; size =      2197; name = GAME\Resource\640X480X16\MODE\Arcade\carname00.bmp
+    file[]: crc = 629ec678; size =      2102; name = GAME\Resource\640X480X16\MODE\Arcade\carname00_disable.bmp
+    file[]: crc = 47d6b8a9; size =      2258; name = GAME\Resource\640X480X16\MODE\Arcade\carname01.bmp
+    file[]: crc = 48f3be76; size =      2241; name = GAME\Resource\640X480X16\MODE\Arcade\carname01_disable.bmp
+    file[]: crc = d94a35e1; size =      1983; name = GAME\Resource\640X480X16\MODE\Arcade\carname02.bmp
+    file[]: crc = 42b31112; size =      1905; name = GAME\Resource\640X480X16\MODE\Arcade\carname02_disable.bmp
+    file[]: crc = a0b3a9b3; size =      2353; name = GAME\Resource\640X480X16\MODE\Arcade\carname03.bmp
+    file[]: crc = c405cd1f; size =      2213; name = GAME\Resource\640X480X16\MODE\Arcade\carname03_disable.bmp
+    file[]: crc = 2615dd1b; size =      2228; name = GAME\Resource\640X480X16\MODE\Arcade\carname04.bmp
+    file[]: crc = 9218012f; size =      2201; name = GAME\Resource\640X480X16\MODE\Arcade\carname04_disable.bmp
+    file[]: crc = 2ee4388f; size =      2296; name = GAME\Resource\640X480X16\MODE\Arcade\carname05.bmp
+    file[]: crc = 877ccf6a; size =      2175; name = GAME\Resource\640X480X16\MODE\Arcade\carname05_disable.bmp
+    file[]: crc = 41464321; size =      1966; name = GAME\Resource\640X480X16\MODE\Arcade\carname06.bmp
+    file[]: crc = 556cb59b; size =      1853; name = GAME\Resource\640X480X16\MODE\Arcade\carname06_disable.bmp
+    file[]: crc = 88794731; size =      2443; name = GAME\Resource\640X480X16\MODE\Arcade\carname07.bmp
+    file[]: crc = d2d3b172; size =      2365; name = GAME\Resource\640X480X16\MODE\Arcade\carname07_disable.bmp
+    file[]: crc = 70401c4a; size =      2540; name = GAME\Resource\640X480X16\MODE\Arcade\carname08.bmp
+    file[]: crc = 42c7f3b7; size =      2371; name = GAME\Resource\640X480X16\MODE\Arcade\carname08_disable.bmp
+    file[]: crc = 24dcd5bd; size =      1890; name = GAME\Resource\640X480X16\MODE\Arcade\carname09.bmp
+    file[]: crc = 6b11fb6f; size =      1855; name = GAME\Resource\640X480X16\MODE\Arcade\carname09_disable.bmp
+    file[]: crc = c1d0384e; size =      2234; name = GAME\Resource\640X480X16\MODE\Arcade\carname10.bmp
+    file[]: crc = d9867376; size =      2139; name = GAME\Resource\640X480X16\MODE\Arcade\carname10_disable.bmp
+    file[]: crc = 71aa699c; size =      1830; name = GAME\Resource\640X480X16\MODE\Arcade\carsettings_disable.bmp
+    file[]: crc = 98a90469; size =      1983; name = GAME\Resource\640X480X16\MODE\Arcade\carsettings_no.bmp
+    file[]: crc = e55c9afc; size =      1994; name = GAME\Resource\640X480X16\MODE\Arcade\carsettings_yes.bmp
+    file[]: crc = 3c98d38b; size =      6469; name = GAME\Resource\640X480X16\MODE\Arcade\course_select.bmp
+    file[]: crc = 4490d83a; size =      5830; name = GAME\Resource\640X480X16\MODE\Arcade\coursename0.bmp
+    file[]: crc = eda4d0b0; size =      5427; name = GAME\Resource\640X480X16\MODE\Arcade\coursename0_disable.bmp
+    file[]: crc = d43e848e; size =      4433; name = GAME\Resource\640X480X16\MODE\Arcade\coursename1.bmp
+    file[]: crc = 876abc20; size =      4061; name = GAME\Resource\640X480X16\MODE\Arcade\coursename1_disable.bmp
+    file[]: crc = ede11055; size =      6225; name = GAME\Resource\640X480X16\MODE\Arcade\coursename2.bmp
+    file[]: crc = 2ea85ab0; size =      5600; name = GAME\Resource\640X480X16\MODE\Arcade\coursename2_disable.bmp
+    file[]: crc = 2aad88cf; size =      6313; name = GAME\Resource\640X480X16\MODE\Arcade\coursename3.bmp
+    file[]: crc = 698000fe; size =      5739; name = GAME\Resource\640X480X16\MODE\Arcade\coursename3_disable.bmp
+    file[]: crc = 89a4ca78; size =      3074; name = GAME\Resource\640X480X16\MODE\Arcade\coursename4.bmp
+    file[]: crc = 09e4963b; size =      2840; name = GAME\Resource\640X480X16\MODE\Arcade\coursename4_disable.bmp
+    file[]: crc = 66dec379; size =      4973; name = GAME\Resource\640X480X16\MODE\Arcade\coursename5.bmp
+    file[]: crc = 9b65cdad; size =      4601; name = GAME\Resource\640X480X16\MODE\Arcade\coursename5_disable.bmp
+    file[]: crc = 8ed9b7f4; size =      1894; name = GAME\Resource\640X480X16\MODE\Arcade\expert.bmp
+    file[]: crc = c47572b7; size =      4389; name = GAME\Resource\640X480X16\MODE\Arcade\frontheight.bmp
+    file[]: crc = 00de3ffd; size =      4384; name = GAME\Resource\640X480X16\MODE\Arcade\frontheight_highlight.bmp
+    file[]: crc = 84fec7db; size =      2809; name = GAME\Resource\640X480X16\MODE\Arcade\grip.bmp
+    file[]: crc = e187a4d2; size =      4451; name = GAME\Resource\640X480X16\MODE\Arcade\handling.bmp
+    file[]: crc = 2f628d7d; size =      4451; name = GAME\Resource\640X480X16\MODE\Arcade\handling_highlight.bmp
+    file[]: crc = 6b43ceeb; size =       821; name = GAME\Resource\640X480X16\MODE\Arcade\handling_level00.bmp
+    file[]: crc = 6a639409; size =       820; name = GAME\Resource\640X480X16\MODE\Arcade\handling_level01.bmp
+    file[]: crc = 4b93d940; size =       816; name = GAME\Resource\640X480X16\MODE\Arcade\handling_level02.bmp
+    file[]: crc = bda84d99; size =       823; name = GAME\Resource\640X480X16\MODE\Arcade\level00.bmp
+    file[]: crc = 67e6cca7; size =       822; name = GAME\Resource\640X480X16\MODE\Arcade\level01.bmp
+    file[]: crc = cd260f51; size =       823; name = GAME\Resource\640X480X16\MODE\Arcade\level02.bmp
+    file[]: crc = 5c695667; size =       823; name = GAME\Resource\640X480X16\MODE\Arcade\level03.bmp
+    file[]: crc = f1ba0219; size =       823; name = GAME\Resource\640X480X16\MODE\Arcade\level04.bmp
+    file[]: crc = 387b05b9; size =       822; name = GAME\Resource\640X480X16\MODE\Arcade\level05.bmp
+    file[]: crc = 16a065b9; size =       822; name = GAME\Resource\640X480X16\MODE\Arcade\level06.bmp
+    file[]: crc = 2c5eab1d; size =       823; name = GAME\Resource\640X480X16\MODE\Arcade\level07.bmp
+    file[]: crc = 849899a8; size =       822; name = GAME\Resource\640X480X16\MODE\Arcade\level08.bmp
+    file[]: crc = 5d3e5ab1; size =       825; name = GAME\Resource\640X480X16\MODE\Arcade\level09.bmp
+    file[]: crc = f815d1f1; size =       817; name = GAME\Resource\640X480X16\MODE\Arcade\level10.bmp
+    file[]: crc = d2b09cba; size =     64358; name = GAME\Resource\640X480X16\MODE\Arcade\map0.bmp
+    file[]: crc = 847ede05; size =     58501; name = GAME\Resource\640X480X16\MODE\Arcade\map0_disable.bmp
+    file[]: crc = c4822a11; size =     72217; name = GAME\Resource\640X480X16\MODE\Arcade\map1.bmp
+    file[]: crc = e8971238; size =     63029; name = GAME\Resource\640X480X16\MODE\Arcade\map1_disable.bmp
+    file[]: crc = 04ebcbd0; size =     70116; name = GAME\Resource\640X480X16\MODE\Arcade\map2.bmp
+    file[]: crc = 6bf8465c; size =     62434; name = GAME\Resource\640X480X16\MODE\Arcade\map2_disable.bmp
+    file[]: crc = 11092e08; size =     67139; name = GAME\Resource\640X480X16\MODE\Arcade\map3.bmp
+    file[]: crc = 88c68971; size =     60450; name = GAME\Resource\640X480X16\MODE\Arcade\map3_disable.bmp
+    file[]: crc = 75a42962; size =     69454; name = GAME\Resource\640X480X16\MODE\Arcade\map4.bmp
+    file[]: crc = d9a294bb; size =     61549; name = GAME\Resource\640X480X16\MODE\Arcade\map4_disable.bmp
+    file[]: crc = d7cad80d; size =     70521; name = GAME\Resource\640X480X16\MODE\Arcade\map5.bmp
+    file[]: crc = a26f815f; size =     62141; name = GAME\Resource\640X480X16\MODE\Arcade\map5_disable.bmp
+    file[]: crc = e0fbfa2b; size =      2970; name = GAME\Resource\640X480X16\MODE\Arcade\maxspeed.bmp
+    file[]: crc = da0e5b37; size =      9415; name = GAME\Resource\640X480X16\MODE\Arcade\mirrormode.bmp
+    file[]: crc = 81828dbf; size =       735; name = GAME\Resource\640X480X16\MODE\Arcade\mt.bmp
+    file[]: crc = 36ab3fac; size =       693; name = GAME\Resource\640X480X16\MODE\Arcade\mt_disable.bmp
+    file[]: crc = a0f898f5; size =      2098; name = GAME\Resource\640X480X16\MODE\Arcade\normal.bmp
+    file[]: crc = 8e3daa00; size =      4306; name = GAME\Resource\640X480X16\MODE\Arcade\rearheight.bmp
+    file[]: crc = 6fbe6c4f; size =      4298; name = GAME\Resource\640X480X16\MODE\Arcade\rearheight_highlight.bmp
+    file[]: crc = ecf9687c; size =      2044; name = GAME\Resource\640X480X16\MODE\Arcade\special.bmp
+    file[]: crc = 3b0f9ba9; size =       561; name = GAME\Resource\640X480X16\MODE\Arcade\starmark.bmp
+    file[]: crc = 97483c5f; size =       984; name = GAME\Resource\640X480X16\MODE\Arcade\sus_hard.bmp
+    file[]: crc = 583f3a16; size =       993; name = GAME\Resource\640X480X16\MODE\Arcade\sus_hard_highlight.bmp
+    file[]: crc = f3a02f91; size =       979; name = GAME\Resource\640X480X16\MODE\Arcade\sus_soft.bmp
+    file[]: crc = ef14476e; size =       995; name = GAME\Resource\640X480X16\MODE\Arcade\sus_soft_highlight.bmp
+    file[]: crc = 2bd4c214; size =      4168; name = GAME\Resource\640X480X16\MODE\Arcade\suspension.bmp
+    file[]: crc = 2e319c28; size =      4136; name = GAME\Resource\640X480X16\MODE\Arcade\suspension_highlight.bmp
+    file[]: crc = 5b333aef; size =      3565; name = GAME\Resource\640X480X16\MODE\Multiplayer\1p_2p.bmp
+    file[]: crc = 6ece7526; size =      2981; name = GAME\Resource\640X480X16\MODE\Multiplayer\acceleration.bmp
+    file[]: crc = 3790cbec; size =       690; name = GAME\Resource\640X480X16\MODE\Multiplayer\at.bmp
+    file[]: crc = 047cc442; size =       716; name = GAME\Resource\640X480X16\MODE\Multiplayer\at_disable.bmp
+    file[]: crc = 603fb633; size =      2114; name = GAME\Resource\640X480X16\MODE\Multiplayer\beginner.bmp
+    file[]: crc = f2bb985a; size =    208048; name = GAME\Resource\640X480X16\MODE\Multiplayer\bg.bmp
+    file[]: crc = 7968d2a8; size =     42498; name = GAME\Resource\640X480X16\MODE\Multiplayer\car00.bmp
+    file[]: crc = 39885be0; size =     36394; name = GAME\Resource\640X480X16\MODE\Multiplayer\car01.bmp
+    file[]: crc = 4cd5c51f; size =     43474; name = GAME\Resource\640X480X16\MODE\Multiplayer\car02.bmp
+    file[]: crc = 2f86a663; size =     29824; name = GAME\Resource\640X480X16\MODE\Multiplayer\car03.bmp
+    file[]: crc = 64464c03; size =     39200; name = GAME\Resource\640X480X16\MODE\Multiplayer\car04.bmp
+    file[]: crc = 4b3d2f0d; size =     40035; name = GAME\Resource\640X480X16\MODE\Multiplayer\car05.bmp
+    file[]: crc = 2f89d1ce; size =     42917; name = GAME\Resource\640X480X16\MODE\Multiplayer\car06.bmp
+    file[]: crc = e745828e; size =     35991; name = GAME\Resource\640X480X16\MODE\Multiplayer\car07.bmp
+    file[]: crc = 89a2cd09; size =     43393; name = GAME\Resource\640X480X16\MODE\Multiplayer\car08.bmp
+    file[]: crc = 34796bdc; size =     22784; name = GAME\Resource\640X480X16\MODE\Multiplayer\car09.bmp
+    file[]: crc = 63dfa120; size =     22620; name = GAME\Resource\640X480X16\MODE\Multiplayer\car10.bmp
+    file[]: crc = 125f2b97; size =      5364; name = GAME\Resource\640X480X16\MODE\Multiplayer\car_select.bmp
+    file[]: crc = 033456ff; size =      5374; name = GAME\Resource\640X480X16\MODE\Multiplayer\car_settings.bmp
+    file[]: crc = dc0c16ac; size =      2196; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname00.bmp
+    file[]: crc = 3ba75bd9; size =      2101; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname00_disable.bmp
+    file[]: crc = c79511dd; size =      2231; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname01.bmp
+    file[]: crc = 4c46c45f; size =      2118; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname01_disable.bmp
+    file[]: crc = 033e1c78; size =      1974; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname02.bmp
+    file[]: crc = 5ec63ca9; size =      1881; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname02_disable.bmp
+    file[]: crc = 06a6a243; size =      2310; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname03.bmp
+    file[]: crc = 0f441e33; size =      2094; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname03_disable.bmp
+    file[]: crc = 26794f61; size =      2177; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname04.bmp
+    file[]: crc = 0ac8ce4c; size =      2141; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname04_disable.bmp
+    file[]: crc = 6a8981f6; size =      2220; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname05.bmp
+    file[]: crc = f930535e; size =      2150; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname05_disable.bmp
+    file[]: crc = 83368adb; size =      1913; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname06.bmp
+    file[]: crc = 5cc3fc42; size =      1861; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname06_disable.bmp
+    file[]: crc = a772f79a; size =      2383; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname07.bmp
+    file[]: crc = fa7629aa; size =      2264; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname07_disable.bmp
+    file[]: crc = a7f9d29a; size =      2509; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname08.bmp
+    file[]: crc = a304bcae; size =      2344; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname08_disable.bmp
+    file[]: crc = 3a0f3e11; size =      1890; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname09.bmp
+    file[]: crc = 30575db1; size =      1765; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname09_disable.bmp
+    file[]: crc = 7229d271; size =      2171; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname10.bmp
+    file[]: crc = 2cac76ca; size =      2063; name = GAME\Resource\640X480X16\MODE\Multiplayer\carname10_disable.bmp
+    file[]: crc = 71aa699c; size =      1830; name = GAME\Resource\640X480X16\MODE\Multiplayer\carsettings_disable.bmp
+    file[]: crc = 98a90469; size =      1983; name = GAME\Resource\640X480X16\MODE\Multiplayer\carsettings_no.bmp
+    file[]: crc = e55c9afc; size =      1994; name = GAME\Resource\640X480X16\MODE\Multiplayer\carsettings_yes.bmp
+    file[]: crc = a5b7ffdb; size =      6114; name = GAME\Resource\640X480X16\MODE\Multiplayer\course_select.bmp
+    file[]: crc = 494d34d7; size =      5836; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename0.bmp
+    file[]: crc = ff34fc77; size =      5365; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename0_disable.bmp
+    file[]: crc = bba20dc3; size =      4412; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename1.bmp
+    file[]: crc = 18418104; size =      3975; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename1_disable.bmp
+    file[]: crc = ed3da94b; size =      6134; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename2.bmp
+    file[]: crc = 6677d326; size =      5524; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename2_disable.bmp
+    file[]: crc = 4496062d; size =      6218; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename3.bmp
+    file[]: crc = ae516ae1; size =      5631; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename3_disable.bmp
+    file[]: crc = 28060e79; size =      3080; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename4.bmp
+    file[]: crc = bab72cc7; size =      2790; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename4_disable.bmp
+    file[]: crc = 52086ef8; size =      4869; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename5.bmp
+    file[]: crc = bb68b5b5; size =      4528; name = GAME\Resource\640X480X16\MODE\Multiplayer\coursename5_disable.bmp
+    file[]: crc = 4441dcda; size =       244; name = GAME\Resource\640X480X16\MODE\Multiplayer\cursor_1p.bmp
+    file[]: crc = 53032f4f; size =       182; name = GAME\Resource\640X480X16\MODE\Multiplayer\cursor_2p.bmp
+    file[]: crc = 213c3c5a; size =       195; name = GAME\Resource\640X480X16\MODE\Multiplayer\cursor_3p.bmp
+    file[]: crc = e9feac71; size =       193; name = GAME\Resource\640X480X16\MODE\Multiplayer\cursor_4p.bmp
+    file[]: crc = 1555dddf; size =       179; name = GAME\Resource\640X480X16\MODE\Multiplayer\cursor_5p.bmp
+    file[]: crc = 599c2fd4; size =       179; name = GAME\Resource\640X480X16\MODE\Multiplayer\cursor_6p.bmp
+    file[]: crc = 475e3de3; size =       164; name = GAME\Resource\640X480X16\MODE\Multiplayer\cursor_7p.bmp
+    file[]: crc = 300f00bd; size =       161; name = GAME\Resource\640X480X16\MODE\Multiplayer\cursor_8p.bmp
+    file[]: crc = a7b46853; size =      4979; name = GAME\Resource\640X480X16\MODE\Multiplayer\delay_time.bmp
+    file[]: crc = 0b6037ef; size =       570; name = GAME\Resource\640X480X16\MODE\Multiplayer\downarrow.bmp
+    file[]: crc = 8ed9b7f4; size =      1894; name = GAME\Resource\640X480X16\MODE\Multiplayer\expert.bmp
+    file[]: crc = c151a5bd; size =    123389; name = GAME\Resource\640X480X16\MODE\Multiplayer\extr_map.bmp
+    file[]: crc = c47572b7; size =      4389; name = GAME\Resource\640X480X16\MODE\Multiplayer\frontheight.bmp
+    file[]: crc = 00de3ffd; size =      4384; name = GAME\Resource\640X480X16\MODE\Multiplayer\frontheight_highlight.bmp
+    file[]: crc = 84fec7db; size =      2809; name = GAME\Resource\640X480X16\MODE\Multiplayer\grip.bmp
+    file[]: crc = e187a4d2; size =      4451; name = GAME\Resource\640X480X16\MODE\Multiplayer\handling.bmp
+    file[]: crc = 2f628d7d; size =      4451; name = GAME\Resource\640X480X16\MODE\Multiplayer\handling_highlight.bmp
+    file[]: crc = 6b43ceeb; size =       821; name = GAME\Resource\640X480X16\MODE\Multiplayer\handling_level00.bmp
+    file[]: crc = 6a639409; size =       820; name = GAME\Resource\640X480X16\MODE\Multiplayer\handling_level01.bmp
+    file[]: crc = 4b93d940; size =       816; name = GAME\Resource\640X480X16\MODE\Multiplayer\handling_level02.bmp
+    file[]: crc = c0b404b2; size =      1322; name = GAME\Resource\640X480X16\MODE\Multiplayer\laps.bmp
+    file[]: crc = dd6223fd; size =      1320; name = GAME\Resource\640X480X16\MODE\Multiplayer\laps_disable.bmp
+    file[]: crc = a48d816c; size =      3371; name = GAME\Resource\640X480X16\MODE\Multiplayer\letter_1.bmp
+    file[]: crc = cd849faf; size =      5182; name = GAME\Resource\640X480X16\MODE\Multiplayer\letter_2.bmp
+    file[]: crc = bda84d99; size =       823; name = GAME\Resource\640X480X16\MODE\Multiplayer\level00.bmp
+    file[]: crc = 67e6cca7; size =       822; name = GAME\Resource\640X480X16\MODE\Multiplayer\level01.bmp
+    file[]: crc = cd260f51; size =       823; name = GAME\Resource\640X480X16\MODE\Multiplayer\level02.bmp
+    file[]: crc = 5c695667; size =       823; name = GAME\Resource\640X480X16\MODE\Multiplayer\level03.bmp
+    file[]: crc = f1ba0219; size =       823; name = GAME\Resource\640X480X16\MODE\Multiplayer\level04.bmp
+    file[]: crc = 387b05b9; size =       822; name = GAME\Resource\640X480X16\MODE\Multiplayer\level05.bmp
+    file[]: crc = 16a065b9; size =       822; name = GAME\Resource\640X480X16\MODE\Multiplayer\level06.bmp
+    file[]: crc = 2c5eab1d; size =       823; name = GAME\Resource\640X480X16\MODE\Multiplayer\level07.bmp
+    file[]: crc = 849899a8; size =       822; name = GAME\Resource\640X480X16\MODE\Multiplayer\level08.bmp
+    file[]: crc = 5d3e5ab1; size =       825; name = GAME\Resource\640X480X16\MODE\Multiplayer\level09.bmp
+    file[]: crc = f815d1f1; size =       817; name = GAME\Resource\640X480X16\MODE\Multiplayer\level10.bmp
+    file[]: crc = d2b09cba; size =     64358; name = GAME\Resource\640X480X16\MODE\Multiplayer\map0.bmp
+    file[]: crc = 847ede05; size =     58501; name = GAME\Resource\640X480X16\MODE\Multiplayer\map0_disable.bmp
+    file[]: crc = c4822a11; size =     72217; name = GAME\Resource\640X480X16\MODE\Multiplayer\map1.bmp
+    file[]: crc = e8971238; size =     63029; name = GAME\Resource\640X480X16\MODE\Multiplayer\map1_disable.bmp
+    file[]: crc = 04ebcbd0; size =     70116; name = GAME\Resource\640X480X16\MODE\Multiplayer\map2.bmp
+    file[]: crc = 6bf8465c; size =     62434; name = GAME\Resource\640X480X16\MODE\Multiplayer\map2_disable.bmp
+    file[]: crc = 11092e08; size =     67139; name = GAME\Resource\640X480X16\MODE\Multiplayer\map3.bmp
+    file[]: crc = 88c68971; size =     60450; name = GAME\Resource\640X480X16\MODE\Multiplayer\map3_disable.bmp
+    file[]: crc = 75a42962; size =     69454; name = GAME\Resource\640X480X16\MODE\Multiplayer\map4.bmp
+    file[]: crc = d9a294bb; size =     61549; name = GAME\Resource\640X480X16\MODE\Multiplayer\map4_disable.bmp
+    file[]: crc = d7cad80d; size =     70521; name = GAME\Resource\640X480X16\MODE\Multiplayer\map5.bmp
+    file[]: crc = a26f815f; size =     62141; name = GAME\Resource\640X480X16\MODE\Multiplayer\map5_disable.bmp
+    file[]: crc = e0fbfa2b; size =      2970; name = GAME\Resource\640X480X16\MODE\Multiplayer\maxspeed.bmp
+    file[]: crc = a8c9d5f0; size =    121762; name = GAME\Resource\640X480X16\MODE\Multiplayer\mid_map.bmp
+    file[]: crc = 81828dbf; size =       735; name = GAME\Resource\640X480X16\MODE\Multiplayer\mt.bmp
+    file[]: crc = 36ab3fac; size =       693; name = GAME\Resource\640X480X16\MODE\Multiplayer\mt_disable.bmp
+    file[]: crc = 2129f305; size =    117681; name = GAME\Resource\640X480X16\MODE\Multiplayer\new_map.bmp
+    file[]: crc = a0f898f5; size =      2098; name = GAME\Resource\640X480X16\MODE\Multiplayer\normal.bmp
+    file[]: crc = 79233582; size =      1077; name = GAME\Resource\640X480X16\MODE\Multiplayer\off.bmp
+    file[]: crc = 372933dc; size =      1044; name = GAME\Resource\640X480X16\MODE\Multiplayer\off_disable.bmp
+    file[]: crc = 22ec552c; size =       957; name = GAME\Resource\640X480X16\MODE\Multiplayer\on.bmp
+    file[]: crc = c376c68f; size =       933; name = GAME\Resource\640X480X16\MODE\Multiplayer\on_disable.bmp
+    file[]: crc = cb8d655a; size =    114375; name = GAME\Resource\640X480X16\MODE\Multiplayer\ovl_map.bmp
+    file[]: crc = 232ba36d; size =      2007; name = GAME\Resource\640X480X16\MODE\Multiplayer\player.bmp
+    file[]: crc = a497a48f; size =      2646; name = GAME\Resource\640X480X16\MODE\Multiplayer\player_disable.bmp
+    file[]: crc = 8e3daa00; size =      4306; name = GAME\Resource\640X480X16\MODE\Multiplayer\rearheight.bmp
+    file[]: crc = 6fbe6c4f; size =      4298; name = GAME\Resource\640X480X16\MODE\Multiplayer\rearheight_highlight.bmp
+    file[]: crc = 2a2dd5b7; size =      1290; name = GAME\Resource\640X480X16\MODE\Multiplayer\sec.bmp
+    file[]: crc = 41578fbd; size =      1177; name = GAME\Resource\640X480X16\MODE\Multiplayer\sec_disable.bmp
+    file[]: crc = 13781528; size =      5537; name = GAME\Resource\640X480X16\MODE\Multiplayer\select_laps.bmp
+    file[]: crc = 83c98323; size =      5768; name = GAME\Resource\640X480X16\MODE\Multiplayer\slow_car_boost.bmp
+    file[]: crc = ecf9687c; size =      2044; name = GAME\Resource\640X480X16\MODE\Multiplayer\special.bmp
+    file[]: crc = 3b0f9ba9; size =       561; name = GAME\Resource\640X480X16\MODE\Multiplayer\starmark.bmp
+    file[]: crc = 97483c5f; size =       984; name = GAME\Resource\640X480X16\MODE\Multiplayer\sus_hard.bmp
+    file[]: crc = 583f3a16; size =       993; name = GAME\Resource\640X480X16\MODE\Multiplayer\sus_hard_highlight.bmp
+    file[]: crc = f3a02f91; size =       979; name = GAME\Resource\640X480X16\MODE\Multiplayer\sus_soft.bmp
+    file[]: crc = ef14476e; size =       995; name = GAME\Resource\640X480X16\MODE\Multiplayer\sus_soft_highlight.bmp
+    file[]: crc = 2bd4c214; size =      4168; name = GAME\Resource\640X480X16\MODE\Multiplayer\suspension.bmp
+    file[]: crc = 2e319c28; size =      4136; name = GAME\Resource\640X480X16\MODE\Multiplayer\suspension_highlight.bmp
+    file[]: crc = cb962547; size =      4104; name = GAME\Resource\640X480X16\MODE\Multiplayer\time_lag.bmp
+    file[]: crc = aba6e0e1; size =      2436; name = GAME\Resource\640X480X16\MODE\Multiplayer\timelag.bmp
+    file[]: crc = 779bb822; size =      2306; name = GAME\Resource\640X480X16\MODE\Multiplayer\timelag_disable.bmp
+    file[]: crc = f4c2aa7a; size =       525; name = GAME\Resource\640X480X16\MODE\Multiplayer\uparrow.bmp
+    file[]: crc = 3df118b1; size =    677205; name = GAME\Resource\640X480X16\NameEntry\bg.bmp
+    file[]: crc = 26621fc6; size =     59577; name = GAME\Resource\640X480X16\NameEntry\car00.bmp
+    file[]: crc = b01f68e2; size =     54542; name = GAME\Resource\640X480X16\NameEntry\car01.bmp
+    file[]: crc = ab0bec7a; size =     63574; name = GAME\Resource\640X480X16\NameEntry\car02.bmp
+    file[]: crc = d4d3246c; size =     45707; name = GAME\Resource\640X480X16\NameEntry\car03.bmp
+    file[]: crc = 0b28cf76; size =     58504; name = GAME\Resource\640X480X16\NameEntry\car04.bmp
+    file[]: crc = a05fd2d5; size =     59121; name = GAME\Resource\640X480X16\NameEntry\car05.bmp
+    file[]: crc = bfd7feb0; size =     60480; name = GAME\Resource\640X480X16\NameEntry\car06.bmp
+    file[]: crc = e901b249; size =     54453; name = GAME\Resource\640X480X16\NameEntry\car07.bmp
+    file[]: crc = 6056181e; size =     61656; name = GAME\Resource\640X480X16\NameEntry\car08.bmp
+    file[]: crc = 0136a1fd; size =     64898; name = GAME\Resource\640X480X16\NameEntry\car09.bmp
+    file[]: crc = 1dfec8c4; size =     66158; name = GAME\Resource\640X480X16\NameEntry\car10.bmp
+    file[]: crc = 6b9b9e56; size =      8888; name = GAME\Resource\640X480X16\NameEntry\coursename0.bmp
+    file[]: crc = f22198fc; size =      7162; name = GAME\Resource\640X480X16\NameEntry\coursename1.bmp
+    file[]: crc = 5d1e5234; size =      8378; name = GAME\Resource\640X480X16\NameEntry\coursename2.bmp
+    file[]: crc = 2e43bdb1; size =     11720; name = GAME\Resource\640X480X16\NameEntry\coursename3.bmp
+    file[]: crc = 6db5ffd1; size =      6703; name = GAME\Resource\640X480X16\NameEntry\coursename4.bmp
+    file[]: crc = 52f89710; size =      9145; name = GAME\Resource\640X480X16\NameEntry\coursename5.bmp
+    file[]: crc = 55d96312; size =       608; name = GAME\Resource\640X480X16\Race\auto.bmp
+    file[]: crc = d340b0fa; size =      8890; name = GAME\Resource\640X480X16\Race\exit_no.bmp
+    file[]: crc = f8940bbf; size =      8890; name = GAME\Resource\640X480X16\Race\exit_restart.bmp
+    file[]: crc = 53183860; size =      8890; name = GAME\Resource\640X480X16\Race\exit_yes.bmp
+    file[]: crc = 29326077; size =     22282; name = GAME\Resource\640X480X16\Race\goal.bmp
+    file[]: crc = 7037fbc5; size =       223; name = GAME\Resource\640X480X16\Race\hari.bmp
+    file[]: crc = 013300ac; size =       750; name = GAME\Resource\640X480X16\Race\km_h.bmp
+    file[]: crc = 925e3890; size =       510; name = GAME\Resource\640X480X16\Race\lap.bmp
+    file[]: crc = 9c5e7807; size =       710; name = GAME\Resource\640X480X16\Race\mph.bmp
+    file[]: crc = baf44b33; size =      4467; name = GAME\Resource\640X480X16\Race\pit_work.bmp
+    file[]: crc = e97433e9; size =      4051; name = GAME\Resource\640X480X16\Race\replay.bmp
+    file[]: crc = d99d15a6; size =      4302; name = GAME\Resource\640X480X16\Race\reverse.bmp
+    file[]: crc = a28b23bb; size =      8891; name = GAME\Resource\640X480X16\Race\save_no.bmp
+    file[]: crc = f414432e; size =      8891; name = GAME\Resource\640X480X16\Race\save_yes.bmp
+    file[]: crc = 28d95d37; size =      1067; name = GAME\Resource\640X480X16\Race\sectionlap.bmp
+    file[]: crc = 1eb75884; size =       611; name = GAME\Resource\640X480X16\Race\shift.bmp
+    file[]: crc = 54f4e553; size =     10178; name = GAME\Resource\640X480X16\Race\tacho.bmp
+    file[]: crc = 68bab0c8; size =       824; name = GAME\Resource\640X480X16\Race\Arcade\1mark_1.bmp
+    file[]: crc = 8bfcca6d; size =       824; name = GAME\Resource\640X480X16\Race\Arcade\2mark_1.bmp
+    file[]: crc = e6508888; size =       824; name = GAME\Resource\640X480X16\Race\Arcade\3mark_1.BMP
+    file[]: crc = d0ebb9cb; size =       824; name = GAME\Resource\640X480X16\Race\Arcade\4mark_1.BMP
+    file[]: crc = ba47513c; size =       824; name = GAME\Resource\640X480X16\Race\Arcade\5mark_1.BMP
+    file[]: crc = 89330945; size =       824; name = GAME\Resource\640X480X16\Race\Arcade\6mark_1.BMP
+    file[]: crc = 6967a76a; size =       824; name = GAME\Resource\640X480X16\Race\Arcade\7mark_1.BMP
+    file[]: crc = 0cac19a7; size =       824; name = GAME\Resource\640X480X16\Race\Arcade\8mark_1.BMP
+    file[]: crc = ba9cb602; size =       478; name = GAME\Resource\640X480X16\Race\Arcade\apmark_1.bmp
+    file[]: crc = 18c4049c; size =      1113; name = GAME\Resource\640X480X16\Race\Arcade\bestlap.bmp
+    file[]: crc = dd77f9ca; size =       802; name = GAME\Resource\640X480X16\Race\Arcade\condition.bmp
+    file[]: crc = 9516105f; size =       480; name = GAME\Resource\640X480X16\Race\Arcade\g2bmark_1.bmp
+    file[]: crc = e1c969e4; size =      1090; name = GAME\Resource\640X480X16\Race\Arcade\laptime.bmp
+    file[]: crc = 08f0ff0f; size =      6171; name = GAME\Resource\640X480X16\Race\Arcade\map0.bmp
+    file[]: crc = 7c4b27c4; size =      7044; name = GAME\Resource\640X480X16\Race\Arcade\map0_mirror.bmp
+    file[]: crc = c98bb05b; size =      7044; name = GAME\Resource\640X480X16\Race\Arcade\map1.bmp
+    file[]: crc = f671ec98; size =      7044; name = GAME\Resource\640X480X16\Race\Arcade\map1_mirror.bmp
+    file[]: crc = f24e5144; size =     13855; name = GAME\Resource\640X480X16\Race\Arcade\map2.bmp
+    file[]: crc = 7adcb761; size =     13857; name = GAME\Resource\640X480X16\Race\Arcade\map2_mirror.bmp
+    file[]: crc = 170a447e; size =      8489; name = GAME\Resource\640X480X16\Race\Arcade\map3.bmp
+    file[]: crc = f6a656ff; size =      8489; name = GAME\Resource\640X480X16\Race\Arcade\map3_mirror.bmp
+    file[]: crc = af78d265; size =     10564; name = GAME\Resource\640X480X16\Race\Arcade\map4.bmp
+    file[]: crc = 29e9bf0e; size =     10562; name = GAME\Resource\640X480X16\Race\Arcade\map4_mirror.bmp
+    file[]: crc = e8331f0d; size =     13191; name = GAME\Resource\640X480X16\Race\Arcade\map5.bmp
+    file[]: crc = 96560771; size =     13191; name = GAME\Resource\640X480X16\Race\Arcade\map5_mirror.bmp
+    file[]: crc = 70a42a7c; size =       481; name = GAME\Resource\640X480X16\Race\Arcade\mpmark_1.bmp
+    file[]: crc = 88a5fcfe; size =       886; name = GAME\Resource\640X480X16\Race\Arcade\position.bmp
+    file[]: crc = 7088413d; size =      7219; name = GAME\Resource\640X480X16\Race\Arcade\radar.bmp
+    file[]: crc = 5a0e9a89; size =       177; name = GAME\Resource\640X480X16\Race\Arcade\rd_at.bmp
+    file[]: crc = bf443f94; size =       179; name = GAME\Resource\640X480X16\Race\Arcade\rd_mt.bmp
+    file[]: crc = 456350cf; size =       176; name = GAME\Resource\640X480X16\Race\Arcade\rd_ot_01.bmp
+    file[]: crc = 3930edf5; size =      3474; name = GAME\Resource\640X480X16\Race\Arcade\timeextention.bmp
+    file[]: crc = 3e453935; size =       876; name = GAME\Resource\640X480X16\Race\Arcade\traffic.bmp
+    file[]: crc = 69645101; size =     13920; name = GAME\Resource\640X480X16\Race\Multiplayer\loser.bmp
+    file[]: crc = b6b8d17d; size =       468; name = GAME\Resource\640X480X16\Race\Multiplayer\player_no0.BMP
+    file[]: crc = 6557dd96; size =       470; name = GAME\Resource\640X480X16\Race\Multiplayer\player_no1.BMP
+    file[]: crc = 6b3a7ddb; size =       469; name = GAME\Resource\640X480X16\Race\Multiplayer\player_no2.BMP
+    file[]: crc = cc0f60bb; size =       472; name = GAME\Resource\640X480X16\Race\Multiplayer\player_no3.BMP
+    file[]: crc = af6f5d64; size =       470; name = GAME\Resource\640X480X16\Race\Multiplayer\player_no4.BMP
+    file[]: crc = 3be2e63b; size =       470; name = GAME\Resource\640X480X16\Race\Multiplayer\player_no5.BMP
+    file[]: crc = f2006c5f; size =       476; name = GAME\Resource\640X480X16\Race\Multiplayer\player_no6.BMP
+    file[]: crc = b949902d; size =       470; name = GAME\Resource\640X480X16\Race\Multiplayer\player_no7.BMP
+    file[]: crc = 88a5fcfe; size =       886; name = GAME\Resource\640X480X16\Race\Multiplayer\position.bmp
+    file[]: crc = 7088413d; size =      7219; name = GAME\Resource\640X480X16\Race\Multiplayer\radar.bmp
+    file[]: crc = 7a1813e6; size =     14082; name = GAME\Resource\640X480X16\Race\Multiplayer\winner.bmp
+
+end
+
 fragment[special]:
     file[]: crc = bfe3669b; size =   1083904; name = game\DAYTONA USA Deluxe SE.exe
     file[]: crc = 3e9e3437; size =    122880; name = game\ddse.dll
@@ -4731,8 +5543,64 @@ demo[pc-cd-sp-special]:
 	
 end
 
+
+demo[pc-cd-en-demo]:
+	name = English Sample CD
+	imports = sample
+	anchorfile = DAYTONA USA Deluxe Demo CD.exe
+	anchordepth = 1
+    file[]: crc = 43d77086; size =       484; name = DAYTONA USA Deluxe.cnt
+    file[]: crc = 94e17b13; size =   2387559; name = DAYTONA USA Deluxe.hlp
+    file[]: crc = 2de729d9; size =      1272; name = Thanks.txt	
+	
+	EXENAME = DAYTONA USA Deluxe Demo CD
+	
+end
+
+demo[pc-cd-fr-demo]:
+	name = French Sample CD
+	imports = sample
+	anchorfile = DAYTONA USA Deluxe Demo CD.exe
+	anchordepth = 1
+    file[]: crc = 1522abbe; size =       545; name = DAYTONA USA Deluxe.cnt
+    file[]: crc = f665b6c8; size =   2394358; name = DAYTONA USA Deluxe.hlp
+    file[]: crc = 087498e3; size =      1449; name = Thanks.txt
+
+	locale = fr-FR
+	EXENAME = DAYTONA USA Deluxe Demo CD
+	
+end
+
+demo[pc-cd-ge-demo]:
+	name = German Sample CD
+	imports = sample
+	anchorfile = DAYTONA USA Deluxe Demo CD.exe
+	anchordepth = 1
+    file[]: crc = 8298fc14; size =       497; name = DAYTONA USA Deluxe.cnt
+    file[]: crc = 6ff53b67; size =   2392788; name = DAYTONA USA Deluxe.hlp
+    file[]: crc = 4e4105a6; size =      1643; name = Thanks.txt
+	
+	locale = de-DE
+	EXENAME = DAYTONA USA Deluxe Demo CD
+	
+end
+
+demo[pc-cd-sp-demo]:
+	name = Spanish Sample CD
+	imports = sample
+	anchorfile = DAYTONA USA Deluxe Demo CD.exe
+	anchordepth = 1
+    file[]: crc = 56ef693a; size =       608; name = DAYTONA USA Deluxe.cnt
+    file[]: crc = bfe13fe4; size =   2394902; name = DAYTONA USA Deluxe.hlp
+    file[]: crc = 0ba94ea6; size =      1563; name = Thanks.txt
+
+	locale = es-ES_tradnl
+	EXENAME = DAYTONA USA Deluxe Demo CD
+	
+end
+
 addon[pc-d3d]:
-	name = Direct 3D Upgrader
+	name = Direct 3D Upgrader V1.20E
 	upgradeids = pc-cd-en, pc-cd-fr, pc-cd-ge, pc-cd-sp
 	anchorfile = DAYTONA USA Deluxe.exe
     file[]: crc = 317dc56e; size =   1096704; name = game\DAYTONA USA Deluxe.exe
@@ -4749,5 +5617,7 @@ addon[pc-d3d]:
     file[]: crc = d42e01c0; size =      1983; name = resource\640x480x16\mode\TWILIGHT.BMP
 	
 end
+
+
 
 end
