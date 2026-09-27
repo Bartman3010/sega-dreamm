@@ -9,9 +9,11 @@ machine = pc
 rootpath = C:\Sega\BugToo!
 launch = $(rootpath)\$(EXENAME).EXE
 osenv = windows 95
-filter = nonlucas
+audiohw = gmidi
+filter = nonlucas, sega
 CDID = BUGTOO
 EXENAME = BUGTOO!
+MOVIES = hex:1
 
 //
 // filesystem
@@ -21,14 +23,49 @@ mount[]: vpath = $(rootpath);   srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
 
 //
+// Registry Information
+//
+REGISTRY = [[[$(CRLF)
+REGEDIT4
+[HKEY_CURRENT_USER\Software\Sega]
+@=
+[HKEY_CURRENT_USER\Software\Sega\Bug Too!]
+@=
+"Version"="Smells like Victory!"
+"Main Directory"="$$(rootpath)"
+"Data Directory"="D:\\DATA\\"
+"Save Directory"="$$(rootpath)\\SaveGame"
+"Key Map 1"=hex:00,00,00,00,00,00,0d,00,20,00,00,00,00,00,00,00,10,00,11,00,00,00,00,00,26,00,28,00,25,00,27,00,4d,00,50,00
+"Key Map 2"=hex:00,00,00,00,00,00,0d,00,20,00,00,00,00,00,00,00,10,00,11,00,00,00,00,00,26,00,28,00,25,00,27,00,4d,00,50,00
+"Joystick Map 1"=hex:ff,ff,ff,ff,ff,ff,00,00,01,00,ff,ff,ff,ff,ff,ff,02,00,03,00,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
+"Joystick Map 2"=hex:ff,ff,ff,ff,ff,ff,00,00,01,00,ff,ff,ff,ff,ff,ff,02,00,03,00,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
+"SFX Enabled"=hex:1
+"SFX Volume"=hex:05,00,00,00
+"Music Enabled"=hex:1
+"Music Volume"=hex:05,00,00,00
+"Movies Enabled"=$(MOVIES)
+]]]
+
+//
 // initialization script
 //
 script[init]:
     code = [[[$(CRLF)
 	        // set the volume label on the CD
         drive_set_label("D", "$$(CDID)");
+		winregistry_import_raw("$$(REGISTRY)");
 	]]]
 	
+end
+
+//
+// Movies Enabled
+//
+config[movies]:
+    title = Movies
+    option[on]:  name = On; MOVIES = hex:1; priority = 1
+	option[off]: name = Off; MOVIES = hex:0
+
 end
 
 fragment[common]:
@@ -126,7 +163,7 @@ game[pc-en-cd-eu]:
     file[]: crc = 527eb2b1; size =   4123165; name = CD\DATA\GARDEN3.BFF
     file[]: crc = 109e57d2; size =   8080602; name = CD\DATA\WIN2.AVI
 	
-	file[]: name = CDDA.SOU; cdda = 221/143/262/292/138/269/289/214/154/112/93
+	file[]: name = CD\CDDA.SOU; cdda = 221/143/262/292/138/269/289/214/154/112/93
 	
 	CDID = DEMO
 	
@@ -145,7 +182,7 @@ game[pc-en-cd-us]:
     file[]: crc = 15ec9733; size =   4123165; name = CD\DATA\GARDEN3.BFF
     file[]: crc = 109e57d2; size =   8080602; name = CD\DATA\WIN2.AVI
 	
-	file[]: name = CDDA.SOU; cdda = 221/143/262/292/138/269/289/214/154/112/93
+	file[]: name = CD\CDDA.SOU; cdda = 221/143/262/292/138/269/289/214/154/112/93
 	
 	CDID = BUGTOO
 	

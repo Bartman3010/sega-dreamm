@@ -3,7 +3,7 @@
 //
 desc[sga-dusadx]:
 
-name = Daytona USA Deluxe
+name = Daytona USA Deluxe / Daytona USA Evolution
 icon = sga-dusadx.png
 machine = pc
 rootpath = C:\Sega\DAYTONA_DLX
@@ -24,19 +24,67 @@ mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 //
 // Registry Information
 //
+fragment[registry-retail]:
 REGISTRY = [[[$(CRLF)
 REGEDIT4
 [HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe\Profile\D3DOPTIONS]
-@=
+@=?
 [HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe\Profile\JoystickSettings]
-@=
+@=?
 [HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe\Profile\KeyboardSettings]
-@=
+@=?
 [HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe\Profile\System]
-@=
+@=?
 [HKEY_CURRENT_USER\Software\SEGA\DAYTONA USA Deluxe\Profile\Hidden]
-@=
+@=?
+[HKEY_CURRENT_USER\Software\SEGA\OEMJoystickSettings\DREAMM Joystick 1]
+@=?
+[HKEY_CURRENT_USER\Software\SEGA\OEMJoystickSettings\DREAMM Joystick 2]
+@=?
 ]]]
+
+end
+
+fragment[registry-sample]:
+REGISTRY = [[[$(CRLF)
+REGEDIT4
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe Demo CD\Profile\D3DOPTIONS]
+@=?
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe Demo CD\Profile\JoystickSettings]
+@=?
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe Demo CD\Profile\KeyboardSettings]
+@=?
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe Demo CD\Profile\System]
+@=?
+[HKEY_CURRENT_USER\Software\SEGA\DAYTONA USA Deluxe Demo CD\Profile\Hidden]
+@=?
+[HKEY_CURRENT_USER\Software\SEGA\DAYTONA USA Deluxe Demo CD\Profile\Memory]
+@=?
+[HKEY_CURRENT_USER\Software\SEGA\OEMJoystickSettings\DREAMM Joystick 1]
+@=?
+[HKEY_CURRENT_USER\Software\SEGA\OEMJoystickSettings\DREAMM Joystick 2]
+]]]
+end
+
+fragment[registry-special]:
+REGISTRY = [[[$(CRLF)
+REGEDIT4
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe Special Edition\Profile\D3DOPTIONS]
+@=?
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe Special Edition\Profile\JoystickSettings]
+@=?
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe Special Edition\Profile\KeyboardSettings]
+@=?
+[HKEY_CURRENT_USER\SOFTWARE\SEGA\DAYTONA USA Deluxe Special Edition\Profile\System]
+@=?
+[HKEY_CURRENT_USER\Software\SEGA\DAYTONA USA Deluxe Special Edition\Profile\Hidden]
+@=?
+[HKEY_CURRENT_USER\Software\SEGA\OEMJoystickSettings\DREAMM Joystick 1]
+@=?
+[HKEY_CURRENT_USER\Software\SEGA\OEMJoystickSettings\DREAMM Joystick 2]
+@=?
+]]]
+end
 
 //
 // initialization script
@@ -2404,7 +2452,7 @@ fragment[common]:
     file[]: crc = 89441021; size =      3699; name = RESOURCE\640X480X8\TITLE\pressenterkey_disable.bmp
     file[]: crc = cfbffb3c; size =      4602; name = RESOURCE\640X480X8\TITLE\pressstartbutton.bmp
     file[]: crc = 7ffb70ef; size =      4172; name = RESOURCE\640X480X8\TITLE\pressstartbutton_disable.bmp
-   file[]: crc = b34edf52; size =       288; name = RESOURCE\Force\Force0.FRC
+    file[]: crc = b34edf52; size =       288; name = RESOURCE\Force\Force0.FRC
     file[]: crc = 8743bcec; size =       288; name = RESOURCE\Force\Force1.FRC
     file[]: crc = 94b89d86; size =       288; name = RESOURCE\Force\Force2.FRC
     file[]: crc = 556b8c64; size =       288; name = RESOURCE\Force\Force3.FRC
@@ -5418,7 +5466,7 @@ end
 //
 game[pc-cd-en]:
 	name = English CD V1.08E
-	imports = common
+	imports = common, registry-retail
 	anchorfile = DAYTONA USA Deluxe.exe
 	anchordepth = 1
     file[]: crc = 43d77086; size =       484; name = DAYTONA USA Deluxe.cnt
@@ -5432,7 +5480,7 @@ end
 //
 game[pc-cd-fr]:
 	name = French CD V1.08E
-	imports = common
+	imports = common, registry-retail
 	anchorfile = DAYTONA USA Deluxe.exe
 	anchordepth = 1
     file[]: crc = 1522abbe; size =       545; name = DAYTONA USA Deluxe.cnt
@@ -5447,7 +5495,7 @@ end
 //
 game[pc-cd-ge]:
 	name = German CD V1.08E
-	imports = common
+	imports = common, registry-retail
 	anchorfile = DAYTONA USA Deluxe.exe
 	anchordepth = 1
     file[]: crc = 8298fc14; size =       497; name = DAYTONA USA Deluxe.cnt
@@ -5462,7 +5510,7 @@ end
 //
 game[pc-cd-sp]:
 	name = Spanish CD V1.08E
-	imports = common
+	imports = common, registry-retail
 	anchorfile = DAYTONA USA Deluxe.exe
 	anchordepth = 1
     file[]: crc = 56ef693a; size =       608; name = DAYTONA USA Deluxe.cnt
@@ -5477,7 +5525,7 @@ end
 //
 demo[pc-cd-en-special]:
 	name = English CD Special Edition V1.14Demo
-	imports = special
+	imports = special, registry-special
 	anchorfile = DAYTONA USA Deluxe SE.exe
 	anchordepth = 1
     file[]: crc = 43d77086; size =       484; name = DAYTONA USA Deluxe.cnt
@@ -5493,7 +5541,7 @@ end
 //
 demo[pc-cd-fr-special]:
 	name = French CD Special Edition V1.14Demo
-	imports = special
+	imports = special, registry-special
 	anchorfile = DAYTONA USA Deluxe SE.exe
 	anchordepth = 1
     file[]: crc = 1522abbe; size =       545; name = DAYTONA USA Deluxe.cnt
@@ -5511,7 +5559,7 @@ end
 //
 demo[pc-cd-ge-special]:
 	name = German CD Special Edition V1.14Demo
-	imports = special
+	imports = special, registry-special
 	anchorfile = DAYTONA USA Deluxe SE.exe
 	anchordepth = 1
     file[]: crc = 8298fc14; size =       497; name = DAYTONA USA Deluxe.cnt
@@ -5530,7 +5578,7 @@ end
 //
 demo[pc-cd-sp-special]:
 	name = Spanish CD Special Edition V1.14Demo
-	imports = special
+	imports = special, registry-special
 	anchorfile = DAYTONA USA Deluxe SE.exe
 	anchordepth = 1
     file[]: crc = 56ef693a; size =       608; name = DAYTONA USA Deluxe.cnt
@@ -5546,7 +5594,7 @@ end
 
 demo[pc-cd-en-demo]:
 	name = English Sample CD
-	imports = sample
+	imports = sample, registry-sample
 	anchorfile = DAYTONA USA Deluxe Demo CD.exe
 	anchordepth = 1
     file[]: crc = 43d77086; size =       484; name = DAYTONA USA Deluxe.cnt
@@ -5559,7 +5607,7 @@ end
 
 demo[pc-cd-fr-demo]:
 	name = French Sample CD
-	imports = sample
+	imports = sample, registry-sample
 	anchorfile = DAYTONA USA Deluxe Demo CD.exe
 	anchordepth = 1
     file[]: crc = 1522abbe; size =       545; name = DAYTONA USA Deluxe.cnt
@@ -5573,7 +5621,7 @@ end
 
 demo[pc-cd-ge-demo]:
 	name = German Sample CD
-	imports = sample
+	imports = sample, registry-sample
 	anchorfile = DAYTONA USA Deluxe Demo CD.exe
 	anchordepth = 1
     file[]: crc = 8298fc14; size =       497; name = DAYTONA USA Deluxe.cnt
@@ -5587,7 +5635,7 @@ end
 
 demo[pc-cd-sp-demo]:
 	name = Spanish Sample CD
-	imports = sample
+	imports = sample, registry-sample
 	anchorfile = DAYTONA USA Deluxe Demo CD.exe
 	anchordepth = 1
     file[]: crc = 56ef693a; size =       608; name = DAYTONA USA Deluxe.cnt
