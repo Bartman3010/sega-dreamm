@@ -8,7 +8,7 @@ Supported Games:
 |Comix Zone|Windows 3.1, Windows 95|US|
 |Cyber Troopers - Virtual On|Windows 95|US|
 |Daytona USA| Windows 95|US|
-|Daytona USA Deluxe|Windows 95|US, US Special Edition|
+|Daytona USA Deluxe|Windows 95|US, US Special Edition, Demo CD|
 |Ecco the Dolphin|Windows 3.1, Windows 95|US, Packard Bell OEM|
 |Enemy Zero|Windows 98|US|
 |Garfield Caught in the Act / Garfield in TV Land / Garfield|Windows 95|US, US Sonic & Garfield Pack|
