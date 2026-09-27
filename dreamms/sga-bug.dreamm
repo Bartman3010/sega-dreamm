@@ -38,21 +38,10 @@ script[init]:
 end
 
 //
-// video configuration
-//
-config[video]:
-    title = Video Configuration
-    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
-    option[desktop]: name = Full Desktop;      wincrop = false
-end
-
-
-//
 // dummy game description;
 //
 fragment[common]:
 	file[]: crc = 26ddc105; size =        30; name = CD\AUTORUN.INF
-
     file[]: crc = e1041026; size =    979267; name = CD\L01.LVL
     file[]: crc = 2204e485; size =    975388; name = CD\L02.LVL
     file[]: crc = e4c5ff2f; size =    975213; name = CD\L03.LVL

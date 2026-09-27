@@ -94,15 +94,6 @@ config[vidsize]:
 end
 
 //
-// video crop -- for editor/gallery
-//
-config[video]:
-    title = Video Configuration
-    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
-    option[desktop]: name = Full Desktop;      wincrop = false
-end
-
-//
 // Screen Saver Scraper
 //
 game[pc-en]:

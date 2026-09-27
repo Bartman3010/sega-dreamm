@@ -20,15 +20,6 @@ mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
-// video configuration
-//
-config[video]:
-    title = Video Configuration
-    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
-    option[desktop]: name = Full Desktop;      wincrop = false
-end
-
-//
 // Puyo Puyo for Windows
 //
 game[pc-w31-jp]:

@@ -14,7 +14,7 @@ winres = 640x480x8
 EXENAME = soniccd
 CDID = SONICPC
 DEBUGGER = ""
-
+SOUNDQUALITY = GOOD
 //
 // filesystem
 //
@@ -35,9 +35,10 @@ script[ini-init]:
 	"`s:\nExePath=`s:$$(rootpath)",
 	"`s:\nInstall=`s:$$(rootpath)",
 	"`s:\nPlay=`s:$$(rootpath)",
+	"`s:\n[Sound]\n",
+	"`s:\nQuality=`s:$$(SOUNDQUALITY)",
 	"`s:\n[Secret]\n",
 	"`s:\nUser=`s:$$(DEBUGGER)");
-	
 	]]]
 
 end
@@ -85,12 +86,15 @@ config[debugger-arg]:
 end
 	
 //
-// video configuration
+// Sound Quality
 //
-config[video]:
-    title = Video Configuration
-    option[window]:  name = Cropped to Window; wincrop = true; priority = 1
-    option[desktop]: name = Full Desktop;      wincrop = false
+config[soundtype]:
+	condition = file_exists("$$(rootpath)\\PCM.CMP")
+    title = Sound Quality
+    option[good]:  name = Good (11025Hz); SOUNDQUALITY = GOOD; priority = 1
+	option[better]: name = Better (22050Hz); SOUNDQUALITY = BETTER
+
+
 end
 
 //
