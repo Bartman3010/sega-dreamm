@@ -35,14 +35,14 @@ REGEDIT4
 "Main Directory"="$$(rootpath)"
 "Data Directory"="D:\\DATA\\"
 "Save Directory"="$$(rootpath)\\SaveGame"
-"Key Map 1"=hex:00,00,00,00,00,00,0d,00,20,00,00,00,00,00,00,00,10,00,11,00,00,00,00,00,26,00,28,00,25,00,27,00,4d,00,50,00
-"Key Map 2"=hex:00,00,00,00,00,00,0d,00,20,00,00,00,00,00,00,00,10,00,11,00,00,00,00,00,26,00,28,00,25,00,27,00,4d,00,50,00
-"Joystick Map 1"=hex:ff,ff,ff,ff,ff,ff,00,00,01,00,ff,ff,ff,ff,ff,ff,02,00,03,00,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
-"Joystick Map 2"=hex:ff,ff,ff,ff,ff,ff,00,00,01,00,ff,ff,ff,ff,ff,ff,02,00,03,00,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
-"SFX Enabled"=hex:1
-"SFX Volume"=hex:05,00,00,00
-"Music Enabled"=hex:1
-"Music Volume"=hex:05,00,00,00
+"Key Map 1"=?hex:00,00,00,00,00,00,0d,00,20,00,00,00,00,00,00,00,10,00,11,00,00,00,00,00,26,00,28,00,25,00,27,00,4d,00,50,00
+"Key Map 2"=?hex:00,00,00,00,00,00,0d,00,20,00,00,00,00,00,00,00,10,00,11,00,00,00,00,00,26,00,28,00,25,00,27,00,4d,00,50,00
+"Joystick Map 1"=?hex:ff,ff,ff,ff,ff,ff,00,00,01,00,ff,ff,ff,ff,ff,ff,02,00,03,00,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
+"Joystick Map 2"=?hex:ff,ff,ff,ff,ff,ff,00,00,01,00,ff,ff,ff,ff,ff,ff,02,00,03,00,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,ff
+"SFX Enabled"=?hex:1
+"SFX Volume"=?hex:05,00,00,00
+"Music Enabled"=?hex:1
+"Music Volume"=?hex:05,00,00,00
 "Movies Enabled"=$(MOVIES)
 ]]]
 
