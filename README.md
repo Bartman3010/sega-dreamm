@@ -11,7 +11,7 @@ Supported Games:
 |Daytona USA Deluxe|Windows 95|US, US Special Edition, Demo CD|
 |Ecco the Dolphin|Windows 3.1, Windows 95|US, Packard Bell OEM|
 |Enemy Zero|Windows 98|US|
-|Garfield Caught in the Act / Garfield in TV Land / Garfield|Windows 95|US, US Sonic & Garfield Pack|
+|Garfield Caught in the Act / Garfield in TV Land / Garfield|Windows 3.1, Windows 95|US, US Sonic & Garfield Pack|
 |Last Bronx|Windows 95|US, EU|
 |Lose Your Marbles / Lose Your Marbles Enhanced Edition|Windows 95|US, US SEGA Puzzle Pack (Enhanced Edition)|
 |Manx TT Superbike|Windows 95|US|
