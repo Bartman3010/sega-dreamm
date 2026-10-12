@@ -541,4 +541,57 @@ game[pc-cd-jp]:
 
 end
 
+demo[pc-jp]:
+	name = Japanese Demo
+	anchorfile = PANZERDG.EXE
+	anchordepth = 1
+    locale = ja-JP
+    file[]: crc = 76aa0dad; size =     76202; name = ASCII.CGX
+    file[]: crc = d17dc275; size =     45170; name = ASCII.CGY
+    file[]: crc = 1abb47ab; size =     76235; name = ASCII.CGZ
+    file[]: crc = c507d00f; size =    267776; name = DLL_EPP.DLL
+    file[]: crc = 38474c84; size =       652; name = ENGLISH.TXT
+    file[]: crc = f05ec26a; size =     30266; name = GR2_R1.BGX
+    file[]: crc = 8a7e94f4; size =     19279; name = GR2_R1.BGY
+    file[]: crc = 4d56de4c; size =     30249; name = GR2_R1.BGZ
+    file[]: crc = 12f5f7dc; size =     70431; name = GR2_TI.BGX
+    file[]: crc = 0f9f3f41; size =     48453; name = GR2_TI.BGY
+    file[]: crc = 24249b9e; size =     70224; name = GR2_TI.BGZ
+    file[]: crc = c2273d7a; size =     30266; name = GRN_R1.BGX
+    file[]: crc = 5952a17e; size =     21518; name = GRN_R1.BGY
+    file[]: crc = 484b44cf; size =     30249; name = GRN_R1.BGZ
+    file[]: crc = 12f5f7dc; size =     70431; name = GRN_TI.BGX
+    file[]: crc = 0f9f3f41; size =     48453; name = GRN_TI.BGY
+    file[]: crc = 24249b9e; size =     70224; name = GRN_TI.BGZ
+    file[]: crc = a6c8d590; size =       664; name = JAPANESE.TXT
+    file[]: crc = e46ccbe4; size =    728064; name = PANZ_LG.DLL
+    file[]: crc = af307b7b; size =     12800; name = PANZ_MIX.DLL
+    file[]: crc = 4ef47acd; size =   1677824; name = PANZ_R1.DLL
+    file[]: crc = a2dba8a9; size =    592896; name = PANZ_TIT.DLL
+    file[]: crc = 77b82e46; size =    209408; name = PANZERDG.EXE
+    file[]: crc = 8f21d872; size =      8470; name = PANZPAL.DAT
+    file[]: crc = a01f0bfd; size =     22400; name = PDD_R1.CGZ
+    file[]: crc = e7433275; size =     69390; name = PDTL.BMZ
+    file[]: crc = 9b768e7c; size =    753785; name = ROUND1.CGX
+    file[]: crc = 9cee28a8; size =    475601; name = ROUND1.CGY
+    file[]: crc = 9871aeb6; size =    752607; name = ROUND1.CGZ
+    file[]: crc = 0beec135; size =      9276; name = ROUND1.PTA
+    file[]: crc = 2882564f; size =      4918; name = ROUND1.PTB
+    file[]: crc = d1face13; size =      8625; name = SGLOGO.PTA
+    file[]: crc = 2882564f; size =      4918; name = SGLOGO.PTB
+    file[]: crc = c89bb874; size =     36791; name = SKY_R1.BGX
+    file[]: crc = 10f7e1d7; size =     19606; name = SKY_R1.BGY
+    file[]: crc = 2cd4661d; size =     36618; name = SKY_R1.BGZ
+    file[]: crc = faa4a406; size =     18683; name = SKY_TI.BGX
+    file[]: crc = 58904922; size =     10463; name = SKY_TI.BGY
+    file[]: crc = 4b9836f7; size =     18605; name = SKY_TI.BGZ
+    file[]: crc = db9096d9; size =    489657; name = TITLE.CGX
+    file[]: crc = d5ac0e99; size =    400024; name = TITLE.CGY
+    file[]: crc = f332fd6b; size =    489320; name = TITLE.CGZ
+    file[]: crc = 844b3d9e; size =      8360; name = TITLE.PTA
+    file[]: crc = 2882564f; size =      4918; name = TITLE.PTB
+    file[]: crc = 837e0c5e; size =    231650; name = WAVE_00.CMP
+    file[]: crc = b0714d2a; size =    815382; name = WAVE_R1.CMP
+end
+
 end

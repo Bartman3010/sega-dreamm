@@ -1916,4 +1916,86 @@ game[pc-en-demo]:
 	EXENAME = VF2DEMO
 end
 
+//
+// Japanese Demo
+//
+game[pc-jp-demo]:
+	name = Japanese Sample Version
+	anchorfile = VF2DEMO.EXE
+	anchordepth = 1
+    file[]: crc = aa5aeee5; size =      1152; name = ARROW8.BIN
+    file[]: crc = 1b3ca5a8; size =     10240; name = COLOR.BIN
+    file[]: crc = a79ea92d; size =   1315800; name = CONS.BIN
+    file[]: crc = dd5035c3; size =    764432; name = CONS8.BIN
+    file[]: crc = 5bd6932b; size =   1314688; name = CONSOPT.BIN
+    file[]: crc = 7d1fb492; size =       996; name = CONSP.BIN
+    file[]: crc = ffdda8d7; size =    101888; name = DDSE.DLL
+    file[]: crc = 5787b7ab; size =       671; name = ENDMES_E.TXT
+    file[]: crc = f5a9b4e9; size =       485; name = ENDMES_J.TXT
+    file[]: crc = f1f93d9c; size =     46992; name = ENSA.BIN
+    file[]: crc = d23e7063; size =       187; name = ERRORE.TXT
+    file[]: crc = a6f36e90; size =       274; name = ERRORJ.TXT
+    file[]: crc = 4d545946; size =    599040; name = FIRE8.BIN
+    file[]: crc = 9e294750; size =     79616; name = JACFACE8.BIN
+    file[]: crc = f6d35d1e; size =    108544; name = KEYASS8.BIN
+    file[]: crc = 72077b7d; size =     71697; name = LAUSTG.BIN
+    file[]: crc = 951aa940; size =    614400; name = LOGO.BIN
+    file[]: crc = 309ae109; size =     17408; name = MES8.BIN
+    file[]: crc = 66f0312c; size =        52; name = MESP.BIN
+    file[]: crc = 9bbbb3d8; size =    134784; name = MODE8.BIN
+    file[]: crc = 1c699afe; size =    251892; name = MOT_COM.BIN
+    file[]: crc = 1969598a; size =    139400; name = MOT_JAC.BIN
+    file[]: crc = 2c2ba128; size =    199016; name = MOT_SUI.BIN
+    file[]: crc = ff02295e; size =     25184; name = MRJAC00.BIN
+    file[]: crc = c6034a37; size =     24960; name = MRJAC01.BIN
+    file[]: crc = 05a734f7; size =     25184; name = MRJAC10.BIN
+    file[]: crc = fe076ce4; size =     24960; name = MRJAC11.BIN
+    file[]: crc = 46e729e6; size =     25032; name = MRSUI00.BIN
+    file[]: crc = 0e50b1c9; size =     24976; name = MRSUI01.BIN
+    file[]: crc = ba2ff2d1; size =     25032; name = MRSUI10.BIN
+    file[]: crc = edded8b2; size =     24976; name = MRSUI11.BIN
+    file[]: crc = a23e7e0a; size =     69120; name = NAME8.BIN
+    file[]: crc = c3b58bea; size =     40960; name = OPTASC8.BIN
+    file[]: crc = cd31ad39; size =     11244; name = OPTION.DAT
+    file[]: crc = c5fffaae; size =    441216; name = OPTION8.BIN
+    file[]: crc = 9da4c23a; size =    461056; name = PROF8.BIN
+    file[]: crc = 73d61451; size =   4769860; name = SE.BIN
+    file[]: crc = 386b28d8; size =     12288; name = SEL_MES8.BIN
+    file[]: crc = 1b7afacb; size =       936; name = SELP.BIN
+    file[]: crc = f1b9c03f; size =     92928; name = SUIFACE8.BIN
+    file[]: crc = fc0bd85c; size =   1328414; name = V_GAME.BIN
+    file[]: crc = 11dfa2e0; size =    746640; name = V_JAC.BIN
+    file[]: crc = 571cdd01; size =   1344390; name = V_SUI.BIN
+    file[]: crc = a4bc9d6a; size =   3359232; name = VF2DEMO.EXE
+    file[]: crc = e7b44b42; size =      3072; name = VS8.BIN
+    file[]: crc = 8a6ba627; size =    131584; name = VSNET.DLL
+    file[]: crc = 0665b83d; size =     21504; name = WAKU8.BIN
+    file[]: crc = add4ba2f; size =    384694; name = BMP\8LA_B.BMP
+    file[]: crc = 35248fc6; size =    567032; name = BMP\8LA_F.BMP
+    file[]: crc = 9beb804b; size =     76856; name = BMP\8LA_FL.BMP
+    file[]: crc = 17621ede; size =    205878; name = BMP\8LA_G.BMP
+    file[]: crc = 7cf9cae1; size =    768310; name = BMP\8LA_M.BMP
+    file[]: crc = 807a0b1e; size =     76856; name = BMP\8LA_ML.BMP
+    file[]: crc = 80755f53; size =    263222; name = BMP\8LA_R.BMP
+    file[]: crc = b207dfce; size =    602680; name = BMP\8LA_S.BMP
+    file[]: crc = 576cecd4; size =     83000; name = BMP\8LA_SL.BMP
+    file[]: crc = c7a39f57; size =    308278; name = BMP\OPT_BK8.BMP
+    file[]: crc = 28c8ccc4; size =    308278; name = BMP\OPTBACK8.BMP
+    file[]: crc = 94c6dfd6; size =    308278; name = BMP\PAUSE8.BMP
+    file[]: crc = d5cfdaf1; size =    308278; name = BMP\SEGA_8.BMP
+    file[]: crc = e774a048; size =    308278; name = BMP\SEL8T.BMP
+    file[]: crc = ab433485; size =      1202; name = BMP\TEN1_8.BMP
+    file[]: crc = d3d9f451; size =       822; name = BMP\TEN1T.BMP
+    file[]: crc = 5fd6e964; size =       822; name = BMP\TEN1T2.BMP
+    file[]: crc = ab433485; size =      1202; name = BMP\TEN_8.BMP
+    file[]: crc = 914316d9; size =    308278; name = BMP\TITLE_8.BMP
+    file[]: crc = ad6bec99; size =    308280; name = BMP\TITLE_8T.BMP
+    file[]: crc = 0fc5b948; size =     67616; name = PCTEX\256\TRJAC0.BIN
+    file[]: crc = 015dee68; size =     98304; name = PCTEX\256\TRJAC1.BIN
+    file[]: crc = 37fb7b16; size =    106432; name = PCTEX\256\TRSUI0.BIN
+    file[]: crc = bd92c411; size =    100224; name = PCTEX\256\TRSUI1.BIN
+
+	EXENAME = VF2DEMO
+end
+
 end

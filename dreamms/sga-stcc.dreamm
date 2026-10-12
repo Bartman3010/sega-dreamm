@@ -13,7 +13,7 @@ winres = 640x480x8
 //
 mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 mount[cdw]: vpath = D:\; srcpath = ram
 
@@ -1025,6 +1025,158 @@ Language=English
 CmdLineOption=
 
 ]]]
+end
+
+
+//
+// Japanese Demo
+//
+game[pc-jp]:
+    name = Japanese Demo
+    anchorfile = stcc.exe
+	anchordepth = 2
+    file[]: crc = e60e0104; size =    308278; name = PAUSE_BG.BMP
+    file[]: crc = 73e6f2d9; size =    308278; name = PAUSEBG2.BMP
+    file[]: crc = 7683c7a2; size =    932864; name = STCC.EXE
+    file[]: crc = 6cc0f13a; size =      4661; name = VCyrixD.VxD
+    file[]: crc = b042a854; size =    525366; name = Data\Bg\SKY.BMP
+    file[]: crc = f33e8cca; size =    132150; name = Data\Bg\SKY_X.BMP
+    file[]: crc = c00d149a; size =    525366; name = Data\Bg\Mode16\SKY.BMP
+    file[]: crc = f191d12b; size =    132150; name = Data\Bg\Mode16\SKY_X.BMP
+    file[]: crc = 5c168acc; size =     30400; name = Data\Bin\AI1P1.BIN
+    file[]: crc = 38a1930f; size =       256; name = Data\Bin\AIS1PC.BIN
+    file[]: crc = d157cb54; size =     39008; name = Data\Bin\AIS1PS.BIN
+    file[]: crc = 05540d94; size =       256; name = Data\Bin\AIS2PC.BIN
+    file[]: crc = 3085596b; size =       256; name = Data\Bin\AIS3PC.BIN
+    file[]: crc = 08489320; size =     31232; name = Data\Bin\ALF1P1.BIN
+    file[]: crc = 1deba1fb; size =        64; name = Data\Bin\ALF1P1PC.BIN
+    file[]: crc = 06c7515a; size =     31232; name = Data\Bin\ALF1P2.BIN
+    file[]: crc = 7114adae; size =       512; name = Data\Bin\ALFA1PC.BIN
+    file[]: crc = 74eea0a0; size =     39364; name = Data\Bin\ALFA1PM.BIN
+    file[]: crc = b9e7ff92; size =     39364; name = Data\Bin\ALFA2PM.BIN
+    file[]: crc = d0aa92ea; size =      2880; name = Data\Bin\AREA_C1.BIN
+    file[]: crc = 5764ea34; size =       960; name = Data\Bin\AUDIE_C1.BIN
+    file[]: crc = cf625678; size =     31456; name = Data\Bin\BEN1P1.BIN
+    file[]: crc = e9db4fc0; size =     31456; name = Data\Bin\BEN1P2.BIN
+    file[]: crc = 0339ff49; size =       512; name = Data\Bin\BENTZ1PC.BIN
+    file[]: crc = afb28217; size =     39616; name = Data\Bin\BENTZ1PM.BIN
+    file[]: crc = 4fc1741c; size =     39616; name = Data\Bin\BENTZ2PM.BIN
+    file[]: crc = d0ba20c5; size =       768; name = Data\Bin\C1C.BIN
+    file[]: crc = da09ab70; size =       768; name = Data\Bin\C1C2.BIN
+    file[]: crc = 3dcd1cc5; size =    268768; name = Data\Bin\C1L1P1.BIN
+    file[]: crc = c9998f3b; size =    181008; name = Data\Bin\C1M.BIN
+    file[]: crc = 56ea5829; size =     61888; name = Data\Bin\C1M2.BIN
+    file[]: crc = 6914cd6b; size =     30056; name = Data\Bin\C1M3.BIN
+    file[]: crc = 6891bf86; size =     25120; name = Data\Bin\CEL1P1.BIN
+    file[]: crc = 288b407e; size =       256; name = Data\Bin\CEL1PC.BIN
+    file[]: crc = a7e91ac9; size =     41500; name = Data\Bin\CEL1PS.BIN
+    file[]: crc = 8ba20f74; size =      7200; name = Data\Bin\CENTER1.BIN
+    file[]: crc = 13a63c35; size =    300624; name = Data\Bin\COLLI_C1.BIN
+    file[]: crc = 64d84ee3; size =     26016; name = Data\Bin\DEL1P1.BIN
+    file[]: crc = 89855a91; size =       256; name = Data\Bin\DEL1PC.BIN
+    file[]: crc = 2dd524ae; size =     29236; name = Data\Bin\DEL1PS.BIN
+    file[]: crc = 1e25f2df; size =       960; name = Data\Bin\DISPTBL1.BIN
+    file[]: crc = d9558528; size =     24832; name = Data\Bin\DRV1P1.BIN
+    file[]: crc = 757eafca; size =      5600; name = Data\Bin\END1P1.BIN
+    file[]: crc = 058c816c; size =       128; name = Data\Bin\END1U2.BIN
+    file[]: crc = 0fc3f943; size =     24832; name = Data\Bin\ETC1P1.BIN
+    file[]: crc = 2864415b; size =     28344; name = Data\Bin\ETC1PM.BIN
+    file[]: crc = 3baceb9e; size =     14400; name = Data\Bin\GUIDE1.BIN
+    file[]: crc = c087cecb; size =       128; name = Data\Bin\MAH1U1.BIN
+    file[]: crc = 1a26c8e2; size =     18284; name = Data\Bin\MAN_DRV.BIN
+    file[]: crc = 6adf112e; size =      9764; name = Data\Bin\MAN_QFY.BIN
+    file[]: crc = dda8cc81; size =        64; name = Data\Bin\MER1P1PC.BIN
+    file[]: crc = 0d4bed4a; size =    203640; name = Data\Bin\MOT_PIT.BIN
+    file[]: crc = 5965d2c2; size =    167156; name = Data\Bin\MOT_QFY.BIN
+    file[]: crc = 4dd0d4c8; size =       904; name = Data\Bin\OCDATA1.BIN
+    file[]: crc = 28c1dcf3; size =       512; name = Data\Bin\OPEL1PC.BIN
+    file[]: crc = 3085061b; size =     44848; name = Data\Bin\OPEL1PM.BIN
+    file[]: crc = 92965d04; size =     44848; name = Data\Bin\OPEL2PM.BIN
+    file[]: crc = a893cbde; size =     33280; name = Data\Bin\OPL1P1.BIN
+    file[]: crc = 6d594b2d; size =        64; name = Data\Bin\OPL1P1PC.BIN
+    file[]: crc = 9fcfe129; size =     33280; name = Data\Bin\OPL1P2.BIN
+    file[]: crc = db19bf09; size =     42008; name = Data\Bin\PITDT0.DAT
+    file[]: crc = e97ffbe9; size =      2424; name = Data\Bin\ROLL_C1C.DAT
+    file[]: crc = 935d4bc4; size =      2424; name = Data\Bin\ROLL_C1L.DAT
+    file[]: crc = 4a83b5dd; size =      2424; name = Data\Bin\ROLL_C1R.DAT
+    file[]: crc = 8ed75190; size =     11680; name = Data\Bin\SEN1P1.BIN
+    file[]: crc = 3e6ed943; size =       512; name = Data\Bin\SPIDR1PC.BIN
+    file[]: crc = 3111aa40; size =      7100; name = Data\Bin\SPIDR1PM.BIN
+    file[]: crc = e7915068; size =     30432; name = Data\Bin\SPR1P1.BIN
+    file[]: crc = f38288cc; size =        64; name = Data\Bin\SPR1P1PC.BIN
+    file[]: crc = 8be34d9a; size =       512; name = Data\Bin\SUPRA1PC.BIN
+    file[]: crc = d9d90833; size =     41436; name = Data\Bin\SUPRA1PM.BIN
+    file[]: crc = d9d90833; size =     41436; name = Data\Bin\SUPRA2PM.BIN
+    file[]: crc = 2f629857; size =   1443944; name = Data\Res_Jpn\CHAMP.MRG
+    file[]: crc = f0742675; size =    500652; name = Data\Res_Jpn\CHAMP_X.MRG
+    file[]: crc = 6f93906f; size =    930952; name = Data\Res_Jpn\EYECAT_X.MRG
+    file[]: crc = d6db51a9; size =   3625752; name = Data\Res_Jpn\EYECATCH.MRG
+    file[]: crc = 11c3cd38; size =    927736; name = Data\Resource\MENU.MRG
+    file[]: crc = af2dbfdf; size =   1376812; name = Data\Resource\NE.MRG
+    file[]: crc = 949ed83b; size =    858924; name = Data\Resource\RANKING.MRG
+    file[]: crc = 149aa260; size =   1770188; name = Data\Resource\SELCAR.MRG
+    file[]: crc = 5289af26; size =   1227136; name = Data\Resource\TITLE.MRG
+    file[]: crc = 92839504; size =     14072; name = Data\Wave\ADDTIME1.WAV
+    file[]: crc = 5c61f930; size =     14168; name = Data\Wave\ADDTIME2.WAV
+    file[]: crc = 0bf46d88; size =     44708; name = Data\Wave\AT_MT.WAV
+    file[]: crc = 2e1a1268; size =     23356; name = Data\Wave\CANCEL.WAV
+    file[]: crc = be73bd98; size =    117928; name = Data\Wave\CHECKPOI.WAV
+    file[]: crc = cc9e384c; size =     55218; name = Data\Wave\COMP01.WAV
+    file[]: crc = 6cb2646d; size =     46640; name = Data\Wave\COMP02.WAV
+    file[]: crc = dacc54ea; size =     27594; name = Data\Wave\CRASH_00.WAV
+    file[]: crc = 3b6f92f3; size =     44784; name = Data\Wave\CRASH_04.WAV
+    file[]: crc = 8469b6e2; size =     14726; name = Data\Wave\CRASH_08.WAV
+    file[]: crc = 07f275bf; size =     11348; name = Data\Wave\CRASH_09.WAV
+    file[]: crc = 40bd1a2e; size =      8670; name = Data\Wave\CRASH_10.WAV
+    file[]: crc = 4f6e71ff; size =     22404; name = Data\Wave\CRASH_11.WAV
+    file[]: crc = 0b6cdbc2; size =     13048; name = Data\Wave\CRASH_12.WAV
+    file[]: crc = 1df84159; size =     17464; name = Data\Wave\CRASH_13.WAV
+    file[]: crc = a26c291a; size =     10846; name = Data\Wave\CRASH_14.WAV
+    file[]: crc = 95e8a8b9; size =     17558; name = Data\Wave\CRASH_15.WAV
+    file[]: crc = 34b812d1; size =     22220; name = Data\Wave\CURSOR01.WAV
+    file[]: crc = 2f8e9733; size =     13016; name = Data\Wave\CURSOR02.WAV
+    file[]: crc = c72d299a; size =      2252; name = Data\Wave\CURSOR03.WAV
+    file[]: crc = 0dfa395f; size =     19908; name = Data\Wave\DELETECH.WAV
+    file[]: crc = 8b42704c; size =     19086; name = Data\Wave\ENGINE.WAV
+    file[]: crc = 087cf235; size =    177412; name = Data\Wave\FUKASI1.WAV
+    file[]: crc = 91f5c178; size =     15186; name = Data\Wave\GEAR1.WAV
+    file[]: crc = 19f02f04; size =      6749; name = Data\Wave\HAIKI.WAV
+    file[]: crc = 6749e80c; size =    111354; name = Data\Wave\HORN.WAV
+    file[]: crc = 5bea147c; size =     35296; name = Data\Wave\KANSEI01.WAV
+    file[]: crc = 7a7e4d93; size =     62246; name = Data\Wave\KETTEI1.WAV
+    file[]: crc = 8e07d671; size =     88246; name = Data\Wave\KETTEI2.WAV
+    file[]: crc = 25b2c7df; size =      5846; name = Data\Wave\KUDOU.WAV
+    file[]: crc = e3b392b0; size =      9020; name = Data\Wave\LAND_00.WAV
+    file[]: crc = f60c76da; size =     53462; name = Data\Wave\LAND_01.WAV
+    file[]: crc = 92594a6f; size =     13508; name = Data\Wave\MOVECHAR.WAV
+    file[]: crc = cbd1c3da; size =    166444; name = Data\Wave\PASS_03.WAV
+    file[]: crc = 5e2b5b23; size =     83050; name = Data\Wave\PASS_05.WAV
+    file[]: crc = ff79c1a8; size =     37664; name = Data\Wave\PIT1.WAV
+    file[]: crc = 78198bb7; size =     15696; name = Data\Wave\PIT2.WAV
+    file[]: crc = 1267f027; size =     24156; name = Data\Wave\PIT4.WAV
+    file[]: crc = 930022c5; size =     80156; name = Data\Wave\RDNOIZ.WAV
+    file[]: crc = 2f8e9733; size =     13016; name = Data\Wave\SE_01.WAV
+    file[]: crc = c72d299a; size =      2252; name = Data\Wave\SE_02.WAV
+    file[]: crc = 472bf80b; size =    176094; name = Data\Wave\SELECT.WAV
+    file[]: crc = 41c4e3e6; size =     65012; name = Data\Wave\SELECTCA.WAV
+    file[]: crc = 7b9591cc; size =     27744; name = Data\Wave\SELECTCH.WAV
+    file[]: crc = 2f2ca93e; size =     39704; name = Data\Wave\SELECTNA.WAV
+    file[]: crc = 5ca8c058; size =      5712; name = Data\Wave\SHIFTDOW.WAV
+    file[]: crc = a8a3473f; size =     10872; name = Data\Wave\SHIFTUP.WAV
+    file[]: crc = 72ab7481; size =     17108; name = Data\Wave\SIGNAL1.WAV
+    file[]: crc = 7277193e; size =      7340; name = Data\Wave\SIGNAL_1.WAV
+    file[]: crc = de544553; size =     13288; name = Data\Wave\SIGNAL_2.WAV
+    file[]: crc = 34453b21; size =     11876; name = Data\Wave\SIGNAL_3.WAV
+    file[]: crc = 950e389f; size =      9548; name = Data\Wave\SIGNAL_4.WAV
+    file[]: crc = e3912e08; size =    134228; name = Data\Wave\SIGNAL_5.WAV
+    file[]: crc = 5f7fcdc8; size =     90976; name = Data\Wave\SIGNAL_6.WAV
+    file[]: crc = 6472fc22; size =     14752; name = Data\Wave\SRIP0.WAV
+    file[]: crc = b6419fc1; size =      3132; name = Data\Wave\SRIP1.WAV
+    file[]: crc = 8a188a8d; size =     94956; name = Data\Wave\WIPE.WAV
+    file[]: crc = 9ec870eb; size =     67840; name = Data\Wave\WIPE_0.WAV
+    file[]: crc = 28c8c731; size =     69332; name = Data\Wave\ZOOM_0.WAV
+    file[]: crc = 7d3ff128; size =       344; name = Mes\MES_ENG.TXT
+    file[]: crc = e6f46e32; size =       356; name = Mes\MES_JPN.TXT
 end
 
 end

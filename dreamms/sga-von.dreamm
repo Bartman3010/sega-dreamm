@@ -185,3 +185,35 @@ game[pc-cd-sp]:
 	locale = es-ES_tradnl
 	
 end
+
+demo[pc-jp]:
+	name = Japanese Demo
+	anchorfile = V_ON.EXE
+	anchordepth = 1
+    file[]: crc = 12c0ed39; size =    709212; name = BSEL_TEM.BIN
+    file[]: crc = e93fe393; size =     37376; name = DPCTRL.DLL
+    file[]: crc = 4abbb9cf; size =    262144; name = FC_TRO.BIN
+    file[]: crc = 3ce72abf; size =     75236; name = FLD_TRO.BIN
+    file[]: crc = 81f6dc79; size =   4194304; name = JSCRADV.BIN
+    file[]: crc = 0ca6395a; size =   4194304; name = jscrgame.bin
+    file[]: crc = 8aad4331; size =      3480; name = MAP_ELSE.BIN
+    file[]: crc = 80b1b5e1; size =      3480; name = MAP_TEM.BIN
+    file[]: crc = 4e8a2d03; size =   3082504; name = MT_VAL.BIN
+    file[]: crc = 604b99c7; size =   1650508; name = RB_GLOB.BIN
+    file[]: crc = 4115f568; size =    267124; name = RB_TEM.BIN
+    file[]: crc = da9eb414; size =      4941; name = README.TXT
+    file[]: crc = ec9a38f3; size =     16384; name = SCRADD0.BIN
+    file[]: crc = c7aee70f; size =     16384; name = SCRADD1.BIN
+    file[]: crc = 616396c4; size =     52864; name = SCRFACE.BIN
+    file[]: crc = cdc74951; size =   1245413; name = SND_ELSE.BIN
+    file[]: crc = 6d9ffbda; size =     76817; name = SND_TEM.BIN
+    file[]: crc = fea2d956; size =   1048576; name = TEXB0.IMG
+    file[]: crc = 5a700615; size =   1048576; name = TEXB4.IMG
+    file[]: crc = dce0575f; size =   6610432; name = V_ON.EXE
+    file[]: crc = 56c95eb3; size =       159; name = V_ON_A.INI
+    file[]: crc = 25a7d7eb; size =       111; name = V_ON_B.INI
+    file[]: crc = a14154e2; size =       746; name = VON.CNT
+    file[]: crc = e12b4777; size =    487383; name = VON.HLP
+end
+
+end

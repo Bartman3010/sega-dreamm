@@ -27,11 +27,6 @@ mount[]:     vpath = D:\;         srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
-// dynamic files
-//
-//dynamicfile[]: path = D:\$(CDID); attributes = 8; contents = $(NULL)
-
-//
 // initialization script
 //
 script[init]:
@@ -235,6 +230,18 @@ game[pc-en-demo]:
     file[]: crc = 0e81cc53; size =     38824; name = TEX_PL.BIN
 	EXENAME = DAYTONAD
 
+end
+
+game[pc-jp-demo]:
+	name = Japanese Demo V1.0
+    imports = pc-en-demo
+    locale = ja-JP
+    anchorfile = DAYDJP.DLL
+    file[]: crc = f7d9f125; size =     75776; name = DAYDJP.DLL
+    file[]: crc = 1e492a7d; size =     36352; name = MSGDAYJP.DLL
+    file[]: crc = 56acfdc9; size =       374; name = DAYDEMOE.TXT
+    file[]: remove = DAYDUS.DLL
+    file[]: remove = MSGDAYUS.DLL
 end
 
 end

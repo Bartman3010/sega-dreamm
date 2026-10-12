@@ -272,4 +272,64 @@ demo[pc-en]:
 	EXENAME = PPJ2DDUD
 end
 
+demo[jp-en]:
+	name = Japanese Demo
+	anchorfile = PPJ2DDJD.EXE
+	anchordepth = 2
+    locale = ja-JP
+    rootpath = C:\SEGA\VCOP2\
+    file[]: crc = cd5e1445; size =      2247; name = README.TXT
+    file[]: crc = 381a843d; size =       763; name = VC2.CNT
+    file[]: crc = ffb154b2; size =   1370936; name = VC2.HLP
+    file[]: crc = 1665a29a; size =    145888; name = BIN\CAMMOV0.BIN
+    file[]: crc = 64605dde; size =     19712; name = BIN\L_ADV.BIN
+    file[]: crc = ad109a92; size =      9216; name = BIN\L_COMMON.BIN
+    file[]: crc = a5820455; size =      2048; name = BIN\L_LOGO.BIN
+    file[]: crc = 47c297c2; size =     11264; name = BIN\L_NAME.BIN
+    file[]: crc = 071b4401; size =      3072; name = BIN\L_RANK.BIN
+    file[]: crc = 7a9cd017; size =      4608; name = BIN\L_SELECT.BIN
+    file[]: crc = d4eee031; size =     17408; name = BIN\L_STG10.BIN
+    file[]: crc = 813f3e76; size =      5568; name = BIN\L_STG1C.BIN
+    file[]: crc = 0598e8b5; size =      1216; name = BIN\L_TITLE.BIN
+    file[]: crc = 865321d3; size =    178480; name = BIN\MOTADV.BIN
+    file[]: crc = 3106b651; size =    343344; name = BIN\MOTCMN.BIN
+    file[]: crc = 14a18646; size =    115736; name = BIN\MOTINT.BIN
+    file[]: crc = c91d4e90; size =    121992; name = BIN\MOTSTG1.BIN
+    file[]: crc = ad3f4718; size =     55384; name = BIN\MOTSTG3.BIN
+    file[]: crc = dcf7864e; size =    460082; name = BIN\P_ADV.BIN
+    file[]: crc = 7bc2e3a3; size =    325396; name = BIN\P_COMMON.BIN
+    file[]: crc = bf545552; size =     22914; name = BIN\P_NAME.BIN
+    file[]: crc = 4978d7eb; size =       576; name = BIN\P_OPTION.BIN
+    file[]: crc = d1abb0aa; size =      1396; name = BIN\P_SEL.BIN
+    file[]: crc = 1b324cf5; size =      1500; name = BIN\P_SELECT.BIN
+    file[]: crc = 959457f5; size =    570902; name = BIN\P_STG10.BIN
+    file[]: crc = c78c33b2; size =    118462; name = BIN\P_STG1C.BIN
+    file[]: crc = 2a162f3f; size =     99236; name = BIN\SCENE10.BIN
+    file[]: crc = 8575e654; size =     19864; name = BIN\SCENEAD.BIN
+    file[]: crc = 3e9e79c8; size =   1345097; name = BIN\T_ADV.BIN
+    file[]: crc = 1436ae79; size =   1142415; name = BIN\T_COMMON.BIN
+    file[]: crc = 879a0cb5; size =    196608; name = BIN\T_LOGO.BIN
+    file[]: crc = 8a3ac707; size =    478272; name = BIN\T_RANK.BIN
+    file[]: crc = 3bcc919f; size =    707139; name = BIN\T_SELECT.BIN
+    file[]: crc = a9298ef5; size =    805568; name = BIN\T_STG10.BIN
+    file[]: crc = 8e782085; size =    312254; name = BIN\T_STG1C.BIN
+    file[]: crc = 34c82197; size =    366750; name = BIN\T_TITLE.BIN
+    file[]: crc = 15b5f1dc; size =       469; name = BIN\TRIAL.TXT
+    file[]: crc = f62fac3e; size =    289792; name = PROJECT\DDGL.DLL
+    file[]: crc = 072a030b; size =     36352; name = PROJECT\DPCTRL.DLL
+    file[]: crc = eed8d713; size =    111104; name = PROJECT\HGL_D3D.DLL
+    file[]: crc = 557ec0fa; size =     54272; name = PROJECT\HGL_DD.DLL
+    file[]: crc = e2d2898b; size =     85558; name = PROJECT\OPENING.BMP
+    file[]: crc = 1dafa86f; size =     85558; name = PROJECT\PLEASE.BMP
+    file[]: crc = 5f94b64c; size =    925184; name = PROJECT\PPJ2DDJD.EXE
+    file[]: crc = 0645b3fb; size =    122368; name = PROJECT\WINCPUID.DLL
+    file[]: crc = 431f0041; size =   1428390; name = SE\SOUND11.WVP
+    file[]: crc = ac86559a; size =    532904; name = SE\SOUND13.WVP
+    file[]: crc = be90ca2b; size =    142104; name = SE\SOUND15.WVP
+    file[]: crc = 835c4f13; size =    370746; name = SE\SOUND1B.WVP
+
+	EXENAME = PPJ2DDJD
+    
+end
+
 end

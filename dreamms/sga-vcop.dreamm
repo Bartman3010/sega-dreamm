@@ -13,6 +13,7 @@ filter = sega, nonlucas, arcade, netplay
 winres = 640x480x16
 EXENAME = VCOP
 CDID = VCOP
+JAPANDEMO = false
 
 //
 // filesystem
@@ -21,6 +22,16 @@ mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD; optional = true
 
+
+JAPANDEMOCONFIG = [[[$(CRLF)
+[Install]
+Mode=FULL
+
+[Country]
+Language=Japanese
+]]]
+
+
 //
 // initialization script
 //
@@ -28,9 +39,20 @@ script[init]:
     code = [[[$(CRLF)
 	        // set the volume label on the CD
         drive_set_label("D", "$$(CDID)");
-	]]]
-	
+	]]]	
 end
+
+
+//
+// initialization script for the Japanese demo
+//
+script[initjapan]:
+    condition = $(JAPANDEMO)
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\VCOP.INI", "$$(JAPANDEMOCONFIG)");
+	]]]	
+end
+
 
 fragment[common]:
     file[]: crc = c618dd23; size =     21696; name = A-B01-5.WAV
@@ -1024,6 +1046,22 @@ demo[pc-en]:
     file[]: crc = 3be96846; size =    570302; name = VCOP.HLP
 	
 	EXENAME = PPJDD
+end
+
+demo[pc-jp]:
+	name = Japanese Demo
+    imports = pc-en
+	anchorfile = PPJDD.EXE
+	anchordepth = 2
+    JAPANDEMO = true
+    file[]: crc = a27c447b; size =     27136; name = DPCTRL.DLL
+    file[]: crc = 05cfddb0; size =    328960; name = FIXDATA.BIN
+    file[]: crc = aaf5e9b3; size =      1914; name = MENUS.TXT
+    file[]: crc = 965d1872; size =    876544; name = PPJDD.EXE
+    file[]: crc = c35b0004; size =    308278; name = TITLE.BMP
+    file[]: crc = b84720c1; size =       766; name = VCOP.CNT
+    file[]: crc = a44cd198; size =    586030; name = VCOP.HLP
+    file[]: remove = VCOP.INI
 end
 
 end

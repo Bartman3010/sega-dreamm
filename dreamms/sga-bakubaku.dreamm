@@ -347,4 +347,82 @@ demo[pc-en]:
 
 end
 
+//
+//Baku Baku Animal Japanese Demo (SEGA PC)
+//
+demo[pc-ja]:
+	name = Japanese Demo
+	anchorfile = MESSAGE.TXT
+    locale = ja-JP
+    file[]: crc = 19bb1a7d; size =    196608; name = BAKU.EXE
+    file[]: crc = 345252d7; size =    175339; name = BAKU.HLP
+    file[]: crc = 27e37f56; size =    111616; name = DINO2D.DLL
+    file[]: crc = 81139979; size =     98304; name = DMIX.DLL
+    file[]: crc = a870d317; size =       845; name = MESSAGE.TXT
+    file[]: crc = 84cec4da; size =      1487; name = README.TXT
+    file[]: crc = 30477e46; size =     73216; name = BG\SC_BI_01.BMP
+    file[]: crc = cadb1404; size =     73216; name = BG\SC_BLACK.BMP
+    file[]: crc = b5a97d50; size =     73216; name = BG\SC_G_01.BMP
+    file[]: crc = 1f106545; size =     73216; name = BG\SC_S_01.BMP
+    file[]: crc = 97e06752; size =     73216; name = BG\SC_Y_01.BMP
+    file[]: crc = da336752; size =     73216; name = BG\SEGA_01.BMP
+    file[]: crc = c2a51397; size =     73216; name = BG\TITLBACK.BMP
+    file[]: crc = 012235e2; size =     30728; name = GR\CLION.SPR
+    file[]: crc = e6146b4c; size =     29632; name = GR\GAME.FIX
+    file[]: crc = 9cde621e; size =    693608; name = GR\GAME.SPR
+    file[]: crc = 4f5ec5b6; size =    219264; name = GR\GYORO.SPR
+    file[]: crc = fc49e3a2; size =        64; name = GR\TITLE.FIX
+    file[]: crc = da4c3161; size =    145036; name = GR\TITLE.SPR
+    file[]: crc = a34c2a95; size =      7313; name = MID\EPILOG.MID
+    file[]: crc = 22981fbd; size =      5967; name = MID\HURRY1.MID
+    file[]: crc = 03faf0f3; size =      3833; name = MID\INST_BG1.MID
+    file[]: crc = 35dd553a; size =     14672; name = MID\NOR_2P.MID
+    file[]: crc = 0ac6b044; size =     14001; name = MID\NORMAL.MID
+    file[]: crc = 80b1d98f; size =      8129; name = MID\PINCHI.MID
+    file[]: crc = 672eb15e; size =      7128; name = MID\TITLE.MID
+    file[]: crc = 00f8d7b0; size =       336; name = PAL\GYORO.BIN
+    file[]: crc = f3caa039; size =      2886; name = WAV\BAKUBAK1.WAV
+    file[]: crc = 070e3256; size =      2486; name = WAV\BAKUBAK7.WAV
+    file[]: crc = 1e881449; size =      1706; name = WAV\BEEP1_1.WAV
+    file[]: crc = 9c056e1a; size =      1274; name = WAV\BEEP2_1.WAV
+    file[]: crc = 0091b8e1; size =     15718; name = WAV\BEEP3_1.WAV
+    file[]: crc = 9bde7aa3; size =      8062; name = WAV\BEEP4_1.WAV
+    file[]: crc = 27974685; size =      2594; name = WAV\BOIIN.WAV
+    file[]: crc = 4a90852c; size =     10962; name = WAV\BOLING.WAV
+    file[]: crc = 9632e73c; size =      9888; name = WAV\BUWAAWA.WAV
+    file[]: crc = ac9bcb60; size =      3144; name = WAV\CHR_MOV4.WAV
+    file[]: crc = 03bd40af; size =      3680; name = WAV\CHR_MOV6.WAV
+    file[]: crc = 6110ab62; size =      2468; name = WAV\CHR_MOV7.WAV
+    file[]: crc = c6d0324d; size =      2908; name = WAV\DOG.WAV
+    file[]: crc = 09111dac; size =     10944; name = WAV\DONGARAG.WAV
+    file[]: crc = b12fb4a4; size =    104268; name = WAV\FANFALE.WAV
+    file[]: crc = 2623f496; size =     24168; name = WAV\G_OVER.WAV
+    file[]: crc = d69ce6a1; size =      4752; name = WAV\GO.WAV
+    file[]: crc = 99bbee23; size =      2480; name = WAV\KIKI.WAV
+    file[]: crc = 27b312a0; size =     12618; name = WAV\LION.WAV
+    file[]: crc = 7ddfd7d0; size =     16600; name = WAV\MAHOU_1.WAV
+    file[]: crc = 77433712; size =      7796; name = WAV\MAHOU_2.WAV
+    file[]: crc = c281d50e; size =     21712; name = WAV\MAHOU_7.WAV
+    file[]: crc = 1066a1f1; size =     17884; name = WAV\MANKAN.WAV
+    file[]: crc = 2dcf1c49; size =     11962; name = WAV\NAMI.WAV
+    file[]: crc = 2f57e614; size =     10442; name = WAV\NAMI_F.WAV
+    file[]: crc = 8705be8c; size =      3334; name = WAV\NEZUMI.WAV
+    file[]: crc = 87939aad; size =      6764; name = WAV\OMATASE.WAV
+    file[]: crc = 1534815e; size =     12756; name = WAV\OOMORI.WAV
+    file[]: crc = eb01c99a; size =     11710; name = WAV\OOMORI_F.WAV
+    file[]: crc = e5468829; size =      3024; name = WAV\OTHER1.WAV
+    file[]: crc = 462c9748; size =      1430; name = WAV\PISU_1.WAV
+    file[]: crc = 02ed43f1; size =      2036; name = WAV\PISU_3.WAV
+    file[]: crc = ad3499fa; size =       992; name = WAV\PISU_KAI.WAV
+    file[]: crc = d2167e96; size =     23956; name = WAV\PYUIN_1.WAV
+    file[]: crc = 39b452d7; size =      2034; name = WAV\RABBIT2.WAV
+    file[]: crc = e11ec939; size =      6182; name = WAV\SOSYAK_1.WAV
+    file[]: crc = 1ae98686; size =     10750; name = WAV\START_C1.WAV
+    file[]: crc = c5e9a562; size =     12818; name = WAV\START_C5.WAV
+    file[]: crc = d9fdc00c; size =       716; name = WAV\TEST_M1.WAV
+    file[]: crc = 7ee86f4e; size =     13926; name = WAV\TOKUMO.WAV
+    file[]: crc = 6af0d587; size =     10828; name = WAV\TOKUMO_F.WAV
+
+end
+
 end
