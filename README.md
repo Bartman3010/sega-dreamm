@@ -2,29 +2,29 @@ Supported Games:
 
 | Games          | Platforms  | Region/Version |
 |----------------|:----------:|-------:|
-|Baku Baku Animal|Windows 95| US, US Sonic & Garfield Pack|
+|Baku Baku Animal|Windows 95| US, US Sonic & Garfield Pack, US Demo, JP Demo|
 |Bug!|Windows 3.1, Windows 95|US, EU|
 |Bug Too!|Windows 95|US, EU|
 |Comix Zone|Windows 3.1, Windows 95|US|
-|Cyber Troopers - Virtual On|Windows 95|US|
-|Daytona USA| Windows 95|US|
-|Daytona USA Deluxe|Windows 95|US, US Special Edition, Demo CD, US Expert Software, Europe, Taiwan|
+|Cyber Troopers - Virtual On|Windows 95|US, JP Demo|
+|Daytona USA| Windows 95|US, US Demo, JP, JP Demo|
+|Daytona USA Deluxe|Windows 95|US, US Special Edition, Demo CD, US Expert Software, Europe, Taiwan, JP Demo|
 |Ecco the Dolphin|Windows 3.1, Windows 95|US, Packard Bell OEM|
 |Enemy Zero|Windows 98|US|
 |Garfield Caught in the Act / Garfield in TV Land / Garfield|Windows 3.1, Windows 95|US, US Sonic & Garfield Pack|
-|Last Bronx|Windows 95|US, EU|
+|Last Bronx|Windows 95|US, EU, JP Demo|
 |Lose Your Marbles / Lose Your Marbles Enhanced Edition|Windows 95|US, US SEGA Puzzle Pack (Enhanced Edition)|
-|Manx TT Superbike|Windows 95|US|
-|Panzer Dragoon|Windows 95|US, EU, JP|
+|Manx TT Superbike|Windows 95|US, JP Demo|
+|Panzer Dragoon|Windows 95|US, EU, JP, JP Demo|
 |Puyo Puyo|Windows 3.1|JP|
 |Puyo Puyo 2|DOS, Windows 95|JP, KR|
 |Puyo Puyo Sun|Windows 95|JP, KR, Demo, Demo (No Voices)|
 |SEGA Puzzle Pack|Windows 95|US|
-|SEGA Rally Championship|Windows 95|US|
+|SEGA Rally Championship|Windows 95|US, JP Demo|
 |SEGA Smash Pack|Windows 95|US, US Expert Software, US Twin Pack (Activision)|
 |SEGA Smash Pack 2|Windows 95|US, US Twin Pack (Activision), EU, JP|
 |SEGA Swirl|Windows 95|US|
-|SEGA Touring Car Championship|Windows 95|US|
+|SEGA Touring Car Championship|Windows 95|US, JP Demo|
 |Sonic & Knuckles Collection|Windows 95|US, US Sonic & Garfield Pack, EU, CH, JP, US Demo, EU Demo (Sonic Dancepower)|
 |Sonic 3D Blast / Sonic 3D Flickies' Island|Windows 95|US, EU, CH, US Demo|
 |Sonic CD|Windows 95|US, JP, US Demo|
@@ -33,8 +33,8 @@ Supported Games:
 |Sonic's Schoolhouse|Windows 95|US, US REV1, US Demo|
 |The House of the Dead|Windows 95|US, EU, JP|
 |The Typing of the Dead|Windows 95|US|
-|Virtua Cop / Virtua Squad|Windows 95|US, US Demo|
-|Virtua Cop 2 / Virtua Squad 2|Windows 95|US, JP|
+|Virtua Cop / Virtua Squad|Windows 95|US, US Demo, JP Demo|
+|Virtua Cop 2 / Virtua Squad 2|Windows 95|US, JP, JP Demo|
 |Virtua Fighter PC|Windows 95|US|
 |Virtua Fighter 2|Windows 95|US, US Demo|
 |Yoot Tower|Windows 95|US|
